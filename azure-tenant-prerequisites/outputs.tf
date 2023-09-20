@@ -117,7 +117,7 @@ output "out_subnet_id" {
 }
 
 output "out_private_dns_zone_id" {
-  value = azurerm_private_dns_zone.private_dns.id
+  value = data.azurerm_private_dns_zone.platform.id
 }
 
 output "out_platform_sp_client_id" {

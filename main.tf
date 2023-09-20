@@ -50,7 +50,7 @@ data "azurerm_dns_a_record" "current" {
 
 # Same as previous
 data "azurerm_public_ip" "current" {
-  name                = "CosmoTechcosmotechPhoenixArch3DevPublicIP"
+  name                = var.platform_vnet
   resource_group_name = var.platform_resource_group
 }
 
