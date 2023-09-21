@@ -351,9 +351,13 @@ variable "monitoring_namespace" {
 
 variable "chart_package_version" {
   type    = string
-  default = "3.0.0-test"
+  default = "3.0.1-test"
 }
 
 variable "platform_sp_name" {
+  type = string
+}
+
+variable "platform_public_ip" {
   type = string
 }
