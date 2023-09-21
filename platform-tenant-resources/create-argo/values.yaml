@@ -2,6 +2,7 @@ singleNamespace: true
 createAggregateRoles: false
 crds:
   install: false
+  keep: true
 images:
   pullPolicy: IfNotPresent
 workflow:

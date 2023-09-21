@@ -100,12 +100,12 @@ variable "helm_repository" {
 
 variable "cosmotech_api_version" {
   type    = string
-  default = "v2"
+  default = "v3"
 }
 
 variable "helm_release_name" {
   type    = string
-  default = "cosmotech-api-v2"
+  default = "cosmotech-api"
 }
 
 variable "chart_package_version" {
