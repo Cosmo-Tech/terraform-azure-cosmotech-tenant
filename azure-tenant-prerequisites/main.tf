@@ -152,7 +152,10 @@ resource "azuread_application" "swagger" {
   }
 
   single_page_application {
-    redirect_uris = ["${local.platform_url}${var.api_version_path}swagger-ui/oauth2-redirect.html"]
+    redirect_uris = [
+      "${local.platform_url}${var.api_version_path}swagger-ui/oauth2-redirect.html",
+      "${local.platform_url}/cosmotech-api/${var.tenant_resource_group}/swagger-ui/oauth2-redirect.html"
+      ]
   }
 
   web {
@@ -351,27 +354,6 @@ resource "azurerm_role_assignment" "rg_owner" {
   role_definition_name = "Owner"
   principal_id         = azuread_group.platform_group.object_id
 }
-
-# Public IP : Not needed for tenant I suppose...
-# resource "azurerm_public_ip" "publicip" {
-#   count               = var.create_publicip ? 1 : 0
-#   name                = "CosmoTech${var.customer_name}${var.project_name}${var.project_stage}PublicIP"
-#   resource_group_name = azurerm_resource_group.tenant_rg.name
-#   location            = var.location
-#   allocation_method   = "Static"
-#   sku                 = "Standard"
-#   tags                = local.tags
-# }
-
-# resource "azurerm_dns_a_record" "platform_fqdn" {
-#   depends_on          = [azurerm_public_ip.publicip]
-#   count               = var.create_publicip && var.create_dnsrecord ? 1 : 0
-#   name                = var.dns_record
-#   zone_name           = var.dns_zone_name
-#   resource_group_name = var.dns_zone_rg
-#   ttl                 = 300
-#   target_resource_id  = azurerm_public_ip.publicip[0].id
-# }
 
 resource "azurerm_role_assignment" "publicip_contributor" {
   scope                = azurerm_resource_group.tenant_rg.id
