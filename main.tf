@@ -40,17 +40,14 @@ data "azurerm_kubernetes_cluster" "current" {
   resource_group_name = var.platform_resource_group
 }
 
-
-# Do we need to create a new dns record for each tenant ?
 data "azurerm_dns_a_record" "current" {
   name                = var.dns_record
   zone_name           = var.dns_zone_name
   resource_group_name = "phoenix"
 }
 
-# Same as previous
 data "azurerm_public_ip" "current" {
-  name                = var.platform_vnet
+  name                = var.platform_public_ip
   resource_group_name = var.platform_resource_group
 }
 

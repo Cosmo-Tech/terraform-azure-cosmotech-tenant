@@ -80,9 +80,6 @@ module "platform-tenant-resources" {
   platform_sp_client_id     = module.azure-tenant-prerequisites.out_platform_sp_client_id
   platform_sp_client_secret = module.azure-tenant-prerequisites.out_platform_sp_client_secret
   kube_config               = data.azurerm_kubernetes_cluster.current.kube_config
-  # loadbalancer_ip           = data.azurerm_public_ip.current.ip_address
-  # cluster_issuer_email      = var.cluster_issuer_email
-  # cluster_issuer_name       = var.cluster_issuer_name
 
   depends_on = [module.azure-tenant-resources]
 }

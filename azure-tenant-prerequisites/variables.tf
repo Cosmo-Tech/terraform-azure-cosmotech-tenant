@@ -115,18 +115,6 @@ variable "platform_public_ip" {
   type = string
 }
 
-# variable "create_publicip" {
-#   description = "Create the public IP for the platform"
-#   type        = bool
-#   default     = true
-# }
-
-# variable "create_dnsrecord" {
-#   description = "Create the DNS record"
-#   type        = bool
-#   default     = true
-# }
-
 variable "platform_resource_group" {
   description = "Existing Resource group which contain common platform resources"
   type        = string

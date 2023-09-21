@@ -48,17 +48,6 @@ data "kubectl_file_documents" "argo_crds" {
   content  = each.value.response_body
 }
 
-# resource "kubectl_manifest" "argo_crds" {
-#   # for_each  = data.kubectl_file_documents.argo_crds[each.key]
-#   # yaml_body = each.value
-
-#   # count    = length(local.crds)
-#   for_each = toset(local.crds)
-#   yaml_body = yamldecode(data.kubectl_file_documents.argo_crds[each.key].documents)
-
-#   # override_namespace = var.namespace
-# }
-
 output "test" {
   value = data.kubectl_file_documents.argo_crds["argoproj.io_workflowtaskresults.yaml"]
 }
@@ -78,6 +67,7 @@ resource "helm_release" "argo" {
   namespace  = var.namespace
 
   reuse_values = true
+  skip_crds    = true
 
   values = [
     templatefile("${path.module}/values.yaml", local.values_argo)
