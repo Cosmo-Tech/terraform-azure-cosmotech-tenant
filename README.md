@@ -43,6 +43,7 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_owner_list"></a> [owner\_list](#input\_owner\_list) | List of mail addresses for App Registration owners | `list(string)` | n/a | yes |
+| <a name="input_platform_public_ip"></a> [platform\_public\_ip](#input\_platform\_public\_ip) | n/a | `string` | n/a | yes |
 | <a name="input_platform_resource_group"></a> [platform\_resource\_group](#input\_platform\_resource\_group) | Existing Resource group which contain common platform resources | `string` | n/a | yes |
 | <a name="input_platform_sp_name"></a> [platform\_sp\_name](#input\_platform\_sp\_name) | n/a | `string` | n/a | yes |
 | <a name="input_platform_vnet"></a> [platform\_vnet](#input\_platform\_vnet) | n/a | `any` | n/a | yes |
@@ -52,7 +53,7 @@
 | <a name="input_tenant_resource_group"></a> [tenant\_resource\_group](#input\_tenant\_resource\_group) | Resource group to create which will contain created Azure resources for this tenant | `string` | n/a | yes |
 | <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | The API version path | `string` | `"/v2/"` | no |
 | <a name="input_audience"></a> [audience](#input\_audience) | The App Registration audience type | `string` | `"AzureADMultipleOrgs"` | no |
-| <a name="input_chart_package_version"></a> [chart\_package\_version](#input\_chart\_package\_version) | n/a | `string` | `"3.0.0-test"` | no |
+| <a name="input_chart_package_version"></a> [chart\_package\_version](#input\_chart\_package\_version) | n/a | `string` | `"3.0.1-test"` | no |
 | <a name="input_client_id"></a> [client\_id](#input\_client\_id) | The client id | `string` | `""` | no |
 | <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | The client secret | `string` | `""` | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | n/a | `string` | `""` | no |
