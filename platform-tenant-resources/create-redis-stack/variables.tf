@@ -61,5 +61,5 @@ variable "redis_pv_driver" {
 
 variable "version_redis_cosmotech" {
   type    = string
-  default = "1.0.2"
+  default = "1.0.8"
 }

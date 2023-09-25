@@ -28,6 +28,19 @@ config:
       include-stacktrace: always
   csm:
     platform:
+      containerRegistry:
+          provider: "azure"
+          registryUrl: "https://${ACR_LOGIN_SERVER}"
+          registryUserName: ${ACR_LOGIN_USERNAME}
+          registryPassword: ${ACR_LOGIN_PASSWORD}
+      identityProvider:
+        code: azure
+        authorizationUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/authorize"
+        tokenUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token"
+        defaultScopes:
+          "[${APP_ID_URI}/${NAMESPACE}/platform]": "${NAMESPACE} scope"
+        containerScopes:
+          "[${APP_ID_URI}/${NAMESPACE}/.default]": "${NAMESPACE} scope"
       namespace: ${NAMESPACE}
       argo:
         base-uri: "http://${ARGO_RELEASE_NAME}-argo-workflows-server.${NAMESPACE}.svc.cluster.local:2746"

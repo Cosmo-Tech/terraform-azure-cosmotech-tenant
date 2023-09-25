@@ -48,10 +48,9 @@ data "kubectl_file_documents" "argo_crds" {
   content  = each.value.response_body
 }
 
-output "test" {
-  value = data.kubectl_file_documents.argo_crds["argoproj.io_workflowtaskresults.yaml"]
-}
-
+# Destroying tenant will also destroy CRDS resources. But being clusterwide, il will impact others Argo installations on the platform
+# A solution could be to remove this resource from state file before destroying all tenant:
+# 'terraform state rm platform-tenant-resources.create-argo.kubectl_manifest.argo_crds'
 resource "kubectl_manifest" "argo_crds" {
   for_each  = data.kubectl_file_documents.argo_crds
   yaml_body = data.kubectl_file_documents.argo_crds[each.key].documents[0]
@@ -74,4 +73,15 @@ resource "helm_release" "argo" {
   ]
 
   depends_on = [kubectl_manifest.argo_crds]
+}
+
+# Experimental: gives helm time to finish cleaning up.
+#
+# Otherwise, after `terraform destroy`:
+# │ Error: uninstallation completed with 1 error(s): uninstall: Failed to purge
+#   the release: release: not found
+resource "time_sleep" "wait_30_seconds" {
+  depends_on = [helm_release.argo]
+
+  destroy_duration = "30s"
 }

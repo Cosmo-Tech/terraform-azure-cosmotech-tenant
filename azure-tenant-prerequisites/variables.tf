@@ -179,3 +179,7 @@ variable "cost_center" {
 
 variable "platform_vnet" {
 }
+
+variable "chart_package_version" {
+  type = string
+}
