@@ -44,8 +44,8 @@ variable "project_stage" {
 }
 
 variable "cluster_name" {
-  type    = string
-  default = ""
+  type        = string
+  default     = ""
   description = "Cluster name"
 }
 
@@ -267,8 +267,8 @@ variable "api_version_path" {
 }
 
 variable "managed_disk_name" {
-  type    = string
-  default = ""
+  type        = string
+  default     = ""
   description = "Name of the managed disk to create"
 }
 
@@ -284,44 +284,44 @@ variable "create_webapp" {
 }
 
 variable "create_secrets" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
   description = "Create secrets for newly created app registrations"
 }
 
 variable "disk_size_gb" {
-  type    = string
-  default = "64"
+  type        = string
+  default     = "64"
   description = "The size of the managed disk to create (Gb)"
 }
 
 variable "disk_sku" {
-  type    = string
-  default = "Premium_LRS"
+  type        = string
+  default     = "Premium_LRS"
   description = "The SKU of the managed disk"
 }
 
 variable "disk_tier" {
-  type    = string
-  default = "P6"
+  type        = string
+  default     = "P6"
   description = "The tier of the managed disk"
 }
 
 variable "kubernetes_version" {
-  type    = string
-  default = "1.25.6"
+  type        = string
+  default     = "1.25.6"
   description = "Azure Kubernetes Service version"
 }
 
 variable "create_cosmosdb" {
-  type    = bool
-  default = false
+  type        = bool
+  default     = false
   description = "Weither to create CosmosDB (only for API version < 2.4)"
 }
 
 variable "create_adx" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
   description = "Weither to create Azure digital explorer"
 }
 
@@ -332,14 +332,14 @@ variable "create_babylon" {
 }
 
 variable "cost_center" {
-  type    = string
-  default = "NA"
+  type        = string
+  default     = "NA"
   description = "The value associated to a resource (tag)"
 }
 
 variable "create_backup" {
-  type    = bool
-  default = false
+  type        = bool
+  default     = false
   description = "Weither to create Azure backup vault along with the managed disk"
 }
 
@@ -353,7 +353,7 @@ variable "tls_secret_name" {
 }
 
 variable "namespace" {
-  type = string
+  type        = string
   description = "The kubernetes namespace to create"
 }
 
@@ -363,18 +363,18 @@ variable "monitoring_namespace" {
 }
 
 variable "chart_package_version" {
-  type    = string
-  default = "3.0.1-test"
+  type        = string
+  default     = "3.0.1-test"
   description = "The version of the Cosmo Tech API chart to deploy"
 }
 
 variable "platform_sp_name" {
-  type = string
+  type        = string
   description = "The name of the platform on which we deploy the tenant"
 }
 
 variable "platform_public_ip" {
-  type = string
+  type        = string
   description = "The public IP resource of the platform"
 }
 
