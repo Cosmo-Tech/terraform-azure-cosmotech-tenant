@@ -46,6 +46,7 @@ variable "project_stage" {
 variable "cluster_name" {
   type    = string
   default = ""
+  description = "Cluster name"
 }
 
 variable "customer_name" {
@@ -268,6 +269,7 @@ variable "api_version_path" {
 variable "managed_disk_name" {
   type    = string
   default = ""
+  description = "Name of the managed disk to create"
 }
 
 variable "image_path" {
@@ -284,36 +286,43 @@ variable "create_webapp" {
 variable "create_secrets" {
   type    = bool
   default = true
+  description = "Create secrets for newly created app registrations"
 }
 
 variable "disk_size_gb" {
   type    = string
   default = "64"
+  description = "The size of the managed disk to create (Gb)"
 }
 
 variable "disk_sku" {
   type    = string
   default = "Premium_LRS"
+  description = "The SKU of the managed disk"
 }
 
 variable "disk_tier" {
   type    = string
   default = "P6"
+  description = "The tier of the managed disk"
 }
 
 variable "kubernetes_version" {
   type    = string
   default = "1.25.6"
+  description = "Azure Kubernetes Service version"
 }
 
 variable "create_cosmosdb" {
   type    = bool
   default = false
+  description = "Weither to create CosmosDB (only for API version < 2.4)"
 }
 
 variable "create_adx" {
   type    = bool
   default = true
+  description = "Weither to create Azure digital explorer"
 }
 
 variable "create_babylon" {
@@ -325,14 +334,17 @@ variable "create_babylon" {
 variable "cost_center" {
   type    = string
   default = "NA"
+  description = "The value associated to a resource (tag)"
 }
 
 variable "create_backup" {
   type    = bool
-  default = true
+  default = false
+  description = "Weither to create Azure backup vault along with the managed disk"
 }
 
 variable "platform_vnet" {
+  description = "The virtual network of the platform common resources"
 }
 
 variable "tls_secret_name" {
@@ -342,6 +354,7 @@ variable "tls_secret_name" {
 
 variable "namespace" {
   type = string
+  description = "The kubernetes namespace to create"
 }
 
 variable "monitoring_namespace" {
@@ -352,12 +365,117 @@ variable "monitoring_namespace" {
 variable "chart_package_version" {
   type    = string
   default = "3.0.1-test"
+  description = "The version of the Cosmo Tech API chart to deploy"
 }
 
 variable "platform_sp_name" {
   type = string
+  description = "The name of the platform on which we deploy the tenant"
 }
 
 variable "platform_public_ip" {
   type = string
+  description = "The public IP resource of the platform"
+}
+
+variable "create_vault_entries" {
+  type        = bool
+  default     = false
+  description = "Custom module used to automatically retrieve Cosmo Tech Platform values and fill Vault in order to be used by Babylon"
+}
+
+# Backend remote vars
+variable "tf_resource_group_name" {
+  type        = string
+  default     = ""
+  description = <<EOT
+Variable to be used with backend remote option :
+First set necessary vars:
+- export TF_VAR_tf_resource_group_name="some_value"
+Then call terraform init:
+terraform init \
+    -backend-config "resource_group_name=$TF_VAR_tf_resource_group_name" \
+    -backend-config "storage_account_name=$TF_VAR_tf_storage_account_name" \
+    -backend-config "container_name=$TF_VAR_tf_container_name" \
+    -backend-config "key=$TF_VAR_tf_blob_name" \
+    -backend-config "access_key=$TF_VAR_tf_access_key"
+EOT
+}
+
+variable "tf_storage_account_name" {
+  type        = string
+  default     = ""
+  description = <<EOT
+Variable to be used with backend remote option :
+First set necessary vars:
+- export TF_VAR_tf_storage_account_name="some_value"
+Then call terraform init:
+terraform init \
+    -backend-config "resource_group_name=$TF_VAR_tf_resource_group_name" \
+    -backend-config "storage_account_name=$TF_VAR_tf_storage_account_name" \
+    -backend-config "container_name=$TF_VAR_tf_container_name" \
+    -backend-config "key=$TF_VAR_tf_blob_name" \
+    -backend-config "access_key=$TF_VAR_tf_access_key"
+EOT
+}
+
+variable "tf_container_name" {
+  type        = string
+  default     = ""
+  description = <<EOT
+Variable to be used with backend remote option :
+First set necessary vars:
+- export TF_VAR_tf_container_name="some_value"
+Then call terraform init:
+terraform init \
+    -backend-config "resource_group_name=$TF_VAR_tf_resource_group_name" \
+    -backend-config "storage_account_name=$TF_VAR_tf_storage_account_name" \
+    -backend-config "container_name=$TF_VAR_tf_container_name" \
+    -backend-config "key=$TF_VAR_tf_blob_name" \
+    -backend-config "access_key=$TF_VAR_tf_access_key"
+EOT
+}
+
+variable "tf_blob_name" {
+  type        = string
+  default     = ""
+  description = <<EOT
+Variable to be used with backend remote option :
+First set necessary vars:
+- export TF_VAR_tf_blob_name="some_value"
+Then call terraform init:
+terraform init \
+    -backend-config "resource_group_name=$TF_VAR_tf_resource_group_name" \
+    -backend-config "storage_account_name=$TF_VAR_tf_storage_account_name" \
+    -backend-config "container_name=$TF_VAR_tf_container_name" \
+    -backend-config "key=$TF_VAR_tf_blob_name" \
+    -backend-config "access_key=$TF_VAR_tf_access_key"
+EOT
+}
+
+variable "tf_access_key" {
+  type        = string
+  default     = ""
+  description = <<EOT
+Variable to be used with backend remote option :
+First set necessary vars:
+- export TF_VAR_tf_access_key="some_value"
+Then call terraform init:
+terraform init \
+    -backend-config "resource_group_name=$TF_VAR_tf_resource_group_name" \
+    -backend-config "storage_account_name=$TF_VAR_tf_storage_account_name" \
+    -backend-config "container_name=$TF_VAR_tf_container_name" \
+    -backend-config "key=$TF_VAR_tf_blob_name" \
+    -backend-config "access_key=$TF_VAR_tf_access_key"
+EOT
+}
+
+variable "vault_addr" {
+  type        = string
+  description = "The address of the Vault to save current platform configuration values"
+}
+
+variable "vault_token" {
+  type        = string
+  description = "The token of the Vault to save current platform configuration values"
 }
