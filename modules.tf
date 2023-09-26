@@ -25,7 +25,7 @@ module "azure-tenant-prerequisites" {
   customer_name           = var.customer_name
   user_app_role           = var.user_app_role
   image_path              = var.image_path
-  # cost_center             = var.cost_center
+  chart_package_version   = var.chart_package_version
 }
 
 module "azure-tenant-resources" {
@@ -46,7 +46,7 @@ module "azure-tenant-resources" {
   principal_id               = module.azure-tenant-prerequisites.out_platform_sp_object_id
   platform_resource_group_id = data.azurerm_resource_group.current.id
   platform_sp_object_id      = data.azuread_service_principal.platform.object_id
-  create_backup              = false
+  create_backup              = var.create_backup
 
   depends_on = [module.azure-tenant-prerequisites]
 }
@@ -82,4 +82,22 @@ module "platform-tenant-resources" {
   kube_config               = data.azurerm_kubernetes_cluster.current.kube_config
 
   depends_on = [module.azure-tenant-resources]
+}
+
+module "create-vault-entries" {
+  source = "./create-vault-entries"
+
+  count                = var.create_vault_entries ? 1 : 0
+  vault_addr           = var.vault_addr
+  vault_token          = var.vault_token
+  storage_account_name = var.tf_storage_account_name
+  storage_account_key  = var.tf_access_key
+  storage_container    = var.tf_container_name
+  tfstate_blob_name    = var.tf_blob_name
+  tenant_id            = var.tenant_id
+  organization_name    = var.customer_name
+  platform_name        = var.project_name
+  namespace            = var.namespace
+
+  depends_on = [module.platform-tenant-resources]
 }
