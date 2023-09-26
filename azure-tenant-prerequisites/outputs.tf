@@ -127,3 +127,19 @@ output "out_platform_sp_client_id" {
 output "out_platform_sp_client_secret" {
   value = var.create_secrets ? azuread_application_password.platform_password.0.value : null
 }
+
+output "out_babylon_client_id" {
+  value = var.create_babylon ? azuread_application.babylon.application_id : null
+}
+
+output "out_babylon_principal_id" {
+  value = var.create_babylon ? azuread_service_principal.babylon.object_id : null
+}
+
+output "out_babylon_principal_secret" {
+  value = var.create_secrets ? azuread_application_password.babylon_password.0.value : null
+}
+
+output "out_cosmos_api_url" {
+  value = local.identifier_uri
+}

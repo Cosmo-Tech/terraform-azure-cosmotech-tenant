@@ -295,6 +295,13 @@ resource "azuread_group" "platform_group" {
   members          = data.azuread_users.owners.object_ids
 }
 
+resource "azuread_application_password" "babylon_password" {
+  display_name          = "babylon_secret"
+  count                 = var.create_babylon && var.create_secrets ? 1 : 0
+  application_object_id = azuread_application.babylon[0].object_id
+  end_date_relative     = "4464h"
+}
+
 resource "azuread_application" "babylon" {
   count            = var.create_babylon ? 1 : 0
   display_name     = "${local.pre_name}Babylon${local.post_name}"

@@ -1,13 +1,13 @@
-output "out_platform_sp_client_id" {
+output "platform_sp_client_id" {
   value = module.azure-tenant-prerequisites.out_platform_clientid
 }
 
-output "out_platform_sp_client_secret" {
+output "platform_sp_client_secret" {
   value     = module.azure-tenant-prerequisites.out_platform_password
   sensitive = true
 }
 
-output "out_storage_account_name" {
+output "storage_account_name" {
   value = module.azure-tenant-resources.out_storage_account_name
 }
 
@@ -16,7 +16,7 @@ output "out_storage_account_key" {
   sensitive = true
 }
 
-output "out_acr_login_server" {
+output "acr_login_server" {
   value     = module.azure-tenant-resources.out_acr_login_server
   sensitive = true
 }
@@ -67,10 +67,48 @@ output "out_eventbus_uri" {
   sensitive = true
 }
 
-output "out_adx_uri" {
+output "adx_uri" {
   value = module.azure-tenant-resources.adx_uri
 }
 
 output "out_adx_ingestion_uri" {
   value = module.azure-tenant-resources.adx_ingestion_uri
+}
+
+output "babylon_client_id" {
+  value = module.azure-tenant-prerequisites.out_babylon_client_id
+}
+
+output "babylon_principal_id" {
+  value = module.azure-tenant-prerequisites.out_babylon_principal_id
+}
+
+output "babylon_principal_secret" {
+  value = module.azure-tenant-prerequisites.out_babylon_principal_secret
+}
+
+output "cosmos_api_url" {
+  value = module.azure-tenant-prerequisites.out_cosmos_api_url
+}
+
+output "platform_sp_object_id" {
+  value = module.azure-tenant-prerequisites.out_platform_sp_object_id
+}
+
+output "resource_group_name" {
+  value = var.dns_record
+}
+
+output "resource_location" {
+  value = var.location
+}
+
+output "storage_account_secret" {
+  value     = module.azure-tenant-resources.out_storage_account_key
+  sensitive = true
+}
+
+output "subscription_id" {
+  sensitive = true
+  value     = var.subscription_id
 }
