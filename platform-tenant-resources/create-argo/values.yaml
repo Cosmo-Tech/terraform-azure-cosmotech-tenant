@@ -35,8 +35,6 @@ server:
     enabled: false
   extraArgs:
   - --auth-mode=server
-  - --managed-namespace
-  - --namespaced
   secure: false
   podLabels:
     networking/traffic-allowed: "yes"
@@ -55,6 +53,9 @@ server:
       memory: "512Mi"
       cpu: "1"
 controller:
+  extraArgs:
+  - "--managed-namespace"
+  - "${NAMESPACE}"
   clusterWorkflowTemplates:
     enabled: false
   extraEnv:
