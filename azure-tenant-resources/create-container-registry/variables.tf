@@ -19,3 +19,7 @@ variable "tags" {
     cost_center = string
   })
 }
+
+variable "principal_id" {
+  type = string
+}

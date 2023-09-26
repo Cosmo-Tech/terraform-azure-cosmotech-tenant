@@ -55,6 +55,7 @@ module "create-container-registry" {
   location       = var.location
   resource_group = var.resource_group
   container_name = local.container_registry_name
+  principal_id   = var.principal_id
   tags           = local.tags
 }
 

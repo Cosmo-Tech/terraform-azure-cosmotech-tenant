@@ -49,8 +49,8 @@ data "kubectl_file_documents" "argo_crds" {
 }
 
 # Destroying tenant will also destroy CRDS resources. But being clusterwide, il will impact others Argo installations on the platform
-# A solution could be to remove this resource from state file before destroying all tenant:
-# 'terraform state rm platform-tenant-resources.create-argo.kubectl_manifest.argo_crds'
+# A temporary solution could be to remove this resource from state file before destroying the full tenant resources:
+# terraform state rm "module.platform-tenant-resources.module.create-argo.kubectl_manifest.argo_crds"
 resource "kubectl_manifest" "argo_crds" {
   for_each  = data.kubectl_file_documents.argo_crds
   yaml_body = data.kubectl_file_documents.argo_crds[each.key].documents[0]
