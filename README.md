@@ -58,7 +58,7 @@
 | <a name="input_vault_token"></a> [vault\_token](#input\_vault\_token) | The token of the Vault to save current platform configuration values | `string` | n/a | yes |
 | <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | The API version path | `string` | `"/v2/"` | no |
 | <a name="input_audience"></a> [audience](#input\_audience) | The App Registration audience type | `string` | `"AzureADMultipleOrgs"` | no |
-| <a name="input_chart_package_version"></a> [chart\_package\_version](#input\_chart\_package\_version) | The version of the Cosmo Tech API chart to deploy | `string` | `"3.0.1-test"` | no |
+| <a name="input_chart_package_version"></a> [chart\_package\_version](#input\_chart\_package\_version) | The version of the Cosmo Tech API chart to deploy | `string` | `"3.0.3-test"` | no |
 | <a name="input_client_id"></a> [client\_id](#input\_client\_id) | The client id | `string` | `""` | no |
 | <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | The client secret | `string` | `""` | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Cluster name | `string` | `""` | no |
@@ -107,7 +107,8 @@
 | <a name="output_adx_uri"></a> [adx\_uri](#output\_adx\_uri) | n/a |
 | <a name="output_babylon_client_id"></a> [babylon\_client\_id](#output\_babylon\_client\_id) | n/a |
 | <a name="output_babylon_principal_id"></a> [babylon\_principal\_id](#output\_babylon\_principal\_id) | n/a |
-| <a name="output_babylon_principal_secret"></a> [babylon\_principal\_secret](#output\_babylon\_principal\_secret) | n/a |
+| <a name="output_babylon_secret"></a> [babylon\_secret](#output\_babylon\_secret) | n/a |
+| <a name="output_cluster_name"></a> [cluster\_name](#output\_cluster\_name) | n/a |
 | <a name="output_cosmos_api_url"></a> [cosmos\_api\_url](#output\_cosmos\_api\_url) | n/a |
 | <a name="output_managed_disk_id"></a> [managed\_disk\_id](#output\_managed\_disk\_id) | n/a |
 | <a name="output_out_acr_login_password"></a> [out\_acr\_login\_password](#output\_out\_acr\_login\_password) | n/a |
