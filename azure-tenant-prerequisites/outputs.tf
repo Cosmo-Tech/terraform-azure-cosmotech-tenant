@@ -129,15 +129,16 @@ output "out_platform_sp_client_secret" {
 }
 
 output "out_babylon_client_id" {
-  value = var.create_babylon ? azuread_application.babylon.application_id : null
+  value = var.create_babylon ? azuread_application.babylon.0.application_id : null
 }
 
 output "out_babylon_principal_id" {
-  value = var.create_babylon ? azuread_service_principal.babylon.object_id : null
+  value = var.create_babylon ? azuread_service_principal.babylon.0.object_id : null
 }
 
-output "out_babylon_principal_secret" {
-  value = var.create_secrets ? azuread_application_password.babylon_password.0.value : null
+output "out_babylon_secret" {
+  value     = var.create_secrets ? azuread_application_password.babylon_password.0.value : null
+  sensitive = true
 }
 
 output "out_cosmos_api_url" {

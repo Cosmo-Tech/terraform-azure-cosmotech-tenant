@@ -83,8 +83,8 @@ output "babylon_principal_id" {
   value = module.azure-tenant-prerequisites.out_babylon_principal_id
 }
 
-output "babylon_principal_secret" {
-  value = module.azure-tenant-prerequisites.out_babylon_principal_secret
+output "babylon_secret" {
+  value = module.azure-tenant-prerequisites.out_babylon_secret
 }
 
 output "cosmos_api_url" {
@@ -111,4 +111,8 @@ output "storage_account_secret" {
 output "subscription_id" {
   sensitive = true
   value     = var.subscription_id
+}
+
+output "cluster_name" {
+  value = var.cluster_name
 }
