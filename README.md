@@ -103,21 +103,30 @@
 
 | Name | Description |
 |------|-------------|
+| <a name="output_acr_login_server"></a> [acr\_login\_server](#output\_acr\_login\_server) | n/a |
+| <a name="output_adx_uri"></a> [adx\_uri](#output\_adx\_uri) | n/a |
+| <a name="output_babylon_client_id"></a> [babylon\_client\_id](#output\_babylon\_client\_id) | n/a |
+| <a name="output_babylon_principal_id"></a> [babylon\_principal\_id](#output\_babylon\_principal\_id) | n/a |
+| <a name="output_babylon_principal_secret"></a> [babylon\_principal\_secret](#output\_babylon\_principal\_secret) | n/a |
+| <a name="output_cosmos_api_url"></a> [cosmos\_api\_url](#output\_cosmos\_api\_url) | n/a |
 | <a name="output_managed_disk_id"></a> [managed\_disk\_id](#output\_managed\_disk\_id) | n/a |
 | <a name="output_out_acr_login_password"></a> [out\_acr\_login\_password](#output\_out\_acr\_login\_password) | n/a |
-| <a name="output_out_acr_login_server"></a> [out\_acr\_login\_server](#output\_out\_acr\_login\_server) | n/a |
 | <a name="output_out_acr_login_username"></a> [out\_acr\_login\_username](#output\_out\_acr\_login\_username) | n/a |
 | <a name="output_out_adx_ingestion_uri"></a> [out\_adx\_ingestion\_uri](#output\_out\_adx\_ingestion\_uri) | n/a |
-| <a name="output_out_adx_uri"></a> [out\_adx\_uri](#output\_out\_adx\_uri) | n/a |
 | <a name="output_out_cosmos_key"></a> [out\_cosmos\_key](#output\_out\_cosmos\_key) | n/a |
 | <a name="output_out_cosmos_uri"></a> [out\_cosmos\_uri](#output\_out\_cosmos\_uri) | n/a |
 | <a name="output_out_eventbus_uri"></a> [out\_eventbus\_uri](#output\_out\_eventbus\_uri) | n/a |
 | <a name="output_out_ip_resource_group"></a> [out\_ip\_resource\_group](#output\_out\_ip\_resource\_group) | n/a |
 | <a name="output_out_network_adt_password"></a> [out\_network\_adt\_password](#output\_out\_network\_adt\_password) | n/a |
 | <a name="output_out_networkadt_clientid"></a> [out\_networkadt\_clientid](#output\_out\_networkadt\_clientid) | n/a |
-| <a name="output_out_platform_sp_client_id"></a> [out\_platform\_sp\_client\_id](#output\_out\_platform\_sp\_client\_id) | n/a |
-| <a name="output_out_platform_sp_client_secret"></a> [out\_platform\_sp\_client\_secret](#output\_out\_platform\_sp\_client\_secret) | n/a |
 | <a name="output_out_storage_account_key"></a> [out\_storage\_account\_key](#output\_out\_storage\_account\_key) | n/a |
-| <a name="output_out_storage_account_name"></a> [out\_storage\_account\_name](#output\_out\_storage\_account\_name) | n/a |
 | <a name="output_out_subnet_id"></a> [out\_subnet\_id](#output\_out\_subnet\_id) | n/a |
+| <a name="output_platform_sp_client_id"></a> [platform\_sp\_client\_id](#output\_platform\_sp\_client\_id) | n/a |
+| <a name="output_platform_sp_client_secret"></a> [platform\_sp\_client\_secret](#output\_platform\_sp\_client\_secret) | n/a |
+| <a name="output_platform_sp_object_id"></a> [platform\_sp\_object\_id](#output\_platform\_sp\_object\_id) | n/a |
+| <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | n/a |
+| <a name="output_resource_location"></a> [resource\_location](#output\_resource\_location) | n/a |
+| <a name="output_storage_account_name"></a> [storage\_account\_name](#output\_storage\_account\_name) | n/a |
+| <a name="output_storage_account_secret"></a> [storage\_account\_secret](#output\_storage\_account\_secret) | n/a |
+| <a name="output_subscription_id"></a> [subscription\_id](#output\_subscription\_id) | n/a |
 <!-- END_TF_DOCS -->
