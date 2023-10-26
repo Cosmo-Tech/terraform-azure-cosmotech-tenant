@@ -1,10 +1,10 @@
 locals {
   cosmosdb_name           = "csm${var.cluster_name}-${var.resource_group}"
   eventhub_name           = "evname-${var.cluster_name}-${var.resource_group}"
-  kusto_name              = "kusto${random_string.random_storage_id.result}"
+  kusto_name              = "kusto${replace(var.resource_group, "/[[:^alnum:]]/", "")}${random_string.random_storage_id.result}"
   managed_disk_name       = var.managed_disk_name != "" ? var.managed_disk_name : "cosmotech-database-disk-${var.resource_group}"
-  storage_name            = "${var.cluster_name}${random_string.random_storage_id.result}"
-  container_registry_name = "acr${var.cluster_name}${var.resource_group}"
+  storage_name            = "${replace(var.cluster_name, "/[[:^alnum:]]/", "")}${random_string.random_storage_id.result}"
+  container_registry_name = "acr${replace(var.resource_group, "/[[:^alnum:]]/", "")}${random_string.random_storage_id.result}"
   backup_instance_name    = "cosmo-backup-instance-${var.resource_group}"
   backup_policy_name      = "cosmo-backup-policy-${var.resource_group}"
   tags = {
