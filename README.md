@@ -17,7 +17,6 @@
 |------|---------|
 | <a name="provider_azuread"></a> [azuread](#provider\_azuread) | 2.38.0 |
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~>3.54.0 |
-| <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 
 ## Modules
 
@@ -38,7 +37,6 @@
 | [azurerm_public_ip.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/public_ip) | data source |
 | [azurerm_resource_group.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
 | [azurerm_virtual_network.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/virtual_network) | data source |
-| [terraform_remote_state.state](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
 ## Inputs
 
