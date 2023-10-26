@@ -25,13 +25,9 @@ terraform {
       version = "3.4.0"
     }
   }
-  backend "azurerm" {
+  backend "local" {
   }
   required_version = ">= 1.3.9"
-}
-
-provider "http" {
-  # Configuration options
 }
 
 # Configure the Microsoft Azure Provider
