@@ -12,7 +12,7 @@ locals {
     "ARGO_SERVICE_ACCOUNT"        = local.argo_service_account
     "ARGO_BUCKET_NAME"            = var.argo_bucket_name
     "MONITORING_NAMESPACE"        = var.monitoring_namespace
-    "MINIO_RELEASE_NAME"          = var.minio_release_name
+    "MINIO_RELEASE_NAME"          = loca.minio_release_name
     "NAMESPACE"                   = var.namespace
     "POSTGRES_RELEASE_NAME"       = var.postgres_release_name
     "ARGO_DATABASE"               = var.argo_database
@@ -22,20 +22,21 @@ locals {
   }
   instance_name        = "${var.argo_release_name}-${var.namespace}"
   argo_service_account = "argo-${var.namespace}-service-account"
+  minio_release_name   = "${var.minio_release_name}-${var.namespace}"
 }
 
 locals {
   crds = [
     "argoproj.io_clusterworkflowtemplates.yaml",
     "argoproj.io_cronworkflows.yaml",
-    "argoproj.io_workflowartifactgctasks.yaml",
+    # "argoproj.io_workflowartifactgctasks.yaml", # Rollback to 0.16.6 version
     "argoproj.io_workfloweventbindings.yaml",
     "argoproj.io_workflows.yaml",
     "argoproj.io_workflowtaskresults.yaml",
     "argoproj.io_workflowtasksets.yaml",
     "argoproj.io_workflowtemplates.yaml"
   ]
-  argo_version = "v3.4.9"
+  argo_version = "v3.3.8"
 }
 
 data "http" "argo_crds" {
