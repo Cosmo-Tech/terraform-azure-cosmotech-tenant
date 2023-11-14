@@ -263,7 +263,7 @@ variable "vnet_iprange" {
 variable "api_version_path" {
   description = "The API version path"
   type        = string
-  default     = "/v2/"
+  default     = "/v3/"
 }
 
 variable "managed_disk_name" {
