@@ -54,7 +54,7 @@
 | <a name="input_tenant_resource_group"></a> [tenant\_resource\_group](#input\_tenant\_resource\_group) | Resource group to create which will contain created Azure resources for this tenant | `string` | n/a | yes |
 | <a name="input_vault_addr"></a> [vault\_addr](#input\_vault\_addr) | The address of the Vault to save current platform configuration values | `string` | n/a | yes |
 | <a name="input_vault_token"></a> [vault\_token](#input\_vault\_token) | The token of the Vault to save current platform configuration values | `string` | n/a | yes |
-| <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | The API version path | `string` | `"/v2/"` | no |
+| <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | The API version path | `string` | `"/v3/"` | no |
 | <a name="input_audience"></a> [audience](#input\_audience) | The App Registration audience type | `string` | `"AzureADMultipleOrgs"` | no |
 | <a name="input_chart_package_version"></a> [chart\_package\_version](#input\_chart\_package\_version) | The version of the Cosmo Tech API chart to deploy | `string` | `"3.0.3-test"` | no |
 | <a name="input_client_id"></a> [client\_id](#input\_client\_id) | The client id | `string` | `""` | no |
