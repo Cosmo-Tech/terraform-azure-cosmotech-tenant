@@ -84,7 +84,8 @@ output "babylon_principal_id" {
 }
 
 output "babylon_secret" {
-  value = module.azure-tenant-prerequisites.out_babylon_secret
+  value     = module.azure-tenant-prerequisites.out_babylon_secret
+  sensitive = true
 }
 
 output "cosmos_api_url" {
