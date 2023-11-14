@@ -1,12 +1,11 @@
 locals {
-  pre_name         = "Cosmo Tech "
-  post_name        = " ${var.platform_resource_group} For ${var.tenant_resource_group}"
-  subnet_name      = "default"
-  identifier_uri   = "https://${var.dns_record}.${var.dns_zone_name}/${var.tenant_resource_group}"
-  platform_url     = var.platform_url != "" ? var.platform_url : "https://${var.dns_record}.${var.dns_zone_name}"
-  webapp_url       = var.webapp_url != "" ? var.webapp_url : "https://${var.dns_record}.app.cosmotech.com"
-  vnet_iprange     = var.vnet_iprange != "" ? var.vnet_iprange : "10.10.0.0/16"
-  api_version_path = substr(var.chart_package_version, 0, 1)
+  pre_name       = "Cosmo Tech "
+  post_name      = " ${var.platform_resource_group} For ${var.tenant_resource_group}"
+  subnet_name    = "default"
+  identifier_uri = "https://${var.dns_record}.${var.dns_zone_name}/${var.tenant_resource_group}"
+  platform_url   = var.platform_url != "" ? var.platform_url : "https://${var.dns_record}.${var.dns_zone_name}"
+  webapp_url     = var.webapp_url != "" ? var.webapp_url : "https://${var.dns_record}.app.cosmotech.com"
+  vnet_iprange   = var.vnet_iprange != "" ? var.vnet_iprange : "10.10.0.0/16"
   tags = {
     vendor      = "cosmotech"
     stage       = var.project_stage
@@ -154,7 +153,7 @@ resource "azuread_application" "swagger" {
 
   single_page_application {
     redirect_uris = [
-      "${local.platform_url}/cosmotech-api/${var.tenant_resource_group}/v${local.api_version_path}/swagger-ui/oauth2-redirect.html"
+      "${local.platform_url}/cosmotech-api/${var.tenant_resource_group}${var.api_version_path}swagger-ui/oauth2-redirect.html"
     ]
   }
 
