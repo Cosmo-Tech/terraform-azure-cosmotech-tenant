@@ -83,5 +83,5 @@ resource "helm_release" "argo" {
 resource "time_sleep" "wait_30_seconds" {
   depends_on = [helm_release.argo]
 
-  destroy_duration = "30s"
+  destroy_duration = "60s"
 }
