@@ -320,17 +320,17 @@ resource "azuread_application" "babylon" {
     }
 
     resource_access {
-      id = "1cda74f2-2616-4834-b122-5cb1b07f8a59" # Application.ReadWrite.All
+      id   = "1cda74f2-2616-4834-b122-5cb1b07f8a59" # Application.ReadWrite.All
       type = "Scope"
     }
 
     resource_access {
-      id = "824c81eb-e3f8-4ee6-8f6d-de7f50d565b7" # Application.ReadWrite.OwnedBy
+      id   = "824c81eb-e3f8-4ee6-8f6d-de7f50d565b7" # Application.ReadWrite.OwnedBy
       type = "Scope"
     }
 
     resource_access {
-      id = "62a82d76-70ea-41e2-9197-370581804d09" # Group.ReadWrite.ALL
+      id   = "62a82d76-70ea-41e2-9197-370581804d09" # Group.ReadWrite.ALL
       type = "Scope"
     }
   }
@@ -344,7 +344,7 @@ resource "azuread_application" "babylon" {
     }
 
     resource_access {
-      id = "bb49d61f-8b6a-4a19-b5bd-06a29d6b8e60"
+      id   = "bb49d61f-8b6a-4a19-b5bd-06a29d6b8e60"
       type = "Role"
     }
   }
