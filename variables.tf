@@ -26,6 +26,11 @@ variable "identifier_uri" {
   default     = ""
 }
 
+variable "grant_admin_consent" {
+  type    = bool
+  default = true
+}
+
 variable "project_stage" {
   description = "The platform stage"
   default     = "Dev"

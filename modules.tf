@@ -28,6 +28,20 @@ module "azure-tenant-prerequisites" {
   chart_package_version   = var.chart_package_version
 }
 
+# Platform app registration needs 'Platform.Admin' permission on itself. And with admin consent too
+resource "null_resource" "admin_consent" {
+  count = var.grant_admin_consent ? 1 : 0
+  provisioner "local-exec" {
+    command = <<EOT
+    sleep 30
+    az ad app permission add --id '${module.azure-tenant-prerequisites.out_platform_sp_client_id}' --api '${module.azure-tenant-prerequisites.out_platform_sp_client_id}' --api-permissions bb49d61f-8b6a-4a19-b5bd-06a29d6b8e60=Role
+    az ad app permission admin-consent --id '${module.azure-tenant-prerequisites.out_platform_sp_client_id}'
+    EOT
+  }
+
+  depends_on = [module.azure-tenant-prerequisites]
+}
+
 module "azure-tenant-resources" {
   source = "./azure-tenant-resources"
 
