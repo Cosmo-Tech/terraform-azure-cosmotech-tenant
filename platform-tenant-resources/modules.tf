@@ -76,3 +76,10 @@ module "create-cosmotech-api" {
     module.create-argo
   ]
 }
+
+module "create-loki" {
+  source = "./create-loki"
+
+  namespace            = var.namespace
+  monitoring_namespace = var.monitoring_namespace
+}
