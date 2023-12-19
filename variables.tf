@@ -479,3 +479,16 @@ variable "vault_token" {
   type        = string
   description = "The token of the Vault to save current platform configuration values"
 }
+
+variable "deployment_type" {
+  type    = string
+  default = "Terraform"
+  validation {
+    condition = contains([
+      "ARM",
+      "Terraform"
+    ], var.deployment_type)
+    error_message = "Stage must be either: ARM or Terraform."
+  }
+  description = "Represents the kind of deployment. Currently two modes: ARM or Terraform"
+}
