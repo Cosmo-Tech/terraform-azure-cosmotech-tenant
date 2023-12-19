@@ -73,6 +73,7 @@
 | <a name="input_create_vault_entries"></a> [create\_vault\_entries](#input\_create\_vault\_entries) | Custom module used to automatically retrieve Cosmo Tech Platform values and fill Vault in order to be used by Babylon | `bool` | `false` | no |
 | <a name="input_create_webapp"></a> [create\_webapp](#input\_create\_webapp) | Create the Azure Active Directory Application for WebApp | `bool` | `true` | no |
 | <a name="input_customer_name"></a> [customer\_name](#input\_customer\_name) | The customer name | `string` | `"cosmotech"` | no |
+| <a name="input_deployment_type"></a> [deployment\_type](#input\_deployment\_type) | Represents the kind of deployment. Currently two modes: ARM or Terraform | `string` | `"Terraform"` | no |
 | <a name="input_disk_size_gb"></a> [disk\_size\_gb](#input\_disk\_size\_gb) | The size of the managed disk to create (Gb) | `string` | `"64"` | no |
 | <a name="input_disk_sku"></a> [disk\_sku](#input\_disk\_sku) | The SKU of the managed disk | `string` | `"Premium_LRS"` | no |
 | <a name="input_disk_tier"></a> [disk\_tier](#input\_disk\_tier) | The tier of the managed disk | `string` | `"P6"` | no |
