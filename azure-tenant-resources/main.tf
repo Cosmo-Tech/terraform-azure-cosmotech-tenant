@@ -1,12 +1,17 @@
 locals {
-  cosmosdb_name           = "csm${var.cluster_name}-${var.resource_group}"
-  eventhub_name           = "evname-${var.cluster_name}-${var.resource_group}"
-  kusto_name              = substr("kusto${replace(var.resource_group, "/[[:^alnum:]]/", "")}${random_string.random_storage_id.result}", 0, 21)
-  managed_disk_name       = var.managed_disk_name != "" ? var.managed_disk_name : "cosmotech-database-disk-${var.resource_group}"
-  storage_name            = substr("${replace(var.cluster_name, "/[[:^alnum:]]/", "")}${random_string.random_storage_id.result}", 0, 23)
-  container_registry_name = "acr${replace(var.resource_group, "/[[:^alnum:]]/", "")}${random_string.random_storage_id.result}"
-  backup_instance_name    = "cosmo-backup-instance-${var.resource_group}"
-  backup_policy_name      = "cosmo-backup-policy-${var.resource_group}"
+  cleaned_cluster_name        = replace(var.cluster_name, "/[[:^alnum:]]/", "")
+  cleaned_resource_group_name = replace(var.tenant_resource_group.name, "/[[:^alnum:]]/", "")
+  cleaned_managed_disk_name   = replace(var.managed_disk_name, "/[[:^alnum:]]/", "")
+  cosmosdb_name               = "csm${local.cleaned_cluster_name}-${local.cleaned_resource_group_name}"
+  eventhub_name               = substr("evname-${local.cleaned_cluster_name}-${local.cleaned_resource_group_name}", 0, 50)
+  kusto_name                  = substr("kusto${local.cleaned_resource_group_name}${random_string.random_storage_id.result}", 0, 21)
+  managed_disk_name           = local.cleaned_managed_disk_name != "" ? local.cleaned_managed_disk_name : substr("cosmotech-database-disk-${local.cleaned_resource_group_name}", 0, 80)
+  storage_name                = substr("${local.cleaned_cluster_name}${random_string.random_storage_id.result}", 0, 23)
+  container_registry_name     = substr("acr${local.cleaned_resource_group_name}${random_string.random_storage_id.result}", 0, 50)
+  backup_instance_name        = "cosmo-backup-instance-${local.cleaned_resource_group_name}"
+  backup_policy_name          = "cosmo-backup-policy-${local.cleaned_resource_group_name}"
+  subnet_name                 = "default"
+  vnet_iprange                = var.vnet_iprange != "" ? var.vnet_iprange : "10.10.0.0/16"
   tags = {
     vendor      = "cosmotech"
     stage       = var.project_stage
@@ -22,85 +27,20 @@ resource "random_string" "random_storage_id" {
   upper   = false
 }
 
-module "create-disk" {
-  source = "./create-disk"
-
-  location                 = var.location
-  resource_group           = var.resource_group
-  private_dns_zone_id      = var.private_dns_zone_id
-  principal_id             = var.principal_id
-  disk_size_gb             = var.disk_size_gb
-  disk_sku                 = var.disk_sku
-  disk_tier                = var.disk_tier
-  subnet_id                = var.subnet_id
-  tenant_managed_disk_name = local.managed_disk_name
-  platform_sp_object_id    = var.platform_sp_object_id
-  tags                     = local.tags
+resource "azurerm_role_assignment" "rg_owner" {
+  scope                = var.tenant_resource_group.id
+  role_definition_name = "Owner"
+  principal_id         = var.platform_group_id
 }
 
-module "create-storage" {
-  source = "./create-storage"
-
-  location            = var.location
-  resource_group      = var.resource_group
-  storage_name        = local.storage_name
-  private_dns_zone_id = var.private_dns_zone_id
-  tags                = local.tags
-  subnet_id           = var.subnet_id
+resource "azurerm_role_assignment" "publicip_contributor" {
+  scope                = var.tenant_resource_group.id
+  role_definition_name = "Contributor"
+  principal_id         = var.networkadt_sp_object_id
 }
 
-module "create-container-registry" {
-  source = "./create-container-registry"
-
-  location       = var.location
-  resource_group = var.resource_group
-  container_name = local.container_registry_name
-  principal_id   = var.principal_id
-  tags           = local.tags
-}
-
-module "create-cosmosdb" {
-  source = "./create-cosmosdb"
-
-  count          = var.create_cosmosdb ? 1 : 0
-  location       = var.location
-  resource_group = var.resource_group
-  cosmosdb_name  = local.cosmosdb_name
-  tags           = local.tags
-}
-
-module "create-eventhub" {
-  source = "./create-eventhub"
-
-  location            = var.location
-  resource_group      = var.resource_group
-  eventhub_name       = local.eventhub_name
-  private_dns_zone_id = var.private_dns_zone_id
-  tags                = local.tags
-  subnet_id           = var.subnet_id
-}
-
-module "create-kusto" {
-  source = "./create-kusto"
-
-  count               = var.create_adx ? 1 : 0
-  location            = var.location
-  resource_group      = var.resource_group
-  kusto_name          = local.kusto_name
-  private_dns_zone_id = var.private_dns_zone_id
-  tags                = local.tags
-  subnet_id           = var.subnet_id
-}
-
-module "create-backup" {
-  source = "./create-backup"
-
-  count                = var.create_backup ? 1 : 0
-  location             = var.location
-  resource_group       = var.resource_group
-  resource_group_id    = var.platform_resource_group_id
-  managed_disk_id      = module.create-disk.managed_disk_id
-  backup_instance_name = local.backup_instance_name
-  backup_policy_name   = local.backup_policy_name
-  tags                 = local.tags
+resource "azurerm_role_assignment" "publicip_owner" {
+  scope                = var.platform_public_ip
+  role_definition_name = "Owner"
+  principal_id         = var.principal_id
 }

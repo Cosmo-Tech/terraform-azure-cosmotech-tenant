@@ -2,17 +2,17 @@ variable "location" {
   type = string
 }
 
-variable "resource_group" {
-  type = string
-}
+# variable "resource_group" {
+#   type = string
+# }
 
 variable "managed_disk_name" {
   type = string
 }
 
-variable "private_dns_zone_id" {
-  type = string
-}
+# variable "private_dns_zone_id" {
+#   type = string
+# }
 
 variable "principal_id" {
   type = string
@@ -37,8 +37,45 @@ variable "cluster_name" {
   type = string
 }
 
-variable "subnet_id" {
+variable "networkadt_sp_object_id" {
   type = string
+}
+
+variable "platform_group_id" {
+  type = string
+}
+
+variable "tenant_resource_group" {
+  type = object({
+    id   = string
+    name = string
+  })
+}
+
+variable "vnet_iprange" {
+  type = string
+}
+
+variable "platform_resource_group" {
+  type = object({
+    id   = string
+    name = string
+  })
+}
+
+variable "platform_public_ip" {
+  type = string
+}
+
+variable "subscription_id" {
+  type = string
+}
+
+variable "platform_vnet" {
+  type = object({
+    id   = string
+    name = string
+  })
 }
 
 variable "create_cosmosdb" {
@@ -91,10 +128,6 @@ variable "cost_center" {
 variable "create_backup" {
   type    = bool
   default = true
-}
-
-variable "platform_resource_group_id" {
-  type = string
 }
 
 variable "platform_sp_object_id" {
