@@ -1,6 +1,7 @@
 module "azure-tenant-prerequisites" {
   source = "./azure-tenant-prerequisites"
 
+  count                   = var.deployment_type != "ARM" ? 1 : 0
   tenant_id               = var.tenant_id
   client_id               = var.client_id
   client_secret           = var.client_secret
@@ -41,9 +42,9 @@ module "azure-tenant-resources" {
   cost_center             = var.cost_center
   create_cosmosdb         = var.create_cosmosdb
   create_adx              = var.create_adx
-  networkadt_sp_object_id = module.azure-tenant-prerequisites.out_networkadt_sp_objectid
-  platform_group_id       = module.azure-tenant-prerequisites.out_platform_group_id
-  principal_id            = module.azure-tenant-prerequisites.out_platform_sp_object_id
+  networkadt_sp_object_id = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_networkadt_sp_objectid : var.networkadt_sp_object_id
+  platform_group_id       = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_group_id : var.platform_group_id
+  principal_id            = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.principal_id
   platform_resource_group = data.azurerm_resource_group.current
   tenant_resource_group   = azurerm_resource_group.tenant_rg
   platform_sp_object_id   = data.azuread_service_principal.platform.object_id
@@ -76,10 +77,10 @@ module "platform-tenant-resources" {
   cosmos_uri                = module.azure-tenant-resources.cosmos_uri
   cosmos_key                = module.azure-tenant-resources.cosmos_key
   eventbus_uri              = module.azure-tenant-resources.eventbus_uri
-  network_adt_clientid      = module.azure-tenant-prerequisites.out_networkadt_clientid
-  network_adt_password      = module.azure-tenant-prerequisites.out_network_adt_password
-  platform_sp_client_id     = module.azure-tenant-prerequisites.out_platform_sp_client_id
-  platform_sp_client_secret = module.azure-tenant-prerequisites.out_platform_sp_client_secret
+  network_adt_clientid      = module.azure-tenant-prerequisites.0.out_networkadt_clientid
+  network_adt_password      = module.azure-tenant-prerequisites.0.out_network_adt_password
+  platform_sp_client_id     = module.azure-tenant-prerequisites.0.out_platform_sp_client_id
+  platform_sp_client_secret = module.azure-tenant-prerequisites.0.out_platform_sp_client_secret
   kube_config               = data.azurerm_kubernetes_cluster.current.kube_config
 
   depends_on = [module.azure-tenant-resources]

@@ -500,3 +500,21 @@ variable "deployment_type" {
   }
   description = "Represents the kind of deployment. Currently two modes: ARM or Terraform"
 }
+
+variable "networkadt_sp_object_id" {
+  type        = string
+  description = "The object id of the network adt service principal"
+  default     = ""
+}
+
+variable "platform_group_id" {
+  type        = string
+  description = "The object id of the platform group"
+  default     = ""
+}
+
+variable "principal_id" {
+  type        = string
+  description = "The object id of the platform service principal"
+  default     = ""
+}
