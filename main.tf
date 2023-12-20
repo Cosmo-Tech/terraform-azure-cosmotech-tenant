@@ -68,3 +68,8 @@ resource "azurerm_resource_group" "tenant_rg" {
   name     = var.tenant_resource_group
   location = var.location
 }
+
+data "azurerm_resource_group" "tenant_rg" {
+  name     = var.tenant_resource_group
+  location = var.location
+}

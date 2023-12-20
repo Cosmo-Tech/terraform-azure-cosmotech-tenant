@@ -46,7 +46,7 @@ module "azure-tenant-resources" {
   platform_group_id       = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_group_id : var.platform_group_id
   principal_id            = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.principal_id
   platform_resource_group = data.azurerm_resource_group.current
-  tenant_resource_group   = azurerm_resource_group.tenant_rg
+  tenant_resource_group   = var.deployment_type != "ARM" ? azurerm_resource_group.tenant_rg : data.azurerm_resource_group.tenant_rg
   platform_sp_object_id   = data.azuread_service_principal.platform.object_id
   create_backup           = var.create_backup
 
