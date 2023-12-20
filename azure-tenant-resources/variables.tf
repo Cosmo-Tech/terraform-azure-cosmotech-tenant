@@ -2,17 +2,9 @@ variable "location" {
   type = string
 }
 
-# variable "resource_group" {
-#   type = string
-# }
-
 variable "managed_disk_name" {
   type = string
 }
-
-# variable "private_dns_zone_id" {
-#   type = string
-# }
 
 variable "principal_id" {
   type = string
