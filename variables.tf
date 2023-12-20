@@ -47,6 +47,10 @@ variable "cluster_name" {
   type        = string
   default     = ""
   description = "Cluster name"
+  validation {
+    condition     = length(var.cluster_name) > 4 && length(var.cluster_name) < 8
+    error_message = "The cluster_name value must be between 4 and 8 characters long."
+  }
 }
 
 variable "customer_name" {
@@ -270,6 +274,10 @@ variable "managed_disk_name" {
   type        = string
   default     = ""
   description = "Name of the managed disk to create"
+  validation {
+    condition     = length(var.managed_disk_name) < 80 && length(var.managed_disk_name) > 0
+    error_message = "The managed_disk_name value must be between 1 and 80 characters long."
+  }
 }
 
 variable "image_path" {

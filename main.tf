@@ -63,3 +63,8 @@ data "azurerm_resource_group" "current" {
 data "azuread_service_principal" "platform" {
   display_name = var.platform_sp_name
 }
+
+resource "azurerm_resource_group" "tenant_rg" {
+  name     = var.tenant_resource_group
+  location = var.location
+}

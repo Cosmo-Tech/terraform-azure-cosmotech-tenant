@@ -52,3 +52,19 @@ output "adx_ingestion_uri" {
 output "backup_instance_disk" {
   value = var.create_backup ? module.create-backup.0.backup_instance_disk : null
 }
+
+output "out_vnet" {
+  value = module.create-network-resources.out_vnet
+}
+
+output "out_subnet_name" {
+  value = module.create-network-resources.out_subnet_name
+}
+
+output "out_subnet_id" {
+  value = module.create-network-resources.out_subnet_id
+}
+
+output "out_private_dns_zone_id" {
+  value = module.create-network-resources.out_private_dns_zone_id
+}

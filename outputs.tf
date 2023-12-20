@@ -36,11 +36,11 @@ output "managed_disk_id" {
 }
 
 output "out_subnet_id" {
-  value = module.azure-tenant-prerequisites.out_subnet_id
+  value = module.azure-tenant-resources.out_subnet_id
 }
 
 output "out_ip_resource_group" {
-  value = module.azure-tenant-prerequisites.out_ip_resource_group
+  value = azurerm_resource_group.tenant_rg.name
 }
 
 output "out_networkadt_clientid" {
