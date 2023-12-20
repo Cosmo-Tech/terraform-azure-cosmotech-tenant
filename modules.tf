@@ -1,8 +1,7 @@
 module "azure-tenant-prerequisites" {
   source = "./azure-tenant-prerequisites"
 
-  tenant_id = var.tenant_id
-  # subscription_id         = var.subscription_id
+  tenant_id               = var.tenant_id
   client_id               = var.client_id
   client_secret           = var.client_secret
   platform_url            = var.platform_url
@@ -15,17 +14,15 @@ module "azure-tenant-prerequisites" {
   location                = var.location
   tenant_resource_group   = var.tenant_resource_group
   platform_resource_group = var.platform_resource_group
-  # platform_public_ip      = data.azurerm_public_ip.current.id
-  # platform_vnet           = data.azurerm_virtual_network.current
-  dns_zone_name         = var.dns_zone_name
-  dns_zone_rg           = var.dns_zone_rg
-  dns_record            = var.dns_record
-  vnet_iprange          = var.vnet_iprange
-  api_version_path      = var.api_version_path
-  customer_name         = var.customer_name
-  user_app_role         = var.user_app_role
-  image_path            = var.image_path
-  chart_package_version = var.chart_package_version
+  dns_zone_name           = var.dns_zone_name
+  dns_zone_rg             = var.dns_zone_rg
+  dns_record              = var.dns_record
+  vnet_iprange            = var.vnet_iprange
+  api_version_path        = var.api_version_path
+  customer_name           = var.customer_name
+  user_app_role           = var.user_app_role
+  image_path              = var.image_path
+  chart_package_version   = var.chart_package_version
 }
 
 module "azure-tenant-resources" {

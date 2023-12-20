@@ -3,11 +3,6 @@ variable "tenant_id" {
   type        = string
 }
 
-# variable "subscription_id" {
-#   description = "The subscription id"
-#   type        = string
-# }
-
 variable "client_id" {
   description = "The client id"
   type        = string
@@ -111,10 +106,6 @@ variable "create_webapp" {
   default     = true
 }
 
-# variable "platform_public_ip" {
-#   type = string
-# }
-
 variable "platform_resource_group" {
   description = "Existing Resource group which contain common platform resources"
   type        = string
@@ -176,9 +167,6 @@ variable "cost_center" {
   type    = string
   default = "NA"
 }
-
-# variable "platform_vnet" {
-# }
 
 variable "chart_package_version" {
   type = string
