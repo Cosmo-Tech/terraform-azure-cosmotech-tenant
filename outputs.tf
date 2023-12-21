@@ -67,13 +67,13 @@ output "out_eventbus_uri" {
   sensitive = true
 }
 
-output "adx_uri" {
-  value = module.azure-tenant-resources.adx_uri
-}
+# output "adx_uri" {
+#   value = module.azure-tenant-resources.adx_uri
+# }
 
-output "out_adx_ingestion_uri" {
-  value = module.azure-tenant-resources.adx_ingestion_uri
-}
+# output "out_adx_ingestion_uri" {
+#   value = module.azure-tenant-resources.adx_ingestion_uri
+# }
 
 output "babylon_client_id" {
   value = module.azure-tenant-prerequisites.0.out_babylon_client_id

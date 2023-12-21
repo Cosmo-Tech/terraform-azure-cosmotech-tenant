@@ -70,17 +70,17 @@ module "create-eventhub" {
   tags                = local.tags
 }
 
-module "create-kusto" {
-  source = "./create-kusto"
+# module "create-kusto" {
+#   source = "./create-kusto"
 
-  count               = var.create_adx ? 1 : 0
-  location            = var.location
-  resource_group      = var.tenant_resource_group.name
-  kusto_name          = local.kusto_name
-  private_dns_zone_id = module.create-network-resources.out_private_dns_zone_id
-  subnet_id           = module.create-network-resources.out_subnet_id
-  tags                = local.tags
-}
+#   count               = var.create_adx ? 1 : 0
+#   location            = var.location
+#   resource_group      = var.tenant_resource_group.name
+#   kusto_name          = local.kusto_name
+#   private_dns_zone_id = module.create-network-resources.out_private_dns_zone_id
+#   subnet_id           = module.create-network-resources.out_subnet_id
+#   tags                = local.tags
+# }
 
 module "create-backup" {
   source = "./create-backup"

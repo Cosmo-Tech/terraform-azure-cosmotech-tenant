@@ -41,13 +41,13 @@ output "eventbus_uri" {
   sensitive = true
 }
 
-output "adx_uri" {
-  value = var.create_adx ? module.create-kusto.0.adx_uri : ""
-}
+# output "adx_uri" {
+#   value = var.create_adx ? module.create-kusto.0.adx_uri : ""
+# }
 
-output "adx_ingestion_uri" {
-  value = var.create_adx ? module.create-kusto.0.adx_ingestion_uri : ""
-}
+# output "adx_ingestion_uri" {
+#   value = var.create_adx ? module.create-kusto.0.adx_ingestion_uri : ""
+# }
 
 output "backup_instance_disk" {
   value = var.create_backup ? module.create-backup.0.backup_instance_disk : null

@@ -72,8 +72,8 @@ module "platform-tenant-resources" {
   acr_login_password        = module.azure-tenant-resources.out_acr_login_password
   acr_login_server          = module.azure-tenant-resources.out_acr_login_server
   acr_login_username        = module.azure-tenant-resources.out_acr_login_username
-  adx_ingestion_uri         = module.azure-tenant-resources.adx_ingestion_uri
-  adx_uri                   = module.azure-tenant-resources.adx_uri
+  adx_ingestion_uri         = var.adx_ingestion_uri
+  adx_uri                   = var.adx_uri
   cosmos_uri                = module.azure-tenant-resources.cosmos_uri
   cosmos_key                = module.azure-tenant-resources.cosmos_key
   eventbus_uri              = module.azure-tenant-resources.eventbus_uri
@@ -84,6 +84,14 @@ module "platform-tenant-resources" {
   kube_config               = data.azurerm_kubernetes_cluster.current.kube_config
 
   depends_on = [module.azure-tenant-resources]
+}
+
+variable "adx_ingestion_uri" {
+  type = string
+}
+
+variable "adx_uri" {
+  type = string
 }
 
 module "create-vault-entries" {
