@@ -1,9 +1,9 @@
 output "platform_sp_client_id" {
-  value = module.azure-tenant-prerequisites.0.out_platform_clientid
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : null
 }
 
 output "platform_sp_client_secret" {
-  value     = module.azure-tenant-prerequisites.0.out_platform_password
+  value     = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_secret : null
   sensitive = true
 }
 
@@ -44,11 +44,11 @@ output "out_ip_resource_group" {
 }
 
 output "out_networkadt_clientid" {
-  value = module.azure-tenant-prerequisites.0.out_networkadt_clientid
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_networkadt_clientid : null
 }
 
 output "out_network_adt_password" {
-  value     = module.azure-tenant-prerequisites.0.out_network_adt_password
+  value     = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_network_adt_password : null
   sensitive = true
 }
 
@@ -76,24 +76,24 @@ output "out_adx_ingestion_uri" {
 }
 
 output "babylon_client_id" {
-  value = module.azure-tenant-prerequisites.0.out_babylon_client_id
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_client_id : null
 }
 
 output "babylon_principal_id" {
-  value = module.azure-tenant-prerequisites.0.out_babylon_principal_id
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_principal_id : null
 }
 
 output "babylon_secret" {
-  value     = module.azure-tenant-prerequisites.0.out_babylon_secret
+  value     = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_secret : null
   sensitive = true
 }
 
 output "cosmos_api_url" {
-  value = module.azure-tenant-prerequisites.0.out_cosmos_api_url
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_cosmos_api_url : null
 }
 
 output "platform_sp_object_id" {
-  value = module.azure-tenant-prerequisites.0.out_platform_sp_object_id
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : null
 }
 
 output "resource_group_name" {
