@@ -251,7 +251,7 @@ variable "dns_zone_rg" {
 variable "dns_record" {
   description = "The DNS zone name to create platform subdomain. Example: myplatform"
   type        = string
-  default     = ""
+  # default     = ""
 }
 
 variable "vnet_iprange" {
