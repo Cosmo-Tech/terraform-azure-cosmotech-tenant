@@ -12,21 +12,9 @@ variable "subscription_id" {
   description = "The subscription id"
 }
 
-variable "client_id" {
-  type        = string
-  description = "The client id of the app registration used to build this"
-  default     = ""
-}
-
 variable "platform_sp_client_id" {
   type        = string
   description = "The client_id of the platform's service principal"
-}
-
-variable "client_secret" {
-  type        = string
-  description = "The client secret of the app registration used to build this"
-  default     = ""
 }
 
 variable "platform_sp_client_secret" {
