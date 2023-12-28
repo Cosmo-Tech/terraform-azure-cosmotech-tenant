@@ -93,6 +93,7 @@
 | <a name="input_platform_client_id"></a> [platform\_client\_id](#input\_platform\_client\_id) | The client id of the platform app registration | `string` | `""` | no |
 | <a name="input_platform_client_secret"></a> [platform\_client\_secret](#input\_platform\_client\_secret) | The password of the platform app registration | `string` | `""` | no |
 | <a name="input_platform_group_id"></a> [platform\_group\_id](#input\_platform\_group\_id) | The object id of the platform group | `string` | `""` | no |
+| <a name="input_platform_sp_object_id"></a> [platform\_sp\_object\_id](#input\_platform\_sp\_object\_id) | The object id of the platform service principal | `string` | `""` | no |
 | <a name="input_platform_url"></a> [platform\_url](#input\_platform\_url) | The platform url | `string` | `""` | no |
 | <a name="input_principal_id"></a> [principal\_id](#input\_principal\_id) | The object id of the platform service principal | `string` | `""` | no |
 | <a name="input_project_stage"></a> [project\_stage](#input\_project\_stage) | The platform stage | `string` | `"Dev"` | no |
