@@ -496,6 +496,7 @@ variable "deployment_type" {
   description = "Represents the kind of deployment. Currently two modes: ARM or Terraform"
 }
 
+# ARM deployment vars
 variable "networkadt_sp_object_id" {
   type        = string
   description = "The object id of the network adt service principal"
@@ -511,5 +512,29 @@ variable "platform_group_id" {
 variable "principal_id" {
   type        = string
   description = "The object id of the platform service principal"
+  default     = ""
+}
+
+variable "network_adt_clientid" {
+  type        = string
+  description = "The client id of the network adt app registration"
+  default     = ""
+}
+
+variable "network_adt_password" {
+  type        = string
+  description = "The password of the network adt app registration"
+  default     = ""
+}
+
+variable "platform_client_id" {
+  type        = string
+  description = "The client id of the platform app registration"
+  default     = ""
+}
+
+variable "platform_client_secret" {
+  type        = string
+  description = "The password of the platform app registration"
   default     = ""
 }
