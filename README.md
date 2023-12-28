@@ -87,7 +87,11 @@
 | <a name="input_location"></a> [location](#input\_location) | The Azure location | `string` | `"West Europe"` | no |
 | <a name="input_managed_disk_name"></a> [managed\_disk\_name](#input\_managed\_disk\_name) | Name of the managed disk to create | `string` | `""` | no |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | `"cosmotech-monitoring"` | no |
+| <a name="input_network_adt_clientid"></a> [network\_adt\_clientid](#input\_network\_adt\_clientid) | The client id of the network adt app registration | `string` | `""` | no |
+| <a name="input_network_adt_password"></a> [network\_adt\_password](#input\_network\_adt\_password) | The password of the network adt app registration | `string` | `""` | no |
 | <a name="input_networkadt_sp_object_id"></a> [networkadt\_sp\_object\_id](#input\_networkadt\_sp\_object\_id) | The object id of the network adt service principal | `string` | `""` | no |
+| <a name="input_platform_client_id"></a> [platform\_client\_id](#input\_platform\_client\_id) | The client id of the platform app registration | `string` | `""` | no |
+| <a name="input_platform_client_secret"></a> [platform\_client\_secret](#input\_platform\_client\_secret) | The password of the platform app registration | `string` | `""` | no |
 | <a name="input_platform_group_id"></a> [platform\_group\_id](#input\_platform\_group\_id) | The object id of the platform group | `string` | `""` | no |
 | <a name="input_platform_url"></a> [platform\_url](#input\_platform\_url) | The platform url | `string` | `""` | no |
 | <a name="input_principal_id"></a> [principal\_id](#input\_principal\_id) | The object id of the platform service principal | `string` | `""` | no |
