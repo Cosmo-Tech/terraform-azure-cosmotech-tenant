@@ -90,10 +90,6 @@ output "out_platform_group_id" {
   value = azuread_group.platform_group.object_id
 }
 
-output "out_platform_sp_client_id" {
-  value = azuread_application.platform.application_id
-}
-
 output "out_platform_sp_client_secret" {
   value = var.create_secrets ? azuread_application_password.platform_password.0.value : null
 }

@@ -1,5 +1,5 @@
 output "platform_sp_client_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : null
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_clientid : null
 }
 
 output "platform_sp_client_secret" {
