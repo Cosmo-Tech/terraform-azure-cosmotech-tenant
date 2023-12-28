@@ -61,6 +61,7 @@ data "azurerm_resource_group" "current" {
 }
 
 data "azuread_service_principal" "platform" {
+  count        = var.deployment_type != "ARM" ? 1 : 0
   display_name = var.platform_sp_name
 }
 
