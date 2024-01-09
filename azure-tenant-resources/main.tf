@@ -40,7 +40,7 @@ resource "azurerm_role_assignment" "publicip_contributor" {
 }
 
 resource "azurerm_role_assignment" "publicip_owner" {
-  scope                = var.platform_public_ip
+  scope                = var.platform_public_ip_id
   role_definition_name = "Owner"
-  principal_id         = var.principal_id
+  principal_id         = var.platform_sp_object_id
 }

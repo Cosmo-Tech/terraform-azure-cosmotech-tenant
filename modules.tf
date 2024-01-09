@@ -31,7 +31,7 @@ module "azure-tenant-resources" {
 
   location                = var.location
   subscription_id         = var.subscription_id
-  platform_public_ip      = data.azurerm_public_ip.current.id
+  platform_public_ip_id   = data.azurerm_public_ip.current.id
   vnet_iprange            = var.vnet_iprange
   platform_vnet           = data.azurerm_virtual_network.current
   managed_disk_name       = var.managed_disk_name
@@ -44,10 +44,9 @@ module "azure-tenant-resources" {
   create_adx              = var.create_adx
   networkadt_sp_object_id = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_networkadt_sp_objectid : var.networkadt_sp_object_id
   platform_group_id       = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_group_id : var.platform_group_id
-  principal_id            = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.principal_id
+  platform_sp_object_id   = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : data.azuread_service_principal.platform.object_id
+  tenant_resource_group   = var.deployment_type != "ARM" ? azurerm_resource_group.tenant_rg : data.azurerm_resource_group.tenant_rg.0
   platform_resource_group = data.azurerm_resource_group.current
-  tenant_resource_group   = var.deployment_type != "ARM" ? azurerm_resource_group.tenant_rg : data.azurerm_resource_group.tenant_rg
-  platform_sp_object_id   = data.azuread_service_principal.platform.object_id
   create_backup           = var.create_backup
 
   depends_on = [module.azure-tenant-prerequisites]
@@ -65,6 +64,7 @@ module "platform-tenant-resources" {
   monitoring_namespace      = var.monitoring_namespace
   chart_package_version     = var.chart_package_version
   resource_group            = var.tenant_resource_group
+  location                  = var.location
   api_dns_name              = local.api_dns_name
   managed_disk_id           = module.azure-tenant-resources.managed_disk_id
   storage_account_key       = module.azure-tenant-resources.out_storage_account_key

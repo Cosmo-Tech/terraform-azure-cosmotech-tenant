@@ -210,6 +210,7 @@ variable "create_powerbi" {
 }
 
 variable "location" {
+  type = string
   description = "The Azure location"
   default     = "West Europe"
 }
@@ -257,7 +258,6 @@ variable "dns_record" {
 variable "vnet_iprange" {
   description = "The Virtual Network IP range. Minimum /26 NetMaskLength"
   type        = string
-  default     = ""
 }
 
 variable "api_version_path" {
@@ -347,8 +347,9 @@ variable "create_backup" {
   description = "Weither to create Azure backup vault along with the managed disk"
 }
 
-variable "platform_vnet" {
-  description = "The virtual network of the platform common resources"
+variable "platform_vnet_name" {
+  type        = string
+  description = "The virtual networ-k of the platform common resources"
 }
 
 variable "tls_secret_name" {
@@ -377,7 +378,7 @@ variable "platform_sp_name" {
   description = "The name of the platform on which we deploy the tenant"
 }
 
-variable "platform_public_ip" {
+variable "platform_public_ip_name" {
   type        = string
   description = "The public IP resource of the platform"
 }
@@ -477,11 +478,13 @@ EOT
 variable "vault_addr" {
   type        = string
   description = "The address of the Vault to save current platform configuration values"
+  default = ""
 }
 
 variable "vault_token" {
   type        = string
   description = "The token of the Vault to save current platform configuration values"
+  default = ""
 }
 
 variable "deployment_type" {
@@ -509,8 +512,20 @@ variable "platform_group_id" {
   default     = ""
 }
 
-variable "principal_id" {
+variable "platform_sp_object_id" {
   type        = string
   description = "The object id of the platform service principal"
   default     = ""
+}
+
+variable "publicip_resource_group" {
+  type = string
+}
+
+variable "vnet_resource_group" {
+  type = string
+}
+
+variable "dns_zone_name_resource_group" {
+  type = string
 }

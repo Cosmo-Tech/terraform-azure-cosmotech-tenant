@@ -18,7 +18,7 @@ module "create-disk" {
   location                 = var.location
   resource_group           = var.tenant_resource_group.name
   private_dns_zone_id      = module.create-network-resources.out_private_dns_zone_id
-  principal_id             = var.principal_id
+  principal_id             = var.platform_sp_object_id
   disk_size_gb             = var.disk_size_gb
   disk_sku                 = var.disk_sku
   disk_tier                = var.disk_tier
@@ -45,7 +45,7 @@ module "create-container-registry" {
   location       = var.location
   resource_group = var.tenant_resource_group.name
   container_name = local.container_registry_name
-  principal_id   = var.principal_id
+  principal_id   = var.platform_sp_object_id
   tags           = local.tags
 }
 

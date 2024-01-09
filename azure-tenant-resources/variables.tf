@@ -6,7 +6,7 @@ variable "managed_disk_name" {
   type = string
 }
 
-variable "principal_id" {
+variable "platform_sp_object_id" {
   type = string
 }
 
@@ -55,7 +55,7 @@ variable "platform_resource_group" {
   })
 }
 
-variable "platform_public_ip" {
+variable "platform_public_ip_id" {
   type = string
 }
 
@@ -120,8 +120,4 @@ variable "cost_center" {
 variable "create_backup" {
   type    = bool
   default = true
-}
-
-variable "platform_sp_object_id" {
-  type = string
 }
