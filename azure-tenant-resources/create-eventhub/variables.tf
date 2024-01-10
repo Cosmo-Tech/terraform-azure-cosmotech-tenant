@@ -27,3 +27,6 @@ variable "subnet_id" {
 variable "private_dns_zone_id" {
   type = string
 }
+variable "eventhub_privatedns_zonename" {
+  type = string
+}

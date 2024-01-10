@@ -6,13 +6,8 @@ variable "namespace" {
   type = string
 }
 
-variable "resource_group" {
+variable "redis_disk_name" {
   type = string
-}
-
-variable "disk_name" {
-  type    = string
-  default = "cosmotech-database-disk"
 }
 
 variable "managed_disk_id" {

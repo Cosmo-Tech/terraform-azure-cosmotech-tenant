@@ -10,33 +10,42 @@ module "create-network-resources" {
   subscription_id         = var.subscription_id
   networkadt_sp_object_id = var.networkadt_sp_object_id
   tags                    = local.tags
+  vnet_resource_group     = var.vnet_resource_group
 }
 
 module "create-disk" {
   source = "./create-disk"
 
-  location                 = var.location
-  resource_group           = var.tenant_resource_group.name
-  private_dns_zone_id      = module.create-network-resources.out_private_dns_zone_id
-  principal_id             = var.platform_sp_object_id
-  disk_size_gb             = var.disk_size_gb
-  disk_sku                 = var.disk_sku
-  disk_tier                = var.disk_tier
-  subnet_id                = module.create-network-resources.out_subnet_id
-  tenant_managed_disk_name = local.managed_disk_name
-  platform_sp_object_id    = var.platform_sp_object_id
-  tags                     = local.tags
+  location                     = var.location
+  resource_group               = var.tenant_resource_group.name
+  private_dns_zone_id          = module.create-network-resources.out_private_dns_zone_id
+  platform_common_sp_object_id = var.platform_common_sp_object_id
+  redis_disk_size_gb           = var.redis_disk_size_gb
+  redis_disk_sku               = var.redis_disk_sku
+  disk_tier                    = var.disk_tier
+  subnet_id                    = module.create-network-resources.out_subnet_id
+  tenant_managed_disk_name     = local.managed_disk_name
+  platform_sp_object_id        = var.platform_sp_object_id
+  tags                         = local.tags
+
+  depends_on = [module.create-network-resources]
 }
 
 module "create-storage" {
   source = "./create-storage"
 
-  location            = var.location
-  resource_group      = var.tenant_resource_group.name
-  storage_name        = local.storage_name
-  private_dns_zone_id = module.create-network-resources.out_private_dns_zone_id
-  subnet_id           = module.create-network-resources.out_subnet_id
-  tags                = local.tags
+  location                          = var.location
+  resource_group                    = var.tenant_resource_group.name
+  storage_name                      = local.storage_name
+  private_dns_zone_id               = module.create-network-resources.out_private_dns_zone_id
+  subnet_id                         = module.create-network-resources.out_subnet_id
+  tags                              = local.tags
+  storage_tier                      = var.storage_tier
+  storage_replication_type          = var.storage_replication_type
+  storage_kind                      = var.storage_kind
+  storage_queue_privatedns_zonename = var.storage_queue_privatedns_zonename
+
+  depends_on = [module.create-network-resources]
 }
 
 module "create-container-registry" {
@@ -47,6 +56,8 @@ module "create-container-registry" {
   container_name = local.container_registry_name
   principal_id   = var.platform_sp_object_id
   tags           = local.tags
+
+  depends_on = [module.create-network-resources]
 }
 
 module "create-cosmosdb" {
@@ -57,29 +68,39 @@ module "create-cosmosdb" {
   resource_group = var.tenant_resource_group.name
   cosmosdb_name  = local.cosmosdb_name
   tags           = local.tags
+
+  depends_on = [module.create-network-resources]
 }
 
 module "create-eventhub" {
   source = "./create-eventhub"
 
-  location            = var.location
-  resource_group      = var.tenant_resource_group.name
-  eventhub_name       = local.eventhub_name
-  private_dns_zone_id = module.create-network-resources.out_private_dns_zone_id
-  subnet_id           = module.create-network-resources.out_subnet_id
-  tags                = local.tags
+  location                     = var.location
+  resource_group               = var.tenant_resource_group.name
+  eventhub_name                = local.eventhub_name
+  private_dns_zone_id          = module.create-network-resources.out_private_dns_zone_id
+  subnet_id                    = module.create-network-resources.out_subnet_id
+  tags                         = local.tags
+  eventhub_privatedns_zonename = var.eventhub_privatedns_zonename
+
+  depends_on = [module.create-network-resources]
 }
 
 module "create-kusto" {
   source = "./create-kusto"
 
-  count               = var.create_adx ? 1 : 0
-  location            = var.location
-  resource_group      = var.tenant_resource_group.name
-  kusto_name          = local.kusto_name
-  private_dns_zone_id = module.create-network-resources.out_private_dns_zone_id
-  subnet_id           = module.create-network-resources.out_subnet_id
-  tags                = local.tags
+  count                     = var.create_adx ? 1 : 0
+  location                  = var.location
+  resource_group            = var.tenant_resource_group.name
+  kusto_name                = local.kusto_name
+  private_dns_zone_id       = module.create-network-resources.out_private_dns_zone_id
+  subnet_id                 = module.create-network-resources.out_subnet_id
+  tags                      = local.tags
+  kusto_privatedns_zonename = var.kusto_privatedns_zonename
+  kusto_instance_type       = var.kusto_instance_type
+  kustonr_instances         = var.kustonr_instances
+
+  depends_on = [module.create-network-resources]
 }
 
 module "create-backup" {
@@ -93,4 +114,6 @@ module "create-backup" {
   backup_instance_name = local.backup_instance_name
   backup_policy_name   = local.backup_policy_name
   tags                 = local.tags
+
+  depends_on = [module.create-network-resources, module.create-disk]
 }

@@ -2,9 +2,9 @@ resource "azurerm_storage_account" "storage_account" {
   name                            = var.storage_name
   resource_group_name             = var.resource_group
   location                        = var.location
-  account_tier                    = "Standard"
-  account_replication_type        = "LRS"
-  account_kind                    = "StorageV2"
+  account_tier                    = var.storage_tier
+  account_replication_type        = var.storage_replication_type
+  account_kind                    = var.storage_kind
   default_to_oauth_authentication = false
   min_tls_version                 = "TLS1_2"
   shared_access_key_enabled       = true

@@ -43,7 +43,7 @@ data "azurerm_kubernetes_cluster" "current" {
 data "azurerm_dns_a_record" "current" {
   name                = var.dns_record
   zone_name           = var.dns_zone_name
-  resource_group_name = var.dns_zone_name_resource_group
+  resource_group_name = var.dns_zone_rg
 }
 
 data "azurerm_public_ip" "current" {
@@ -65,6 +65,7 @@ data "azuread_service_principal" "platform" {
 }
 
 resource "azurerm_resource_group" "tenant_rg" {
+  count    = var.deployment_type != "ARM" ? 1 : 0
   name     = var.tenant_resource_group
   location = var.location
 }

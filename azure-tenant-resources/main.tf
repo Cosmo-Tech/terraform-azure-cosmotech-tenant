@@ -12,13 +12,7 @@ locals {
   backup_policy_name          = "cosmo-backup-policy-${local.cleaned_resource_group_name}"
   subnet_name                 = "default"
   vnet_iprange                = var.vnet_iprange != "" ? var.vnet_iprange : "10.10.0.0/16"
-  tags = {
-    vendor      = "cosmotech"
-    stage       = var.project_stage
-    customer    = var.customer_name
-    project     = var.project_name
-    cost_center = var.cost_center
-  }
+  tags                        = var.tags
 }
 
 resource "random_string" "random_storage_id" {

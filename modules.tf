@@ -18,7 +18,7 @@ module "azure-tenant-prerequisites" {
   dns_zone_name           = var.dns_zone_name
   dns_zone_rg             = var.dns_zone_rg
   dns_record              = var.dns_record
-  vnet_iprange            = var.vnet_iprange
+  vnet_iprange            = var.virtual_network_address_prefix
   api_version_path        = var.api_version_path
   customer_name           = var.customer_name
   user_app_role           = var.user_app_role
@@ -29,25 +29,45 @@ module "azure-tenant-prerequisites" {
 module "azure-tenant-resources" {
   source = "./azure-tenant-resources"
 
-  location                = var.location
-  subscription_id         = var.subscription_id
-  platform_public_ip_id   = data.azurerm_public_ip.current.id
-  vnet_iprange            = var.vnet_iprange
-  platform_vnet           = data.azurerm_virtual_network.current
-  managed_disk_name       = var.managed_disk_name
-  cluster_name            = var.cluster_name
-  project_stage           = var.project_stage
-  project_name            = var.project_name
-  customer_name           = var.customer_name
-  cost_center             = var.cost_center
-  create_cosmosdb         = var.create_cosmosdb
-  create_adx              = var.create_adx
-  networkadt_sp_object_id = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_networkadt_sp_objectid : var.networkadt_sp_object_id
-  platform_group_id       = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_group_id : var.platform_group_id
-  platform_sp_object_id   = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : data.azuread_service_principal.platform.object_id
-  tenant_resource_group   = var.deployment_type != "ARM" ? azurerm_resource_group.tenant_rg : data.azurerm_resource_group.tenant_rg.0
-  platform_resource_group = data.azurerm_resource_group.current
-  create_backup           = var.create_backup
+  location                     = var.location
+  subscription_id              = var.subscription_id
+  platform_public_ip_id        = data.azurerm_public_ip.current.id
+  vnet_iprange                 = var.virtual_network_address_prefix
+  platform_vnet                = data.azurerm_virtual_network.current
+  managed_disk_name            = var.managed_disk_name
+  cluster_name                 = var.cluster_name
+  project_stage                = var.project_stage
+  project_name                 = var.project_name
+  customer_name                = var.customer_name
+  cost_center                  = var.cost_center
+  create_cosmosdb              = var.create_cosmosdb
+  create_adx                   = var.create_adx
+  platform_common_sp_object_id = var.platform_common_sp_object_id
+  networkadt_sp_object_id      = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_networkadt_sp_objectid : var.networkadt_sp_object_id
+  platform_group_id            = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_group_id : var.platform_group_id
+  platform_sp_object_id        = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : data.azuread_service_principal.platform.object_id
+  tenant_resource_group        = var.deployment_type != "ARM" ? azurerm_resource_group.tenant_rg.0 : data.azurerm_resource_group.tenant_rg.0
+  platform_resource_group      = data.azurerm_resource_group.current
+  create_backup                = var.create_backup
+  storage_tier                 = split("_", var.kubernetes_azurefile_storage_class_sku)[0]
+  storage_replication_type     = split("_", var.kubernetes_azurefile_storage_class_sku)[1]
+  storage_kind                 = var.storage_kind
+  tags = {
+    vendor      = "cosmotech"
+    stage       = var.project_stage
+    customer    = var.customer_name
+    project     = var.project_name
+    cost_center = var.cost_center
+    customertag = var.kubernetes_azurefile_storage_tags
+  }
+  vnet_resource_group               = var.vnet_resource_group
+  storage_queue_privatedns_zonename = var.storage_queue_privatedns_zonename
+  eventhub_privatedns_zonename      = var.eventhub_privatedns_zonename
+  kusto_privatedns_zonename         = var.kusto_privatedns_zonename
+  redis_disk_sku                    = var.redis_disk_sku
+  redis_disk_size_gb                = var.redis_disk_size
+  kusto_instance_type               = var.kusto_instance_type
+  kustonr_instances                 = var.kustonr_instances
 
   depends_on = [module.azure-tenant-prerequisites]
 }
@@ -77,11 +97,13 @@ module "platform-tenant-resources" {
   cosmos_uri                = module.azure-tenant-resources.cosmos_uri
   cosmos_key                = module.azure-tenant-resources.cosmos_key
   eventbus_uri              = module.azure-tenant-resources.eventbus_uri
-  network_adt_clientid      = module.azure-tenant-prerequisites.0.out_networkadt_clientid
-  network_adt_password      = module.azure-tenant-prerequisites.0.out_network_adt_password
-  platform_sp_client_id     = module.azure-tenant-prerequisites.0.out_platform_sp_client_id
-  platform_sp_client_secret = module.azure-tenant-prerequisites.0.out_platform_sp_client_secret
+  network_adt_clientid      = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_networkadt_clientid : data.azuread_service_principal.platform.id
+  network_adt_password      = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_network_adt_password : var.network_adt_password
+  platform_sp_client_id     = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : var.platform_sp_client_id
+  platform_sp_client_secret = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_secret : var.platform_sp_client_secret
   kube_config               = data.azurerm_kubernetes_cluster.current.kube_config
+  redis_disk_name           = var.redis_disk_name
+  redis_disk_sku            = var.redis_disk_sku
 
   depends_on = [module.azure-tenant-resources]
 }

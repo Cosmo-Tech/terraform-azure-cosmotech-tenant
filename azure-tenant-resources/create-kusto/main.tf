@@ -3,8 +3,8 @@ resource "azurerm_kusto_cluster" "kusto" {
   location            = var.location
   resource_group_name = var.resource_group
   sku {
-    name     = "Standard_D12_v2"
-    capacity = 2
+    name     = var.kusto_instance_type
+    capacity = var.kustonr_instances
   }
   identity {
     type = "SystemAssigned"

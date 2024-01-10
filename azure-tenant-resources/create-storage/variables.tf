@@ -27,3 +27,17 @@ variable "subnet_id" {
 variable "private_dns_zone_id" {
   type = string
 }
+
+variable "storage_tier" {
+  type = string
+}
+variable "storage_replication_type" {
+  type = string
+}
+variable "storage_kind" {
+  type = string
+}
+
+variable "storage_queue_privatedns_zonename" {
+  type = string
+}

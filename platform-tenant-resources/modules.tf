@@ -3,8 +3,9 @@ module "create-redis-stack" {
 
   redis_admin_password = random_password.redis_admin_password.result
   namespace            = var.namespace
-  resource_group       = var.resource_group
   managed_disk_id      = var.managed_disk_id
+  redis_disk_name      = var.redis_disk_name
+
 }
 
 module "cert-manager" {

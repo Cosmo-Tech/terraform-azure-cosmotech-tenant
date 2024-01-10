@@ -45,7 +45,6 @@ variable "project_stage" {
 
 variable "cluster_name" {
   type        = string
-  default     = ""
   description = "Cluster name"
 }
 
@@ -210,7 +209,7 @@ variable "create_powerbi" {
 }
 
 variable "location" {
-  type = string
+  type        = string
   description = "The Azure location"
   default     = "West Europe"
 }
@@ -253,11 +252,6 @@ variable "dns_record" {
   description = "The DNS zone name to create platform subdomain. Example: myplatform"
   type        = string
   # default     = ""
-}
-
-variable "vnet_iprange" {
-  description = "The Virtual Network IP range. Minimum /26 NetMaskLength"
-  type        = string
 }
 
 variable "api_version_path" {
@@ -478,13 +472,13 @@ EOT
 variable "vault_addr" {
   type        = string
   description = "The address of the Vault to save current platform configuration values"
-  default = ""
+  default     = ""
 }
 
 variable "vault_token" {
   type        = string
   description = "The token of the Vault to save current platform configuration values"
-  default = ""
+  default     = ""
 }
 
 variable "deployment_type" {
@@ -526,6 +520,63 @@ variable "vnet_resource_group" {
   type = string
 }
 
-variable "dns_zone_name_resource_group" {
+variable "kubernetes_azurefile_storage_tags" {
   type = string
+}
+variable "kubernetes_azurefile_storage_class_sku" {
+  type    = string
+  default = "Premium_LRS"
+}
+variable "storage_kind" {
+  type    = string
+  default = "StorageV2"
+}
+variable "network_adt_password" {
+  type = string
+}
+variable "platform_sp_client_id" {
+  type = string
+}
+variable "platform_sp_client_secret" {
+  type = string
+}
+variable "platform_common_sp_object_id" {
+  type = string
+}
+variable "storage_queue_privatedns_zonename" {
+  type    = string
+  default = "privatelink.blob.core.windows.net"
+}
+variable "eventhub_privatedns_zonename" {
+  type    = string
+  default = "privatelink.blob.core.windows.net"
+}
+variable "kusto_privatedns_zonename" {
+  type    = string
+  default = "privatelink.blob.core.windows.net"
+}
+variable "redis_disk_name" {
+  type    = string
+  default = "cosmotech-database-disk"
+}
+variable "redis_disk_sku" {
+  type    = string
+  default = "Premium_LRS"
+}
+variable "redis_disk_size" {
+  type    = number
+  default = 64
+}
+variable "kusto_instance_type" {
+  type    = string
+  default = "Standard_D12_v2"
+}
+variable "kustonr_instances" {
+  type    = number
+  default = 2
+}
+variable "virtual_network_address_prefix" {
+  type        = string
+  description = "The Virtual Network IP range. Minimum /26 NetMaskLength"
+  default     = "10.40.0.0/16"
 }

@@ -137,3 +137,9 @@ variable "cluster_issuer_name" {
   type    = string
   default = "letsencrypt-prod"
 }
+variable "redis_disk_name" {
+  type = string
+}
+variable "redis_disk_sku" {
+  type = string
+}

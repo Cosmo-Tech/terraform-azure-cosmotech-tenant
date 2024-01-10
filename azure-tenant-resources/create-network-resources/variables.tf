@@ -47,3 +47,6 @@ variable "networkadt_sp_object_id" {
   description = "The object ID of the network ADT service principal"
   type        = string
 }
+variable "vnet_resource_group" {
+  type = string
+}

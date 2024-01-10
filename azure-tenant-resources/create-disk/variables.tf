@@ -10,18 +10,16 @@ variable "private_dns_zone_id" {
   type = string
 }
 
-variable "principal_id" {
+variable "platform_common_sp_object_id" {
   type = string
 }
 
-variable "disk_size_gb" {
-  type    = string
-  default = "64"
+variable "redis_disk_size_gb" {
+  type = number
 }
 
-variable "disk_sku" {
-  type    = string
-  default = "Premium_LRS"
+variable "redis_disk_sku" {
+  type = string
 }
 
 variable "disk_tier" {

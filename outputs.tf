@@ -40,7 +40,7 @@ output "out_subnet_id" {
 }
 
 output "out_ip_resource_group" {
-  value = azurerm_resource_group.tenant_rg.name
+  value = var.publicip_resource_group
 }
 
 output "out_networkadt_clientid" {
@@ -97,7 +97,7 @@ output "platform_sp_object_id" {
 }
 
 output "resource_group_name" {
-  value = var.dns_record
+  value = var.platform_resource_group
 }
 
 output "resource_location" {

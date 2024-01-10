@@ -35,7 +35,7 @@ resource "kubernetes_persistent_volume_v1" "redis-pv" {
       azure_disk {
         caching_mode  = "ReadWrite"
         data_disk_uri = var.managed_disk_id
-        disk_name     = var.disk_name
+        disk_name     = var.redis_disk_name
         kind          = "Managed"
       }
     }

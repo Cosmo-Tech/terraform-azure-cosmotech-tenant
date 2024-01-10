@@ -20,7 +20,7 @@ resource "azurerm_virtual_network_peering" "vnet_tenant_to_platform" {
 
 resource "azurerm_virtual_network_peering" "vnet_platform_to_tenant" {
   name                      = "peer${var.tenant_resource_group}vnet2"
-  resource_group_name       = var.platform_resource_group
+  resource_group_name       = var.vnet_resource_group
   virtual_network_name      = var.platform_vnet.name
   remote_virtual_network_id = azurerm_virtual_network.tenant_vnet.id
 }

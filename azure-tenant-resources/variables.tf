@@ -5,19 +5,19 @@ variable "location" {
 variable "managed_disk_name" {
   type = string
 }
-
+variable "platform_common_sp_object_id" {
+  type = string
+}
 variable "platform_sp_object_id" {
   type = string
 }
 
-variable "disk_size_gb" {
-  type    = string
-  default = "64"
+variable "redis_disk_size_gb" {
+  type = number
 }
 
-variable "disk_sku" {
-  type    = string
-  default = "Premium_LRS"
+variable "redis_disk_sku" {
+  type = string
 }
 
 variable "disk_tier" {
@@ -120,4 +120,43 @@ variable "cost_center" {
 variable "create_backup" {
   type    = bool
   default = true
+}
+
+variable "storage_tier" {
+  type = string
+}
+variable "storage_replication_type" {
+  type = string
+}
+variable "storage_kind" {
+  type = string
+}
+variable "tags" {
+  type = object({
+    vendor      = string
+    stage       = string
+    customer    = string
+    project     = string
+    cost_center = string
+  })
+}
+
+variable "vnet_resource_group" {
+  type = string
+}
+
+variable "storage_queue_privatedns_zonename" {
+  type = string
+}
+variable "eventhub_privatedns_zonename" {
+  type = string
+}
+variable "kusto_privatedns_zonename" {
+  type = string
+}
+variable "kusto_instance_type" {
+  type = string
+}
+variable "kustonr_instances" {
+  type = number
 }
