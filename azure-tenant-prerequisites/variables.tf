@@ -106,7 +106,7 @@ variable "create_webapp" {
   default     = true
 }
 
-variable "platform_resource_group" {
+variable "common_resource_group" {
   description = "Existing Resource group which contain common platform resources"
   type        = string
 }

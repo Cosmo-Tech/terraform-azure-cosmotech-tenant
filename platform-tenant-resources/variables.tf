@@ -18,18 +18,18 @@ variable "client_id" {
   default     = ""
 }
 
-variable "platform_sp_client_id" {
-  type        = string
-  description = "The client_id of the platform's service principal"
-}
-
 variable "client_secret" {
   type        = string
   description = "The client secret of the app registration used to build this"
   default     = ""
 }
 
-variable "platform_sp_client_secret" {
+variable "tenant_sp_client_id" {
+  type        = string
+  description = "The client_id of the platform's service principal"
+}
+
+variable "tenant_sp_client_secret" {
   type        = string
   description = "The client_secret of the platform's service principal"
 }
@@ -39,7 +39,7 @@ variable "location" {
   default = ""
 }
 
-variable "namespace" {
+variable "kubernetes_tenant_namespace" {
   type = string
 }
 

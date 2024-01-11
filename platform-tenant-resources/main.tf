@@ -1,6 +1,6 @@
 resource "kubernetes_namespace" "main_namespace" {
   metadata {
-    name = var.namespace
+    name = var.kubernetes_tenant_namespace
   }
 }
 

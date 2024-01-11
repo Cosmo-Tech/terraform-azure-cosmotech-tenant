@@ -214,7 +214,7 @@ variable "location" {
   default     = "West Europe"
 }
 
-variable "platform_resource_group" {
+variable "common_resource_group" {
   description = "Existing Resource group which contain common platform resources"
   type        = string
 }
@@ -341,9 +341,9 @@ variable "create_backup" {
   description = "Weither to create Azure backup vault along with the managed disk"
 }
 
-variable "platform_vnet_name" {
+variable "common_vnet_name" {
   type        = string
-  description = "The virtual networ-k of the platform common resources"
+  description = "The virtual network of the platform common resources"
 }
 
 variable "tls_secret_name" {
@@ -351,7 +351,7 @@ variable "tls_secret_name" {
   default = "letsencrypt-prod"
 }
 
-variable "namespace" {
+variable "kubernetes_tenant_namespace" {
   type        = string
   description = "The kubernetes namespace to create"
 }
@@ -367,12 +367,16 @@ variable "chart_package_version" {
   description = "The version of the Cosmo Tech API chart to deploy"
 }
 
-variable "platform_sp_name" {
+variable "network_client_id" {
+  type = string
+}
+
+variable "tenant_sp_name" {
   type        = string
   description = "The name of the platform on which we deploy the tenant"
 }
 
-variable "platform_public_ip_name" {
+variable "common_public_ip_name" {
   type        = string
   description = "The public IP resource of the platform"
 }
@@ -494,21 +498,24 @@ variable "deployment_type" {
   description = "Represents the kind of deployment. Currently two modes: ARM or Terraform"
 }
 
-variable "networkadt_sp_object_id" {
-  type        = string
-  description = "The object id of the network adt service principal"
-  default     = ""
-}
-
 variable "platform_group_id" {
   type        = string
   description = "The object id of the platform group"
   default     = ""
 }
 
-variable "platform_sp_object_id" {
+variable "network_client_secret" {
+  type = string
+}
+variable "tenant_sp_object_id" {
   type        = string
   description = "The object id of the platform service principal"
+  default     = ""
+}
+
+variable "network_sp_object_id" {
+  type        = string
+  description = "The object id of the network service principal"
   default     = ""
 }
 
@@ -523,58 +530,80 @@ variable "vnet_resource_group" {
 variable "kubernetes_azurefile_storage_tags" {
   type = string
 }
+
 variable "kubernetes_azurefile_storage_class_sku" {
   type    = string
   default = "Premium_LRS"
 }
+
 variable "storage_kind" {
   type    = string
   default = "StorageV2"
 }
-variable "network_adt_password" {
+
+variable "tenant_sp_client_id" {
   type = string
 }
-variable "platform_sp_client_id" {
+
+variable "tenant_sp_client_secret" {
   type = string
 }
-variable "platform_sp_client_secret" {
-  type = string
-}
-variable "platform_common_sp_object_id" {
-  type = string
-}
-variable "storage_queue_privatedns_zonename" {
+
+variable "blob_privatedns_zonename" {
   type    = string
   default = "privatelink.blob.core.windows.net"
 }
-variable "eventhub_privatedns_zonename" {
+
+variable "queue_privatedns_zonename" {
   type    = string
-  default = "privatelink.blob.core.windows.net"
+  default = "privatelink.queue.core.windows.net"
 }
+
+variable "table_privatedns_zonename" {
+  type    = string
+  default = "privatelink.table.core.windows.net"
+}
+
 variable "kusto_privatedns_zonename" {
   type    = string
-  default = "privatelink.blob.core.windows.net"
+  default = "privatelink.kusto.core.windows.net"
 }
+
+variable "eventhub_privatedns_zonename" {
+  type    = string
+  default = "privatelink.servicebus.windows.net"
+}
+
+variable "adt_privatedns_zonename" {
+  type    = string
+  default = "privatelink.digitaltwins.azure.net"
+}
+
 variable "redis_disk_name" {
   type    = string
   default = "cosmotech-database-disk"
 }
+
 variable "redis_disk_sku" {
   type    = string
   default = "Premium_LRS"
 }
+
 variable "redis_disk_size" {
   type    = number
   default = 64
 }
+
 variable "kusto_instance_type" {
   type    = string
   default = "Standard_D12_v2"
 }
+
 variable "kustonr_instances" {
   type    = number
   default = 2
 }
+
 variable "virtual_network_address_prefix" {
   type        = string
   description = "The Virtual Network IP range. Minimum /26 NetMaskLength"

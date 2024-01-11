@@ -35,9 +35,13 @@ locals {
   kube_config  = data.azurerm_kubernetes_cluster.current.kube_config
 }
 
+data "azurerm_resource_group" "current" {
+  name = var.common_resource_group
+}
+
 data "azurerm_kubernetes_cluster" "current" {
   name                = var.cluster_name
-  resource_group_name = var.platform_resource_group
+  resource_group_name = var.common_resource_group
 }
 
 data "azurerm_dns_a_record" "current" {
@@ -47,21 +51,17 @@ data "azurerm_dns_a_record" "current" {
 }
 
 data "azurerm_public_ip" "current" {
-  name                = var.platform_public_ip_name
+  name                = var.common_public_ip_name
   resource_group_name = var.publicip_resource_group
 }
 
 data "azurerm_virtual_network" "current" {
-  name                = var.platform_vnet_name
+  name                = var.common_vnet_name
   resource_group_name = var.vnet_resource_group
 }
 
-data "azurerm_resource_group" "current" {
-  name = var.platform_resource_group
-}
-
 data "azuread_service_principal" "platform" {
-  display_name = var.platform_sp_name
+  display_name = var.tenant_sp_name
 }
 
 resource "azurerm_resource_group" "tenant_rg" {

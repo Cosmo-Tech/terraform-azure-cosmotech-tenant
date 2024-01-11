@@ -2,7 +2,7 @@ module "create-redis-stack" {
   source = "./create-redis-stack"
 
   redis_admin_password = random_password.redis_admin_password.result
-  namespace            = var.namespace
+  namespace            = var.kubernetes_tenant_namespace
   managed_disk_id      = var.managed_disk_id
   redis_disk_name      = var.redis_disk_name
 
@@ -11,7 +11,7 @@ module "create-redis-stack" {
 module "cert-manager" {
   source = "./create-cert-manager"
 
-  namespace           = var.namespace
+  namespace           = var.kubernetes_tenant_namespace
   cluster_issuer_name = var.cluster_issuer_name
   tls_secret_name     = var.tls_secret_name
   api_dns_name        = var.api_dns_name
@@ -20,7 +20,7 @@ module "cert-manager" {
 module "create-minio" {
   source = "./create-minio"
 
-  namespace                   = var.namespace
+  namespace                   = var.kubernetes_tenant_namespace
   monitoring_namespace        = var.monitoring_namespace
   argo_minio_access_key       = random_password.argo_minio_access_key.result
   argo_minio_secret_key       = random_password.argo_minio_secret_key.result
@@ -31,7 +31,7 @@ module "create-minio" {
 module "create-postgresql-db" {
   source = "./create-postgresql-db"
 
-  namespace                = var.namespace
+  namespace                = var.kubernetes_tenant_namespace
   monitoring_namespace     = var.monitoring_namespace
   argo_postgresql_password = random_password.argo_postgresql_password.result
 }
@@ -39,7 +39,7 @@ module "create-postgresql-db" {
 module "create-argo" {
   source = "./create-argo"
 
-  namespace             = var.namespace
+  namespace             = var.kubernetes_tenant_namespace
   monitoring_namespace  = var.monitoring_namespace
   postgres_release_name = module.create-postgresql-db.postgres_release_name
 
@@ -51,7 +51,13 @@ module "create-argo" {
 module "create-cosmotech-api" {
   source = "./create-cosmotech-api"
 
-  namespace             = var.namespace
+  client_id            = var.tenant_sp_client_id
+  client_secret        = var.tenant_sp_client_secret
+  tenant_id            = var.tenant_id
+  network_adt_clientid = var.network_adt_clientid
+  network_adt_password = var.network_adt_password
+
+  namespace             = var.kubernetes_tenant_namespace
   monitoring_namespace  = var.monitoring_namespace
   api_dns_name          = var.api_dns_name
   tls_secret_name       = var.tls_secret_name
@@ -66,12 +72,7 @@ module "create-cosmotech-api" {
   eventbus_uri          = var.eventbus_uri
   storage_account_key   = var.storage_account_key
   storage_account_name  = var.storage_account_name
-  client_id             = var.platform_sp_client_id
-  client_secret         = var.platform_sp_client_secret
-  tenant_id             = var.tenant_id
   chart_package_version = var.chart_package_version
-  network_adt_password  = var.network_adt_password
-  network_adt_clientid  = var.network_adt_clientid
 
   depends_on = [
     module.create-argo

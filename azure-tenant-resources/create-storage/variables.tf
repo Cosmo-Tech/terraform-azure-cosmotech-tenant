@@ -37,7 +37,3 @@ variable "storage_replication_type" {
 variable "storage_kind" {
   type = string
 }
-
-variable "storage_queue_privatedns_zonename" {
-  type = string
-}

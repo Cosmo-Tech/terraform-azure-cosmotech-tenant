@@ -96,8 +96,8 @@ output "platform_sp_object_id" {
   value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : null
 }
 
-output "resource_group_name" {
-  value = var.platform_resource_group
+output "common_resource_group_name" {
+  value = var.common_resource_group
 }
 
 output "resource_location" {

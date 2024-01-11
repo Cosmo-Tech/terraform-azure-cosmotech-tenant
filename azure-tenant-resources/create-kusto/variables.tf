@@ -27,12 +27,11 @@ variable "subnet_id" {
 variable "private_dns_zone_id" {
   type = string
 }
-variable "kusto_privatedns_zonename" {
-  type = string
-}
+
 variable "kusto_instance_type" {
   type = string
 }
+
 variable "kustonr_instances" {
   type = number
 }

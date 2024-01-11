@@ -145,18 +145,34 @@ variable "vnet_resource_group" {
   type = string
 }
 
-variable "storage_queue_privatedns_zonename" {
-  type = string
-}
-variable "eventhub_privatedns_zonename" {
-  type = string
-}
-variable "kusto_privatedns_zonename" {
-  type = string
-}
 variable "kusto_instance_type" {
   type = string
 }
+
 variable "kustonr_instances" {
   type = number
+}
+
+variable "blob_privatedns_zonename" {
+  type    = string
+}
+
+variable "queue_privatedns_zonename" {
+  type    = string
+}
+
+variable "table_privatedns_zonename" {
+  type    = string
+}
+
+variable "kusto_privatedns_zonename" {
+  type    = string
+}
+
+variable "eventhub_privatedns_zonename" {
+  type    = string
+}
+
+variable "adt_privatedns_zonename" {
+  type    = string
 }
