@@ -16,7 +16,6 @@ variable "client_secret" {
 variable "platform_url" {
   description = "The platform url"
   type        = string
-  default     = ""
 }
 
 variable "identifier_uri" {
@@ -64,7 +63,6 @@ variable "audience" {
     ], var.audience)
     error_message = "Only AzureADMyOrg and AzureADMultipleOrgs are supported for audience."
   }
-  default = "AzureADMultipleOrgs"
 }
 
 variable "webapp_url" {
@@ -74,7 +72,6 @@ variable "webapp_url" {
 
 variable "location" {
   description = "The Azure location"
-  default     = "West Europe"
 }
 
 variable "tenant_resource_group" {
@@ -110,7 +107,6 @@ variable "virtual_network_address_prefix" {
 variable "api_version_path" {
   description = "The API version path"
   type        = string
-  default     = "/v3/"
 }
 
 variable "customer_name" {
@@ -119,18 +115,17 @@ variable "customer_name" {
 }
 
 variable "user_app_role" {
+  description = "App role for azuread_application"
   type = list(object({
     description  = string
     display_name = string
     id           = string
     role_value   = string
   }))
-  description = "App role for azuread_application"
 }
 
 variable "image_path" {
   type    = string
-  default = "./cosmotech.png"
 }
 
 variable "chart_package_version" {

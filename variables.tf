@@ -323,7 +323,6 @@ variable "create_dnsrecord" {
 variable "api_version_path" {
   description = "The API version path"
   type        = string
-  default     = "/v3/"
 }
 
 variable "managed_disk_name" {
@@ -374,7 +373,7 @@ variable "redis_disk_tier" {
 variable "kubernetes_version" {
   description = "Azure Kubernetes Service version"
   type        = string
-  default     = "1.25.6"
+  default     = "1.26.6"
 }
 
 variable "create_cosmosdb" {

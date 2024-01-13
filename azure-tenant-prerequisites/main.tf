@@ -39,7 +39,7 @@ resource "azuread_application" "platform" {
   }
 
   single_page_application {
-    redirect_uris = ["${local.platform_url}${var.api_version_path}swagger-ui/oauth2-redirect.html"]
+    redirect_uris = ["${local.platform_url}/${var.api_version_path}/swagger-ui/oauth2-redirect.html"]
   }
 
   web {
@@ -153,7 +153,7 @@ resource "azuread_application" "swagger" {
 
   single_page_application {
     redirect_uris = [
-      "${local.platform_url}/cosmotech-api/${var.tenant_resource_group}${var.api_version_path}swagger-ui/oauth2-redirect.html"
+      "${local.platform_url}/cosmotech-api/${var.tenant_resource_group}/${var.api_version_path}/swagger-ui/oauth2-redirect.html"
     ]
   }
 
