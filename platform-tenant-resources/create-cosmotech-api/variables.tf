@@ -70,11 +70,11 @@ variable "storage_account_name" {
   type = string
 }
 
-variable "network_adt_clientid" {
+variable "network_client_id" {
   type = string
 }
 
-variable "network_adt_password" {
+variable "network_client_secret" {
   type = string
 }
 

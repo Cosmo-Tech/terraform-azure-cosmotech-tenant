@@ -22,5 +22,5 @@ resource "azurerm_container_registry" "acr" {
 resource "azurerm_role_assignment" "acr_contributor" {
   scope                = azurerm_container_registry.acr.id
   role_definition_name = "Contributor"
-  principal_id         = var.principal_id
+  principal_id         = var.tenant_sp_object_id
 }

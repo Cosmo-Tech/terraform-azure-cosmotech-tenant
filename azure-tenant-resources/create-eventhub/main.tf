@@ -1,6 +1,6 @@
 resource "azurerm_eventhub_namespace" "eventbus_uri" {
   name                          = var.eventhub_name
-  resource_group_name           = var.resource_group
+  resource_group_name           = var.tenant_resource_group
   location                      = var.location
   sku                           = "Standard"
   capacity                      = 2
@@ -11,7 +11,7 @@ resource "azurerm_eventhub_namespace" "eventbus_uri" {
 resource "azurerm_private_endpoint" "eventhub_private_endpoint" {
   name                = "eventhub-privateendpoint"
   location            = var.location
-  resource_group_name = var.resource_group
+  resource_group_name = var.tenant_resource_group
   subnet_id           = var.subnet_id
 
   private_service_connection {

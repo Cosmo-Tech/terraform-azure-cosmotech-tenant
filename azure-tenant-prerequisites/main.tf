@@ -5,7 +5,7 @@ locals {
   identifier_uri = "https://${var.dns_record}.${var.dns_zone_name}/${var.tenant_resource_group}"
   platform_url   = var.platform_url != "" ? var.platform_url : "https://${var.dns_record}.${var.dns_zone_name}"
   webapp_url     = var.webapp_url != "" ? var.webapp_url : "https://${var.dns_record}.app.cosmotech.com"
-  vnet_iprange   = var.vnet_iprange != "" ? var.vnet_iprange : "10.10.0.0/16"
+  vnet_iprange   = var.virtual_network_address_prefix
   tags = {
     vendor      = "cosmotech"
     stage       = var.project_stage

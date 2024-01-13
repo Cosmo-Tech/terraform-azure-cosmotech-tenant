@@ -1,12 +1,12 @@
 resource "azurerm_virtual_network" "tenant_vnet" {
-  name                = "Cosmotech-VNET-${var.tenant_resource_group}-${var.platform_resource_group}"
+  name                = "Cosmotech-VNET-${var.tenant_resource_group}-${var.common_resource_group}"
   location            = var.location
   resource_group_name = var.tenant_resource_group
-  address_space       = [var.vnet_iprange]
+  address_space       = [var.virtual_network_address_prefix]
 
   subnet {
     name           = var.subnet_name
-    address_prefix = var.vnet_iprange
+    address_prefix = var.virtual_network_address_prefix
   }
   tags = var.tags
 }
@@ -31,14 +31,13 @@ resource "azurerm_role_assignment" "vnet_network_contributor" {
   principal_id         = var.networkadt_sp_object_id
 }
 
-data "azurerm_private_dns_zone" "platform" {
+data "azurerm_private_dns_zone" "platform_vnetlink" {
   name                = var.blob_privatedns_zonename
-  resource_group_name = var.platform_resource_group
+  resource_group_name = var.common_resource_group
 }
-
 resource "azurerm_private_dns_zone_virtual_network_link" "private_link" {
   name                  = "${var.tenant_resource_group}-vnet-link"
-  resource_group_name   = var.platform_resource_group
-  private_dns_zone_name = data.azurerm_private_dns_zone.platform.name
+  resource_group_name   = var.common_resource_group
+  private_dns_zone_name = data.azurerm_private_dns_zone.platform_vnetlink.name
   virtual_network_id    = azurerm_virtual_network.tenant_vnet.id
 }

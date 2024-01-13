@@ -66,5 +66,5 @@ output "out_subnet_id" {
 }
 
 output "out_private_dns_zone_id" {
-  value = module.create-network-resources.out_private_dns_zone_id
+  value = module.create-network-resources.out_blob_private_dns_zone_id
 }

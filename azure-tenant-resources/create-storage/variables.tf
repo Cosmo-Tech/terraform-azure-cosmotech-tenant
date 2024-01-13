@@ -1,15 +1,3 @@
-variable "resource_group" {
-  type = string
-}
-
-variable "location" {
-  type = string
-}
-
-variable "storage_name" {
-  type = string
-}
-
 variable "tags" {
   type = object({
     vendor      = string
@@ -20,7 +8,27 @@ variable "tags" {
   })
 }
 
-variable "subnet_id" {
+variable "storage_name" {
+  type = string
+}
+
+variable "location" {
+  type = string
+}
+
+variable "resource_group" {
+  type = string
+}
+
+variable "storage_tier" {
+  type = string
+}
+
+variable "storage_replication_type" {
+  type = string
+}
+
+variable "storage_kind" {
   type = string
 }
 
@@ -28,12 +36,6 @@ variable "private_dns_zone_id" {
   type = string
 }
 
-variable "storage_tier" {
-  type = string
-}
-variable "storage_replication_type" {
-  type = string
-}
-variable "storage_kind" {
+variable "subnet_id" {
   type = string
 }

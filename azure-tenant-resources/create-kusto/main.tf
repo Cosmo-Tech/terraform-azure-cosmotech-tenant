@@ -1,7 +1,7 @@
 resource "azurerm_kusto_cluster" "kusto" {
   name                = var.kusto_name
   location            = var.location
-  resource_group_name = var.resource_group
+  resource_group_name = var.tenant_resource_group
   sku {
     name     = var.kusto_instance_type
     capacity = var.kustonr_instances
@@ -22,7 +22,7 @@ resource "azurerm_kusto_cluster" "kusto" {
 resource "azurerm_private_endpoint" "kusto_private_endpoint" {
   name                = "kusto-privateendpoint"
   location            = var.location
-  resource_group_name = var.resource_group
+  resource_group_name = var.tenant_resource_group
   subnet_id           = var.subnet_id
 
   private_service_connection {

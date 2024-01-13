@@ -1,9 +1,22 @@
-variable "tenant_id" {
-  description = "The tenant id"
+variable "deployment_type" {
+  description = "Represents the kind of deployment. Currently two modes: ARM or Terraform"
+  type    = string
+  default = "Terraform"
+  validation {
+    condition = contains([
+      "ARM",
+      "Terraform"
+    ], var.deployment_type)
+    error_message = "Stage must be either: ARM or Terraform."
+  }
 }
 
 variable "subscription_id" {
   description = "The subscription id"
+}
+
+variable "tenant_id" {
+  description = "The tenant id"
 }
 
 variable "client_id" {
@@ -14,6 +27,96 @@ variable "client_id" {
 variable "client_secret" {
   description = "The client secret"
   default     = ""
+}
+
+variable "common_resource_group" {
+  description = "Existing Resource group which contain common platform resources"
+  type        = string
+}
+
+variable "public_ip_name" {
+  description = "The public IP resource of the platform"
+  type        = string
+}
+
+variable "publicip_resource_group" {
+  type = string
+}
+
+variable "vnet_name" {
+  description = "The virtual network of the platform common resources"
+  type        = string
+}
+
+variable "vnet_resource_group" {
+  type = string
+}
+
+variable "project_name" {
+  description = "The project name"
+}
+
+variable "organization_name" {
+  type = string
+  default = ""
+}
+
+variable "kubernetes_tenant_namespace" {
+  description = "The kubernetes namespace to create"
+  type        = string
+}
+
+variable "tenant_resource_group" {
+  description = "Resource group to create which will contain created Azure resources for this tenant"
+  type        = string
+}
+
+variable "kubernetes_azurefile_storage_class_sku" {
+  type    = string
+  default = "Premium_LRS"
+}
+
+variable "virtual_network_address_prefix" {
+  description = "The Virtual Network IP range. Minimum /26 NetMaskLength"
+  type        = string
+  default     = "10.40.0.0/16"
+}
+
+variable "redis_disk_name" {
+  type    = string
+  default = "cosmotech-database-disk"
+}
+
+variable "kusto_instance_type" {
+  type    = string
+  default = "Standard_D12_v2"
+}
+
+variable "kustonr_instances" {
+  type    = number
+  default = 2
+}
+
+variable "dns_record" {
+  description = "The DNS zone name to create platform subdomain. Example: myplatform"
+  type        = string
+}
+
+variable "dns_zone_name" {
+  description = "The DNS zone name to create platform subdomain. Example: api.cosmotech.com"
+  type        = string
+  default     = "api.cosmotech.com"
+}
+
+variable "dns_zone_rg" {
+  description = "The DNS zone resource group"
+  type        = string
+  default     = "phoenix"
+}
+
+variable "owner_list" {
+  description = "List of mail addresses for App Registration owners"
+  type        = list(string)
 }
 
 variable "platform_url" {
@@ -44,22 +147,13 @@ variable "project_stage" {
 }
 
 variable "cluster_name" {
-  type        = string
   description = "Cluster name"
+  type        = string
 }
 
 variable "customer_name" {
   description = "The customer name"
   default     = "cosmotech"
-}
-
-variable "project_name" {
-  description = "The project name"
-}
-
-variable "owner_list" {
-  description = "List of mail addresses for App Registration owners"
-  type        = list(string)
 }
 
 variable "audience" {
@@ -75,13 +169,13 @@ variable "audience" {
 }
 
 variable "user_app_role" {
+  description = "App role for azuread_application"
   type = list(object({
     description  = string
     display_name = string
     id           = string
     role_value   = string
   }))
-  description = "App role for azuread_application"
   default = [{
     description  = "Workspace Writer",
     display_name = "Workspace Writer",
@@ -199,59 +293,31 @@ variable "webapp_url" {
 variable "create_restish" {
   description = "Create the Azure Active Directory Application for Restish"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "create_powerbi" {
   description = "Create the Azure Active Directory Application for PowerBI"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "location" {
-  type        = string
   description = "The Azure location"
+  type        = string
   default     = "West Europe"
-}
-
-variable "common_resource_group" {
-  description = "Existing Resource group which contain common platform resources"
-  type        = string
-}
-
-variable "tenant_resource_group" {
-  description = "Resource group to create which will contain created Azure resources for this tenant"
-  type        = string
 }
 
 variable "create_publicip" {
   description = "Create the public IP for the platform"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "create_dnsrecord" {
   description = "Create the DNS record"
   type        = bool
-  default     = true
-}
-
-variable "dns_zone_name" {
-  description = "The DNS zone name to create platform subdomain. Example: api.cosmotech.com"
-  type        = string
-  default     = "api.cosmotech.com"
-}
-
-variable "dns_zone_rg" {
-  description = "The DNS zone resource group"
-  type        = string
-  default     = "phoenix"
-}
-
-variable "dns_record" {
-  description = "The DNS zone name to create platform subdomain. Example: myplatform"
-  type        = string
-  # default     = ""
+  default     = false
 }
 
 variable "api_version_path" {
@@ -261,9 +327,9 @@ variable "api_version_path" {
 }
 
 variable "managed_disk_name" {
+  description = "Name of the managed disk to create"
   type        = string
   default     = ""
-  description = "Name of the managed disk to create"
   validation {
     condition     = length(var.managed_disk_name) < 80
     error_message = "The managed_disk_name value must be between 1 and 80 characters long."
@@ -278,49 +344,49 @@ variable "image_path" {
 variable "create_webapp" {
   description = "Create the Azure Active Directory Application for WebApp"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "create_secrets" {
-  type        = bool
-  default     = true
   description = "Create secrets for newly created app registrations"
+  type        = bool
+  default     = false
 }
 
-variable "disk_size_gb" {
-  type        = string
-  default     = "64"
+variable "redis_disk_size_gb" {
   description = "The size of the managed disk to create (Gb)"
+  type        = string
+  default     = 64
 }
 
-variable "disk_sku" {
+variable "redis_disk_sku" {
+  description = "The SKU of the managed disk"
   type        = string
   default     = "Premium_LRS"
-  description = "The SKU of the managed disk"
 }
 
-variable "disk_tier" {
+variable "redis_disk_tier" {
+  description = "The tier of the managed disk"
   type        = string
   default     = "P6"
-  description = "The tier of the managed disk"
 }
 
 variable "kubernetes_version" {
+  description = "Azure Kubernetes Service version"
   type        = string
   default     = "1.25.6"
-  description = "Azure Kubernetes Service version"
 }
 
 variable "create_cosmosdb" {
+  description = "Weither to create CosmosDB (only for API version < 2.4)"
   type        = bool
   default     = false
-  description = "Weither to create CosmosDB (only for API version < 2.4)"
 }
 
 variable "create_adx" {
+  description = "Weither to create Azure digital explorer"
   type        = bool
   default     = true
-  description = "Weither to create Azure digital explorer"
 }
 
 variable "create_babylon" {
@@ -330,30 +396,20 @@ variable "create_babylon" {
 }
 
 variable "cost_center" {
+  description = "The value associated to a resource (tag)"
   type        = string
   default     = "NA"
-  description = "The value associated to a resource (tag)"
 }
 
 variable "create_backup" {
+  description = "Weither to create Azure backup vault along with the managed disk"
   type        = bool
   default     = false
-  description = "Weither to create Azure backup vault along with the managed disk"
-}
-
-variable "common_vnet_name" {
-  type        = string
-  description = "The virtual network of the platform common resources"
 }
 
 variable "tls_secret_name" {
   type    = string
   default = "letsencrypt-prod"
-}
-
-variable "kubernetes_tenant_namespace" {
-  type        = string
-  description = "The kubernetes namespace to create"
 }
 
 variable "monitoring_namespace" {
@@ -362,9 +418,9 @@ variable "monitoring_namespace" {
 }
 
 variable "chart_package_version" {
+  description = "The version of the Cosmo Tech API chart to deploy"
   type        = string
   default     = "3.0.3-test"
-  description = "The version of the Cosmo Tech API chart to deploy"
 }
 
 variable "network_client_id" {
@@ -372,19 +428,35 @@ variable "network_client_id" {
 }
 
 variable "tenant_sp_name" {
-  type        = string
   description = "The name of the platform on which we deploy the tenant"
-}
-
-variable "common_public_ip_name" {
   type        = string
-  description = "The public IP resource of the platform"
+  default = ""
 }
 
 variable "create_vault_entries" {
+  description = "Custom module used to automatically retrieve Cosmo Tech Platform values and fill Vault in order to be used by Babylon"
   type        = bool
   default     = false
-  description = "Custom module used to automatically retrieve Cosmo Tech Platform values and fill Vault in order to be used by Babylon"
+}
+
+variable "argo_minio_persistence_size" {
+  type    = string
+  default = "16Gi"
+}
+
+variable "argo_minio_requests_memory" {
+  type    = string
+  default = "2Gi"
+}
+
+variable "archive_ttl" {
+  type    = string
+  default = "3d"
+}
+
+variable "cluster_issuer_name" {
+  type    = string
+  default = "letsencrypt-prod"
 }
 
 # Backend remote vars
@@ -474,33 +546,20 @@ EOT
 }
 
 variable "vault_addr" {
-  type        = string
   description = "The address of the Vault to save current platform configuration values"
+  type        = string
   default     = ""
 }
 
 variable "vault_token" {
-  type        = string
   description = "The token of the Vault to save current platform configuration values"
+  type        = string
   default     = ""
 }
 
-variable "deployment_type" {
-  type    = string
-  default = "Terraform"
-  validation {
-    condition = contains([
-      "ARM",
-      "Terraform"
-    ], var.deployment_type)
-    error_message = "Stage must be either: ARM or Terraform."
-  }
-  description = "Represents the kind of deployment. Currently two modes: ARM or Terraform"
-}
-
 variable "platform_group_id" {
-  type        = string
   description = "The object id of the platform group"
+  type        = string
   default     = ""
 }
 
@@ -508,32 +567,17 @@ variable "network_client_secret" {
   type = string
 }
 variable "tenant_sp_object_id" {
-  type        = string
   description = "The object id of the platform service principal"
-  default     = ""
+  type        = string
 }
 
 variable "network_sp_object_id" {
-  type        = string
   description = "The object id of the network service principal"
-  default     = ""
-}
-
-variable "publicip_resource_group" {
-  type = string
-}
-
-variable "vnet_resource_group" {
-  type = string
+  type        = string
 }
 
 variable "kubernetes_azurefile_storage_tags" {
   type = string
-}
-
-variable "kubernetes_azurefile_storage_class_sku" {
-  type    = string
-  default = "Premium_LRS"
 }
 
 variable "storage_kind" {
@@ -541,11 +585,11 @@ variable "storage_kind" {
   default = "StorageV2"
 }
 
-variable "tenant_sp_client_id" {
+variable "tenant_client_id" {
   type = string
 }
 
-variable "tenant_sp_client_secret" {
+variable "tenant_client_secret" {
   type = string
 }
 
@@ -577,35 +621,4 @@ variable "eventhub_privatedns_zonename" {
 variable "adt_privatedns_zonename" {
   type    = string
   default = "privatelink.digitaltwins.azure.net"
-}
-
-variable "redis_disk_name" {
-  type    = string
-  default = "cosmotech-database-disk"
-}
-
-variable "redis_disk_sku" {
-  type    = string
-  default = "Premium_LRS"
-}
-
-variable "redis_disk_size" {
-  type    = number
-  default = 64
-}
-
-variable "kusto_instance_type" {
-  type    = string
-  default = "Standard_D12_v2"
-}
-
-variable "kustonr_instances" {
-  type    = number
-  default = 2
-}
-
-variable "virtual_network_address_prefix" {
-  type        = string
-  description = "The Virtual Network IP range. Minimum /26 NetMaskLength"
-  default     = "10.40.0.0/16"
 }

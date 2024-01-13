@@ -31,7 +31,7 @@ provider "kubectl" {
 }
 
 locals {
-  api_dns_name = "${data.azurerm_dns_a_record.current.name}.${var.dns_zone_name}"
+  api_dns_name = "${var.dns_record}.${var.dns_zone_name}"
   kube_config  = data.azurerm_kubernetes_cluster.current.kube_config
 }
 
@@ -44,23 +44,18 @@ data "azurerm_kubernetes_cluster" "current" {
   resource_group_name = var.common_resource_group
 }
 
-data "azurerm_dns_a_record" "current" {
-  name                = var.dns_record
-  zone_name           = var.dns_zone_name
-  resource_group_name = var.dns_zone_rg
-}
-
 data "azurerm_public_ip" "current" {
-  name                = var.common_public_ip_name
+  name                = var.public_ip_name
   resource_group_name = var.publicip_resource_group
 }
 
 data "azurerm_virtual_network" "current" {
-  name                = var.common_vnet_name
+  name                = var.vnet_name
   resource_group_name = var.vnet_resource_group
 }
 
 data "azuread_service_principal" "platform" {
+  count        = var.deployment_type != "ARM" ? 1 : 0
   display_name = var.tenant_sp_name
 }
 
