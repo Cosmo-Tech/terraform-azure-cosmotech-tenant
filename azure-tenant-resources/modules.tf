@@ -9,7 +9,7 @@ module "create-backup" {
   location                 = var.location
   tenant_resource_group    = var.tenant_resource_group.name
   tenant_resource_group_id = var.tenant_resource_group.id
-  managed_disk_id          = module.create-disk.managed_disk_id
+  managed_disk_id          = module.create-disk.out_managed_disk_id
 
   depends_on = [module.create-network-resources, module.create-disk]
 }

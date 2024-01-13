@@ -11,5 +11,5 @@ output "out_adx_ingestion_uri" {
 }
 
 output "out_adx_principal_id" {
-  value = azurerm_kusto_cluster.kusto.identity.principalId
+  value = azurerm_kusto_cluster.kusto.identity.0.principal_id
 }

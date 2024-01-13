@@ -16,7 +16,7 @@ output "out_cluster_adx_name" {
 }
 
 output "out_cosmos_api_url" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_cosmos_api_url : null
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_cosmos_api_url : "https://${var.dns_record}.${var.dns_zone_name}/cosmotech-api/${var.tenant_resource_group}"
 }
 
 output "out_cosmos_api_version_path" {
@@ -41,26 +41,26 @@ output "out_storage_account_secret" {
 }
 
 output "out_babylon_client_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_client_id : null
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_client_id : var.babylon_client_id
 }
 
 output "out_babylon_principal_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_principal_id : null
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_principal_id : var.babylon_sp_object_id
 }
 
 output "out_babylon_client_secret" {
-  value     = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_secret : null
+  value     = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_secret : var.babylon_client_secret
   sensitive = true
 }
 
 output "out_tenant_sp_client_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : null
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : var.tenant_client_id
 }
 
 output "out_tenant_sp_object_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : null
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.tenant_sp_object_id
 }
 
 output "out_subscription_id" {
-  value     = var.subscription_id
+  value = var.subscription_id
 }

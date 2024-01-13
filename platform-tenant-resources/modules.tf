@@ -3,7 +3,7 @@ module "create-argo" {
 
   namespace             = var.kubernetes_tenant_namespace
   monitoring_namespace  = var.monitoring_namespace
-  postgres_release_name = module.create-postgresql-db.postgres_release_name
+  postgres_release_name = module.create-postgresql-db.out_postgres_release_name
 
   depends_on = [
     module.create-postgresql-db

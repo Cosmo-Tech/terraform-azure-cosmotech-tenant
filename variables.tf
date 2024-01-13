@@ -621,3 +621,15 @@ variable "adt_privatedns_zonename" {
   type    = string
   default = "privatelink.digitaltwins.azure.net"
 }
+
+variable "babylon_client_id" {
+  type = string
+}
+
+variable "babylon_sp_object_id" {
+  type = string
+}
+
+variable "babylon_client_secret" {
+  type = string
+}
