@@ -510,7 +510,7 @@ terraform init \
 EOT
 }
 
-variable "tf_blob_name" {
+variable "tf_blob_name_tenant" {
   type        = string
   default     = ""
   description = <<EOT

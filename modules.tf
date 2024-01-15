@@ -99,7 +99,7 @@ module "create-vault-entries" {
   storage_account_name        = var.tf_storage_account_name
   storage_account_key         = var.tf_access_key
   storage_container           = var.tf_container_name
-  tfstate_blob_name           = var.tf_blob_name
+  tfstate_blob_name           = var.tf_blob_name_tenant
 
   depends_on = [module.platform-tenant-resources]
 }
