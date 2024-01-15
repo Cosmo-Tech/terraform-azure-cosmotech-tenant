@@ -86,7 +86,7 @@ output "out_webapp_clientid" {
   value = var.create_webapp ? azuread_application.webapp[0].application_id : null
 }
 
-output "out_platform_group_id" {
+output "out_tenant_group_id" {
   value = azuread_group.platform_group.object_id
 }
 
