@@ -76,7 +76,7 @@ variable "kubernetes_azurefile_storage_class_sku" {
   default = "Premium_LRS"
 }
 
-variable "virtual_network_address_prefix" {
+variable "tenant_virtual_network_address_prefix" {
   description = "The Virtual Network IP range. Minimum /26 NetMaskLength"
   type        = string
   default     = "10.40.0.0/16"

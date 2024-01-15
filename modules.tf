@@ -19,7 +19,7 @@ module "azure-tenant-prerequisites" {
   dns_record                     = var.dns_record
   dns_zone_name                  = var.dns_zone_name
   dns_zone_rg                    = var.dns_zone_rg
-  virtual_network_address_prefix = var.virtual_network_address_prefix
+  virtual_network_address_prefix = var.tenant_virtual_network_address_prefix
   api_version_path               = var.api_version_path
   customer_name                  = var.customer_name
   user_app_role                  = var.user_app_role
@@ -38,7 +38,7 @@ module "azure-tenant-resources" {
 
   subscription_id                = var.subscription_id
   location                       = var.location
-  virtual_network_address_prefix = var.virtual_network_address_prefix
+  virtual_network_address_prefix = var.tenant_virtual_network_address_prefix
   managed_disk_name              = var.managed_disk_name
   cluster_name                   = var.cluster_name
   project_stage                  = var.project_stage
