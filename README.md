@@ -105,7 +105,6 @@
 | <a name="input_managed_disk_name"></a> [managed\_disk\_name](#input\_managed\_disk\_name) | Name of the managed disk to create | `string` | `""` | no |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | `"cosmotech-monitoring"` | no |
 | <a name="input_organization_name"></a> [organization\_name](#input\_organization\_name) | n/a | `string` | `""` | no |
-| <a name="input_platform_group_id"></a> [platform\_group\_id](#input\_platform\_group\_id) | The object id of the platform group | `string` | `""` | no |
 | <a name="input_platform_url"></a> [platform\_url](#input\_platform\_url) | The platform url | `string` | `""` | no |
 | <a name="input_project_stage"></a> [project\_stage](#input\_project\_stage) | The platform stage | `string` | `"Dev"` | no |
 | <a name="input_queue_privatedns_zonename"></a> [queue\_privatedns\_zonename](#input\_queue\_privatedns\_zonename) | n/a | `string` | `"privatelink.queue.core.windows.net"` | no |
@@ -115,6 +114,7 @@
 | <a name="input_redis_disk_tier"></a> [redis\_disk\_tier](#input\_redis\_disk\_tier) | The tier of the managed disk | `string` | `"P6"` | no |
 | <a name="input_storage_kind"></a> [storage\_kind](#input\_storage\_kind) | n/a | `string` | `"StorageV2"` | no |
 | <a name="input_table_privatedns_zonename"></a> [table\_privatedns\_zonename](#input\_table\_privatedns\_zonename) | n/a | `string` | `"privatelink.table.core.windows.net"` | no |
+| <a name="input_tenant_group_id"></a> [tenant\_group\_id](#input\_tenant\_group\_id) | The object id of the platform group | `string` | `""` | no |
 | <a name="input_tenant_sp_name"></a> [tenant\_sp\_name](#input\_tenant\_sp\_name) | The name of the platform on which we deploy the tenant | `string` | `""` | no |
 | <a name="input_tenant_virtual_network_address_prefix"></a> [tenant\_virtual\_network\_address\_prefix](#input\_tenant\_virtual\_network\_address\_prefix) | The Virtual Network IP range. Minimum /26 NetMaskLength | `string` | `"10.40.0.0/16"` | no |
 | <a name="input_tf_access_key"></a> [tf\_access\_key](#input\_tf\_access\_key) | Variable to be used with backend remote option :<br>First set necessary vars:<br>- export TF\_VAR\_tf\_access\_key="some\_value"<br>Then call terraform init:<br>terraform init \<br>    -backend-config "resource\_group\_name=$TF\_VAR\_tf\_resource\_group\_name" \<br>    -backend-config "storage\_account\_name=$TF\_VAR\_tf\_storage\_account\_name" \<br>    -backend-config "container\_name=$TF\_VAR\_tf\_container\_name" \<br>    -backend-config "key=$TF\_VAR\_tf\_blob\_name" \<br>    -backend-config "access\_key=$TF\_VAR\_tf\_access\_key" | `string` | `""` | no |
