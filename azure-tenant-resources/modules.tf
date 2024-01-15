@@ -22,6 +22,7 @@ module "create-container-registry" {
   location            = var.location
   resource_group      = var.tenant_resource_group.name
   tenant_sp_object_id = var.tenant_sp_object_id
+  deployment_type     = var.deployment_type
 
   depends_on = [module.create-network-resources]
 }
@@ -53,6 +54,7 @@ module "create-disk" {
   tenant_sp_object_id      = var.tenant_sp_object_id
   private_dns_zone_id      = module.create-network-resources.out_blob_private_dns_zone_id
   subnet_id                = module.create-network-resources.out_subnet_id
+  deployment_type          = var.deployment_type
 
   depends_on = [module.create-network-resources]
 }

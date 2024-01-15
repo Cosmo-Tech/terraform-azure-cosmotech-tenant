@@ -36,6 +36,7 @@ module "azure-tenant-prerequisites" {
 module "azure-tenant-resources" {
   source = "./azure-tenant-resources"
 
+  deployment_type                = var.deployment_type
   subscription_id                = var.subscription_id
   location                       = var.location
   virtual_network_address_prefix = var.tenant_virtual_network_address_prefix

@@ -171,3 +171,7 @@ variable "tags" {
     cost_center = string
   })
 }
+
+variable "deployment_type" {
+  type = string
+}

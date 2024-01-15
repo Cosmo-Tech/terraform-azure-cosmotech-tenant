@@ -568,6 +568,7 @@ variable "network_client_secret" {
 variable "tenant_sp_object_id" {
   description = "The object id of the platform service principal"
   type        = string
+  default = ""
 }
 
 variable "network_sp_object_id" {

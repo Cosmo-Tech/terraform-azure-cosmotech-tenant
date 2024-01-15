@@ -20,6 +20,7 @@ resource "azurerm_container_registry" "acr" {
 }
 
 resource "azurerm_role_assignment" "acr_contributor" {
+  count = var.deployment_type != "ARM" ? 1 : 0
   scope                = azurerm_container_registry.acr.id
   role_definition_name = "Contributor"
   principal_id         = var.tenant_sp_object_id

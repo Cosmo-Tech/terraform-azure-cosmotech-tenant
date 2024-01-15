@@ -47,3 +47,7 @@ variable "private_dns_zone_id" {
 variable "subnet_id" {
   type = string
 }
+
+variable "deployment_type" {
+  type = string
+}

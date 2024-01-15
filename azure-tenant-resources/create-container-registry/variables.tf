@@ -23,3 +23,7 @@ variable "resource_group" {
 variable "tenant_sp_object_id" {
   type = string
 }
+
+variable "deployment_type" {
+  type = string
+}
