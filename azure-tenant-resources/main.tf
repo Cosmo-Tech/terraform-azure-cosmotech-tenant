@@ -22,12 +22,14 @@ resource "random_string" "random_storage_id" {
 }
 
 resource "azurerm_role_assignment" "rg_owner" {
+  count = var.deployment_type != "ARM" ? 1 : 0
   scope                = var.tenant_resource_group.id
   role_definition_name = "Owner"
   principal_id         = var.tenant_sp_object_id
 }
 
 resource "azurerm_role_assignment" "publicip_contributor" {
+  count = var.deployment_type != "ARM" ? 1 : 0
   scope                = var.tenant_resource_group.id
   role_definition_name = "Contributor"
   principal_id         = var.network_sp_object_id
