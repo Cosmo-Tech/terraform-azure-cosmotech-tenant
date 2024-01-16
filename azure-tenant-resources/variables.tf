@@ -6,7 +6,11 @@ variable "location" {
   type = string
 }
 
-variable "virtual_network_address_prefix" {
+variable "tenant_virtual_network_address_prefix" {
+  type = string
+}
+
+variable "tenant_virtual_subnet_network_address_prefix" {
   type = string
 }
 
@@ -49,7 +53,7 @@ variable "customer_name" {
 }
 
 variable "cost_center" {
-  type    = string
+  type = string
 }
 
 variable "network_sp_object_id" {
@@ -65,7 +69,7 @@ variable "vnet_resource_group" {
 }
 
 variable "create_backup" {
-  type    = bool
+  type = bool
   # default = true
 }
 
@@ -82,23 +86,23 @@ variable "create_adx" {
 }
 
 variable "blob_privatedns_zonename" {
-  type    = string
+  type = string
 }
 
 variable "queue_privatedns_zonename" {
-  type    = string
+  type = string
 }
 
 variable "table_privatedns_zonename" {
-  type    = string
+  type = string
 }
 
 variable "eventhub_privatedns_zonename" {
-  type    = string
+  type = string
 }
 
 variable "adt_privatedns_zonename" {
-  type    = string
+  type = string
 }
 
 variable "redis_disk_sku" {
@@ -110,7 +114,7 @@ variable "redis_disk_size_gb" {
 }
 
 variable "redis_disk_tier" {
-  type    = string
+  type = string
 }
 
 variable "kusto_instance_type" {

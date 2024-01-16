@@ -82,6 +82,11 @@ variable "tenant_virtual_network_address_prefix" {
   default     = "10.40.0.0/16"
 }
 
+variable "tenant_virtual_subnet_network_address_prefix" {
+  type        = string
+  default     = "10.40.0.0/24"
+}
+
 variable "redis_disk_name" {
   type    = string
   default = "cosmotech-database-disk"

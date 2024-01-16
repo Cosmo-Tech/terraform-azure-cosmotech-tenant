@@ -11,7 +11,6 @@ locals {
   backup_instance_name        = "cosmo-backup-instance-${local.cleaned_resource_group_name}"
   backup_policy_name          = "cosmo-backup-policy-${local.cleaned_resource_group_name}"
   subnet_name                 = "default"
-  vnet_iprange                = var.virtual_network_address_prefix
   tags                        = var.tags
 }
 

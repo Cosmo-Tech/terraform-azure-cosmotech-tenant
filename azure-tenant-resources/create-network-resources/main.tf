@@ -2,11 +2,11 @@ resource "azurerm_virtual_network" "tenant_vnet" {
   name                = "Cosmotech-VNET-${var.tenant_resource_group}-${var.common_resource_group}"
   location            = var.location
   resource_group_name = var.tenant_resource_group
-  address_space       = [var.virtual_network_address_prefix]
+  address_space       = [var.tenant_virtual_network_address_prefix]
 
   subnet {
     name           = var.subnet_name
-    address_prefix = var.virtual_network_address_prefix
+    address_prefix = var.tenant_virtual_subnet_network_address_prefix
   }
   tags = var.tags
 }

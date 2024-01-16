@@ -20,9 +20,13 @@ variable "location" {
   type        = string
 }
 
-variable "virtual_network_address_prefix" {
+variable "tenant_virtual_network_address_prefix" {
   description = "IP range for the virtual network"
   type        = string
+}
+
+variable "tenant_virtual_subnet_network_address_prefix" {
+  type = string
 }
 
 variable "tenant_resource_group" {

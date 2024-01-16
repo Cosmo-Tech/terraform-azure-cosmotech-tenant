@@ -36,22 +36,23 @@ module "azure-tenant-prerequisites" {
 module "azure-tenant-resources" {
   source = "./azure-tenant-resources"
 
-  deployment_type                = var.deployment_type
-  subscription_id                = var.subscription_id
-  location                       = var.location
-  virtual_network_address_prefix = var.tenant_virtual_network_address_prefix
-  managed_disk_name              = var.managed_disk_name
-  cluster_name                   = var.cluster_name
-  project_stage                  = var.project_stage
-  project_name                   = var.project_name
-  customer_name                  = var.customer_name
-  cost_center                    = var.cost_center
-  network_sp_object_id           = var.network_sp_object_id
-  storage_kind                   = var.storage_kind
-  vnet_resource_group            = var.vnet_resource_group
-  create_backup                  = var.create_backup
-  create_cosmosdb                = var.create_cosmosdb
-  create_adx                     = var.create_adx
+  deployment_type                              = var.deployment_type
+  subscription_id                              = var.subscription_id
+  location                                     = var.location
+  tenant_virtual_network_address_prefix        = var.tenant_virtual_network_address_prefix
+  tenant_virtual_subnet_network_address_prefix = var.tenant_virtual_subnet_network_address_prefix
+  managed_disk_name                            = var.managed_disk_name
+  cluster_name                                 = var.cluster_name
+  project_stage                                = var.project_stage
+  project_name                                 = var.project_name
+  customer_name                                = var.customer_name
+  cost_center                                  = var.cost_center
+  network_sp_object_id                         = var.network_sp_object_id
+  storage_kind                                 = var.storage_kind
+  vnet_resource_group                          = var.vnet_resource_group
+  create_backup                                = var.create_backup
+  create_cosmosdb                              = var.create_cosmosdb
+  create_adx                                   = var.create_adx
 
   blob_privatedns_zonename     = var.blob_privatedns_zonename
   queue_privatedns_zonename    = var.queue_privatedns_zonename

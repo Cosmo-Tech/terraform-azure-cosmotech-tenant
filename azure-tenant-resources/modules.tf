@@ -93,18 +93,19 @@ module "create-kusto" {
 module "create-network-resources" {
   source = "./create-network-resources"
 
-  tags                           = local.tags
-  subnet_name                    = local.subnet_name
-  subscription_id                = var.subscription_id
-  location                       = var.location
-  virtual_network_address_prefix = var.virtual_network_address_prefix
-  tenant_resource_group          = var.tenant_resource_group.name
-  common_resource_group          = var.common_resource_group.name
-  platform_vnet                  = var.vnet
-  networkadt_sp_object_id        = var.network_sp_object_id
-  vnet_resource_group            = var.vnet_resource_group
-  blob_privatedns_zonename       = var.blob_privatedns_zonename
-  eventhub_privatedns_zonename   = var.eventhub_privatedns_zonename
+  tags                                         = local.tags
+  subnet_name                                  = local.subnet_name
+  subscription_id                              = var.subscription_id
+  location                                     = var.location
+  tenant_virtual_subnet_network_address_prefix = var.tenant_virtual_subnet_network_address_prefix
+  tenant_virtual_network_address_prefix        = var.tenant_virtual_network_address_prefix
+  tenant_resource_group                        = var.tenant_resource_group.name
+  common_resource_group                        = var.common_resource_group.name
+  platform_vnet                                = var.vnet
+  networkadt_sp_object_id                      = var.network_sp_object_id
+  vnet_resource_group                          = var.vnet_resource_group
+  blob_privatedns_zonename                     = var.blob_privatedns_zonename
+  eventhub_privatedns_zonename                 = var.eventhub_privatedns_zonename
 }
 
 module "create-storage" {
