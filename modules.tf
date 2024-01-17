@@ -118,7 +118,7 @@ module "platform-tenant-resources" {
   location                      = var.location
   tls_secret_name               = var.tls_secret_name
   kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
-  monitoring_enabled            = var.monitoring_enabled
+  monitoring_enabled            = var.monitoring_enabled == "true" ? true : false
   monitoring_namespace          = var.monitoring_namespace
   chart_package_version         = var.chart_package_version
   tenant_resource_group         = var.tenant_resource_group

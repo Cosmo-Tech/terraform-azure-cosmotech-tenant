@@ -483,8 +483,8 @@ variable "redis_port" {
 }
 
 variable "monitoring_enabled" {
-  type = bool
-  default = true
+  type = string
+  default = "true"
 }
 
 variable "api_replicas" {
