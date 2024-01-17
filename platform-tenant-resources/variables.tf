@@ -135,3 +135,23 @@ variable "archive_ttl" {
 variable "cluster_issuer_name" {
   type    = string
 }
+
+variable "cosmotech_api_version" {
+  type = string
+}
+
+variable "cosmotech_api_ingress_enabled" {
+  type = bool
+}
+
+variable "redis_port" {
+  type = number
+}
+
+variable "monitoring_enabled" {
+  type = bool
+}
+
+variable "api_replicas" {
+  type = number
+}

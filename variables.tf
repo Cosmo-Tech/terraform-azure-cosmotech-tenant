@@ -1,7 +1,7 @@
 variable "deployment_type" {
   description = "Represents the kind of deployment. Currently two modes: ARM or Terraform"
-  type    = string
-  default = "Terraform"
+  type        = string
+  default     = "Terraform"
   validation {
     condition = contains([
       "ARM",
@@ -57,7 +57,7 @@ variable "project_name" {
 }
 
 variable "organization_name" {
-  type = string
+  type    = string
   default = ""
 }
 
@@ -83,8 +83,8 @@ variable "tenant_virtual_network_address_prefix" {
 }
 
 variable "tenant_virtual_subnet_network_address_prefix" {
-  type        = string
-  default     = "10.40.0.0/24"
+  type    = string
+  default = "10.40.0.0/24"
 }
 
 variable "redis_disk_name" {
@@ -328,6 +328,11 @@ variable "create_dnsrecord" {
 variable "api_version_path" {
   description = "The API version path"
   type        = string
+  default     = "v3"
+}
+
+variable "cosmotech_api_version" {
+  type = string
 }
 
 variable "managed_disk_name" {
@@ -434,7 +439,7 @@ variable "network_client_id" {
 variable "tenant_sp_name" {
   description = "The name of the platform on which we deploy the tenant"
   type        = string
-  default = ""
+  default     = ""
 }
 
 variable "create_vault_entries" {
@@ -465,6 +470,26 @@ variable "cluster_issuer_name" {
 
 variable "api_dns_name" {
   type = string
+}
+
+variable "cosmotech_api_ingress_enabled" {
+  type = bool
+  default = true
+}
+
+variable "redis_port" {
+  type = number
+  default = 6379
+}
+
+variable "monitoring_enabled" {
+  type = bool
+  default = true
+}
+
+variable "api_replicas" {
+  type = number
+  default = 2
 }
 
 # Backend remote vars
@@ -577,7 +602,7 @@ variable "network_client_secret" {
 variable "tenant_sp_object_id" {
   description = "The object id of the platform service principal"
   type        = string
-  default = ""
+  default     = ""
 }
 
 variable "network_sp_object_id" {
@@ -633,16 +658,16 @@ variable "adt_privatedns_zonename" {
 }
 
 variable "babylon_client_id" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "babylon_sp_object_id" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "babylon_client_secret" {
-  type = string
+  type    = string
   default = ""
 }

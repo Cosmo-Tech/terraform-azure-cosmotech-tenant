@@ -22,27 +22,32 @@ module "cert-manager" {
 module "create-cosmotech-api" {
   source = "./create-cosmotech-api"
 
-  client_id             = var.tenant_client_id
-  client_secret         = var.tenant_client_secret
-  tenant_id             = var.tenant_id
-  network_client_id     = var.network_client_id
-  network_client_secret = var.network_client_secret
-  namespace             = var.kubernetes_tenant_namespace
-  monitoring_namespace  = var.monitoring_namespace
-  api_dns_name          = var.api_dns_name
-  tls_secret_name       = var.tls_secret_name
-  acr_login_password    = var.acr_login_password
-  acr_login_server      = var.acr_login_server
-  acr_login_username    = var.acr_login_username
-  cosmos_key            = var.cosmos_key
-  cosmos_uri            = var.cosmos_uri
-  adx_uri               = var.adx_uri
-  adx_ingestion_uri     = var.adx_ingestion_uri
-  eventbus_uri          = var.eventbus_uri
-  storage_account_key   = var.storage_account_key
-  storage_account_name  = var.storage_account_name
-  chart_package_version = var.chart_package_version
-  redis_admin_password  = random_password.redis_admin_password.result
+  client_id                     = var.tenant_client_id
+  client_secret                 = var.tenant_client_secret
+  tenant_id                     = var.tenant_id
+  network_client_id             = var.network_client_id
+  network_client_secret         = var.network_client_secret
+  namespace                     = var.kubernetes_tenant_namespace
+  monitoring_enabled            = var.monitoring_enabled
+  monitoring_namespace          = var.monitoring_namespace
+  api_dns_name                  = var.api_dns_name
+  api_replicas                  = var.api_replicas
+  tls_secret_name               = var.tls_secret_name
+  acr_login_password            = var.acr_login_password
+  acr_login_server              = var.acr_login_server
+  acr_login_username            = var.acr_login_username
+  cosmos_key                    = var.cosmos_key
+  cosmos_uri                    = var.cosmos_uri
+  adx_uri                       = var.adx_uri
+  adx_ingestion_uri             = var.adx_ingestion_uri
+  eventbus_uri                  = var.eventbus_uri
+  storage_account_key           = var.storage_account_key
+  storage_account_name          = var.storage_account_name
+  chart_package_version         = var.chart_package_version
+  cosmotech_api_version         = var.cosmotech_api_version
+  cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
+  redis_admin_password          = random_password.redis_admin_password.result
+  redis_port                    = var.redis_port
 
   depends_on = [
     module.create-argo

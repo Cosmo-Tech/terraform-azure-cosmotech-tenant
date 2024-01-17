@@ -2,6 +2,14 @@ variable "namespace" {
   type = string
 }
 
+variable "api_replicas" {
+  type = number
+}
+
+variable "monitoring_enabled" {
+  type = bool
+}
+
 variable "monitoring_namespace" {
   type = string
 }
@@ -80,12 +88,10 @@ variable "network_client_secret" {
 
 variable "cosmotech_api_ingress_enabled" {
   type    = bool
-  default = true
 }
 
 variable "redis_port" {
   type    = number
-  default = 6379
 }
 
 variable "helm_chart" {
@@ -100,7 +106,6 @@ variable "helm_repository" {
 
 variable "cosmotech_api_version" {
   type    = string
-  default = "v3"
 }
 
 variable "helm_release_name" {
