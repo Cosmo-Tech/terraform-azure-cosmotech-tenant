@@ -44,9 +44,9 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_api_dns_name"></a> [api\_dns\_name](#input\_api\_dns\_name) | n/a | `string` | n/a | yes |
-| <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | The API version path | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Cluster name | `string` | n/a | yes |
 | <a name="input_common_resource_group"></a> [common\_resource\_group](#input\_common\_resource\_group) | Existing Resource group which contain common platform resources | `string` | n/a | yes |
+| <a name="input_cosmotech_api_version"></a> [cosmotech\_api\_version](#input\_cosmotech\_api\_version) | n/a | `string` | n/a | yes |
 | <a name="input_dns_record"></a> [dns\_record](#input\_dns\_record) | The DNS zone name to create platform subdomain. Example: myplatform | `string` | n/a | yes |
 | <a name="input_kubernetes_azurefile_storage_tags"></a> [kubernetes\_azurefile\_storage\_tags](#input\_kubernetes\_azurefile\_storage\_tags) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | The kubernetes namespace to create | `string` | n/a | yes |
@@ -65,6 +65,8 @@
 | <a name="input_vnet_name"></a> [vnet\_name](#input\_vnet\_name) | The virtual network of the platform common resources | `string` | n/a | yes |
 | <a name="input_vnet_resource_group"></a> [vnet\_resource\_group](#input\_vnet\_resource\_group) | n/a | `string` | n/a | yes |
 | <a name="input_adt_privatedns_zonename"></a> [adt\_privatedns\_zonename](#input\_adt\_privatedns\_zonename) | n/a | `string` | `"privatelink.digitaltwins.azure.net"` | no |
+| <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | `2` | no |
+| <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | The API version path | `string` | `"v3"` | no |
 | <a name="input_archive_ttl"></a> [archive\_ttl](#input\_archive\_ttl) | n/a | `string` | `"3d"` | no |
 | <a name="input_argo_minio_persistence_size"></a> [argo\_minio\_persistence\_size](#input\_argo\_minio\_persistence\_size) | n/a | `string` | `"16Gi"` | no |
 | <a name="input_argo_minio_requests_memory"></a> [argo\_minio\_requests\_memory](#input\_argo\_minio\_requests\_memory) | n/a | `string` | `"2Gi"` | no |
@@ -77,6 +79,7 @@
 | <a name="input_client_id"></a> [client\_id](#input\_client\_id) | The client id | `string` | `""` | no |
 | <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | The client secret | `string` | `""` | no |
 | <a name="input_cluster_issuer_name"></a> [cluster\_issuer\_name](#input\_cluster\_issuer\_name) | n/a | `string` | `"letsencrypt-prod"` | no |
+| <a name="input_cosmotech_api_ingress_enabled"></a> [cosmotech\_api\_ingress\_enabled](#input\_cosmotech\_api\_ingress\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_cost_center"></a> [cost\_center](#input\_cost\_center) | The value associated to a resource (tag) | `string` | `"NA"` | no |
 | <a name="input_create_adx"></a> [create\_adx](#input\_create\_adx) | Weither to create Azure digital explorer | `bool` | `true` | no |
 | <a name="input_create_babylon"></a> [create\_babylon](#input\_create\_babylon) | Create the Azure Active Directory Application for Babylon | `bool` | `true` | no |
@@ -103,6 +106,7 @@
 | <a name="input_kustonr_instances"></a> [kustonr\_instances](#input\_kustonr\_instances) | n/a | `number` | `2` | no |
 | <a name="input_location"></a> [location](#input\_location) | The Azure location | `string` | `"West Europe"` | no |
 | <a name="input_managed_disk_name"></a> [managed\_disk\_name](#input\_managed\_disk\_name) | Name of the managed disk to create | `string` | `""` | no |
+| <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | `"cosmotech-monitoring"` | no |
 | <a name="input_organization_name"></a> [organization\_name](#input\_organization\_name) | n/a | `string` | `""` | no |
 | <a name="input_platform_url"></a> [platform\_url](#input\_platform\_url) | The platform url | `string` | `""` | no |
@@ -112,6 +116,7 @@
 | <a name="input_redis_disk_size_gb"></a> [redis\_disk\_size\_gb](#input\_redis\_disk\_size\_gb) | The size of the managed disk to create (Gb) | `string` | `64` | no |
 | <a name="input_redis_disk_sku"></a> [redis\_disk\_sku](#input\_redis\_disk\_sku) | The SKU of the managed disk | `string` | `"Premium_LRS"` | no |
 | <a name="input_redis_disk_tier"></a> [redis\_disk\_tier](#input\_redis\_disk\_tier) | The tier of the managed disk | `string` | `"P6"` | no |
+| <a name="input_redis_port"></a> [redis\_port](#input\_redis\_port) | n/a | `number` | `6379` | no |
 | <a name="input_storage_kind"></a> [storage\_kind](#input\_storage\_kind) | n/a | `string` | `"StorageV2"` | no |
 | <a name="input_table_privatedns_zonename"></a> [table\_privatedns\_zonename](#input\_table\_privatedns\_zonename) | n/a | `string` | `"privatelink.table.core.windows.net"` | no |
 | <a name="input_tenant_group_id"></a> [tenant\_group\_id](#input\_tenant\_group\_id) | The object id of the platform group | `string` | `""` | no |
