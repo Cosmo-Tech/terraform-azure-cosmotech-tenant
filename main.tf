@@ -31,7 +31,6 @@ provider "kubectl" {
 }
 
 locals {
-  api_dns_name = "${var.dns_record}.${var.dns_zone_name}"
   kube_config  = data.azurerm_kubernetes_cluster.current.kube_config
 }
 

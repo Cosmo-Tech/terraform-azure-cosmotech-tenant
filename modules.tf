@@ -109,7 +109,7 @@ module "create-vault-entries" {
 module "platform-tenant-resources" {
   source = "./platform-tenant-resources"
 
-  api_dns_name                = local.api_dns_name
+  api_dns_name                = var.api_dns_name
   subscription_id             = var.subscription_id
   tenant_id                   = var.tenant_id
   client_id                   = var.client_id

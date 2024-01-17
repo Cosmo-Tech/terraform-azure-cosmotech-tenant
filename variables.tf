@@ -463,6 +463,10 @@ variable "cluster_issuer_name" {
   default = "letsencrypt-prod"
 }
 
+variable "api_dns_name" {
+  type = string
+}
+
 # Backend remote vars
 variable "tf_resource_group_name" {
   type        = string
