@@ -20,7 +20,7 @@ module "cert-manager" {
   api_dns_name        = var.api_dns_name
 }
 
-module "create-tls-" {
+module "create-tls" {
   source = "./create-secret-tls"
 
   count = var.tls_certificate_type == "let_s_encrypt" ? 0 : 1

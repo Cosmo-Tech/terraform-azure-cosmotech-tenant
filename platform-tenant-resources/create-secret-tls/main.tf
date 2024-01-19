@@ -1,6 +1,6 @@
 resource "kubernetes_secret" "custom-tls" { 
   metadata {
-    name      = var.tls_secret_name
+    name      = "${var.tls_secret_name}-${var.namespace}"
     namespace = var.namespace
   }
 
