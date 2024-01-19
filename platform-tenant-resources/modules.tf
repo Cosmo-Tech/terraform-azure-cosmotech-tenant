@@ -29,6 +29,10 @@ module "create-tls" {
   tls_secret_name                    = var.tls_secret_name
   tls_certificate_custom_certificate = var.tls_certificate_custom_certificate
   tls_certificate_custom_key         = var.tls_certificate_custom_key
+
+  depends_on = [
+    module.create-argo
+  ]
 }
 
 module "create-cosmotech-api" {
