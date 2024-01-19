@@ -25,10 +25,10 @@ module "create-tls-" {
 
   count = var.tls_certificate_type == "let_s_encrypt" ? 0 : 1
 
-  namespace           = var.kubernetes_tenant_namespace
-  tls_secret_name     = var.tls_secret_name
-  path_fullchain_pem  = var.path_fullchain_pem
-  path_privatekey_pem = var.path_privatekey_pem
+  namespace                          = var.kubernetes_tenant_namespace
+  tls_secret_name                    = var.tls_secret_name
+  tls_certificate_custom_certificate = var.tls_certificate_custom_certificate
+  tls_certificate_custom_key         = var.tls_certificate_custom_key
 }
 
 module "create-cosmotech-api" {

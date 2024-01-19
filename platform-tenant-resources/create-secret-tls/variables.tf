@@ -7,12 +7,12 @@ variable "tls_secret_name" {
   default = "custom-tls-secret"
 }
 
-variable "path_fullchain_pem" {
+variable "tls_certificate_custom_certificate" {
   type = string
   default = ""
 }
 
-variable "path_privatekey_pem" {
+variable "tls_certificate_custom_key" {
   type = string
   default = ""
 }

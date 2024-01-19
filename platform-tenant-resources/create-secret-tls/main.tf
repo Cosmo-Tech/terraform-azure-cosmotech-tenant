@@ -5,8 +5,8 @@ resource "kubernetes_secret" "custom-tls" {
   }
 
   data = {
-    "tls.crt" = var.path_fullchain_pem
-    "tls.key" = var.path_privatekey_pem
+    "tls.crt" = var.tls_certificate_custom_certificate
+    "tls.key" = var.tls_certificate_custom_key
   }
 
   type = "kubernetes.io/tls"

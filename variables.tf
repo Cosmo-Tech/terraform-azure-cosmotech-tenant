@@ -680,12 +680,12 @@ variable "babylon_client_secret" {
   default = ""
 }
 
-variable "tls_certificate_custom_certificate_path" {
+variable "tls_certificate_custom_certificate" {
   type = string
   default = ""
 }
 
-variable "tls_certificate_custom_key_path" {
+variable "tls_certificate_custom_key" {
   type = string
   default = ""
 }

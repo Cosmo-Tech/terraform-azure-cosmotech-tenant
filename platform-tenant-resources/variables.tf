@@ -159,12 +159,12 @@ variable "api_replicas" {
   type = number
 }
 
-variable "path_fullchain_pem" {
+variable "tls_certificate_custom_certificate" {
   type = string
   default = ""
 }
 
-variable "path_privatekey_pem" {
+variable "tls_certificate_custom_key" {
   type = string
   default = ""
 }
