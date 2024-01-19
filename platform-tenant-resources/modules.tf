@@ -20,6 +20,17 @@ module "cert-manager" {
   api_dns_name        = var.api_dns_name
 }
 
+module "create-tls-" {
+  source = "./create-secret-tls"
+
+  count = var.tls_certificate_type == "let_s_encrypt" ? 0 : 1
+
+  namespace           = var.kubernetes_tenant_namespace
+  tls_secret_name     = var.tls_secret_name
+  path_fullchain_pem  = var.path_fullchain_pem
+  path_privatekey_pem = var.path_privatekey_pem
+}
+
 module "create-cosmotech-api" {
   source = "./create-cosmotech-api"
 

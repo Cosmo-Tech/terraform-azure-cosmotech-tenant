@@ -67,7 +67,7 @@ module "azure-tenant-resources" {
   kustonr_instances        = var.kustonr_instances
   storage_tier             = split("_", var.kubernetes_azurefile_storage_class_sku)[0]
   storage_replication_type = split("_", var.kubernetes_azurefile_storage_class_sku)[1]
-  tenant_group_id          = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_group_id : var.tenant_group_id
+  tenant_group_id          = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_tenant_group_id : var.tenant_group_id
   tenant_sp_object_id      = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.tenant_sp_object_id
   tenant_resource_group    = var.deployment_type != "ARM" ? azurerm_resource_group.tenant_rg.0 : data.azurerm_resource_group.tenant_rg.0
 
@@ -118,6 +118,8 @@ module "platform-tenant-resources" {
   location                      = var.location
   tls_secret_name               = local.tls_secret_name
   tls_certificate_type          = var.tls_certificate_type
+  path_fullchain_pem            = var.tls_certificate_custom_certificate_path
+  path_privatekey_pem           = var.tls_certificate_custom_key_path
   kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
   monitoring_enabled            = var.monitoring_enabled == "true" ? true : false
   monitoring_namespace          = var.monitoring_namespace

@@ -416,11 +416,6 @@ variable "create_backup" {
   default     = false
 }
 
-variable "tls_secret_name" {
-  type    = string
-  default = "letsencrypt-prod"
-}
-
 variable "monitoring_namespace" {
   type    = string
   default = "cosmotech-monitoring"
@@ -682,5 +677,15 @@ variable "babylon_sp_object_id" {
 
 variable "babylon_client_secret" {
   type    = string
+  default = ""
+}
+
+variable "tls_certificate_custom_certificate_path" {
+  type = string
+  default = ""
+}
+
+variable "tls_certificate_custom_key_path" {
+  type = string
   default = ""
 }

@@ -158,3 +158,13 @@ variable "monitoring_enabled" {
 variable "api_replicas" {
   type = number
 }
+
+variable "path_fullchain_pem" {
+  type = string
+  default = ""
+}
+
+variable "path_privatekey_pem" {
+  type = string
+  default = ""
+}
