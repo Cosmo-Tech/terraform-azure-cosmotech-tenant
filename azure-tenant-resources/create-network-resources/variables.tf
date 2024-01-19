@@ -56,7 +56,7 @@ variable "vnet_resource_group" {
 }
 
 variable "blob_privatedns_zonename" {
-  type    = string
+  type = string
 }
 
 variable "eventhub_privatedns_zonename" {

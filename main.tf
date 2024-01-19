@@ -31,7 +31,8 @@ provider "kubectl" {
 }
 
 locals {
-  kube_config  = data.azurerm_kubernetes_cluster.current.kube_config
+  kube_config     = data.azurerm_kubernetes_cluster.current.kube_config
+  tls_secret_name = var.tls_certificate_type == "let_s_encrypt" ? var.tls_secret_name : "custom-tls-secret"
 }
 
 data "azurerm_resource_group" "current" {

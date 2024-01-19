@@ -32,7 +32,7 @@ resource "azurerm_role_assignment" "managed_disk_role_1" {
 }
 
 resource "azurerm_role_assignment" "managed_disk_role_2" {
-  count = var.deployment_type != "ARM" ? 1 : 0
+  count                = var.deployment_type != "ARM" ? 1 : 0
   scope                = azurerm_managed_disk.cosmotech-database-disk.id
   role_definition_name = "Owner"
   principal_id         = var.tenant_sp_object_id

@@ -29,7 +29,7 @@ variable "redis_disk_sku" {
 }
 
 variable "redis_disk_tier" {
-  type    = string
+  type = string
 }
 
 variable "network_sp_object_id" {

@@ -87,11 +87,11 @@ variable "network_client_secret" {
 }
 
 variable "cosmotech_api_ingress_enabled" {
-  type    = bool
+  type = bool
 }
 
 variable "redis_port" {
-  type    = number
+  type = number
 }
 
 variable "helm_chart" {
@@ -105,7 +105,7 @@ variable "helm_repository" {
 }
 
 variable "cosmotech_api_version" {
-  type    = string
+  type = string
 }
 
 variable "helm_release_name" {

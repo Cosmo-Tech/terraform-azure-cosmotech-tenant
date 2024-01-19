@@ -116,7 +116,8 @@ module "platform-tenant-resources" {
   client_id                     = var.client_id
   client_secret                 = var.client_secret
   location                      = var.location
-  tls_secret_name               = var.tls_secret_name
+  tls_secret_name               = local.tls_secret_name
+  tls_certificate_type          = var.tls_certificate_type
   kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
   monitoring_enabled            = var.monitoring_enabled == "true" ? true : false
   monitoring_namespace          = var.monitoring_namespace

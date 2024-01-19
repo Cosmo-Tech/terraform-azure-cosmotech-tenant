@@ -473,27 +473,27 @@ variable "api_dns_name" {
 }
 
 variable "cosmotech_api_ingress_enabled" {
-  type = bool
+  type    = bool
   default = true
 }
 
 variable "redis_port" {
-  type = number
+  type    = number
   default = 6379
 }
 
 variable "monitoring_enabled" {
-  type = string
+  type    = string
   default = "true"
 }
 
 variable "api_replicas" {
-  type = number
+  type    = number
   default = 2
 }
 
 variable "tls_certificate_type" {
-  type = string
+  type    = string
   default = "let_s_encrypt"
   validation {
     condition = contains([

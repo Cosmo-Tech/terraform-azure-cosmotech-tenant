@@ -125,7 +125,7 @@ variable "user_app_role" {
 }
 
 variable "image_path" {
-  type    = string
+  type = string
 }
 
 variable "chart_package_version" {
@@ -158,5 +158,5 @@ variable "create_secrets" {
 }
 
 variable "cost_center" {
-  type    = string
+  type = string
 }

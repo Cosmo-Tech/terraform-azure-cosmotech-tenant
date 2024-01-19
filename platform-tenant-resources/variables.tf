@@ -23,11 +23,14 @@ variable "client_secret" {
 }
 
 variable "location" {
-  type    = string
+  type = string
 }
 
 variable "tls_secret_name" {
-  type    = string
+  type = string
+}
+
+variable "tls_certificate_type" {
 }
 
 variable "kubernetes_tenant_namespace" {
@@ -39,7 +42,7 @@ variable "monitoring_namespace" {
 }
 
 variable "chart_package_version" {
-  type    = string
+  type = string
 }
 
 variable "tenant_resource_group" {
@@ -54,11 +57,11 @@ variable "redis_disk_sku" {
 }
 
 variable "argo_minio_persistence_size" {
-  type    = string
+  type = string
 }
 
 variable "argo_minio_requests_memory" {
-  type    = string
+  type = string
 }
 
 variable "network_client_id" {
@@ -129,11 +132,11 @@ variable "kube_config" {
 }
 
 variable "archive_ttl" {
-  type    = string
+  type = string
 }
 
 variable "cluster_issuer_name" {
-  type    = string
+  type = string
 }
 
 variable "cosmotech_api_version" {

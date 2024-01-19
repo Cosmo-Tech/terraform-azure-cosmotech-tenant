@@ -13,9 +13,10 @@ module "create-argo" {
 module "cert-manager" {
   source = "./create-cert-manager"
 
+  count               = var.tls_certificate_type == "let_s_encrypt" ? 1 : 0
   namespace           = var.kubernetes_tenant_namespace
   cluster_issuer_name = var.cluster_issuer_name
-  tls_secret_name     = var.tls_secret_name
+  tls_secret_name     = local.tls_secret_name
   api_dns_name        = var.api_dns_name
 }
 
@@ -32,7 +33,7 @@ module "create-cosmotech-api" {
   monitoring_namespace          = var.monitoring_namespace
   api_dns_name                  = var.api_dns_name
   api_replicas                  = var.api_replicas
-  tls_secret_name               = var.tls_secret_name
+  tls_secret_name               = local.tls_secret_name
   acr_login_password            = var.acr_login_password
   acr_login_server              = var.acr_login_server
   acr_login_username            = var.acr_login_username
