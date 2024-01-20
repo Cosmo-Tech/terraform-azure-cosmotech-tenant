@@ -1,5 +1,5 @@
 resource "azurerm_virtual_network" "tenant_vnet" {
-  name                = "Cosmotech-VNET-${var.tenant_resource_group}-${var.common_resource_group}"
+  name                = "Cosmotech-VNET-${var.tenant_resource_group}"
   location            = var.location
   resource_group_name = var.tenant_resource_group
   address_space       = [var.tenant_virtual_network_address_prefix]
