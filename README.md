@@ -43,6 +43,7 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_dns_record"></a> [dns\_record](#input\_dns\_record) | The DNS zone name to create platform subdomain. Example: myplatform | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The kubernetes namespace to create | `string` | n/a | yes |
 | <a name="input_owner_list"></a> [owner\_list](#input\_owner\_list) | List of mail addresses for App Registration owners | `list(string)` | n/a | yes |
 | <a name="input_platform_public_ip"></a> [platform\_public\_ip](#input\_platform\_public\_ip) | The public IP resource of the platform | `string` | n/a | yes |
@@ -78,7 +79,6 @@
 | <a name="input_disk_size_gb"></a> [disk\_size\_gb](#input\_disk\_size\_gb) | The size of the managed disk to create (Gb) | `string` | `"64"` | no |
 | <a name="input_disk_sku"></a> [disk\_sku](#input\_disk\_sku) | The SKU of the managed disk | `string` | `"Premium_LRS"` | no |
 | <a name="input_disk_tier"></a> [disk\_tier](#input\_disk\_tier) | The tier of the managed disk | `string` | `"P6"` | no |
-| <a name="input_dns_record"></a> [dns\_record](#input\_dns\_record) | The DNS zone name to create platform subdomain. Example: myplatform | `string` | `""` | no |
 | <a name="input_dns_zone_name"></a> [dns\_zone\_name](#input\_dns\_zone\_name) | The DNS zone name to create platform subdomain. Example: api.cosmotech.com | `string` | `"api.cosmotech.com"` | no |
 | <a name="input_dns_zone_rg"></a> [dns\_zone\_rg](#input\_dns\_zone\_rg) | The DNS zone resource group | `string` | `"phoenix"` | no |
 | <a name="input_identifier_uri"></a> [identifier\_uri](#input\_identifier\_uri) | The platform identifier uri | `string` | `""` | no |
