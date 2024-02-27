@@ -43,6 +43,8 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_adx_ingestion_uri"></a> [adx\_ingestion\_uri](#input\_adx\_ingestion\_uri) | n/a | `string` | n/a | yes |
+| <a name="input_adx_uri"></a> [adx\_uri](#input\_adx\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The kubernetes namespace to create | `string` | n/a | yes |
 | <a name="input_owner_list"></a> [owner\_list](#input\_owner\_list) | List of mail addresses for App Registration owners | `list(string)` | n/a | yes |
 | <a name="input_platform_public_ip"></a> [platform\_public\_ip](#input\_platform\_public\_ip) | The public IP resource of the platform | `string` | n/a | yes |
@@ -107,7 +109,6 @@
 | Name | Description |
 |------|-------------|
 | <a name="output_acr_login_server"></a> [acr\_login\_server](#output\_acr\_login\_server) | n/a |
-| <a name="output_adx_uri"></a> [adx\_uri](#output\_adx\_uri) | n/a |
 | <a name="output_babylon_client_id"></a> [babylon\_client\_id](#output\_babylon\_client\_id) | n/a |
 | <a name="output_babylon_principal_id"></a> [babylon\_principal\_id](#output\_babylon\_principal\_id) | n/a |
 | <a name="output_babylon_secret"></a> [babylon\_secret](#output\_babylon\_secret) | n/a |
@@ -116,7 +117,6 @@
 | <a name="output_managed_disk_id"></a> [managed\_disk\_id](#output\_managed\_disk\_id) | n/a |
 | <a name="output_out_acr_login_password"></a> [out\_acr\_login\_password](#output\_out\_acr\_login\_password) | n/a |
 | <a name="output_out_acr_login_username"></a> [out\_acr\_login\_username](#output\_out\_acr\_login\_username) | n/a |
-| <a name="output_out_adx_ingestion_uri"></a> [out\_adx\_ingestion\_uri](#output\_out\_adx\_ingestion\_uri) | n/a |
 | <a name="output_out_cosmos_key"></a> [out\_cosmos\_key](#output\_out\_cosmos\_key) | n/a |
 | <a name="output_out_cosmos_uri"></a> [out\_cosmos\_uri](#output\_out\_cosmos\_uri) | n/a |
 | <a name="output_out_eventbus_uri"></a> [out\_eventbus\_uri](#output\_out\_eventbus\_uri) | n/a |
