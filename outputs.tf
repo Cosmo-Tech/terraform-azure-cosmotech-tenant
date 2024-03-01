@@ -44,7 +44,7 @@ output "out_ip_resource_group" {
 }
 
 output "out_networkadt_clientid" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_networkadt_clientid : null
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_network_adt_clientid : null
 }
 
 output "out_network_adt_password" {
