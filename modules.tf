@@ -77,7 +77,7 @@ module "platform-tenant-resources" {
   cosmos_uri                = module.azure-tenant-resources.cosmos_uri
   cosmos_key                = module.azure-tenant-resources.cosmos_key
   eventbus_uri              = module.azure-tenant-resources.eventbus_uri
-  network_adt_clientid      = module.azure-tenant-prerequisites.0.out_networkadt_clientid
+  network_adt_clientid      = module.azure-tenant-prerequisites.0.out_network_adt_clientid
   network_adt_password      = module.azure-tenant-prerequisites.0.out_network_adt_password
   platform_sp_client_id     = module.azure-tenant-prerequisites.0.out_platform_sp_client_id
   platform_sp_client_secret = module.azure-tenant-prerequisites.0.out_platform_sp_client_secret
