@@ -15,7 +15,6 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azuread"></a> [azuread](#provider\_azuread) | 2.38.0 |
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~>3.54.0 |
 
 ## Modules
@@ -32,7 +31,6 @@
 | Name | Type |
 |------|------|
 | [azurerm_resource_group.tenant_rg](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
-| [azuread_service_principal.platform](https://registry.terraform.io/providers/hashicorp/azuread/2.38.0/docs/data-sources/service_principal) | data source |
 | [azurerm_kubernetes_cluster.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/kubernetes_cluster) | data source |
 | [azurerm_public_ip.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/public_ip) | data source |
 | [azurerm_resource_group.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
@@ -51,15 +49,11 @@
 | <a name="input_kubernetes_azurefile_storage_tags"></a> [kubernetes\_azurefile\_storage\_tags](#input\_kubernetes\_azurefile\_storage\_tags) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | The kubernetes namespace to create | `string` | n/a | yes |
 | <a name="input_network_client_id"></a> [network\_client\_id](#input\_network\_client\_id) | n/a | `string` | n/a | yes |
-| <a name="input_network_client_secret"></a> [network\_client\_secret](#input\_network\_client\_secret) | n/a | `string` | n/a | yes |
-| <a name="input_network_sp_object_id"></a> [network\_sp\_object\_id](#input\_network\_sp\_object\_id) | The object id of the network service principal | `string` | n/a | yes |
 | <a name="input_owner_list"></a> [owner\_list](#input\_owner\_list) | List of mail addresses for App Registration owners | `list(string)` | n/a | yes |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The project name | `any` | n/a | yes |
 | <a name="input_public_ip_name"></a> [public\_ip\_name](#input\_public\_ip\_name) | The public IP resource of the platform | `string` | n/a | yes |
 | <a name="input_publicip_resource_group"></a> [publicip\_resource\_group](#input\_publicip\_resource\_group) | n/a | `string` | n/a | yes |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | The subscription id | `any` | n/a | yes |
-| <a name="input_tenant_client_id"></a> [tenant\_client\_id](#input\_tenant\_client\_id) | n/a | `string` | n/a | yes |
-| <a name="input_tenant_client_secret"></a> [tenant\_client\_secret](#input\_tenant\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | The tenant id | `any` | n/a | yes |
 | <a name="input_tenant_resource_group"></a> [tenant\_resource\_group](#input\_tenant\_resource\_group) | Resource group to create which will contain created Azure resources for this tenant | `string` | n/a | yes |
 | <a name="input_vnet_name"></a> [vnet\_name](#input\_vnet\_name) | The virtual network of the platform common resources | `string` | n/a | yes |
@@ -89,7 +83,7 @@
 | <a name="input_create_powerbi"></a> [create\_powerbi](#input\_create\_powerbi) | Create the Azure Active Directory Application for PowerBI | `bool` | `false` | no |
 | <a name="input_create_publicip"></a> [create\_publicip](#input\_create\_publicip) | Create the public IP for the platform | `bool` | `false` | no |
 | <a name="input_create_restish"></a> [create\_restish](#input\_create\_restish) | Create the Azure Active Directory Application for Restish | `bool` | `false` | no |
-| <a name="input_create_secrets"></a> [create\_secrets](#input\_create\_secrets) | Create secrets for newly created app registrations | `bool` | `false` | no |
+| <a name="input_create_secrets"></a> [create\_secrets](#input\_create\_secrets) | Create secrets for newly created app registrations | `bool` | `true` | no |
 | <a name="input_create_vault_entries"></a> [create\_vault\_entries](#input\_create\_vault\_entries) | Custom module used to automatically retrieve Cosmo Tech Platform values and fill Vault in order to be used by Babylon | `bool` | `false` | no |
 | <a name="input_create_webapp"></a> [create\_webapp](#input\_create\_webapp) | Create the Azure Active Directory Application for WebApp | `bool` | `false` | no |
 | <a name="input_customer_name"></a> [customer\_name](#input\_customer\_name) | The customer name | `string` | `"cosmotech"` | no |
@@ -108,6 +102,8 @@
 | <a name="input_managed_disk_name"></a> [managed\_disk\_name](#input\_managed\_disk\_name) | Name of the managed disk to create | `string` | `""` | no |
 | <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `string` | `"true"` | no |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | `"cosmotech-monitoring"` | no |
+| <a name="input_network_client_secret"></a> [network\_client\_secret](#input\_network\_client\_secret) | n/a | `string` | `""` | no |
+| <a name="input_network_sp_object_id"></a> [network\_sp\_object\_id](#input\_network\_sp\_object\_id) | The object id of the network service principal | `string` | `""` | no |
 | <a name="input_organization_name"></a> [organization\_name](#input\_organization\_name) | n/a | `string` | `""` | no |
 | <a name="input_platform_url"></a> [platform\_url](#input\_platform\_url) | The platform url | `string` | `""` | no |
 | <a name="input_project_stage"></a> [project\_stage](#input\_project\_stage) | The platform stage | `string` | `"Dev"` | no |
@@ -119,6 +115,8 @@
 | <a name="input_redis_port"></a> [redis\_port](#input\_redis\_port) | n/a | `number` | `6379` | no |
 | <a name="input_storage_kind"></a> [storage\_kind](#input\_storage\_kind) | n/a | `string` | `"StorageV2"` | no |
 | <a name="input_table_privatedns_zonename"></a> [table\_privatedns\_zonename](#input\_table\_privatedns\_zonename) | n/a | `string` | `"privatelink.table.core.windows.net"` | no |
+| <a name="input_tenant_client_id"></a> [tenant\_client\_id](#input\_tenant\_client\_id) | n/a | `string` | `""` | no |
+| <a name="input_tenant_client_secret"></a> [tenant\_client\_secret](#input\_tenant\_client\_secret) | n/a | `string` | `""` | no |
 | <a name="input_tenant_group_id"></a> [tenant\_group\_id](#input\_tenant\_group\_id) | The object id of the platform group | `string` | `""` | no |
 | <a name="input_tenant_sp_name"></a> [tenant\_sp\_name](#input\_tenant\_sp\_name) | The name of the platform on which we deploy the tenant | `string` | `""` | no |
 | <a name="input_tenant_sp_object_id"></a> [tenant\_sp\_object\_id](#input\_tenant\_sp\_object\_id) | The object id of the platform service principal | `string` | `""` | no |
