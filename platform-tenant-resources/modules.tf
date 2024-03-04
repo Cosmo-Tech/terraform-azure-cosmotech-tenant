@@ -87,7 +87,7 @@ module "create-postgresql-db" {
   namespace                = var.kubernetes_tenant_namespace
   monitoring_namespace     = var.monitoring_namespace
   argo_postgresql_password = random_password.argo_postgresql_password.result
-  depends_on = [ module.create-minio ]
+  depends_on               = [module.create-minio]
 }
 
 module "create-redis-stack" {
@@ -97,6 +97,6 @@ module "create-redis-stack" {
   namespace            = var.kubernetes_tenant_namespace
   managed_disk_id      = var.managed_disk_id
   redis_disk_name      = var.redis_disk_name
-  depends_on = [ module.create-postgresql-db ]
+  depends_on           = [module.create-postgresql-db]
 
 }

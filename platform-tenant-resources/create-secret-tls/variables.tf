@@ -8,11 +8,11 @@ variable "tls_secret_name" {
 }
 
 variable "tls_certificate_custom_certificate" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "tls_certificate_custom_key" {
-  type = string
+  type    = string
   default = ""
 }

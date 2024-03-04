@@ -160,11 +160,11 @@ variable "api_replicas" {
 }
 
 variable "tls_certificate_custom_certificate" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "tls_certificate_custom_key" {
-  type = string
+  type    = string
   default = ""
 }

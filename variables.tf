@@ -359,7 +359,7 @@ variable "create_webapp" {
 variable "create_secrets" {
   description = "Create secrets for newly created app registrations"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "redis_disk_size_gb" {
@@ -606,6 +606,7 @@ variable "tenant_group_id" {
 
 variable "network_client_secret" {
   type = string
+  default = ""
 }
 variable "tenant_sp_object_id" {
   description = "The object id of the platform service principal"
@@ -616,6 +617,7 @@ variable "tenant_sp_object_id" {
 variable "network_sp_object_id" {
   description = "The object id of the network service principal"
   type        = string
+  default = ""
 }
 
 variable "kubernetes_azurefile_storage_tags" {
@@ -629,10 +631,12 @@ variable "storage_kind" {
 
 variable "tenant_client_id" {
   type = string
+  default = ""
 }
 
 variable "tenant_client_secret" {
   type = string
+  default = ""
 }
 
 variable "blob_privatedns_zonename" {
@@ -681,11 +685,11 @@ variable "babylon_client_secret" {
 }
 
 variable "tls_certificate_custom_certificate" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "tls_certificate_custom_key" {
-  type = string
+  type    = string
   default = ""
 }

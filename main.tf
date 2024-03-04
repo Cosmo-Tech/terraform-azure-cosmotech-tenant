@@ -54,10 +54,10 @@ data "azurerm_virtual_network" "current" {
   resource_group_name = var.vnet_resource_group
 }
 
-data "azuread_service_principal" "platform" {
-  count        = var.deployment_type != "ARM" ? 1 : 0
-  display_name = var.tenant_sp_name
-}
+# data "azuread_service_principal" "platform" {
+#   count        = var.deployment_type != "ARM" ? 1 : 0
+#   display_name = var.tenant_sp_name
+# }
 
 resource "azurerm_resource_group" "tenant_rg" {
   count    = var.deployment_type != "ARM" ? 1 : 0

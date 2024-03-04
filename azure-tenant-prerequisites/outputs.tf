@@ -53,16 +53,16 @@ output "out_swagger_clientid" {
 }
 
 output "out_restish_password" {
-  value     = var.create_secrets ? azuread_application_password.restish_password[0].value : null
+  value     = var.create_secrets && var.create_restish ? azuread_application_password.restish_password[0].value : null
   sensitive = true
 }
 
 output "out_restish_name" {
-  value = azuread_application.restish[0].display_name
+  value = var.create_restish ? azuread_application.restish[0].display_name : null
 }
 
 output "out_restish_clientid" {
-  value = azuread_application.restish[0].application_id
+  value = var.create_restish ? azuread_application.restish[0].application_id : null
 }
 
 output "out_powerbi_name" {
@@ -112,5 +112,5 @@ output "out_babylon_secret" {
 }
 
 output "out_cosmos_api_url" {
-  value = local.identifier_uri
+  value = "https://${var.dns_record}.${var.dns_zone_name}/cosmotech-api/${var.tenant_resource_group}/v3"
 }
