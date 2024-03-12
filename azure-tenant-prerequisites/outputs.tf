@@ -27,7 +27,7 @@ output "out_networkadt_sp_objectid" {
   value = azuread_service_principal.network_adt.object_id
 }
 
-output "out_networkadt_clientid" {
+output "out_network_adt_clientid" {
   value = azuread_application.network_adt.application_id
 }
 
