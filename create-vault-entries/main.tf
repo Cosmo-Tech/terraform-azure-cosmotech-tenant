@@ -13,7 +13,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: create-vault-entries-pod
-  namespace: ${var.namespace}
+  namespace: ${var.kubernetes_tenant_namespace}
 spec:
   containers:
   - name: create-vault-entries-pod

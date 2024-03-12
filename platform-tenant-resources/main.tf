@@ -1,6 +1,10 @@
+locals {
+  tls_secret_name = var.tls_certificate_type != "none" ? var.tls_secret_name : ""
+}
+
 resource "kubernetes_namespace" "main_namespace" {
   metadata {
-    name = var.namespace
+    name = var.kubernetes_tenant_namespace
   }
 }
 

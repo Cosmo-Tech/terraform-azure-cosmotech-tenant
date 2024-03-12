@@ -1,15 +1,3 @@
-variable "location" {
-  type = string
-}
-
-variable "resource_group" {
-  type = string
-}
-
-variable "container_name" {
-  type = string
-}
-
 variable "tags" {
   type = object({
     vendor      = string
@@ -20,6 +8,22 @@ variable "tags" {
   })
 }
 
-variable "principal_id" {
+variable "container_name" {
+  type = string
+}
+
+variable "location" {
+  type = string
+}
+
+variable "resource_group" {
+  type = string
+}
+
+variable "tenant_sp_object_id" {
+  type = string
+}
+
+variable "deployment_type" {
   type = string
 }

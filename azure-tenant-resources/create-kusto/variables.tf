@@ -1,15 +1,3 @@
-variable "location" {
-  type = string
-}
-
-variable "resource_group" {
-  type = string
-}
-
-variable "kusto_name" {
-  type = string
-}
-
 variable "tags" {
   type = object({
     vendor      = string
@@ -20,10 +8,35 @@ variable "tags" {
   })
 }
 
-variable "subnet_id" {
+variable "kusto_name" {
   type = string
+}
+
+variable "location" {
+  type = string
+}
+
+variable "tenant_resource_group" {
+  type = string
+}
+
+variable "kusto_instance_type" {
+  type = string
+}
+
+variable "kustonr_instances" {
+  type = number
 }
 
 variable "private_dns_zone_id" {
   type = string
 }
+
+variable "subnet_id" {
+  type = string
+}
+
+
+
+
+

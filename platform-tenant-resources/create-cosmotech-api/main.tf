@@ -1,5 +1,7 @@
 locals {
   values_cosmotech_api = {
+    "API_REPLICAS"                  = var.api_replicas
+    "MONITORING_ENABLED"            = var.monitoring_enabled
     "MONITORING_NAMESPACE"          = var.monitoring_namespace
     "CHART_PACKAGE_VERSION"         = var.chart_package_version
     "TLS_SECRET_NAME"               = local.tls_secret_name
@@ -25,8 +27,8 @@ locals {
     "EVENTBUS_URI"                  = var.eventbus_uri
     "STORAGE_ACCOUNT_KEY"           = var.storage_account_key
     "STORAGE_ACCOUNT_NAME"          = var.storage_account_name
-    "NETWORK_ADT_PASSWORD"          = var.network_adt_password
-    "NETWORK_ADT_CLIENTID"          = var.network_adt_clientid
+    "NETWORK_ADT_PASSWORD"          = var.network_client_secret
+    "NETWORK_ADT_CLIENTID"          = var.network_client_id
     "MULTI_TENANT"                  = var.is_multitenant
   }
   instance_name        = "${var.helm_release_name}-${var.namespace}"

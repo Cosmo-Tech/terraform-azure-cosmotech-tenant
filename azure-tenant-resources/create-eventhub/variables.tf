@@ -1,15 +1,3 @@
-variable "location" {
-  type = string
-}
-
-variable "resource_group" {
-  type = string
-}
-
-variable "eventhub_name" {
-  type = string
-}
-
 variable "tags" {
   type = object({
     vendor      = string
@@ -20,10 +8,26 @@ variable "tags" {
   })
 }
 
-variable "subnet_id" {
+variable "eventhub_name" {
+  type = string
+}
+
+variable "location" {
+  type = string
+}
+
+variable "tenant_resource_group" {
   type = string
 }
 
 variable "private_dns_zone_id" {
+  type = string
+}
+
+variable "subnet_id" {
+  type = string
+}
+
+variable "common_resource_group" {
   type = string
 }

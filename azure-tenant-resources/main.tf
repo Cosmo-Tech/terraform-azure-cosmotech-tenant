@@ -11,14 +11,7 @@ locals {
   backup_instance_name        = "cosmo-backup-instance-${local.cleaned_resource_group_name}"
   backup_policy_name          = "cosmo-backup-policy-${local.cleaned_resource_group_name}"
   subnet_name                 = "default"
-  vnet_iprange                = var.vnet_iprange != "" ? var.vnet_iprange : "10.10.0.0/16"
-  tags = {
-    vendor      = "cosmotech"
-    stage       = var.project_stage
-    customer    = var.customer_name
-    project     = var.project_name
-    cost_center = var.cost_center
-  }
+  tags                        = var.tags
 }
 
 resource "random_string" "random_storage_id" {
@@ -28,19 +21,21 @@ resource "random_string" "random_storage_id" {
 }
 
 resource "azurerm_role_assignment" "rg_owner" {
+  count                = var.deployment_type != "ARM" ? 1 : 0
   scope                = var.tenant_resource_group.id
   role_definition_name = "Owner"
-  principal_id         = var.platform_group_id
+  principal_id         = var.tenant_sp_object_id
 }
 
 resource "azurerm_role_assignment" "publicip_contributor" {
+  count                = var.deployment_type != "ARM" ? 1 : 0
   scope                = var.tenant_resource_group.id
   role_definition_name = "Contributor"
-  principal_id         = var.networkadt_sp_object_id
+  principal_id         = var.network_sp_object_id
 }
 
-resource "azurerm_role_assignment" "publicip_owner" {
-  scope                = var.platform_public_ip
-  role_definition_name = "Owner"
-  principal_id         = var.principal_id
-}
+# resource "azurerm_role_assignment" "publicip_owner" {
+#   scope                = var.public_ip_id
+#   role_definition_name = "Owner"
+#   principal_id         = var.network_sp_object_id
+# }

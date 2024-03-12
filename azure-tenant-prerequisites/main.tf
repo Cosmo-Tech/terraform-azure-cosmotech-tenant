@@ -1,11 +1,11 @@
 locals {
   pre_name       = "Cosmo Tech "
-  post_name      = " ${var.platform_resource_group} For ${var.tenant_resource_group}"
+  post_name      = " ${var.common_resource_group} For ${var.tenant_resource_group}"
   subnet_name    = "default"
   identifier_uri = "https://${var.dns_record}.${var.dns_zone_name}/${var.tenant_resource_group}"
   platform_url   = var.platform_url != "" ? var.platform_url : "https://${var.dns_record}.${var.dns_zone_name}"
   webapp_url     = var.webapp_url != "" ? var.webapp_url : "https://${var.dns_record}.app.cosmotech.com"
-  vnet_iprange   = var.vnet_iprange != "" ? var.vnet_iprange : "10.10.0.0/16"
+  vnet_iprange   = var.virtual_network_address_prefix
   tags = {
     vendor      = "cosmotech"
     stage       = var.project_stage
@@ -39,7 +39,7 @@ resource "azuread_application" "platform" {
   }
 
   single_page_application {
-    redirect_uris = ["${local.platform_url}${var.api_version_path}swagger-ui/oauth2-redirect.html"]
+    redirect_uris = ["${local.platform_url}/${var.api_version_path}/swagger-ui/oauth2-redirect.html"]
   }
 
   web {
@@ -153,7 +153,7 @@ resource "azuread_application" "swagger" {
 
   single_page_application {
     redirect_uris = [
-      "${local.platform_url}/cosmotech-api/${var.tenant_resource_group}${var.api_version_path}swagger-ui/oauth2-redirect.html"
+      "${local.platform_url}/cosmotech-api/${var.tenant_resource_group}/${var.api_version_path}/swagger-ui/oauth2-redirect.html"
     ]
   }
 
@@ -288,7 +288,7 @@ resource "azuread_service_principal" "webapp" {
 
 # create the Azure AD resource group
 resource "azuread_group" "platform_group" {
-  display_name     = "Cosmotech-Platform-${var.tenant_resource_group}-${var.platform_resource_group}"
+  display_name     = "Cosmotech-Platform-${var.tenant_resource_group}-${var.common_resource_group}"
   owners           = data.azuread_users.owners.object_ids
   security_enabled = true
   members          = data.azuread_users.owners.object_ids

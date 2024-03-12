@@ -1,42 +1,3 @@
-variable "location" {
-  type = string
-}
-
-variable "resource_group" {
-  type = string
-}
-
-variable "private_dns_zone_id" {
-  type = string
-}
-
-variable "principal_id" {
-  type = string
-}
-
-variable "disk_size_gb" {
-  type    = string
-  default = "64"
-}
-
-variable "disk_sku" {
-  type    = string
-  default = "Premium_LRS"
-}
-
-variable "disk_tier" {
-  type    = string
-  default = "P6"
-}
-
-variable "subnet_id" {
-  type = string
-}
-
-variable "tenant_managed_disk_name" {
-  type = string
-}
-
 variable "tags" {
   type = object({
     vendor      = string
@@ -47,6 +8,46 @@ variable "tags" {
   })
 }
 
-variable "platform_sp_object_id" {
+variable "tenant_managed_disk_name" {
+  type = string
+}
+
+variable "location" {
+  type = string
+}
+
+variable "tenant_resource_group" {
+  type = string
+}
+
+variable "redis_disk_size_gb" {
+  type = number
+}
+
+variable "redis_disk_sku" {
+  type = string
+}
+
+variable "redis_disk_tier" {
+  type = string
+}
+
+variable "network_sp_object_id" {
+  type = string
+}
+
+variable "tenant_sp_object_id" {
+  type = string
+}
+
+variable "private_dns_zone_id" {
+  type = string
+}
+
+variable "subnet_id" {
+  type = string
+}
+
+variable "deployment_type" {
   type = string
 }

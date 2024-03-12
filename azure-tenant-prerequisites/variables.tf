@@ -16,7 +16,6 @@ variable "client_secret" {
 variable "platform_url" {
   description = "The platform url"
   type        = string
-  default     = ""
 }
 
 variable "identifier_uri" {
@@ -44,11 +43,6 @@ variable "project_stage" {
   }
 }
 
-variable "customer_name" {
-  description = "The customer name"
-  type        = string
-}
-
 variable "project_name" {
   description = "The project name"
   type        = string
@@ -69,12 +63,6 @@ variable "audience" {
     ], var.audience)
     error_message = "Only AzureADMyOrg and AzureADMultipleOrgs are supported for audience."
   }
-  default = "AzureADMultipleOrgs"
-}
-
-variable "location" {
-  description = "The Azure location"
-  default     = "West Europe"
 }
 
 variable "webapp_url" {
@@ -82,33 +70,8 @@ variable "webapp_url" {
   type        = string
 }
 
-variable "create_restish" {
-  description = "Create the Azure Active Directory Application for Restish"
-  type        = bool
-  default     = true
-}
-
-variable "create_powerbi" {
-  description = "Create the Azure Active Directory Application for PowerBI"
-  type        = bool
-  default     = true
-}
-
-variable "create_babylon" {
-  description = "Create the Azure Active Directory Application for Babylon"
-  type        = bool
-  default     = true
-}
-
-variable "create_webapp" {
-  description = "Create the Azure Active Directory Application for WebApp"
-  type        = bool
-  default     = true
-}
-
-variable "platform_resource_group" {
-  description = "Existing Resource group which contain common platform resources"
-  type        = string
+variable "location" {
+  description = "The Azure location"
 }
 
 variable "tenant_resource_group" {
@@ -116,10 +79,14 @@ variable "tenant_resource_group" {
   type        = string
 }
 
-variable "create_secrets" {
-  description = "Create secret for application registrtations"
-  type        = bool
-  default     = true
+variable "common_resource_group" {
+  description = "Existing Resource group which contain common platform resources"
+  type        = string
+}
+
+variable "dns_record" {
+  description = "The DNS zone name to create platform subdomain. Example: myplatform"
+  type        = string
 }
 
 variable "dns_zone_name" {
@@ -132,12 +99,7 @@ variable "dns_zone_rg" {
   type        = string
 }
 
-variable "dns_record" {
-  description = "The DNS zone name to create platform subdomain. Example: myplatform"
-  type        = string
-}
-
-variable "vnet_iprange" {
+variable "virtual_network_address_prefix" {
   description = "The Virtual Network IP range. Minimum /26 NetMaskLength"
   type        = string
 }
@@ -145,29 +107,56 @@ variable "vnet_iprange" {
 variable "api_version_path" {
   description = "The API version path"
   type        = string
-  default     = "/v3/"
+}
+
+variable "customer_name" {
+  description = "The customer name"
+  type        = string
 }
 
 variable "user_app_role" {
+  description = "App role for azuread_application"
   type = list(object({
     description  = string
     display_name = string
     id           = string
     role_value   = string
   }))
-  description = "App role for azuread_application"
 }
 
 variable "image_path" {
-  type    = string
-  default = "./cosmotech.png"
-}
-
-variable "cost_center" {
-  type    = string
-  default = "NA"
+  type = string
 }
 
 variable "chart_package_version" {
+  type = string
+}
+
+variable "create_restish" {
+  description = "Create the Azure Active Directory Application for Restish"
+  type        = bool
+}
+
+variable "create_powerbi" {
+  description = "Create the Azure Active Directory Application for PowerBI"
+  type        = bool
+}
+
+variable "create_babylon" {
+  description = "Create the Azure Active Directory Application for Babylon"
+  type        = bool
+}
+
+variable "create_webapp" {
+  description = "Create the Azure Active Directory Application for WebApp"
+  type        = bool
+}
+
+variable "create_secrets" {
+  description = "Create secret for application registrtations"
+  type        = bool
+}
+
+variable "cost_center" {
   type = string
 }

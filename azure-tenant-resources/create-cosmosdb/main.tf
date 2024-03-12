@@ -3,7 +3,7 @@ resource "azurerm_cosmosdb_account" "cosmosdb" {
   name                = var.cosmosdb_name
   location            = var.location
   kind                = "GlobalDocumentDB"
-  resource_group_name = var.resource_group
+  resource_group_name = var.tenant_resource_group
   tags                = var.tags
 
   geo_location {

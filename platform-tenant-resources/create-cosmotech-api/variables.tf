@@ -2,6 +2,14 @@ variable "namespace" {
   type = string
 }
 
+variable "api_replicas" {
+  type = number
+}
+
+variable "monitoring_enabled" {
+  type = bool
+}
+
 variable "monitoring_namespace" {
   type = string
 }
@@ -70,22 +78,20 @@ variable "storage_account_name" {
   type = string
 }
 
-variable "network_adt_clientid" {
+variable "network_client_id" {
   type = string
 }
 
-variable "network_adt_password" {
+variable "network_client_secret" {
   type = string
 }
 
 variable "cosmotech_api_ingress_enabled" {
-  type    = bool
-  default = true
+  type = bool
 }
 
 variable "redis_port" {
-  type    = number
-  default = 6379
+  type = number
 }
 
 variable "helm_chart" {
@@ -99,8 +105,7 @@ variable "helm_repository" {
 }
 
 variable "cosmotech_api_version" {
-  type    = string
-  default = "v3"
+  type = string
 }
 
 variable "helm_release_name" {

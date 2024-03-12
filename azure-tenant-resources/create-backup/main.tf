@@ -1,6 +1,6 @@
 resource "azurerm_data_protection_backup_vault" "vault" {
   name                = "cosmo-backup-vault"
-  resource_group_name = var.resource_group
+  resource_group_name = var.tenant_resource_group
   location            = var.location
   datastore_type      = "VaultStore"
   redundancy          = "LocallyRedundant"
@@ -37,7 +37,7 @@ resource "azurerm_data_protection_backup_policy_disk" "backup_policy" {
 }
 
 resource "azurerm_role_assignment" "snapshot_role" {
-  scope                = var.resource_group_id
+  scope                = var.tenant_resource_group_id
   role_definition_name = "Disk Snapshot Contributor"
   principal_id         = azurerm_data_protection_backup_vault.vault.identity.0.principal_id
 }
@@ -53,6 +53,6 @@ resource "azurerm_data_protection_backup_instance_disk" "instance" {
   location                     = var.location
   vault_id                     = azurerm_data_protection_backup_vault.vault.id
   disk_id                      = var.managed_disk_id
-  snapshot_resource_group_name = var.resource_group
+  snapshot_resource_group_name = var.tenant_resource_group
   backup_policy_id             = azurerm_data_protection_backup_policy_disk.backup_policy.id
 }

@@ -1,4 +1,4 @@
-replicaCount: 2
+replicaCount: ${API_REPLICAS}
 api:
   version: ${API_VERSION}
   multiTenant: ${MULTI_TENANT}
@@ -15,7 +15,7 @@ argo:
 config:
   api:
     serviceMonitor:
-      enabled: true
+      enabled: ${MONITORING_ENABLED}
       namespace: ${MONITORING_NAMESPACE}
   logging:
     level:
