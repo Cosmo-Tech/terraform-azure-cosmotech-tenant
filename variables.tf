@@ -92,6 +92,11 @@ variable "redis_disk_name" {
   default = "cosmotech-database-disk"
 }
 
+variable "auto_stop_kusto" {
+  type    = bool
+  default = true
+}
+
 variable "kusto_instance_type" {
   type    = string
   default = "Standard_D12_v2"
@@ -605,7 +610,7 @@ variable "tenant_group_id" {
 }
 
 variable "network_client_secret" {
-  type = string
+  type    = string
   default = ""
 }
 variable "tenant_sp_object_id" {
@@ -617,7 +622,7 @@ variable "tenant_sp_object_id" {
 variable "network_sp_object_id" {
   description = "The object id of the network service principal"
   type        = string
-  default = ""
+  default     = ""
 }
 
 variable "kubernetes_azurefile_storage_tags" {
@@ -630,12 +635,12 @@ variable "storage_kind" {
 }
 
 variable "tenant_client_id" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "tenant_client_secret" {
-  type = string
+  type    = string
   default = ""
 }
 

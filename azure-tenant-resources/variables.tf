@@ -179,3 +179,7 @@ variable "tags" {
 variable "deployment_type" {
   type = string
 }
+
+variable "auto_stop_kusto" {
+  type = bool
+}
