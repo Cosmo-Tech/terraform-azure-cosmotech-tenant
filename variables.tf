@@ -93,8 +93,9 @@ variable "redis_disk_name" {
 }
 
 variable "auto_stop_kusto" {
-  type    = bool
-  default = true
+  description = "Specifies if the cluster could be automatically stopped"
+  type        = bool
+  default     = true
 }
 
 variable "kusto_instance_type" {
