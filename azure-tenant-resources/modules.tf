@@ -86,6 +86,7 @@ module "create-kusto" {
   kustonr_instances     = var.kustonr_instances
   private_dns_zone_id   = module.create-network-resources.out_blob_private_dns_zone_id
   subnet_id             = module.create-network-resources.out_subnet_id
+  auto_stop_kusto       = var.auto_stop_kusto
 
   depends_on = [module.create-network-resources]
 }

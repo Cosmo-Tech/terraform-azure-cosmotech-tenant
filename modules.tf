@@ -65,6 +65,7 @@ module "azure-tenant-resources" {
   redis_disk_size_gb       = var.redis_disk_size_gb
   kusto_instance_type      = var.kusto_instance_type
   kustonr_instances        = var.kustonr_instances
+  auto_stop_kusto          = var.auto_stop_kusto
   storage_tier             = split("_", var.kubernetes_azurefile_storage_class_sku)[0]
   storage_replication_type = split("_", var.kubernetes_azurefile_storage_class_sku)[1]
   tenant_group_id          = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_tenant_group_id : var.tenant_group_id

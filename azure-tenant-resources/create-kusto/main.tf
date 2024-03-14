@@ -16,6 +16,7 @@ resource "azurerm_kusto_cluster" "kusto" {
   double_encryption_enabled     = false
   engine                        = "V2"
   public_network_access_enabled = true
+  auto_stop_enabled             = var.auto_stop_kusto
   tags                          = var.tags
 }
 

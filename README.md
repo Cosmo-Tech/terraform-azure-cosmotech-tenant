@@ -65,6 +65,7 @@
 | <a name="input_argo_minio_persistence_size"></a> [argo\_minio\_persistence\_size](#input\_argo\_minio\_persistence\_size) | n/a | `string` | `"16Gi"` | no |
 | <a name="input_argo_minio_requests_memory"></a> [argo\_minio\_requests\_memory](#input\_argo\_minio\_requests\_memory) | n/a | `string` | `"2Gi"` | no |
 | <a name="input_audience"></a> [audience](#input\_audience) | The App Registration audience type | `string` | `"AzureADMultipleOrgs"` | no |
+| <a name="input_auto_stop_kusto"></a> [auto\_stop\_kusto](#input\_auto\_stop\_kusto) | Specifies if the cluster could be automatically stopped | `bool` | `true` | no |
 | <a name="input_babylon_client_id"></a> [babylon\_client\_id](#input\_babylon\_client\_id) | n/a | `string` | `""` | no |
 | <a name="input_babylon_client_secret"></a> [babylon\_client\_secret](#input\_babylon\_client\_secret) | n/a | `string` | `""` | no |
 | <a name="input_babylon_sp_object_id"></a> [babylon\_sp\_object\_id](#input\_babylon\_sp\_object\_id) | n/a | `string` | `""` | no |

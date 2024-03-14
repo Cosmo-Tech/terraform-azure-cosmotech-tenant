@@ -36,6 +36,10 @@ variable "subnet_id" {
   type = string
 }
 
+variable "auto_stop_kusto" {
+  type = bool
+}
+
 
 
 
