@@ -135,7 +135,7 @@ module "platform-tenant-resources" {
   cluster_issuer_name                = var.cluster_issuer_name
   cosmotech_api_version              = var.cosmotech_api_version
   cosmotech_api_ingress_enabled      = var.cosmotech_api_ingress_enabled
-  network_client_id                  = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_networkadt_clientid : var.network_client_id
+  network_client_id                  = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_network_adt_clientid : var.network_client_id
   network_client_secret              = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_network_adt_password : var.network_client_secret
   tenant_client_id                   = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : var.tenant_client_id
   tenant_client_secret               = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_secret : var.tenant_client_secret
