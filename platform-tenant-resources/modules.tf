@@ -64,6 +64,7 @@ module "create-cosmotech-api" {
   cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
   redis_admin_password          = random_password.redis_admin_password.result
   redis_port                    = var.redis_port
+  tenant_resource_group         = var.tenant_resource_group
 
   depends_on = [
     module.create-argo
