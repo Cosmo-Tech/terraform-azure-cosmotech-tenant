@@ -28,6 +28,7 @@ locals {
     "NETWORK_ADT_PASSWORD"          = var.network_adt_password
     "NETWORK_ADT_CLIENTID"          = var.network_adt_clientid
     "MULTI_TENANT"                  = var.is_multitenant
+    "TENANT_RESOURCE_GROUP"         = var.tenant_resource_group
   }
   instance_name        = "${var.helm_release_name}-${var.namespace}"
   argo_service_account = "argo-${var.namespace}-service-account"

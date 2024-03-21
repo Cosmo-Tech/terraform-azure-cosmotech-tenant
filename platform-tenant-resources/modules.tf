@@ -71,6 +71,7 @@ module "create-cosmotech-api" {
   chart_package_version = var.chart_package_version
   network_adt_password  = var.network_adt_password
   network_adt_clientid  = var.network_adt_clientid
+  tenant_resource_group = var.resource_group
 
   depends_on = [
     module.create-argo

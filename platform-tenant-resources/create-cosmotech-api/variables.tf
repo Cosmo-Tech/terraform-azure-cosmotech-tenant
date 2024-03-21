@@ -126,3 +126,7 @@ variable "is_multitenant" {
   type    = bool
   default = true
 }
+
+variable "tenant_resource_group" {
+  type = string
+}
