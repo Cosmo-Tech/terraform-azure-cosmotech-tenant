@@ -38,9 +38,9 @@ config:
         authorizationUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/authorize"
         tokenUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token"
         defaultScopes:
-          "[${APP_ID_URI}/${NAMESPACE}/platform]": "${NAMESPACE} scope"
+          "[${APP_ID_URI}/${TENANT_RESOURCE_GROUP}/platform]": "${TENANT_RESOURCE_GROUP} scope"
         containerScopes:
-          "[${APP_ID_URI}/${NAMESPACE}/.default]": "${NAMESPACE} scope"
+          "[${APP_ID_URI}/${TENANT_RESOURCE_GROUP}/.default]": "${TENANT_RESOURCE_GROUP} scope"
       namespace: ${NAMESPACE}
       argo:
         base-uri: "http://${ARGO_RELEASE_NAME}-argo-workflows-server.${NAMESPACE}.svc.cluster.local:2746"
