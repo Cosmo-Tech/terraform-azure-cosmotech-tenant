@@ -183,3 +183,7 @@ variable "deployment_type" {
 variable "auto_stop_kusto" {
   type = bool
 }
+
+variable "common_platform_object_id" {
+  type = string
+}
