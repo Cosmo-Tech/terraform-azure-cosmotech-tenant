@@ -31,6 +31,7 @@ module "azure-tenant-prerequisites" {
   create_webapp                  = var.create_webapp
   create_babylon                 = var.create_babylon
   cost_center                    = var.cost_center
+  kubernetes_tenant_namespace    = var.kubernetes_tenant_namespace
 }
 
 module "azure-tenant-resources" {

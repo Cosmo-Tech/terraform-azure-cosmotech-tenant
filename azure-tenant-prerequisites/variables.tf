@@ -160,3 +160,7 @@ variable "create_secrets" {
 variable "cost_center" {
   type = string
 }
+
+variable "kubernetes_tenant_namespace" {
+  type = string
+}
