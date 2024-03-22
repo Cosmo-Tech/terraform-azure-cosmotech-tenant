@@ -43,6 +43,7 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_api_dns_name"></a> [api\_dns\_name](#input\_api\_dns\_name) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Cluster name | `string` | n/a | yes |
+| <a name="input_common_platform_object_id"></a> [common\_platform\_object\_id](#input\_common\_platform\_object\_id) | n/a | `string` | n/a | yes |
 | <a name="input_common_resource_group"></a> [common\_resource\_group](#input\_common\_resource\_group) | Existing Resource group which contain common platform resources | `string` | n/a | yes |
 | <a name="input_cosmotech_api_version"></a> [cosmotech\_api\_version](#input\_cosmotech\_api\_version) | n/a | `string` | n/a | yes |
 | <a name="input_dns_record"></a> [dns\_record](#input\_dns\_record) | The DNS zone name to create platform subdomain. Example: myplatform | `string` | n/a | yes |
