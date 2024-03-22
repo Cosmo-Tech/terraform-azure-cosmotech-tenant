@@ -39,3 +39,10 @@ resource "azurerm_role_assignment" "publicip_contributor" {
 #   role_definition_name = "Owner"
 #   principal_id         = var.network_sp_object_id
 # }
+
+resource "azurerm_role_assignment" "tenant_contributor" {
+  count                = var.deployment_type != "ARM" ? 1 : 0
+  scope                = var.tenant_resource_group.id
+  role_definition_name = "Contributor"
+  principal_id         = var.common_platform_object_id
+}

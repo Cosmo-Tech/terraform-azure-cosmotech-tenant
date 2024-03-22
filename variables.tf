@@ -699,3 +699,7 @@ variable "tls_certificate_custom_key" {
   type    = string
   default = ""
 }
+
+variable "common_platform_object_id" {
+  type = string
+}
