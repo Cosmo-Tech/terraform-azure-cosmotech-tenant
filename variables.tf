@@ -73,7 +73,6 @@ variable "tenant_resource_group" {
 
 variable "kubernetes_azurefile_storage_class_sku" {
   type    = string
-  default = "Premium_LRS"
 }
 
 variable "tenant_virtual_network_address_prefix" {
