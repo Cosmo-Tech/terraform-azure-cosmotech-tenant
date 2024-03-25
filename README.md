@@ -46,6 +46,7 @@
 | <a name="input_common_resource_group"></a> [common\_resource\_group](#input\_common\_resource\_group) | Existing Resource group which contain common platform resources | `string` | n/a | yes |
 | <a name="input_cosmotech_api_version"></a> [cosmotech\_api\_version](#input\_cosmotech\_api\_version) | n/a | `string` | n/a | yes |
 | <a name="input_dns_record"></a> [dns\_record](#input\_dns\_record) | The DNS zone name to create platform subdomain. Example: myplatform | `string` | n/a | yes |
+| <a name="input_kubernetes_azurefile_storage_class_sku"></a> [kubernetes\_azurefile\_storage\_class\_sku](#input\_kubernetes\_azurefile\_storage\_class\_sku) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_azurefile_storage_tags"></a> [kubernetes\_azurefile\_storage\_tags](#input\_kubernetes\_azurefile\_storage\_tags) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | The kubernetes namespace to create | `string` | n/a | yes |
 | <a name="input_network_client_id"></a> [network\_client\_id](#input\_network\_client\_id) | n/a | `string` | n/a | yes |
@@ -94,7 +95,6 @@
 | <a name="input_eventhub_privatedns_zonename"></a> [eventhub\_privatedns\_zonename](#input\_eventhub\_privatedns\_zonename) | n/a | `string` | `"privatelink.servicebus.windows.net"` | no |
 | <a name="input_identifier_uri"></a> [identifier\_uri](#input\_identifier\_uri) | The platform identifier uri | `string` | `""` | no |
 | <a name="input_image_path"></a> [image\_path](#input\_image\_path) | n/a | `string` | `"./cosmotech.png"` | no |
-| <a name="input_kubernetes_azurefile_storage_class_sku"></a> [kubernetes\_azurefile\_storage\_class\_sku](#input\_kubernetes\_azurefile\_storage\_class\_sku) | n/a | `string` | `"Premium_LRS"` | no |
 | <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Azure Kubernetes Service version | `string` | `"1.26.6"` | no |
 | <a name="input_kusto_instance_type"></a> [kusto\_instance\_type](#input\_kusto\_instance\_type) | n/a | `string` | `"Standard_D12_v2"` | no |
 | <a name="input_kusto_privatedns_zonename"></a> [kusto\_privatedns\_zonename](#input\_kusto\_privatedns\_zonename) | n/a | `string` | `"privatelink.kusto.core.windows.net"` | no |
