@@ -317,21 +317,6 @@ resource "azuread_application" "babylon" {
       id   = "e1fe6dd8-ba31-4d61-89e7-88639da4683d" # User.Read
       type = "Scope"
     }
-
-    resource_access {
-      id   = "1cda74f2-2616-4834-b122-5cb1b07f8a59" # Application.ReadWrite.All
-      type = "Scope"
-    }
-
-    resource_access {
-      id   = "824c81eb-e3f8-4ee6-8f6d-de7f50d565b7" # Application.ReadWrite.OwnedBy
-      type = "Scope"
-    }
-
-    resource_access {
-      id   = "62a82d76-70ea-41e2-9197-370581804d09" # Group.ReadWrite.ALL
-      type = "Scope"
-    }
   }
 
   required_resource_access {
