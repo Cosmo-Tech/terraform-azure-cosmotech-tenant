@@ -135,3 +135,23 @@ variable "is_multitenant" {
 variable "tenant_resource_group" {
   type = string
 }
+
+variable "postgresql_release_name" {
+  type = string
+}
+
+variable "postgresql_reader_username" {
+  type = string
+}
+
+variable "postgresql_reader_password" {
+  type = string
+}
+
+variable "postgresql_admin_username" {
+  type = string
+}
+
+variable "postgresql_admin_password" {
+  type = string
+}

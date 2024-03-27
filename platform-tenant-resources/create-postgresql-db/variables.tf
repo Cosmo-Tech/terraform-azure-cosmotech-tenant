@@ -6,8 +6,19 @@ variable "monitoring_namespace" {
   type = string
 }
 
-variable "argo_postgresql_password" {
+variable "cosmotech_api_reader_username" {
   type = string
+  default = "cosmotech_api_reader"
+}
+
+variable "cosmotech_api_admin_username" {
+  type = string
+  default = "cosmotech_api_admin"
+}
+
+variable "postgresql_initdb_secret_name" {
+  type    = string
+  default = "postgres-initdb"
 }
 
 variable "argo_postgresql_user" {

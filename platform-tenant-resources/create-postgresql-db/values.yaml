@@ -1,7 +1,3 @@
-auth:
-  username: ${ARGO_POSTGRESQL_USER}
-  password: ${ARGO_POSTGRESQL_PASSWORD}
-  database: ${ARGO_DATABASE}
 primary:
   podLabels:
     "networking/traffic-allowed": "yes"
@@ -12,14 +8,8 @@ primary:
     effect: "NoSchedule"
   nodeSelector:
     "cosmotech.com/tier": "db"
-readReplicas:
-  nodeSelector:
-    "cosmotech.com/tier": "db"
-  tolerations:
-  - key: "vendor"
-    operator: "Equal"
-    value: "cosmotech"
-    effect: "NoSchedule"
+  initdb:
+    scriptsSecret: ${POSTGRESQL_INITDB_SECRET}
 resources:
   requests:
     memory: "64Mi"
