@@ -19,6 +19,10 @@ output "out_cosmos_api_url" {
   value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_cosmos_api_url : "https://${var.dns_record}.${var.dns_zone_name}/cosmotech-api/${var.tenant_resource_group}"
 }
 
+output "out_cosmos_api_scope" {
+  value = "https://${var.dns_record}.${var.dns_zone_name}/${var.tenant_resource_group}/.default"
+}
+
 output "out_cosmos_api_version_path" {
   value = var.api_version_path
 }
