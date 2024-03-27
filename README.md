@@ -148,6 +148,7 @@
 | <a name="output_out_babylon_principal_id"></a> [out\_babylon\_principal\_id](#output\_out\_babylon\_principal\_id) | n/a |
 | <a name="output_out_cluster_adx_name"></a> [out\_cluster\_adx\_name](#output\_out\_cluster\_adx\_name) | n/a |
 | <a name="output_out_cluster_adx_principal_id"></a> [out\_cluster\_adx\_principal\_id](#output\_out\_cluster\_adx\_principal\_id) | n/a |
+| <a name="output_out_cosmos_api_scope"></a> [out\_cosmos\_api\_scope](#output\_out\_cosmos\_api\_scope) | n/a |
 | <a name="output_out_cosmos_api_url"></a> [out\_cosmos\_api\_url](#output\_out\_cosmos\_api\_url) | n/a |
 | <a name="output_out_cosmos_api_version_path"></a> [out\_cosmos\_api\_version\_path](#output\_out\_cosmos\_api\_version\_path) | n/a |
 | <a name="output_out_resource_location"></a> [out\_resource\_location](#output\_out\_resource\_location) | n/a |
