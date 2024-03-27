@@ -62,7 +62,7 @@
 | <a name="input_vnet_resource_group"></a> [vnet\_resource\_group](#input\_vnet\_resource\_group) | n/a | `string` | n/a | yes |
 | <a name="input_adt_privatedns_zonename"></a> [adt\_privatedns\_zonename](#input\_adt\_privatedns\_zonename) | n/a | `string` | `"privatelink.digitaltwins.azure.net"` | no |
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | `2` | no |
-| <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | The API version path | `string` | `"v3"` | no |
+| <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | The API version path | `string` | `"v3-1"` | no |
 | <a name="input_archive_ttl"></a> [archive\_ttl](#input\_archive\_ttl) | n/a | `string` | `"3d"` | no |
 | <a name="input_argo_minio_persistence_size"></a> [argo\_minio\_persistence\_size](#input\_argo\_minio\_persistence\_size) | n/a | `string` | `"16Gi"` | no |
 | <a name="input_argo_minio_requests_memory"></a> [argo\_minio\_requests\_memory](#input\_argo\_minio\_requests\_memory) | n/a | `string` | `"2Gi"` | no |
@@ -72,7 +72,7 @@
 | <a name="input_babylon_client_secret"></a> [babylon\_client\_secret](#input\_babylon\_client\_secret) | n/a | `string` | `""` | no |
 | <a name="input_babylon_sp_object_id"></a> [babylon\_sp\_object\_id](#input\_babylon\_sp\_object\_id) | n/a | `string` | `""` | no |
 | <a name="input_blob_privatedns_zonename"></a> [blob\_privatedns\_zonename](#input\_blob\_privatedns\_zonename) | n/a | `string` | `"privatelink.blob.core.windows.net"` | no |
-| <a name="input_chart_package_version"></a> [chart\_package\_version](#input\_chart\_package\_version) | The version of the Cosmo Tech API chart to deploy | `string` | `"3.1.1"` | no |
+| <a name="input_chart_package_version"></a> [chart\_package\_version](#input\_chart\_package\_version) | The version of the Cosmo Tech API chart to deploy | `string` | `"3.1.2"` | no |
 | <a name="input_client_id"></a> [client\_id](#input\_client\_id) | The client id | `string` | `""` | no |
 | <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | The client secret | `string` | `""` | no |
 | <a name="input_cluster_issuer_name"></a> [cluster\_issuer\_name](#input\_cluster\_issuer\_name) | n/a | `string` | `"letsencrypt-prod"` | no |
