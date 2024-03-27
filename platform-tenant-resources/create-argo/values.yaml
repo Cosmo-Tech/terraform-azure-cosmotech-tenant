@@ -115,9 +115,9 @@ controller:
       tableName: workflows
       userNameSecret:
         name: ${ARGO_POSTGRESQL_SECRET_NAME}
-        key: username
+        key: argo-username
       passwordSecret:
         name: ${ARGO_POSTGRESQL_SECRET_NAME}
-        key: password
+        key: argo-password
 mainContainer:
   imagePullPolicy: IfNotPresent

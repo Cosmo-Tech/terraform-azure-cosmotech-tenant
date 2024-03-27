@@ -73,6 +73,18 @@ config:
         storage:
           account-key: ${STORAGE_ACCOUNT_KEY}
           account-name: ${STORAGE_ACCOUNT_NAME}
+      storage:
+        host: "${POSTGRESQL_RELEASE_NAME}-postgresql.${NAMESPACE}.svc.cluster.local"
+        port: 5432
+        reader:
+          username: ${POSTGRESQL_READER_USERNAME}
+          password: ${POSTGRESQL_READER_PASSWORD}
+        writer:
+          username: ${POSTGRESQL_WRITER_USERNAME}
+          password: ${POSTGRESQL_WRITER_PASSWORD}
+        admin:
+          username: ${POSTGRESQL_ADMIN_USERNAME}
+          password: ${POSTGRESQL_ADMIN_PASSWORD}
       twincache:
         host: "cosmotechredis-${NAMESPACE}-master.${NAMESPACE}.svc.cluster.local"
         port: ${REDIS_PORT}

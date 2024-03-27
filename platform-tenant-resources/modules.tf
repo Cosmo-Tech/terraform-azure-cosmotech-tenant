@@ -65,9 +65,17 @@ module "create-cosmotech-api" {
   redis_admin_password          = random_password.redis_admin_password.result
   redis_port                    = var.redis_port
   tenant_resource_group         = var.tenant_resource_group
+  postgresql_release_name       = module.create-postgresql-db.out_postgres_release_name
+  postgresql_reader_username    = module.create-postgresql-db.out_postgres_reader_username
+  postgresql_reader_password    = module.create-postgresql-db.out_postgres_reader_password
+  postgresql_writer_username    = module.create-postgresql-db.out_postgres_writer_username
+  postgresql_writer_password    = module.create-postgresql-db.out_postgres_writer_password
+  postgresql_admin_username     = module.create-postgresql-db.out_postgres_admin_username
+  postgresql_admin_password     = module.create-postgresql-db.out_postgres_admin_password
 
   depends_on = [
-    module.create-argo
+    module.create-argo,
+    module.create-postgresql-db
   ]
 }
 
@@ -85,10 +93,9 @@ module "create-minio" {
 module "create-postgresql-db" {
   source = "./create-postgresql-db"
 
-  namespace                = var.kubernetes_tenant_namespace
-  monitoring_namespace     = var.monitoring_namespace
-  argo_postgresql_password = random_password.argo_postgresql_password.result
-  depends_on               = [module.create-minio]
+  namespace                       = var.kubernetes_tenant_namespace
+  monitoring_namespace            = var.monitoring_namespace
+  depends_on                      = [module.create-minio]
 }
 
 module "create-redis-stack" {

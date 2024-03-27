@@ -53,7 +53,7 @@ variable "argo_database" {
 
 variable "argo_postgresql_secret_name" {
   type    = string
-  default = "argo-postgres-config"
+  default = "postgres-config"
 }
 
 variable "requeue_time" {
