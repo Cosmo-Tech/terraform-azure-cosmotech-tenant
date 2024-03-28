@@ -85,6 +85,7 @@
 | <a name="input_create_dnsrecord"></a> [create\_dnsrecord](#input\_create\_dnsrecord) | Create the DNS record | `bool` | `false` | no |
 | <a name="input_create_powerbi"></a> [create\_powerbi](#input\_create\_powerbi) | Create the Azure Active Directory Application for PowerBI | `bool` | `false` | no |
 | <a name="input_create_publicip"></a> [create\_publicip](#input\_create\_publicip) | Create the public IP for the platform | `bool` | `false` | no |
+| <a name="input_create_rabbitmq"></a> [create\_rabbitmq](#input\_create\_rabbitmq) | Whether to create RabbitMQ resources | `bool` | `false` | no |
 | <a name="input_create_restish"></a> [create\_restish](#input\_create\_restish) | Create the Azure Active Directory Application for Restish | `bool` | `false` | no |
 | <a name="input_create_secrets"></a> [create\_secrets](#input\_create\_secrets) | Create secrets for newly created app registrations | `bool` | `true` | no |
 | <a name="input_create_vault_entries"></a> [create\_vault\_entries](#input\_create\_vault\_entries) | Custom module used to automatically retrieve Cosmo Tech Platform values and fill Vault in order to be used by Babylon | `bool` | `false` | no |

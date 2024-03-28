@@ -42,6 +42,7 @@ config:
         containerScopes:
           "[${APP_ID_URI}/${TENANT_RESOURCE_GROUP}/.default]": "${TENANT_RESOURCE_GROUP} scope"
       namespace: ${NAMESPACE}
+      use_internal_result_services: ${USE_INTERNAL_RESULT_SERVICES}
       argo:
         base-uri: "http://${ARGO_RELEASE_NAME}-argo-workflows-server.${NAMESPACE}.svc.cluster.local:2746"
         workflows:
@@ -85,6 +86,15 @@ config:
         admin:
           username: ${POSTGRESQL_ADMIN_USERNAME}
           password: ${POSTGRESQL_ADMIN_PASSWORD}
+      eventBus:
+        host: "${RABBITMQ_RELEASE_NAME}.${NAMESPACE}.svc.cluster.local"
+        port: 5672
+        admin:
+          username: ${RABBITMQ_ADMIN_USERNAME}
+          password: ${RABBITMQ_ADMIN_PASSWORD}
+        sender:
+          username: ${RABBITMQ_SENDER_USERNAME}
+          password: ${RABBITMQ_SENDER_PASSWORD}
       twincache:
         host: "cosmotechredis-${NAMESPACE}-master.${NAMESPACE}.svc.cluster.local"
         port: ${REDIS_PORT}

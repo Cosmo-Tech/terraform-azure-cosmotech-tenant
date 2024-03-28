@@ -65,6 +65,7 @@ module "create-cosmotech-api" {
   redis_admin_password          = random_password.redis_admin_password.result
   redis_port                    = var.redis_port
   tenant_resource_group         = var.tenant_resource_group
+  use_internal_result_services  = var.create_rabbitmq
   postgresql_release_name       = module.create-postgresql-db.out_postgres_release_name
   postgresql_reader_username    = module.create-postgresql-db.out_postgres_reader_username
   postgresql_reader_password    = module.create-postgresql-db.out_postgres_reader_password
@@ -72,10 +73,16 @@ module "create-cosmotech-api" {
   postgresql_writer_password    = module.create-postgresql-db.out_postgres_writer_password
   postgresql_admin_username     = module.create-postgresql-db.out_postgres_admin_username
   postgresql_admin_password     = module.create-postgresql-db.out_postgres_admin_password
+  rabbitmq_release_name         = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_release_name : ""
+  rabbitmq_admin_username       = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_admin_username : ""
+  rabbitmq_admin_password       = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_admin_password : ""
+  rabbitmq_sender_username      = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_sender_username : ""
+  rabbitmq_sender_password      = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
 
   depends_on = [
     module.create-argo,
-    module.create-postgresql-db
+    module.create-postgresql-db,
+    module.create-rabbitmq
   ]
 }
 
@@ -107,4 +114,13 @@ module "create-redis-stack" {
   redis_disk_name      = var.redis_disk_name
   depends_on           = [module.create-postgresql-db]
 
+}
+
+module "create-rabbitmq" {
+  source = "./create-rabbitmq"
+
+  count = var.create_rabbitmq ? 1 : 0
+
+  namespace            = var.kubernetes_tenant_namespace
+  monitoring_namespace = var.monitoring_namespace
 }
