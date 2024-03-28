@@ -62,6 +62,8 @@ module "create-disk" {
 module "create-eventhub" {
   source = "./create-eventhub"
 
+  count = var.create_eventhub ? 1 : 0
+
   tags                  = local.tags
   eventhub_name         = local.eventhub_name
   location              = var.location
