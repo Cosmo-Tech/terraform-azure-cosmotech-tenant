@@ -155,3 +155,15 @@ variable "postgresql_admin_username" {
 variable "postgresql_admin_password" {
   type = string
 }
+
+variable "rabbitmq_release_name" {
+  type = string
+}
+
+variable "rabbitmq_username" {
+  type = string
+}
+
+variable "rabbitmq_password" {
+  type = string
+}

@@ -36,6 +36,9 @@ locals {
     "POSTGRESQL_READER_PASSWORD"    = var.postgresql_reader_password
     "POSTGRESQL_ADMIN_USERNAME"     = var.postgresql_admin_username
     "POSTGRESQL_ADMIN_PASSWORD"     = var.postgresql_admin_password
+    "RABBITMQ_RELEASE_NAME"         = var.rabbitmq_release_name
+    "RABBITMQ_USERNAME"             = var.rabbitmq_username
+    "RABBITMQ_PASSWORD"             = var.rabbitmq_password
   }
   instance_name        = "${var.helm_release_name}-${var.namespace}"
   argo_service_account = "argo-${var.namespace}-service-account"

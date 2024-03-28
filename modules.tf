@@ -153,6 +153,7 @@ module "platform-tenant-resources" {
   cosmos_key                         = module.azure-tenant-resources.out_cosmos_key
   eventbus_uri                       = module.azure-tenant-resources.out_eventbus_uri
   kube_config                        = data.azurerm_kubernetes_cluster.current.kube_config
+  create_rabbitmq                    = var.create_rabbitmq
 
   depends_on = [module.azure-tenant-resources]
 }

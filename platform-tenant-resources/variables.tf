@@ -128,6 +128,11 @@ variable "eventbus_uri" {
   type = string
 }
 
+variable "create_rabbitmq" {
+  description = "Whether to create RabbitMQ resources"
+  type        = bool
+}
+
 variable "kube_config" {
 }
 

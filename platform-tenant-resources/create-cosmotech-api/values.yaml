@@ -81,6 +81,10 @@ config:
         admin:
           username: ${POSTGRESQL_ADMIN_USERNAME}
           password: ${POSTGRESQL_ADMIN_PASSWORD}
+      rabbitmq:
+        host: "${RABBITMQ_RELEASE_NAME}"
+        username: ${RABBITMQ_USERNAME}
+        password: ${RABBITMQ_PASSWORD}
       twincache:
         host: "cosmotechredis-${NAMESPACE}-master.${NAMESPACE}.svc.cluster.local"
         port: ${REDIS_PORT}

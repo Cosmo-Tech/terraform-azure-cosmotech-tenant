@@ -70,10 +70,14 @@ module "create-cosmotech-api" {
   postgresql_reader_password    = module.create-postgresql-db.out_postgres_reader_password
   postgresql_admin_username     = module.create-postgresql-db.out_postgres_admin_username
   postgresql_admin_password     = module.create-postgresql-db.out_postgres_admin_password
+  rabbitmq_release_name         = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_release_name : ""
+  rabbitmq_username             = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_username : ""
+  rabbitmq_password             = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_password : ""
 
   depends_on = [
     module.create-argo,
-    module.create-postgresql-db
+    module.create-postgresql-db,
+    module.create-rabbitmq
   ]
 }
 
@@ -105,4 +109,14 @@ module "create-redis-stack" {
   redis_disk_name      = var.redis_disk_name
   depends_on           = [module.create-postgresql-db]
 
+}
+
+module "create-rabbitmq" {
+  source = "./create-rabbitmq"
+
+  count = var.create_rabbitmq ? 1 : 0
+
+  namespace            = var.kubernetes_tenant_namespace
+  monitoring_namespace = var.monitoring_namespace
+  tls_secret_name      = var.tls_secret_name
 }

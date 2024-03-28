@@ -1,0 +1,24 @@
+nodeSelector:
+  cosmotech.com/tier: services
+tolerations:
+  - key: vendor
+    operator: Equal
+    value: cosmotech
+    effect: NoSchedule
+auth:
+  username: ${RABBITMQ_USERNAME}
+  existingPasswordSecret: ${RABBITMQ_SECRET_NAME}
+  existingSecretPasswordKey: password
+  tls:
+    enabled: true
+    failIfNoPeerCert: false
+    existingSecret: ${TLS_SECRET_NAME}
+    existingSecretFullChain: true
+extraPlugins: "rabbitmq_amqp1_0 rabbitmq_prometheus"
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    namespace: ${MONITORING_NAMESPACE}
+    interval: 30s
+    scrapeTimeout: 10s

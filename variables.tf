@@ -403,6 +403,12 @@ variable "create_adx" {
   default     = true
 }
 
+variable "create_rabbitmq" {
+  description = "Whether to create RabbitMQ resources"
+  type        = bool
+  default     = false
+}
+
 variable "create_babylon" {
   description = "Create the Azure Active Directory Application for Babylon"
   type        = bool
