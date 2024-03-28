@@ -79,6 +79,11 @@ variable "create_cosmosdb" {
   # default     = false
 }
 
+variable "create_eventhub" {
+  type        = bool
+  default     = true
+}
+
 variable "create_adx" {
   description = "If false, adx_ingestion_uri and adx_uri must be set manually in create-platform module"
   type        = bool

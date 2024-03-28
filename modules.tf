@@ -54,6 +54,7 @@ module "azure-tenant-resources" {
   create_backup                                = var.create_backup
   create_cosmosdb                              = var.create_cosmosdb
   create_adx                                   = var.create_adx
+  create_eventhub                              = var.create_eventhub
 
   blob_privatedns_zonename     = var.blob_privatedns_zonename
   queue_privatedns_zonename    = var.queue_privatedns_zonename

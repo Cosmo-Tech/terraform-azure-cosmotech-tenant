@@ -37,7 +37,7 @@ output "out_cosmos_key" {
 }
 
 output "out_eventbus_uri" {
-  value     = module.create-eventhub.out_eventbus_uri
+  value     = var.create_eventhub ? module.create-eventhub.0.out_eventbus_uri : ""
   sensitive = true
 }
 
