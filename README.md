@@ -78,10 +78,10 @@
 | <a name="input_cluster_issuer_name"></a> [cluster\_issuer\_name](#input\_cluster\_issuer\_name) | n/a | `string` | `"letsencrypt-prod"` | no |
 | <a name="input_cosmotech_api_ingress_enabled"></a> [cosmotech\_api\_ingress\_enabled](#input\_cosmotech\_api\_ingress\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_cost_center"></a> [cost\_center](#input\_cost\_center) | The value associated to a resource (tag) | `string` | `"NA"` | no |
-| <a name="input_create_adx"></a> [create\_adx](#input\_create\_adx) | Weither to create Azure digital explorer | `bool` | `true` | no |
+| <a name="input_create_adx"></a> [create\_adx](#input\_create\_adx) | Whether to create Azure digital explorer | `bool` | `true` | no |
 | <a name="input_create_babylon"></a> [create\_babylon](#input\_create\_babylon) | Create the Azure Active Directory Application for Babylon | `bool` | `true` | no |
-| <a name="input_create_backup"></a> [create\_backup](#input\_create\_backup) | Weither to create Azure backup vault along with the managed disk | `bool` | `false` | no |
-| <a name="input_create_cosmosdb"></a> [create\_cosmosdb](#input\_create\_cosmosdb) | Weither to create CosmosDB (only for API version < 2.4) | `bool` | `false` | no |
+| <a name="input_create_backup"></a> [create\_backup](#input\_create\_backup) | Whether to create Azure backup vault along with the managed disk | `bool` | `false` | no |
+| <a name="input_create_cosmosdb"></a> [create\_cosmosdb](#input\_create\_cosmosdb) | Whether to create CosmosDB (only for API version < 2.4) | `bool` | `false` | no |
 | <a name="input_create_dnsrecord"></a> [create\_dnsrecord](#input\_create\_dnsrecord) | Create the DNS record | `bool` | `false` | no |
 | <a name="input_create_powerbi"></a> [create\_powerbi](#input\_create\_powerbi) | Create the Azure Active Directory Application for PowerBI | `bool` | `false` | no |
 | <a name="input_create_publicip"></a> [create\_publicip](#input\_create\_publicip) | Create the public IP for the platform | `bool` | `false` | no |
