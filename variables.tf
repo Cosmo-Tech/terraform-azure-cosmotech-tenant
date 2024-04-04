@@ -603,6 +603,12 @@ variable "vault_token" {
   default     = ""
 }
 
+variable "platform_name" {
+  description = "The platform id for babylon v4"
+  type = string
+  default = ""
+}
+
 variable "tenant_group_id" {
   description = "The object id of the platform group"
   type        = string

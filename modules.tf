@@ -97,7 +97,7 @@ module "create-vault-entries" {
 
   tenant_id                   = var.tenant_id
   kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
-  platform_name               = var.project_name
+  platform_name               = var.platform_name
   organization_name           = var.organization_name
   vault_addr                  = var.vault_addr
   vault_token                 = var.vault_token
