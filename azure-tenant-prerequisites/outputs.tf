@@ -112,5 +112,5 @@ output "out_babylon_secret" {
 }
 
 output "out_cosmos_api_url" {
-  value = "https://${var.dns_record}.${var.dns_zone_name}/cosmotech-api/${var.tenant_resource_group}/v3"
+  value = "https://${var.dns_record}.${var.dns_zone_name}/cosmotech-api/${var.tenant_resource_group}/${var.api_version_path}"
 }
