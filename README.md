@@ -107,6 +107,7 @@
 | <a name="input_network_client_secret"></a> [network\_client\_secret](#input\_network\_client\_secret) | n/a | `string` | `""` | no |
 | <a name="input_network_sp_object_id"></a> [network\_sp\_object\_id](#input\_network\_sp\_object\_id) | The object id of the network service principal | `string` | `""` | no |
 | <a name="input_organization_name"></a> [organization\_name](#input\_organization\_name) | n/a | `string` | `""` | no |
+| <a name="input_platform_name"></a> [platform\_name](#input\_platform\_name) | The platform id for babylon v4 | `string` | `""` | no |
 | <a name="input_platform_url"></a> [platform\_url](#input\_platform\_url) | The platform url | `string` | `""` | no |
 | <a name="input_project_stage"></a> [project\_stage](#input\_project\_stage) | The platform stage | `string` | `"Dev"` | no |
 | <a name="input_queue_privatedns_zonename"></a> [queue\_privatedns\_zonename](#input\_queue\_privatedns\_zonename) | n/a | `string` | `"privatelink.queue.core.windows.net"` | no |
