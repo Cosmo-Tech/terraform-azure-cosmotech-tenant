@@ -3,13 +3,6 @@ locals {
   client_certificate     = base64decode(local.kube_config.0.client_certificate)
   client_key             = base64decode(local.kube_config.0.client_key)
   cluster_ca_certificate = base64decode(local.kube_config.0.cluster_ca_certificate)
-  tags = {
-    vendor      = "cosmotech"
-    stage       = var.project_stage
-    customer    = var.customer_name
-    project     = var.project_name
-    cost_center = var.cost_center
-  }
 }
 
 provider "kubernetes" {
