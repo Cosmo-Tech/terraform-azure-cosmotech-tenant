@@ -72,7 +72,7 @@ variable "tenant_resource_group" {
 }
 
 variable "kubernetes_azurefile_storage_class_sku" {
-  type    = string
+  type = string
 }
 
 variable "tenant_virtual_network_address_prefix" {
@@ -617,8 +617,8 @@ variable "vault_token" {
 
 variable "platform_name" {
   description = "The platform id for babylon v4"
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
 
 variable "tenant_group_id" {

@@ -100,9 +100,9 @@ module "create-minio" {
 module "create-postgresql-db" {
   source = "./create-postgresql-db"
 
-  namespace                       = var.kubernetes_tenant_namespace
-  monitoring_namespace            = var.monitoring_namespace
-  depends_on                      = [module.create-minio]
+  namespace            = var.kubernetes_tenant_namespace
+  monitoring_namespace = var.monitoring_namespace
+  depends_on           = [module.create-minio]
 }
 
 module "create-redis-stack" {

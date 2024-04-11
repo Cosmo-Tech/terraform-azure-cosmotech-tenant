@@ -80,8 +80,8 @@ variable "create_cosmosdb" {
 }
 
 variable "create_eventhub" {
-  type        = bool
-  default     = true
+  type    = bool
+  default = true
 }
 
 variable "create_adx" {

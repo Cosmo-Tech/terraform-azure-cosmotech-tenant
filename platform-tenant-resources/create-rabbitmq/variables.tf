@@ -27,11 +27,11 @@ variable "helm_release_name" {
 }
 
 variable "rabbitmq_admin_username" {
-  type = string
+  type    = string
   default = "cosmotech_api_admin"
 }
 
 variable "rabbitmq_sender_username" {
-  type = string
+  type    = string
   default = "cosmotech_run_sender"
 }

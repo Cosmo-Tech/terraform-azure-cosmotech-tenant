@@ -6,15 +6,15 @@ locals {
     "POSTGRESQL_PASSWORD"      = random_password.postgres_postgresql_password.result
   }
   initdb_data = {
-    "COSMOTECH_API_READER_USERNAME"   = var.cosmotech_api_reader_username
-    "COSMOTECH_API_READER_PASSWORD"   = random_password.postgresql_reader_password.result
-    "COSMOTECH_API_WRITER_USERNAME"   = var.cosmotech_api_writer_username
-    "COSMOTECH_API_WRITER_PASSWORD"   = random_password.postgresql_writer_password.result
-    "COSMOTECH_API_ADMIN_USERNAME"    = var.cosmotech_api_admin_username
-    "COSMOTECH_API_ADMIN_PASSWORD"    = random_password.postgresql_admin_password.result
-    "ARGO_POSTGRESQL_USER"            = var.argo_postgresql_user
-    "ARGO_POSTGRESQL_PASSWORD"        = random_password.argo_postgresql_password.result
-    "ARGO_DATABSE"                    = var.argo_database
+    "COSMOTECH_API_READER_USERNAME" = var.cosmotech_api_reader_username
+    "COSMOTECH_API_READER_PASSWORD" = random_password.postgresql_reader_password.result
+    "COSMOTECH_API_WRITER_USERNAME" = var.cosmotech_api_writer_username
+    "COSMOTECH_API_WRITER_PASSWORD" = random_password.postgresql_writer_password.result
+    "COSMOTECH_API_ADMIN_USERNAME"  = var.cosmotech_api_admin_username
+    "COSMOTECH_API_ADMIN_PASSWORD"  = random_password.postgresql_admin_password.result
+    "ARGO_POSTGRESQL_USER"          = var.argo_postgresql_user
+    "ARGO_POSTGRESQL_PASSWORD"      = random_password.argo_postgresql_password.result
+    "ARGO_DATABSE"                  = var.argo_database
   }
   instance_name = "${var.helm_release_name}-${var.namespace}"
 }
@@ -84,12 +84,12 @@ resource "kubernetes_secret" "postgres-config" {
   }
 
   data = {
-    argo-username = var.argo_postgresql_user
-    argo-password = random_password.argo_postgresql_password.result
-    postgres-username = "postgres"
-    postgres-password = random_password.postgres_postgresql_password.result
-    cosmotech-api-admin-username = var.cosmotech_api_admin_username
-    cosmotech-api-admin-password = random_password.postgresql_admin_password.result
+    argo-username                 = var.argo_postgresql_user
+    argo-password                 = random_password.argo_postgresql_password.result
+    postgres-username             = "postgres"
+    postgres-password             = random_password.postgres_postgresql_password.result
+    cosmotech-api-admin-username  = var.cosmotech_api_admin_username
+    cosmotech-api-admin-password  = random_password.postgresql_admin_password.result
     cosmotech-api-reader-username = var.cosmotech_api_reader_username
     cosmotech-api-reader-password = random_password.postgresql_reader_password.result
     cosmotech-api-writer-username = var.cosmotech_api_writer_username
