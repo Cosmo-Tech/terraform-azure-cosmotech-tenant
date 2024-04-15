@@ -7,6 +7,10 @@ locals {
     "SENDER_PASSWORD"      = random_password.rabbitmq_sender_password.result
     "LISTENER_USERNAME"    = var.rabbitmq_listener_username
     "LISTENER_PASSWORD"    = random_password.rabbitmq_listener_password.result
+    "REQUESTS_MEMORY"      = var.requests_memory
+    "REQUESTS_CPU"         = var.requests_cpu
+    "LIMITS_MEMORY"        = var.limits_memory
+    "LIMITS_CPU"           = var.limits_cpu
   }
   instance_name = "${var.helm_release_name}-${var.namespace}"
 }

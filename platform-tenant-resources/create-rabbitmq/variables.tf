@@ -35,3 +35,21 @@ variable "rabbitmq_sender_username" {
   type    = string
   default = "cosmotech_run_sender"
 }
+
+variable "requests_memory" {
+  type = string
+  default = "1024Mi"
+}
+variable "requests_cpu" {
+  type = string
+  default = "375m"
+}
+
+variable "limits_memory" {
+  type = string
+  default = "2048Mi"
+}
+variable "limits_cpu" {
+  type = string
+  default = "800m"
+}
