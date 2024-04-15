@@ -40,8 +40,8 @@ locals {
     "POSTGRESQL_ADMIN_USERNAME"     = var.postgresql_admin_username
     "POSTGRESQL_ADMIN_PASSWORD"     = var.postgresql_admin_password
     "RABBITMQ_RELEASE_NAME"         = var.rabbitmq_release_name
-    "RABBITMQ_ADMIN_USERNAME"       = var.rabbitmq_admin_username
-    "RABBITMQ_ADMIN_PASSWORD"       = var.rabbitmq_admin_password
+    "RABBITMQ_LISTENER_USERNAME"    = var.rabbitmq_listener_username
+    "RABBITMQ_LISTENER_PASSWORD"    = var.rabbitmq_listener_password
     "RABBITMQ_SENDER_USERNAME"      = var.rabbitmq_sender_username
     "RABBITMQ_SENDER_PASSWORD"      = var.rabbitmq_sender_password
   }

@@ -74,8 +74,8 @@ module "create-cosmotech-api" {
   postgresql_admin_username     = module.create-postgresql-db.out_postgres_admin_username
   postgresql_admin_password     = module.create-postgresql-db.out_postgres_admin_password
   rabbitmq_release_name         = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_release_name : ""
-  rabbitmq_admin_username       = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_admin_username : ""
-  rabbitmq_admin_password       = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_admin_password : ""
+  rabbitmq_listener_username    = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_listener_username : ""
+  rabbitmq_listener_password    = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
   rabbitmq_sender_username      = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_sender_username : ""
   rabbitmq_sender_password      = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
 

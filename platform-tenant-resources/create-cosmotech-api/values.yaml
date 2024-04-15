@@ -89,9 +89,9 @@ config:
       eventBus:
         host: "${RABBITMQ_RELEASE_NAME}.${NAMESPACE}.svc.cluster.local"
         port: 5672
-        admin:
-          username: ${RABBITMQ_ADMIN_USERNAME}
-          password: ${RABBITMQ_ADMIN_PASSWORD}
+        listener:
+          username: ${RABBITMQ_LISTENER_USERNAME}
+          password: ${RABBITMQ_LISTENER_PASSWORD}
         sender:
           username: ${RABBITMQ_SENDER_USERNAME}
           password: ${RABBITMQ_SENDER_PASSWORD}

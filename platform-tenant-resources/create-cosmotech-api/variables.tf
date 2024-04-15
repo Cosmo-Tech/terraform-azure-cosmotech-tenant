@@ -173,11 +173,11 @@ variable "rabbitmq_release_name" {
   type = string
 }
 
-variable "rabbitmq_admin_username" {
+variable "rabbitmq_listener_username" {
   type = string
 }
 
-variable "rabbitmq_admin_password" {
+variable "rabbitmq_listener_password" {
   type = string
 }
 
