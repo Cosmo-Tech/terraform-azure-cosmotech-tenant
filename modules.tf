@@ -54,6 +54,7 @@ module "azure-tenant-resources" {
   create_backup                                = var.create_backup
   create_cosmosdb                              = var.create_cosmosdb
   create_adx                                   = var.create_adx
+  create_eventhub                              = var.create_eventhub
 
   blob_privatedns_zonename     = var.blob_privatedns_zonename
   queue_privatedns_zonename    = var.queue_privatedns_zonename
@@ -153,6 +154,7 @@ module "platform-tenant-resources" {
   cosmos_key                         = module.azure-tenant-resources.out_cosmos_key
   eventbus_uri                       = module.azure-tenant-resources.out_eventbus_uri
   kube_config                        = data.azurerm_kubernetes_cluster.current.kube_config
+  create_rabbitmq                    = var.create_rabbitmq
 
   depends_on = [module.azure-tenant-resources]
 }

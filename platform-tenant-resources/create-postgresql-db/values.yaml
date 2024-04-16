@@ -1,7 +1,11 @@
+image:
+  debug: true
 auth:
-  username: ${ARGO_POSTGRESQL_USER}
-  password: ${ARGO_POSTGRESQL_PASSWORD}
-  database: ${ARGO_DATABASE}
+  enablePostgresUser: true
+  database: postgres
+  existingSecret: ${POSTGRESQL_SECRET_NAME}
+  secretKeys:
+    adminPasswordKey: postgres-password
 primary:
   podLabels:
     "networking/traffic-allowed": "yes"
@@ -12,14 +16,10 @@ primary:
     effect: "NoSchedule"
   nodeSelector:
     "cosmotech.com/tier": "db"
-readReplicas:
-  nodeSelector:
-    "cosmotech.com/tier": "db"
-  tolerations:
-  - key: "vendor"
-    operator: "Equal"
-    value: "cosmotech"
-    effect: "NoSchedule"
+  initdb:
+    user: postgres
+    password: ${POSTGRESQL_PASSWORD}
+    scriptsSecret: ${POSTGRESQL_INITDB_SECRET}
 resources:
   requests:
     memory: "64Mi"

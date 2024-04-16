@@ -37,7 +37,7 @@ output "out_cosmos_key" {
 }
 
 output "out_eventbus_uri" {
-  value     = module.create-eventhub.out_eventbus_uri
+  value     = var.create_eventhub ? module.create-eventhub.0.out_eventbus_uri : ""
   sensitive = true
 }
 
@@ -70,9 +70,9 @@ output "out_adx_ingestion_uri" {
 }
 
 output "out_adx_name" {
-  value = module.create-kusto.0.out_adx_name
+  value = var.create_adx ? module.create-kusto.0.out_adx_name : ""
 }
 
 output "out_adx_principal_id" {
-  value = module.create-kusto.0.out_adx_principal_id
+  value = var.create_adx ? module.create-kusto.0.out_adx_principal_id : ""
 }

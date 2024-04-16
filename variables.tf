@@ -72,7 +72,7 @@ variable "tenant_resource_group" {
 }
 
 variable "kubernetes_azurefile_storage_class_sku" {
-  type    = string
+  type = string
 }
 
 variable "tenant_virtual_network_address_prefix" {
@@ -403,6 +403,18 @@ variable "create_adx" {
   default     = true
 }
 
+variable "create_eventhub" {
+  description = "Whether to create Azure Event Hub resources"
+  type        = bool
+  default     = true
+}
+
+variable "create_rabbitmq" {
+  description = "Whether to create RabbitMQ resources"
+  type        = bool
+  default     = false
+}
+
 variable "create_babylon" {
   description = "Create the Azure Active Directory Application for Babylon"
   type        = bool
@@ -605,8 +617,8 @@ variable "vault_token" {
 
 variable "platform_name" {
   description = "The platform id for babylon v4"
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
 
 variable "tenant_group_id" {

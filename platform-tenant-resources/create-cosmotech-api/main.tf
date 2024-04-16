@@ -30,7 +30,20 @@ locals {
     "NETWORK_ADT_PASSWORD"          = var.network_client_secret
     "NETWORK_ADT_CLIENTID"          = var.network_client_id
     "MULTI_TENANT"                  = var.is_multitenant
+    "USE_INTERNAL_RESULT_SERVICES"  = var.use_internal_result_services
     "TENANT_RESOURCE_GROUP"         = var.tenant_resource_group
+    "POSTGRESQL_RELEASE_NAME"       = var.postgresql_release_name
+    "POSTGRESQL_READER_USERNAME"    = var.postgresql_reader_username
+    "POSTGRESQL_READER_PASSWORD"    = var.postgresql_reader_password
+    "POSTGRESQL_WRITER_USERNAME"    = var.postgresql_writer_username
+    "POSTGRESQL_WRITER_PASSWORD"    = var.postgresql_writer_password
+    "POSTGRESQL_ADMIN_USERNAME"     = var.postgresql_admin_username
+    "POSTGRESQL_ADMIN_PASSWORD"     = var.postgresql_admin_password
+    "RABBITMQ_RELEASE_NAME"         = var.rabbitmq_release_name
+    "RABBITMQ_LISTENER_USERNAME"    = var.rabbitmq_listener_username
+    "RABBITMQ_LISTENER_PASSWORD"    = var.rabbitmq_listener_password
+    "RABBITMQ_SENDER_USERNAME"      = var.rabbitmq_sender_username
+    "RABBITMQ_SENDER_PASSWORD"      = var.rabbitmq_sender_password
   }
   instance_name        = "${var.helm_release_name}-${var.namespace}"
   argo_service_account = "argo-${var.namespace}-service-account"
