@@ -6,7 +6,7 @@ api:
 
 image:
   repository: ghcr.io/cosmo-tech/cosmotech-api
-  tag: ${CHART_PACKAGE_VERSION}
+  tag: ${API_VERSION}
 argo:
   imageCredentials:
     password: ${ACR_LOGIN_PASSWORD}

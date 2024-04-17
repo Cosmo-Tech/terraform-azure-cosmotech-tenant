@@ -3,7 +3,6 @@ locals {
     "API_REPLICAS"                  = var.api_replicas
     "MONITORING_ENABLED"            = var.monitoring_enabled
     "MONITORING_NAMESPACE"          = var.monitoring_namespace
-    "CHART_PACKAGE_VERSION"         = var.chart_package_version
     "TLS_SECRET_NAME"               = local.tls_secret_name
     "NAMESPACE"                     = var.namespace
     "REDIS_PORT"                    = var.redis_port
