@@ -13,6 +13,7 @@ locals {
     "COSMOTECH_API_INGRESS_ENABLED" = var.cosmotech_api_ingress_enabled
     "COSMOTECH_API_DNS_NAME"        = var.api_dns_name
     "API_VERSION"                   = var.cosmotech_api_version
+    "API_VERSION_PATH"              = var.cosmotech_api_version_path
     "ACR_LOGIN_PASSWORD"            = var.acr_login_password
     "ACR_LOGIN_SERVER"              = var.acr_login_server
     "ACR_LOGIN_USERNAME"            = var.acr_login_username

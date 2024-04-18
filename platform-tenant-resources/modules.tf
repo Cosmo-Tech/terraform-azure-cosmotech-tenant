@@ -61,6 +61,7 @@ module "create-cosmotech-api" {
   storage_account_name          = var.storage_account_name
   chart_package_version         = var.chart_package_version
   cosmotech_api_version         = var.cosmotech_api_version
+  cosmotech_api_version_path    = var.cosmotech_api_version_path
   cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
   redis_admin_password          = random_password.redis_admin_password.result
   redis_port                    = var.redis_port

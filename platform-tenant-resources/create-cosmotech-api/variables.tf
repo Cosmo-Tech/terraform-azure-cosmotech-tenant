@@ -104,6 +104,10 @@ variable "helm_repository" {
   default = "oci://ghcr.io/cosmo-tech"
 }
 
+variable "cosmotech_api_version_path" {
+  type = string
+}
+
 variable "cosmotech_api_version" {
   type = string
 }

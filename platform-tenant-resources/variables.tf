@@ -144,6 +144,10 @@ variable "cluster_issuer_name" {
   type = string
 }
 
+variable "cosmotech_api_version_path" {
+  type = string
+}
+
 variable "cosmotech_api_version" {
   type = string
 }
