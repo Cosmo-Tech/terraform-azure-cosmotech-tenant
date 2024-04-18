@@ -58,7 +58,7 @@ extraSecrets:
           {
             "user": "${SENDER_USERNAME}",
             "vhost": "/",
-            "configure": "^$",
+            "configure": ".*",
             "write": ".*",
             "read": ".*"
           }
