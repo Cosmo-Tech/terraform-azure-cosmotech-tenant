@@ -43,6 +43,8 @@ config:
           "[${APP_ID_URI}/${TENANT_RESOURCE_GROUP}/.default]": "${TENANT_RESOURCE_GROUP} scope"
       namespace: ${NAMESPACE}
       use_internal_result_services: ${USE_INTERNAL_RESULT_SERVICES}
+      loki:
+        baseUrl: http://loki.${MONITORING_NAMESPACE}.svc.cluster.local:3100
       argo:
         base-uri: "http://${ARGO_RELEASE_NAME}-argo-workflows-server.${NAMESPACE}.svc.cluster.local:2746"
         workflows:
