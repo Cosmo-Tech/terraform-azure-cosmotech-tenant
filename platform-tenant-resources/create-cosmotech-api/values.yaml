@@ -19,10 +19,10 @@ config:
       namespace: ${MONITORING_NAMESPACE}
   logging:
     level:
-      com.cosmotech: TRACE
-      web: TRACE
-      org.springframework: TRACE
-      com.redis: TRACE
+      com.cosmotech: DEBUG
+      web: WARN
+      org.springframework: WARN
+      com.redis: WARN
   server:
     error:
       include-stacktrace: always
