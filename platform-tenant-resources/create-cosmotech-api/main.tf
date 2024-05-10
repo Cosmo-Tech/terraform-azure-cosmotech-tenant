@@ -44,6 +44,7 @@ locals {
     "RABBITMQ_LISTENER_PASSWORD"    = var.rabbitmq_listener_password
     "RABBITMQ_SENDER_USERNAME"      = var.rabbitmq_sender_username
     "RABBITMQ_SENDER_PASSWORD"      = var.rabbitmq_sender_password
+    "ALLOWED_API_KEY_CONSUMERS"     = jsonencode(var.list_apikey_allowed)
   }
   instance_name        = "${var.helm_release_name}-${var.namespace}"
   argo_service_account = "argo-${var.namespace}-service-account"

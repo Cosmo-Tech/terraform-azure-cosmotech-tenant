@@ -79,7 +79,7 @@ module "create-cosmotech-api" {
   rabbitmq_listener_password    = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
   rabbitmq_sender_username      = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_sender_username : ""
   rabbitmq_sender_password      = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
-
+  list_apikey_allowed           = var.list_apikey_allowed
   depends_on = [
     module.create-argo,
     module.create-postgresql-db,

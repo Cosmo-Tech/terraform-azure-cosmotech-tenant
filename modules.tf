@@ -156,6 +156,7 @@ module "platform-tenant-resources" {
   eventbus_uri                       = module.azure-tenant-resources.out_eventbus_uri
   kube_config                        = data.azurerm_kubernetes_cluster.current.kube_config
   create_rabbitmq                    = var.create_rabbitmq
+  list_apikey_allowed                = var.list_apikey_allowed
 
   depends_on = [module.azure-tenant-resources]
 }
