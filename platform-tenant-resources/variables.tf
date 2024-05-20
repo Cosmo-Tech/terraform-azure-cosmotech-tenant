@@ -177,3 +177,18 @@ variable "tls_certificate_custom_key" {
   type    = string
   default = ""
 }
+
+variable "list_apikey_allowed" {
+  type = list(object({
+    name = string
+    apiKey = string
+    associatedRole = string
+    securedUris = list(string)
+  }))
+  default = [ {
+      name = ""
+      apiKey = ""
+      associatedRole = ""
+      securedUris = []
+  } ]
+}
