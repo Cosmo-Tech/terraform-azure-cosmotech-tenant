@@ -63,6 +63,7 @@
 | <a name="input_adt_privatedns_zonename"></a> [adt\_privatedns\_zonename](#input\_adt\_privatedns\_zonename) | n/a | `string` | `"privatelink.digitaltwins.azure.net"` | no |
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | `2` | no |
 | <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | The API version path | `string` | `"v3-1"` | no |
+| <a name="input_app_scope"></a> [app\_scope](#input\_app\_scope) | The platform identifier uri | `string` | `""` | no |
 | <a name="input_archive_ttl"></a> [archive\_ttl](#input\_archive\_ttl) | n/a | `string` | `"3d"` | no |
 | <a name="input_argo_minio_persistence_size"></a> [argo\_minio\_persistence\_size](#input\_argo\_minio\_persistence\_size) | n/a | `string` | `"16Gi"` | no |
 | <a name="input_argo_minio_requests_memory"></a> [argo\_minio\_requests\_memory](#input\_argo\_minio\_requests\_memory) | n/a | `string` | `"2Gi"` | no |
@@ -96,7 +97,6 @@
 | <a name="input_dns_zone_name"></a> [dns\_zone\_name](#input\_dns\_zone\_name) | The DNS zone name to create platform subdomain. Example: api.cosmotech.com | `string` | `"api.cosmotech.com"` | no |
 | <a name="input_dns_zone_rg"></a> [dns\_zone\_rg](#input\_dns\_zone\_rg) | The DNS zone resource group | `string` | `"phoenix"` | no |
 | <a name="input_eventhub_privatedns_zonename"></a> [eventhub\_privatedns\_zonename](#input\_eventhub\_privatedns\_zonename) | n/a | `string` | `"privatelink.servicebus.windows.net"` | no |
-| <a name="input_identifier_uri"></a> [identifier\_uri](#input\_identifier\_uri) | The platform identifier uri | `string` | `""` | no |
 | <a name="input_image_path"></a> [image\_path](#input\_image\_path) | n/a | `string` | `"./cosmotech.png"` | no |
 | <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Azure Kubernetes Service version | `string` | `"1.26.6"` | no |
 | <a name="input_kusto_instance_type"></a> [kusto\_instance\_type](#input\_kusto\_instance\_type) | n/a | `string` | `"Standard_D12_v2"` | no |
