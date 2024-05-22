@@ -195,15 +195,19 @@ variable "rabbitmq_sender_password" {
 
 variable "list_apikey_allowed" {
   type = list(object({
-    name = string
-    apiKey = string
+    name           = string
+    apiKey         = string
     associatedRole = string
-    securedUris = list(string)
+    securedUris    = list(string)
   }))
-  default = [ {
-      name = ""
-      apiKey = ""
-      associatedRole = ""
-      securedUris = []
-  } ]
+  default = [{
+    name           = ""
+    apiKey         = ""
+    associatedRole = ""
+    securedUris    = []
+  }]
+}
+
+variable "identifier_uri" {
+  type = string
 }
