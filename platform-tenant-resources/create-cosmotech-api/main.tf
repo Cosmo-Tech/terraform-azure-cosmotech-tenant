@@ -7,7 +7,7 @@ locals {
     "NAMESPACE"                     = var.namespace
     "REDIS_PORT"                    = var.redis_port
     "REDIS_PASSWORD"                = var.redis_admin_password
-    "APP_ID_URI"                    = "https://${var.api_dns_name}"
+    "APP_ID_URI"                    = local.identifier_uri
     "ARGO_SERVICE_ACCOUNT"          = local.argo_service_account
     "ARGO_RELEASE_NAME"             = local.argo_instance_name
     "COSMOTECH_API_INGRESS_ENABLED" = var.cosmotech_api_ingress_enabled
@@ -49,6 +49,7 @@ locals {
   instance_name        = "${var.helm_release_name}-${var.namespace}"
   argo_service_account = "argo-${var.namespace}-service-account"
   tls_secret_name      = "${var.tls_secret_name}-${var.namespace}"
+  identifier_uri       = var.identifier_uri != "" ? var.identifier_uri : "https://${var.api_dns_name}"
 }
 
 locals {
