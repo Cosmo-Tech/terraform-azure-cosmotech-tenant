@@ -134,7 +134,7 @@ variable "platform_url" {
   default     = ""
 }
 
-variable "app_scope" {
+variable "identifier_uri" {
   description = "The platform identifier uri"
   default     = ""
 }
