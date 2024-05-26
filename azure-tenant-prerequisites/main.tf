@@ -87,18 +87,33 @@ resource "azuread_application" "platform" {
 }
 
 resource "azuread_service_principal" "platform" {
-  application_id = azuread_application.platform.application_id
+  client_id = azuread_application.platform.client_id
   # assignment required to secure Function Apps using thi App Registration as identity provider
   app_role_assignment_required = true
+  owners                       = data.azuread_users.owners.object_ids
+  tags                         = ["cosmotech", var.project_stage, var.customer_name, var.project_name, "HideApp", "WindowsAzureActiveDirectoryIntegratedApp", "terraformed"]
+}
 
-  tags = ["cosmotech", var.project_stage, var.customer_name, var.project_name, "HideApp", "WindowsAzureActiveDirectoryIntegratedApp", "terraformed"]
+resource "azuread_application_api_access" "add_role_api" {
+  application_id = "/applications/${azuread_application.platform.object_id}"
+  api_client_id  = azuread_application.platform.client_id
+  role_ids       = ["bb49d61f-8b6a-4a19-b5bd-06a29d6b8e60"]
+  depends_on     = [azuread_service_principal.platform]
+}
+
+resource "azuread_app_role_assignment" "add_user_admin_platform" {
+  app_role_id         = azuread_service_principal.platform.app_role_ids["Platform.Admin"]
+  for_each            = toset(data.azuread_users.owners.object_ids)
+  principal_object_id = each.key
+  resource_object_id  = azuread_service_principal.platform.object_id
+  depends_on          = [azuread_application_api_access.add_role_api]
 }
 
 resource "azuread_application_password" "platform_password" {
-  display_name          = "platform_secret"
-  count                 = var.create_secrets ? 1 : 0
-  application_object_id = azuread_application.platform.object_id
-  end_date_relative     = "4464h"
+  display_name      = "platform_secret"
+  count             = var.create_secrets ? 1 : 0
+  application_id    = azuread_application.platform.id
+  end_date_relative = "4464h"
 }
 
 
@@ -111,18 +126,18 @@ resource "azuread_application" "network_adt" {
 }
 
 resource "azuread_service_principal" "network_adt" {
+  client_id                    = azuread_application.network_adt.client_id
   depends_on                   = [azuread_service_principal.platform]
-  application_id               = azuread_application.network_adt.application_id
   app_role_assignment_required = false
-
-  tags = ["cosmotech", var.project_stage, var.customer_name, var.project_name, "HideApp", "WindowsAzureActiveDirectoryIntegratedApp", "terraformed"]
+  owners                       = data.azuread_users.owners.object_ids
+  tags                         = ["cosmotech", var.project_stage, var.customer_name, var.project_name, "HideApp", "WindowsAzureActiveDirectoryIntegratedApp", "terraformed"]
 }
 
 resource "azuread_application_password" "network_adt_password" {
-  display_name          = "network_adt_secret"
-  count                 = var.create_secrets ? 1 : 0
-  application_object_id = azuread_application.network_adt.object_id
-  end_date_relative     = "4464h"
+  display_name      = "network_adt_secret"
+  count             = var.create_secrets ? 1 : 0
+  application_id    = azuread_application.network_adt.id
+  end_date_relative = "4464h"
 }
 
 resource "azuread_application" "swagger" {
@@ -143,7 +158,7 @@ resource "azuread_application" "swagger" {
   }
 
   required_resource_access {
-    resource_app_id = azuread_application.platform.application_id # Cosmo Tech Platform
+    resource_app_id = azuread_application.platform.client_id # Cosmo Tech Platform
 
     resource_access {
       id   = "6332363e-bcba-4c4a-a605-c25f23117400" # platform
@@ -165,11 +180,11 @@ resource "azuread_application" "swagger" {
 }
 
 resource "azuread_service_principal" "swagger" {
+  client_id                    = azuread_application.swagger.client_id
   depends_on                   = [azuread_service_principal.network_adt]
-  application_id               = azuread_application.swagger.application_id
   app_role_assignment_required = false
-
-  tags = ["cosmotech", var.project_stage, var.customer_name, var.project_name, "HideApp", "WindowsAzureActiveDirectoryIntegratedApp", "terraformed"]
+  owners                       = data.azuread_users.owners.object_ids
+  tags                         = ["cosmotech", var.project_stage, var.customer_name, var.project_name, "HideApp", "WindowsAzureActiveDirectoryIntegratedApp", "terraformed"]
 }
 
 
@@ -191,7 +206,7 @@ resource "azuread_application" "restish" {
   }
 
   required_resource_access {
-    resource_app_id = azuread_application.platform.application_id # Cosmo Tech Platform
+    resource_app_id = azuread_application.platform.client_id # Cosmo Tech Platform
 
     resource_access {
       id   = "6332363e-bcba-4c4a-a605-c25f23117400" # platform
@@ -205,19 +220,19 @@ resource "azuread_application" "restish" {
 }
 
 resource "azuread_service_principal" "restish" {
+  client_id                    = azuread_application.restish[0].client_id
   depends_on                   = [azuread_service_principal.swagger]
   count                        = var.create_restish ? 1 : 0
-  application_id               = azuread_application.restish[0].application_id
   app_role_assignment_required = false
-
-  tags = ["cosmotech", var.project_stage, var.customer_name, var.project_name, "HideApp", "WindowsAzureActiveDirectoryIntegratedApp", "terraformed"]
+  owners                       = data.azuread_users.owners.object_ids
+  tags                         = ["cosmotech", var.project_stage, var.customer_name, var.project_name, "HideApp", "WindowsAzureActiveDirectoryIntegratedApp", "terraformed"]
 }
 
 resource "azuread_application_password" "restish_password" {
-  display_name          = "restish_secret"
-  count                 = var.create_restish && var.create_secrets ? 1 : 0
-  application_object_id = azuread_application.restish[0].object_id
-  end_date_relative     = "4464h"
+  display_name      = "restish_secret"
+  count             = var.create_restish && var.create_secrets ? 1 : 0
+  application_id    = azuread_application.restish[0].id
+  end_date_relative = "4464h"
 }
 
 resource "azuread_application" "powerbi" {
@@ -230,19 +245,19 @@ resource "azuread_application" "powerbi" {
 }
 
 resource "azuread_service_principal" "powerbi" {
+  client_id                    = azuread_application.powerbi[0].client_id
   depends_on                   = [azuread_service_principal.restish]
   count                        = var.create_powerbi ? 1 : 0
-  application_id               = azuread_application.powerbi[0].application_id
   app_role_assignment_required = false
 
   tags = ["cosmotech", var.project_stage, var.customer_name, var.project_name, "HideApp", "WindowsAzureActiveDirectoryIntegratedApp", "terraformed"]
 }
 
 resource "azuread_application_password" "powerbi_password" {
-  display_name          = "powerbi_secret"
-  count                 = var.create_powerbi && var.create_secrets ? 1 : 0
-  application_object_id = azuread_application.powerbi[0].object_id
-  end_date_relative     = "4464h"
+  display_name      = "powerbi_secret"
+  count             = var.create_powerbi && var.create_secrets ? 1 : 0
+  application_id    = azuread_application.powerbi[0].id
+  end_date_relative = "4464h"
 }
 
 resource "azuread_application" "webapp" {
@@ -264,7 +279,7 @@ resource "azuread_application" "webapp" {
   }
 
   required_resource_access {
-    resource_app_id = azuread_application.platform.application_id # Cosmo Tech Platform
+    resource_app_id = azuread_application.platform.client_id # Cosmo Tech Platform
 
     resource_access {
       id   = "6332363e-bcba-4c4a-a605-c25f23117400" # platform
@@ -278,12 +293,12 @@ resource "azuread_application" "webapp" {
 }
 
 resource "azuread_service_principal" "webapp" {
+  client_id                    = azuread_application.webapp[0].client_id
   depends_on                   = [azuread_service_principal.webapp]
-  application_id               = azuread_application.webapp[0].application_id
   app_role_assignment_required = false
   count                        = var.create_webapp ? 1 : 0
-
-  tags = ["cosmotech", var.project_stage, var.customer_name, var.project_name, "HideApp", "WindowsAzureActiveDirectoryIntegratedApp", "terraformed"]
+  owners                       = data.azuread_users.owners.object_ids
+  tags                         = ["cosmotech", var.project_stage, var.customer_name, var.project_name, "HideApp", "WindowsAzureActiveDirectoryIntegratedApp", "terraformed"]
 }
 
 # create the Azure AD resource group
@@ -295,10 +310,10 @@ resource "azuread_group" "platform_group" {
 }
 
 resource "azuread_application_password" "babylon_password" {
-  display_name          = "babylon_secret"
-  count                 = var.create_babylon && var.create_secrets ? 1 : 0
-  application_object_id = azuread_application.babylon[0].object_id
-  end_date_relative     = "4464h"
+  display_name      = "babylon_secret"
+  count             = var.create_babylon && var.create_secrets ? 1 : 0
+  application_id    = azuread_application.babylon[0].id
+  end_date_relative = "4464h"
 }
 
 resource "azuread_application" "babylon" {
@@ -320,7 +335,7 @@ resource "azuread_application" "babylon" {
   }
 
   required_resource_access {
-    resource_app_id = azuread_application.platform.application_id # Cosmo Tech Platform
+    resource_app_id = azuread_application.platform.client_id # Cosmo Tech Platform
 
     resource_access {
       id   = "6332363e-bcba-4c4a-a605-c25f23117400" # platform
@@ -345,10 +360,10 @@ resource "azuread_application" "babylon" {
 }
 
 resource "azuread_service_principal" "babylon" {
+  client_id                    = azuread_application.babylon[0].client_id
   count                        = var.create_babylon ? 1 : 0
   depends_on                   = [azuread_service_principal.swagger]
-  application_id               = azuread_application.babylon[0].application_id
   app_role_assignment_required = false
-
-  tags = ["cosmotech", var.project_stage, var.customer_name, var.project_name, "HideApp", "WindowsAzureActiveDirectoryIntegratedApp", "terraformed"]
+  owners                       = data.azuread_users.owners.object_ids
+  tags                         = ["cosmotech", var.project_stage, var.customer_name, var.project_name, "HideApp", "WindowsAzureActiveDirectoryIntegratedApp", "terraformed"]
 }

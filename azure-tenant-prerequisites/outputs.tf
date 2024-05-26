@@ -7,7 +7,7 @@ output "out_tenant_id" {
 }
 
 output "out_platform_clientid" {
-  value = azuread_application.platform.application_id
+  value = azuread_application.platform.client_id
 }
 
 output "out_platform_sp_object_id" {
@@ -28,7 +28,7 @@ output "out_networkadt_sp_objectid" {
 }
 
 output "out_network_adt_clientid" {
-  value = azuread_application.network_adt.application_id
+  value = azuread_application.network_adt.client_id
 }
 
 output "out_network_adt_password" {
@@ -49,7 +49,7 @@ output "out_swagger_name" {
 }
 
 output "out_swagger_clientid" {
-  value = azuread_application.swagger.application_id
+  value = azuread_application.swagger.client_id
 }
 
 output "out_restish_password" {
@@ -62,7 +62,7 @@ output "out_restish_name" {
 }
 
 output "out_restish_clientid" {
-  value = var.create_restish ? azuread_application.restish[0].application_id : null
+  value = var.create_restish ? azuread_application.restish[0].client_id : null
 }
 
 output "out_powerbi_name" {
@@ -70,7 +70,7 @@ output "out_powerbi_name" {
 }
 
 output "out_powerbi_clientid" {
-  value = var.create_powerbi ? azuread_application.powerbi[0].application_id : null
+  value = var.create_powerbi ? azuread_application.powerbi[0].client_id : null
 }
 
 output "out_powerbi_password" {
@@ -83,7 +83,7 @@ output "out_webapp_name" {
 }
 
 output "out_webapp_clientid" {
-  value = var.create_webapp ? azuread_application.webapp[0].application_id : null
+  value = var.create_webapp ? azuread_application.webapp[0].client_id : null
 }
 
 output "out_tenant_group_id" {
@@ -91,7 +91,7 @@ output "out_tenant_group_id" {
 }
 
 output "out_platform_sp_client_id" {
-  value = azuread_application.platform.application_id
+  value = azuread_application.platform.client_id
 }
 
 output "out_platform_sp_client_secret" {
@@ -99,7 +99,7 @@ output "out_platform_sp_client_secret" {
 }
 
 output "out_babylon_client_id" {
-  value = var.create_babylon ? azuread_application.babylon.0.application_id : null
+  value = var.create_babylon ? azuread_application.babylon.0.client_id : null
 }
 
 output "out_babylon_principal_id" {
