@@ -71,10 +71,6 @@ variable "tenant_resource_group" {
   type        = string
 }
 
-variable "kubernetes_azurefile_storage_class_sku" {
-  type = string
-}
-
 variable "tenant_virtual_network_address_prefix" {
   description = "The Virtual Network IP range. Minimum /26 NetMaskLength"
   type        = string
@@ -643,8 +639,9 @@ variable "network_sp_object_id" {
   default     = ""
 }
 
-variable "kubernetes_azurefile_storage_tags" {
+variable "customertag" {
   type = string
+  default = ""
 }
 
 variable "storage_class_sku" {

@@ -85,7 +85,7 @@ module "azure-tenant-resources" {
     customer    = var.customer_name
     project     = var.project_name
     cost_center = var.cost_center
-    customertag = var.kubernetes_azurefile_storage_tags
+    customertag = var.customertag
   }
 
   depends_on = [module.azure-tenant-prerequisites]
