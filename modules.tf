@@ -68,8 +68,8 @@ module "azure-tenant-resources" {
   kusto_instance_type       = var.kusto_instance_type
   kustonr_instances         = var.kustonr_instances
   auto_stop_kusto           = var.auto_stop_kusto
-  storage_tier              = split("_", var.kubernetes_azurefile_storage_class_sku)[0]
-  storage_replication_type  = split("_", var.kubernetes_azurefile_storage_class_sku)[1]
+  storage_tier              = split("_", var.storage_class_sku)[0]
+  storage_replication_type  = split("_", var.storage_class_sku)[1]
   tenant_group_id           = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_tenant_group_id : var.tenant_group_id
   tenant_sp_object_id       = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.tenant_sp_object_id
   tenant_resource_group     = var.deployment_type != "ARM" ? azurerm_resource_group.tenant_rg.0 : data.azurerm_resource_group.tenant_rg.0

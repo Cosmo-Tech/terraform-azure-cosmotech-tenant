@@ -647,6 +647,11 @@ variable "kubernetes_azurefile_storage_tags" {
   type = string
 }
 
+variable "storage_class_sku" {
+  type = string
+  default = "Standard_LRS"
+}
+
 variable "storage_kind" {
   type    = string
   default = "StorageV2"
