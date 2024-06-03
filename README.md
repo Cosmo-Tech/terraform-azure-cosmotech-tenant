@@ -47,8 +47,6 @@
 | <a name="input_common_resource_group"></a> [common\_resource\_group](#input\_common\_resource\_group) | Existing Resource group which contain common platform resources | `string` | n/a | yes |
 | <a name="input_cosmotech_api_version"></a> [cosmotech\_api\_version](#input\_cosmotech\_api\_version) | n/a | `string` | n/a | yes |
 | <a name="input_dns_record"></a> [dns\_record](#input\_dns\_record) | The DNS zone name to create platform subdomain. Example: myplatform | `string` | n/a | yes |
-| <a name="input_kubernetes_azurefile_storage_class_sku"></a> [kubernetes\_azurefile\_storage\_class\_sku](#input\_kubernetes\_azurefile\_storage\_class\_sku) | n/a | `string` | n/a | yes |
-| <a name="input_kubernetes_azurefile_storage_tags"></a> [kubernetes\_azurefile\_storage\_tags](#input\_kubernetes\_azurefile\_storage\_tags) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | The kubernetes namespace to create | `string` | n/a | yes |
 | <a name="input_network_client_id"></a> [network\_client\_id](#input\_network\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_owner_list"></a> [owner\_list](#input\_owner\_list) | List of mail addresses for App Registration owners | `list(string)` | n/a | yes |
@@ -92,6 +90,7 @@
 | <a name="input_create_vault_entries"></a> [create\_vault\_entries](#input\_create\_vault\_entries) | Custom module used to automatically retrieve Cosmo Tech Platform values and fill Vault in order to be used by Babylon | `bool` | `false` | no |
 | <a name="input_create_webapp"></a> [create\_webapp](#input\_create\_webapp) | Create the Azure Active Directory Application for WebApp | `bool` | `false` | no |
 | <a name="input_customer_name"></a> [customer\_name](#input\_customer\_name) | The customer name | `string` | `"cosmotech"` | no |
+| <a name="input_customertag"></a> [customertag](#input\_customertag) | n/a | `string` | `""` | no |
 | <a name="input_deployment_type"></a> [deployment\_type](#input\_deployment\_type) | Represents the kind of deployment. Currently two modes: ARM or Terraform | `string` | `"Terraform"` | no |
 | <a name="input_dns_zone_name"></a> [dns\_zone\_name](#input\_dns\_zone\_name) | The DNS zone name to create platform subdomain. Example: api.cosmotech.com | `string` | `"api.cosmotech.com"` | no |
 | <a name="input_dns_zone_rg"></a> [dns\_zone\_rg](#input\_dns\_zone\_rg) | The DNS zone resource group | `string` | `"phoenix"` | no |
@@ -119,6 +118,7 @@
 | <a name="input_redis_disk_sku"></a> [redis\_disk\_sku](#input\_redis\_disk\_sku) | The SKU of the managed disk | `string` | `"Premium_LRS"` | no |
 | <a name="input_redis_disk_tier"></a> [redis\_disk\_tier](#input\_redis\_disk\_tier) | The tier of the managed disk | `string` | `"P6"` | no |
 | <a name="input_redis_port"></a> [redis\_port](#input\_redis\_port) | n/a | `number` | `6379` | no |
+| <a name="input_storage_class_sku"></a> [storage\_class\_sku](#input\_storage\_class\_sku) | n/a | `string` | `"Standard_LRS"` | no |
 | <a name="input_storage_kind"></a> [storage\_kind](#input\_storage\_kind) | n/a | `string` | `"StorageV2"` | no |
 | <a name="input_table_privatedns_zonename"></a> [table\_privatedns\_zonename](#input\_table\_privatedns\_zonename) | n/a | `string` | `"privatelink.table.core.windows.net"` | no |
 | <a name="input_tenant_client_id"></a> [tenant\_client\_id](#input\_tenant\_client\_id) | n/a | `string` | `""` | no |
