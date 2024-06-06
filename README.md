@@ -24,7 +24,7 @@
 | <a name="module_azure-tenant-prerequisites"></a> [azure-tenant-prerequisites](#module\_azure-tenant-prerequisites) | ./azure-tenant-prerequisites | n/a |
 | <a name="module_azure-tenant-resources"></a> [azure-tenant-resources](#module\_azure-tenant-resources) | ./azure-tenant-resources | n/a |
 | <a name="module_create-vault-entries"></a> [create-vault-entries](#module\_create-vault-entries) | ./create-vault-entries | n/a |
-| <a name="module_platform-tenant-resources"></a> [platform-tenant-resources](#module\_platform-tenant-resources) | git@github.com:Cosmo-Tech/terraform-cosmotech-platform-tenant | main//platform-tenant-resources |
+| <a name="module_platform-tenant-resources"></a> [platform-tenant-resources](#module\_platform-tenant-resources) | git@github.com:Cosmo-Tech/terraform-cosmotech-platform-tenant | main |
 
 ## Resources
 
