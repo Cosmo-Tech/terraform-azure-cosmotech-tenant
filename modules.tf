@@ -144,8 +144,6 @@ module "platform-tenant-resources" {
   tenant_client_id                   = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : var.tenant_client_id
   tenant_client_secret               = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_secret : var.tenant_client_secret
   managed_disk_id                    = module.azure-tenant-resources.out_managed_disk_id
-  storage_account_key                = module.azure-tenant-resources.out_storage_account_key
-  storage_account_name               = module.azure-tenant-resources.out_storage_account_name
   acr_login_password                 = module.azure-tenant-resources.out_acr_login_password
   acr_login_server                   = module.azure-tenant-resources.out_acr_login_server
   acr_login_username                 = module.azure-tenant-resources.out_acr_login_username
