@@ -111,7 +111,8 @@ module "create-vault-entries" {
 }
 
 module "platform-tenant-resources" {
-  source = "git@github.com:Cosmo-Tech/terraform-cosmotech-platform-tenant?ref=main"
+  source  = "Cosmo-Tech/cosmotech-common/kubernetes"
+  version = "1.1.0"
 
   api_dns_name                       = var.api_dns_name
   api_replicas                       = var.api_replicas
