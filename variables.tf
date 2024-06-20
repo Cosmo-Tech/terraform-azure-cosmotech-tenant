@@ -82,11 +82,6 @@ variable "tenant_virtual_subnet_network_address_prefix" {
   default = "10.40.0.0/24"
 }
 
-variable "redis_disk_name" {
-  type    = string
-  default = "cosmotech-database-disk"
-}
-
 variable "auto_stop_kusto" {
   description = "Specifies if the cluster could be automatically stopped"
   type        = bool
@@ -336,16 +331,6 @@ variable "cosmotech_api_version" {
   type = string
 }
 
-variable "managed_disk_name" {
-  description = "Name of the managed disk to create"
-  type        = string
-  default     = ""
-  validation {
-    condition     = length(var.managed_disk_name) < 80
-    error_message = "The managed_disk_name value must be between 1 and 80 characters long."
-  }
-}
-
 variable "image_path" {
   type    = string
   default = "./cosmotech.png"
@@ -361,24 +346,6 @@ variable "create_secrets" {
   description = "Create secrets for newly created app registrations"
   type        = bool
   default     = true
-}
-
-variable "redis_disk_size_gb" {
-  description = "The size of the managed disk to create (Gb)"
-  type        = string
-  default     = 64
-}
-
-variable "redis_disk_sku" {
-  description = "The SKU of the managed disk"
-  type        = string
-  default     = "Premium_LRS"
-}
-
-variable "redis_disk_tier" {
-  description = "The tier of the managed disk"
-  type        = string
-  default     = "P6"
 }
 
 variable "kubernetes_version" {
@@ -421,12 +388,6 @@ variable "cost_center" {
   description = "The value associated to a resource (tag)"
   type        = string
   default     = "NA"
-}
-
-variable "create_backup" {
-  description = "Whether to create Azure backup vault along with the managed disk"
-  type        = bool
-  default     = false
 }
 
 variable "monitoring_namespace" {
