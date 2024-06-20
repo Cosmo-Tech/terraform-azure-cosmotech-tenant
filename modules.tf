@@ -42,7 +42,6 @@ module "azure-tenant-resources" {
   location                                     = var.location
   tenant_virtual_network_address_prefix        = var.tenant_virtual_network_address_prefix
   tenant_virtual_subnet_network_address_prefix = var.tenant_virtual_subnet_network_address_prefix
-  managed_disk_name                            = var.managed_disk_name
   cluster_name                                 = var.cluster_name
   project_stage                                = var.project_stage
   project_name                                 = var.project_name
@@ -51,7 +50,6 @@ module "azure-tenant-resources" {
   network_sp_object_id                         = var.network_sp_object_id
   storage_kind                                 = var.storage_kind
   vnet_resource_group                          = var.vnet_resource_group
-  create_backup                                = var.create_backup
   create_cosmosdb                              = var.create_cosmosdb
   create_adx                                   = var.create_adx
   create_eventhub                              = var.create_eventhub
@@ -62,9 +60,6 @@ module "azure-tenant-resources" {
   eventhub_privatedns_zonename = var.eventhub_privatedns_zonename
   adt_privatedns_zonename      = var.adt_privatedns_zonename
 
-  redis_disk_tier           = var.redis_disk_tier
-  redis_disk_sku            = var.redis_disk_sku
-  redis_disk_size_gb        = var.redis_disk_size_gb
   kusto_instance_type       = var.kusto_instance_type
   kustonr_instances         = var.kustonr_instances
   auto_stop_kusto           = var.auto_stop_kusto
@@ -130,8 +125,6 @@ module "platform-tenant-resources" {
   monitoring_namespace               = var.monitoring_namespace
   chart_package_version              = var.chart_package_version
   tenant_resource_group              = var.tenant_resource_group
-  redis_disk_name                    = var.redis_disk_name
-  redis_disk_sku                     = var.redis_disk_sku
   redis_port                         = var.redis_port
   argo_minio_persistence_size        = var.argo_minio_persistence_size
   argo_minio_requests_memory         = var.argo_minio_requests_memory
@@ -144,7 +137,6 @@ module "platform-tenant-resources" {
   network_client_secret              = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_network_adt_password : var.network_client_secret
   tenant_client_id                   = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : var.tenant_client_id
   tenant_client_secret               = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_secret : var.tenant_client_secret
-  managed_disk_id                    = module.azure-tenant-resources.out_managed_disk_id
   storage_account_key                = module.azure-tenant-resources.out_storage_account_key
   storage_account_name               = module.azure-tenant-resources.out_storage_account_name
   acr_login_password                 = module.azure-tenant-resources.out_acr_login_password
