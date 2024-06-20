@@ -13,11 +13,11 @@ resource "azurerm_cosmosdb_account" "cosmosdb" {
   identity {
     type = "SystemAssigned"
   }
-  public_network_access_enabled         = true
+  public_network_access_enabled = true
   # enable_automatic_failover             = false
   # enable_multiple_write_locations       = false
-  is_virtual_network_filter_enabled     = false
-  access_key_metadata_writes_enabled    = true # Important to give 'write' (aka POST) rights !!!
+  is_virtual_network_filter_enabled  = false
+  access_key_metadata_writes_enabled = true # Important to give 'write' (aka POST) rights !!!
   # enable_free_tier                      = false
   analytical_storage_enabled            = false
   offer_type                            = "Standard"
