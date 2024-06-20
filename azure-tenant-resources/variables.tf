@@ -49,8 +49,10 @@ variable "vnet_resource_group" {
   type = string
 }
 
-variable "create_backup" {
-  type = bool
+variable "create_cosmosdb" {
+  description = "Used on Platform <=2.3"
+  type        = bool
+  # default     = false
 }
 
 variable "create_eventhub" {

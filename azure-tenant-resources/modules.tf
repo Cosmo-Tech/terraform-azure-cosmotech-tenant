@@ -1,20 +1,3 @@
-module "create-backup" {
-  source = "./create-backup"
-
-  count = var.create_backup ? 1 : 0
-
-  tags                            = local.tags
-  backup_policy_name              = local.backup_policy_name
-  backup_instance_name            = local.backup_instance_name
-  location                        = var.location
-  tenant_resource_group           = var.tenant_resource_group.name
-  tenant_resource_group_id        = var.tenant_resource_group.id
-  managed_disk_id                 = module.create-disk.0.out_managed_disk_id
-  backup_repeating_time_intervals = var.backup_repeating_time_intervals
-
-  depends_on = [module.create-network-resources, module.create-disk]
-}
-
 module "create-container-registry" {
   source = "./create-container-registry"
 
@@ -32,27 +15,6 @@ module "create-container-registry" {
   trust_policy                  = var.container_trust_policy
   retention_policy_days         = var.container_retention_policy
   kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
-
-  depends_on = [module.create-network-resources]
-}
-
-module "create-disk" {
-  source = "./create-disk"
-
-  count = var.disk_deploy ? 1 : 0
-
-  tags                     = local.tags
-  tenant_managed_disk_name = local.managed_disk_name
-  location                 = var.location
-  tenant_resource_group    = var.tenant_resource_group.name
-  redis_disk_size_gb       = var.redis_disk_size_gb
-  redis_disk_sku           = var.redis_disk_sku
-  redis_disk_tier          = var.redis_disk_tier
-  network_sp_object_id     = var.network_sp_object_id
-  tenant_sp_object_id      = var.tenant_sp_object_id
-  private_dns_zone_id      = module.create-network-resources.out_blob_private_dns_zone_id
-  subnet_id                = module.create-network-resources.out_subnet_id
-  deployment_type          = var.deployment_type
 
   depends_on = [module.create-network-resources]
 }
