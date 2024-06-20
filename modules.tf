@@ -41,8 +41,8 @@ module "azure-tenant-resources" {
   deployment_type                              = var.deployment_type
   subscription_id                              = var.subscription_id
   location                                     = var.location
-  tenant_virtual_network_address_prefix        = var.network_tenant_address_prefix
-  tenant_virtual_subnet_network_address_prefix = var.network_tenant_subnet_address_prefix
+  tenant_virtual_network_address_prefix        = var.tenant_virtual_network_address_prefix
+  tenant_virtual_subnet_network_address_prefix = var.tenant_virtual_subnet_network_address_prefix
   cluster_name                                 = var.cluster_name
   project_stage                                = var.project_stage
   project_name                                 = var.project_name
