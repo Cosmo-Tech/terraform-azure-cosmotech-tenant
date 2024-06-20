@@ -14,10 +14,6 @@ variable "tenant_virtual_subnet_network_address_prefix" {
   type = string
 }
 
-variable "managed_disk_name" {
-  type = string
-}
-
 variable "cluster_name" {
   type = string
 }
@@ -53,8 +49,10 @@ variable "vnet_resource_group" {
   type = string
 }
 
-variable "create_backup" {
-  type = bool
+variable "create_cosmosdb" {
+  description = "Used on Platform <=2.3"
+  type        = bool
+  # default     = false
 }
 
 variable "create_eventhub" {
@@ -91,18 +89,6 @@ variable "eventhub_privatedns_zonename" {
 }
 
 variable "adt_privatedns_zonename" {
-  type = string
-}
-
-variable "redis_disk_sku" {
-  type = string
-}
-
-variable "redis_disk_size_gb" {
-  type = number
-}
-
-variable "redis_disk_tier" {
   type = string
 }
 
