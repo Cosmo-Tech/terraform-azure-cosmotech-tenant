@@ -112,7 +112,7 @@ module "create-vault-entries" {
 
 module "platform-tenant-resources" {
   source  = "Cosmo-Tech/cosmotech-tenant/kubernetes"
-  version = "0.1.0"
+  version = "0.1.3"
 
   api_dns_name                       = var.api_dns_name
   api_replicas                       = var.api_replicas
