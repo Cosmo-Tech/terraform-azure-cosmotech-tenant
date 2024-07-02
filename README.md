@@ -75,6 +75,8 @@
 | <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | The client secret | `string` | `""` | no |
 | <a name="input_cluster_issuer_name"></a> [cluster\_issuer\_name](#input\_cluster\_issuer\_name) | n/a | `string` | `"letsencrypt-prod"` | no |
 | <a name="input_cosmotech_api_ingress_enabled"></a> [cosmotech\_api\_ingress\_enabled](#input\_cosmotech\_api\_ingress\_enabled) | n/a | `bool` | `true` | no |
+| <a name="input_cosmotech_api_persistence_size"></a> [cosmotech\_api\_persistence\_size](#input\_cosmotech\_api\_persistence\_size) | n/a | `string` | `"8Gi"` | no |
+| <a name="input_cosmotech_api_persistence_storage_class"></a> [cosmotech\_api\_persistence\_storage\_class](#input\_cosmotech\_api\_persistence\_storage\_class) | n/a | `string` | `"azurefile-csi"` | no |
 | <a name="input_cost_center"></a> [cost\_center](#input\_cost\_center) | The value associated to a resource (tag) | `string` | `"NA"` | no |
 | <a name="input_create_adx"></a> [create\_adx](#input\_create\_adx) | Whether to create Azure digital explorer | `bool` | `true` | no |
 | <a name="input_create_babylon"></a> [create\_babylon](#input\_create\_babylon) | Create the Azure Active Directory Application for Babylon | `bool` | `true` | no |
