@@ -109,46 +109,48 @@ module "platform-tenant-resources" {
   source  = "Cosmo-Tech/cosmotech-tenant/kubernetes"
   version = "0.1.3"
 
-  api_dns_name                       = var.api_dns_name
-  api_replicas                       = var.api_replicas
-  subscription_id                    = var.subscription_id
-  tenant_id                          = var.tenant_id
-  client_id                          = var.client_id
-  client_secret                      = var.client_secret
-  tls_secret_name                    = local.tls_secret_name
-  tls_certificate_type               = var.tls_certificate_type
-  tls_certificate_custom_certificate = var.tls_certificate_custom_certificate
-  tls_certificate_custom_key         = var.tls_certificate_custom_key
-  kubernetes_tenant_namespace        = var.kubernetes_tenant_namespace
-  monitoring_enabled                 = var.monitoring_enabled == "true" ? true : false
-  monitoring_namespace               = var.monitoring_namespace
-  chart_package_version              = var.chart_package_version
-  tenant_resource_group              = var.tenant_resource_group
-  redis_port                         = var.redis_port
-  argo_minio_persistence_size        = var.argo_minio_persistence_size
-  argo_minio_requests_memory         = var.argo_minio_requests_memory
-  archive_ttl                        = var.archive_ttl
-  cluster_issuer_name                = var.cluster_issuer_name
-  cosmotech_api_version              = var.cosmotech_api_version
-  cosmotech_api_version_path         = var.api_version_path
-  cosmotech_api_ingress_enabled      = var.cosmotech_api_ingress_enabled
-  network_client_id                  = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_network_adt_clientid : var.network_client_id
-  network_client_secret              = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_network_adt_password : var.network_client_secret
-  tenant_client_id                   = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : var.tenant_client_id
-  tenant_client_secret               = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_secret : var.tenant_client_secret
-  storage_account_key                = module.azure-tenant-resources.out_storage_account_key
-  storage_account_name               = module.azure-tenant-resources.out_storage_account_name
-  acr_login_password                 = module.azure-tenant-resources.out_acr_login_password
-  acr_login_server                   = module.azure-tenant-resources.out_acr_login_server
-  acr_login_username                 = module.azure-tenant-resources.out_acr_login_username
-  adx_ingestion_uri                  = module.azure-tenant-resources.out_adx_ingestion_uri
-  adx_uri                            = module.azure-tenant-resources.out_adx_uri
-  cosmos_uri                         = module.azure-tenant-resources.out_cosmos_uri
-  cosmos_key                         = module.azure-tenant-resources.out_cosmos_key
-  eventbus_uri                       = module.azure-tenant-resources.out_eventbus_uri
-  identifier_uri                     = var.identifier_uri
-  create_rabbitmq                    = var.create_rabbitmq
-  list_apikey_allowed                = var.list_apikey_allowed
+  api_dns_name                            = var.api_dns_name
+  api_replicas                            = var.api_replicas
+  subscription_id                         = var.subscription_id
+  tenant_id                               = var.tenant_id
+  client_id                               = var.client_id
+  client_secret                           = var.client_secret
+  tls_secret_name                         = local.tls_secret_name
+  tls_certificate_type                    = var.tls_certificate_type
+  tls_certificate_custom_certificate      = var.tls_certificate_custom_certificate
+  tls_certificate_custom_key              = var.tls_certificate_custom_key
+  kubernetes_tenant_namespace             = var.kubernetes_tenant_namespace
+  monitoring_enabled                      = var.monitoring_enabled == "true" ? true : false
+  monitoring_namespace                    = var.monitoring_namespace
+  chart_package_version                   = var.chart_package_version
+  tenant_resource_group                   = var.tenant_resource_group
+  redis_port                              = var.redis_port
+  argo_minio_persistence_size             = var.argo_minio_persistence_size
+  argo_minio_requests_memory              = var.argo_minio_requests_memory
+  archive_ttl                             = var.archive_ttl
+  cluster_issuer_name                     = var.cluster_issuer_name
+  cosmotech_api_version                   = var.cosmotech_api_version
+  cosmotech_api_version_path              = var.api_version_path
+  cosmotech_api_ingress_enabled           = var.cosmotech_api_ingress_enabled
+  cosmotech_api_persistence_size          = var.cosmotech_api_persistence_size
+  cosmotech_api_persistence_storage_class = var.cosmotech_api_persistence_storage_class
+  network_client_id                       = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_network_adt_clientid : var.network_client_id
+  network_client_secret                   = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_network_adt_password : var.network_client_secret
+  tenant_client_id                        = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : var.tenant_client_id
+  tenant_client_secret                    = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_secret : var.tenant_client_secret
+  storage_account_key                     = module.azure-tenant-resources.out_storage_account_key
+  storage_account_name                    = module.azure-tenant-resources.out_storage_account_name
+  acr_login_password                      = module.azure-tenant-resources.out_acr_login_password
+  acr_login_server                        = module.azure-tenant-resources.out_acr_login_server
+  acr_login_username                      = module.azure-tenant-resources.out_acr_login_username
+  adx_ingestion_uri                       = module.azure-tenant-resources.out_adx_ingestion_uri
+  adx_uri                                 = module.azure-tenant-resources.out_adx_uri
+  cosmos_uri                              = module.azure-tenant-resources.out_cosmos_uri
+  cosmos_key                              = module.azure-tenant-resources.out_cosmos_key
+  eventbus_uri                            = module.azure-tenant-resources.out_eventbus_uri
+  identifier_uri                          = var.identifier_uri
+  create_rabbitmq                         = var.create_rabbitmq
+  list_apikey_allowed                     = var.list_apikey_allowed
 
   depends_on = [module.azure-tenant-resources]
 }
