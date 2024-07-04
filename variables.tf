@@ -708,3 +708,8 @@ variable "list_apikey_allowed" {
     securedUris    = []
   }]
 }
+
+variable "public_network_access_enabled" {
+  type    = bool
+  default = false
+}

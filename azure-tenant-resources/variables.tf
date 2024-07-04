@@ -171,3 +171,7 @@ variable "auto_stop_kusto" {
 variable "common_platform_object_id" {
   type = string
 }
+
+variable "public_network_access_enabled" {
+  type = bool
+}

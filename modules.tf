@@ -53,6 +53,7 @@ module "azure-tenant-resources" {
   create_cosmosdb                              = var.create_cosmosdb
   create_adx                                   = var.create_adx
   create_eventhub                              = var.create_eventhub
+  public_network_access_enabled                = var.public_network_access_enabled
 
   blob_privatedns_zonename     = var.blob_privatedns_zonename
   queue_privatedns_zonename    = var.queue_privatedns_zonename
