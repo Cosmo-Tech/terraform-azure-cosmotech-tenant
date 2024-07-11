@@ -85,7 +85,7 @@ variable "tenant_virtual_subnet_network_address_prefix" {
 variable "auto_stop_kusto" {
   description = "Specifies if the cluster could be automatically stopped"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "kusto_instance_type" {
