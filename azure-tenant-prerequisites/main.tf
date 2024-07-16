@@ -2,7 +2,7 @@ locals {
   pre_name       = "Cosmo Tech "
   post_name      = " ${var.common_resource_group} For ${var.tenant_resource_group}"
   subnet_name    = "default"
-  identifier_uri = "https://${var.dns_record}.${var.dns_zone_name}/${var.tenant_resource_group}"
+  identifier_uri = "https://${var.dns_record}.${var.dns_zone_name}/${var.kubernetes_tenant_namespace}"
   platform_url   = var.platform_url != "" ? var.platform_url : "https://${var.dns_record}.${var.dns_zone_name}"
   webapp_url     = var.webapp_url != "" ? var.webapp_url : "https://${var.dns_record}.app.cosmotech.com"
   vnet_iprange   = var.virtual_network_address_prefix
