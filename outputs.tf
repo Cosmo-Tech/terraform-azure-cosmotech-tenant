@@ -16,11 +16,11 @@ output "out_cluster_adx_name" {
 }
 
 output "out_cosmos_api_url" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_cosmos_api_url : "https://${var.dns_record}.${var.dns_zone_name}/cosmotech-api/${var.tenant_resource_group}"
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_cosmos_api_url : "https://${var.dns_record}.${var.dns_zone_name}/cosmotech-api/${var.kubernetes_tenant_namespace}"
 }
 
 output "out_cosmos_api_scope" {
-  value = "https://${var.dns_record}.${var.dns_zone_name}/${var.tenant_resource_group}/.default"
+  value = "https://${var.dns_record}.${var.dns_zone_name}/${var.kubernetes_tenant_namespace}/.default"
 }
 
 output "out_cosmos_api_version_path" {
