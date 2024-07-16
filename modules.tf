@@ -56,11 +56,12 @@ module "azure-tenant-resources" {
   create_adx                                   = var.create_adx
   create_eventhub                              = var.create_eventhub
 
-  blob_privatedns_zonename     = var.blob_privatedns_zonename
-  queue_privatedns_zonename    = var.queue_privatedns_zonename
-  table_privatedns_zonename    = var.table_privatedns_zonename
-  eventhub_privatedns_zonename = var.eventhub_privatedns_zonename
-  adt_privatedns_zonename      = var.adt_privatedns_zonename
+  public_network_access_enabled = var.public_network_access_enabled
+  blob_privatedns_zonename      = var.blob_privatedns_zonename
+  queue_privatedns_zonename     = var.queue_privatedns_zonename
+  table_privatedns_zonename     = var.table_privatedns_zonename
+  eventhub_privatedns_zonename  = var.eventhub_privatedns_zonename
+  adt_privatedns_zonename       = var.adt_privatedns_zonename
 
   redis_disk_tier           = var.redis_disk_tier
   redis_disk_sku            = var.redis_disk_sku
