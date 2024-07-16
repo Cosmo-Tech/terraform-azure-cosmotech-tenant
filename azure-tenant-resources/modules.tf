@@ -86,9 +86,8 @@ module "create-storage" {
   storage_tier                  = var.storage_tier
   storage_replication_type      = var.storage_replication_type
   storage_kind                  = var.storage_kind
-  public_network_access_enabled = var.public_network_access_enabled
   private_dns_zone_id           = module.create-network-resources.out_blob_private_dns_zone_id
   subnet_id                     = module.create-network-resources.out_subnet_id
-
-  depends_on = [module.create-network-resources]
+  public_network_access_enabled = var.public_network_access_enabled
+  depends_on                    = [module.create-network-resources]
 }
