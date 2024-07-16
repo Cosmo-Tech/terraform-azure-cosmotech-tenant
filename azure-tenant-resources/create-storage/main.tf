@@ -14,7 +14,7 @@ resource "azurerm_storage_account" "storage_account" {
   tags                            = var.tags
   network_rules {
     bypass         = ["AzureServices"]
-    default_action = "Deny" # Same as for public_network_access
+    default_action = var.public_network_access_enabled ? "Allow" : "Deny" # Same as for public_network_access
   }
 }
 
