@@ -640,12 +640,12 @@ variable "network_sp_object_id" {
 }
 
 variable "customertag" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "storage_class_sku" {
-  type = string
+  type    = string
   default = "Standard_LRS"
 }
 
@@ -736,4 +736,9 @@ variable "list_apikey_allowed" {
     associatedRole = ""
     securedUris    = []
   }]
+}
+
+variable "deploy_api" {
+  type    = bool
+  default = true
 }

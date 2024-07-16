@@ -38,6 +38,7 @@ module "create-tls" {
 module "create-cosmotech-api" {
   source = "./create-cosmotech-api"
 
+  count                         = var.deploy_api ? 1 : 0
   client_id                     = var.tenant_client_id
   client_secret                 = var.tenant_client_secret
   tenant_id                     = var.tenant_id

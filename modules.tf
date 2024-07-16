@@ -113,6 +113,7 @@ module "create-vault-entries" {
 module "platform-tenant-resources" {
   source = "./platform-tenant-resources"
 
+  deploy_api                         = var.deploy_api
   api_dns_name                       = var.api_dns_name
   api_replicas                       = var.api_replicas
   subscription_id                    = var.subscription_id

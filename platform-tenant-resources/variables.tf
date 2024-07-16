@@ -196,3 +196,7 @@ variable "list_apikey_allowed" {
 variable "identifier_uri" {
   type = string
 }
+
+variable "deploy_api" {
+  type = bool
+}
