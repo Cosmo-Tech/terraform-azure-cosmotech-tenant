@@ -153,5 +153,8 @@ module "platform-tenant-resources" {
   create_rabbitmq                         = var.create_rabbitmq
   list_apikey_allowed                     = var.list_apikey_allowed
 
+  # Create-platform-config
+  create_platform_config                  = var.create_platform_config
+
   depends_on = [module.azure-tenant-resources]
 }

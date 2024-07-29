@@ -378,6 +378,12 @@ variable "create_rabbitmq" {
   default     = false
 }
 
+variable "create_platform_config" {
+  description = "Whether to create platform config secret"
+  type        = bool
+  default     = false
+}
+
 variable "create_babylon" {
   description = "Create the Azure Active Directory Application for Babylon"
   type        = bool
