@@ -720,10 +720,6 @@ variable "public_network_access_enabled" {
   default = false
 }
 
-variable "create_platform_config" {
-  type = bool
-}
-
 variable "deploy_api" {
   type = bool
 }
