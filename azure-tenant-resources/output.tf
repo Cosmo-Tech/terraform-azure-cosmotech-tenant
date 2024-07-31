@@ -12,6 +12,10 @@ output "out_acr_login_server" {
   sensitive = true
 }
 
+output "out_acr_login_server_url" {
+  value     = module.create-container-registry.out_acr_login_server_url
+}
+
 output "out_acr_login_username" {
   value     = module.create-container-registry.out_acr_login_username
   sensitive = true
