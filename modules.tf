@@ -206,8 +206,5 @@ module "platform-tenant-resources" {
   create_platform_config                  = var.create_platform_config
   cosmotech_api_chart_package_version     = var.cosmotech_api_chart_package_version
 
-  # Create-platform-config
-  create_platform_config                  = var.create_platform_config
-
   depends_on = [module.azure-tenant-resources]
 }
