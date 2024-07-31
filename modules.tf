@@ -144,6 +144,7 @@ module "platform-tenant-resources" {
   acr_login_password                      = module.azure-tenant-resources.out_acr_login_password
   acr_login_server                        = module.azure-tenant-resources.out_acr_login_server
   acr_login_username                      = module.azure-tenant-resources.out_acr_login_username
+  acr_registry_url                        = module.azure-tenant-resources.out_acr_login_server_url
   adx_ingestion_uri                       = module.azure-tenant-resources.out_adx_ingestion_uri
   adx_uri                                 = module.azure-tenant-resources.out_adx_uri
   cosmos_uri                              = module.azure-tenant-resources.out_cosmos_uri
@@ -152,8 +153,9 @@ module "platform-tenant-resources" {
   identifier_uri                          = var.identifier_uri
   create_rabbitmq                         = var.create_rabbitmq
   list_apikey_allowed                     = var.list_apikey_allowed
-
-  # Create-platform-config
+  identity_authorization_url              = var.identity_authorization_url
+  identity_token_url                      = var.identity_token_url
+  deploy_api                              = var.deploy_api
   create_platform_config                  = var.create_platform_config
 
   depends_on = [module.azure-tenant-resources]
