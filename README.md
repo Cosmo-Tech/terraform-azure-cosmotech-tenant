@@ -46,7 +46,6 @@
 | <a name="input_common_platform_object_id"></a> [common\_platform\_object\_id](#input\_common\_platform\_object\_id) | n/a | `string` | n/a | yes |
 | <a name="input_common_resource_group"></a> [common\_resource\_group](#input\_common\_resource\_group) | Existing Resource group which contain common platform resources | `string` | n/a | yes |
 | <a name="input_cosmotech_api_version"></a> [cosmotech\_api\_version](#input\_cosmotech\_api\_version) | n/a | `string` | n/a | yes |
-| <a name="input_create_platform_config"></a> [create\_platform\_config](#input\_create\_platform\_config) | n/a | `bool` | n/a | yes |
 | <a name="input_deploy_api"></a> [deploy\_api](#input\_deploy\_api) | n/a | `bool` | n/a | yes |
 | <a name="input_dns_record"></a> [dns\_record](#input\_dns\_record) | The DNS zone name to create platform subdomain. Example: myplatform | `string` | n/a | yes |
 | <a name="input_identity_authorization_url"></a> [identity\_authorization\_url](#input\_identity\_authorization\_url) | n/a | `string` | n/a | yes |
@@ -87,6 +86,7 @@
 | <a name="input_create_cosmosdb"></a> [create\_cosmosdb](#input\_create\_cosmosdb) | Whether to create CosmosDB (only for API version < 2.4) | `bool` | `false` | no |
 | <a name="input_create_dnsrecord"></a> [create\_dnsrecord](#input\_create\_dnsrecord) | Create the DNS record | `bool` | `false` | no |
 | <a name="input_create_eventhub"></a> [create\_eventhub](#input\_create\_eventhub) | Whether to create Azure Event Hub resources | `bool` | `true` | no |
+| <a name="input_create_platform_config"></a> [create\_platform\_config](#input\_create\_platform\_config) | Whether to create platform config secret | `bool` | `false` | no |
 | <a name="input_create_powerbi"></a> [create\_powerbi](#input\_create\_powerbi) | Create the Azure Active Directory Application for PowerBI | `bool` | `false` | no |
 | <a name="input_create_publicip"></a> [create\_publicip](#input\_create\_publicip) | Create the public IP for the platform | `bool` | `false` | no |
 | <a name="input_create_rabbitmq"></a> [create\_rabbitmq](#input\_create\_rabbitmq) | Whether to create RabbitMQ resources | `bool` | `false` | no |
