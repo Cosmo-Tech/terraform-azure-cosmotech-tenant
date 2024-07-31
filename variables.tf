@@ -719,3 +719,19 @@ variable "public_network_access_enabled" {
   type    = bool
   default = false
 }
+
+variable "create_platform_config" {
+  type = bool
+}
+
+variable "deploy_api" {
+  type = bool
+}
+
+variable "identity_authorization_url" {
+  type = string
+}
+
+variable "identity_token_url" {
+  type = string
+}
