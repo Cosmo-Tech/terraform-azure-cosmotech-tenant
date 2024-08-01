@@ -35,8 +35,7 @@ resource "azurerm_resource_group" "tenant_rg" {
   location = var.location
 }
 
-resource "kubernetes_namespace" "main_namespace" {
-  metadata {
-    name = var.kubernetes_tenant_namespace
-  }
+data "azurerm_resource_group" "tenant_rg" {
+  count = var.deployment_type != "ARM" ? 0 : 1
+  name  = var.tenant_resource_group
 }
