@@ -104,6 +104,11 @@ variable "virtual_network_address_prefix" {
   type        = string
 }
 
+variable "subnet_name" {
+  description = "Name of the subnet"
+  type        = string
+}
+
 variable "api_version_path" {
   description = "The API version path"
   type        = string

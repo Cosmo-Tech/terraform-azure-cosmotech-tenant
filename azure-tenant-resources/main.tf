@@ -9,7 +9,7 @@ locals {
   container_registry_name   = substr("acr${local.cleaned_tenant_name}${random_string.random_storage_id.result}", 0, 50)
   backup_instance_name      = "cosmo-backup-instance-${local.cleaned_tenant_name}"
   backup_policy_name        = "cosmo-backup-policy-${local.cleaned_tenant_name}"
-  subnet_name               = "default"
+  subnet_name               = var.subnet_name
   tags                      = var.tags
 }
 

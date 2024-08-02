@@ -3,8 +3,8 @@ resource "azurerm_eventhub_namespace" "eventbus_uri" {
   resource_group_name           = var.tenant_resource_group
   location                      = var.location
   sku                           = "Standard"
-  capacity                      = 2
-  public_network_access_enabled = true
+  capacity                      = var.eventhub_capacity
+  public_network_access_enabled = var.public_network_access_enabled
   tags                          = var.tags
 }
 

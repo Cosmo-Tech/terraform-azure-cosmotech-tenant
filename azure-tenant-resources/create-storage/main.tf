@@ -5,16 +5,16 @@ resource "azurerm_storage_account" "storage_account" {
   account_tier                    = var.storage_tier
   account_replication_type        = var.storage_replication_type
   account_kind                    = var.storage_kind
-  default_to_oauth_authentication = false
-  min_tls_version                 = "TLS1_2"
-  shared_access_key_enabled       = true
-  enable_https_traffic_only       = true
-  access_tier                     = "Hot"
+  default_to_oauth_authentication = var.default_to_oauth_authentication
+  min_tls_version                 = var.min_tls_version
+  shared_access_key_enabled       = var.shared_access_key_enabled
+  enable_https_traffic_only       = var.enable_https_traffic_only
+  access_tier                     = var.access_tier
   public_network_access_enabled   = var.public_network_access_enabled # Must be false with private endpoints
   tags                            = var.tags
   network_rules {
     bypass         = ["AzureServices"]
-    default_action = var.public_network_access_enabled ? "Allow" : "Deny" # Same as for public_network_access
+    default_action = "Deny" # Same as for public_network_access
   }
 }
 
