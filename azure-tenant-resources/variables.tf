@@ -64,21 +64,82 @@ variable "vnet_resource_group" {
   type = string
 }
 
+variable "create_backup" {
+  type = bool
+}
+
 variable "create_cosmosdb" {
   description = "Used on Platform <=2.3"
   type        = bool
-  # default     = false
+}
+
+variable "cosmosdb_failover_priority" {
+  type = number
+}
+
+variable "cosmosdb_public_network_access_enabled" {
+  type = bool
+}
+
+variable "cosmosdb_is_virtual_network_filter_enabled" {
+  type = bool
+}
+
+variable "cosmosdb_access_key_metadata_writes_enabled" {
+  type = bool
+}
+
+variable "cosmosdb_analytical_storage_enabled" {
+  type = bool
+}
+
+variable "cosmosdb_network_acl_bypass_for_azure_services" {
+  type = bool
+}
+
+variable "cosmosdb_consistency_level" {
+  type = string
+}
+
+variable "cosmosdb_consistency_interval_in_minutes" {
+  type = number
+}
+
+variable "cosmosdb_consistency_max_staleness_prefix" {
+  type = number
+}
+
+variable "cosmosdb_backup_type" {
+  type = string
+}
+
+variable "cosmosdb_backup_interval_in_minutes" {
+  type = number
+}
+
+variable "cosmosdb_backup_retention_in_hours" {
+  type = number
+}
+
+variable "cosmosdb_backup_storage_redundancy" {
+  type = string
 }
 
 variable "create_eventhub" {
   type    = bool
-  default = true
+}
+
+variable "eventhub_capacity" {
+  type = number
+}
+
+variable "eventhub_public_network_access_enabled" {
+  type = bool
 }
 
 variable "create_adx" {
   description = "If false, adx_ingestion_uri and adx_uri must be set manually in create-platform module"
   type        = bool
-  # default     = true
 }
 
 variable "blob_privatedns_zonename" {
@@ -109,11 +170,63 @@ variable "kustonr_instances" {
   type = number
 }
 
+variable "kusto_engine" {
+  type = string
+}
+
+variable "kusto_trusted_external_tenants" {
+  type = list(string)
+}
+
+variable "kusto_disk_encryption_enabled" {
+  type = bool
+}
+
+variable "kusto_streaming_ingestion_enabled" {
+  type = bool
+}
+
+variable "kusto_purge_enabled" {
+  type = bool
+}
+
+variable "kusto_double_encryption_enabled" {
+  type = bool
+}
+
+variable "kusto_public_network_access_enabled" {
+  type = bool
+}
+
 variable "storage_tier" {
   type = string
 }
 
 variable "storage_replication_type" {
+  type = string
+}
+
+variable "storage_public_network_access_enabled" {
+  type = bool
+}
+
+variable "storage_default_to_oauth_authentication" {
+  type = bool
+}
+
+variable "storage_min_tls_version" {
+  type = string
+}
+
+variable "storage_shared_access_key_enabled" {
+  type = bool
+}
+
+variable "storage_enable_https_traffic_only" {
+  type = bool
+}
+
+variable "storage_access_tier" {
   type = string
 }
 
@@ -160,6 +273,11 @@ variable "tags" {
   })
 }
 
+variable "subnet_name" {
+  description = "Name of the subnet"
+  type        = string
+}
+
 variable "deployment_type" {
   type = string
 }
@@ -172,6 +290,38 @@ variable "common_platform_object_id" {
   type = string
 }
 
-variable "public_network_access_enabled" {
+variable "container_admin_enabled" {
   type = bool
+}
+
+variable "container_quarantine_policy_enabled" {
+  type = bool
+}
+
+variable "container_data_endpoint_enabled" {
+  type = bool
+}
+
+variable "container_public_network_access_enabled" {
+  type = bool
+}
+
+variable "container_zone_redundancy_enabled" {
+  type = bool
+}
+
+variable "container_trust_policy" {
+  type = list(object({
+    enabled = bool
+  }))
+}
+
+variable "container_retention_policy" {
+  type = list(object({
+    days    = number
+    enabled = bool
+  }))
+}
+variable "backup_repeating_time_intervals" {
+  type = list()
 }

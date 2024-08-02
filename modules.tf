@@ -32,6 +32,7 @@ module "azure-tenant-prerequisites" {
   create_babylon                 = var.create_babylon
   cost_center                    = var.cost_center
   kubernetes_tenant_namespace    = var.kubernetes_tenant_namespace
+  subnet_name                    = var.subnet_name
 }
 
 module "azure-tenant-resources" {
@@ -53,7 +54,8 @@ module "azure-tenant-resources" {
   create_cosmosdb                              = var.create_cosmosdb
   create_adx                                   = var.create_adx
   create_eventhub                              = var.create_eventhub
-  public_network_access_enabled                = var.public_network_access_enabled
+  eventhub_capacity                            = var.eventhub_capacity
+  eventhub_public_network_access_enabled       = var.eventhub_public_network_access_enabled
 
   redis_disk_size_gb = var.redis_disk_size_gb
   redis_disk_sku     = var.redis_disk_sku
@@ -67,11 +69,56 @@ module "azure-tenant-resources" {
   eventhub_privatedns_zonename = var.eventhub_privatedns_zonename
   adt_privatedns_zonename      = var.adt_privatedns_zonename
 
-  kusto_instance_type       = var.kusto_instance_type
-  kustonr_instances         = var.kustonr_instances
-  auto_stop_kusto           = var.auto_stop_kusto
-  storage_tier              = split("_", var.storage_class_sku)[0]
-  storage_replication_type  = split("_", var.storage_class_sku)[1]
+  container_admin_enabled                 = var.container_admin_enabled
+  container_quarantine_policy_enabled     = var.container_quarantine_policy_enabled
+  container_data_endpoint_enabled         = var.container_data_endpoint_enabled
+  container_public_network_access_enabled = var.container_public_network_access_enabled
+  container_zone_redundancy_enabled       = var.container_zone_redundancy_enabled
+  container_trust_policy                  = var.container_trust_policy
+  container_retention_policy              = var.container_retention_policy
+
+  cosmosdb_failover_priority                     = var.cosmosdb_failover_priority
+  cosmosdb_public_network_access_enabled         = var.cosmosdb_public_network_access_enabled
+  cosmosdb_is_virtual_network_filter_enabled     = var.cosmosdb_is_virtual_network_filter_enabled
+  cosmosdb_access_key_metadata_writes_enabled    = var.cosmosdb_access_key_metadata_writes_enabled
+  cosmosdb_analytical_storage_enabled            = var.cosmosdb_analytical_storage_enabled
+  cosmosdb_network_acl_bypass_for_azure_services = var.cosmosdb_network_acl_bypass_for_azure_services
+  cosmosdb_consistency_level                     = var.cosmosdb_consistency_level
+  cosmosdb_consistency_interval_in_minutes       = var.cosmosdb_consistency_interval_in_minutes
+  cosmosdb_consistency_max_staleness_prefix      = var.cosmosdb_consistency_max_staleness_prefix
+  cosmosdb_backup_type                           = var.cosmosdb_backup_type
+  cosmosdb_backup_interval_in_minutes            = var.cosmosdb_backup_interval_in_minutes
+  cosmosdb_backup_retention_in_hours             = var.cosmosdb_backup_retention_in_hours
+  cosmosdb_backup_storage_redundancy             = var.cosmosdb_backup_storage_redundancy
+
+  kusto_instance_type                 = var.kusto_instance_type
+  kustonr_instances                   = var.kustonr_instances
+  kusto_engine                        = var.kusto_engine
+  kusto_trusted_external_tenants      = var.kusto_trusted_external_tenants
+  kusto_disk_encryption_enabled       = var.kusto_disk_encryption_enabled
+  kusto_streaming_ingestion_enabled   = var.kusto_streaming_ingestion_enabled
+  kusto_purge_enabled                 = var.kusto_purge_enabled
+  kusto_double_encryption_enabled     = var.kusto_double_encryption_enabled
+  kusto_public_network_access_enabled = var.kusto_public_network_access_enabled
+  auto_stop_kusto                     = var.auto_stop_kusto
+
+  storage_tier                            = split("_", var.storage_class_sku)[0]
+  storage_replication_type                = split("_", var.storage_class_sku)[1]
+  storage_public_network_access_enabled   = var.storage_public_network_access_enabled
+  storage_default_to_oauth_authentication = var.storage_default_to_oauth_authentication
+  storage_min_tls_version                 = var.storage_min_tls_version
+  storage_shared_access_key_enabled       = var.storage_shared_access_key_enabled
+  storage_enable_https_traffic_only       = var.storage_enable_https_traffic_only
+  storage_access_tier                     = var.storage_access_tier
+
+  create_backup = var.create_backup
+  backup_repeating_time_intervals = var.backup_repeating_time_intervals
+
+  managed_disk_name = var.managed_disk_name
+  redis_disk_size_gb = var.redis_disk_size_gb
+  redis_disk_sku = var.redis_disk_sku
+  redis_disk_tier = var.redis_disk_tier
+
   tenant_group_id           = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_tenant_group_id : var.tenant_group_id
   tenant_sp_object_id       = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.tenant_sp_object_id
   tenant_resource_group     = var.deployment_type != "ARM" ? azurerm_resource_group.tenant_rg.0 : data.azurerm_resource_group.tenant_rg.0
@@ -80,6 +127,7 @@ module "azure-tenant-resources" {
   public_ip_id          = data.azurerm_public_ip.current.id
   common_resource_group = data.azurerm_resource_group.current
   vnet                  = data.azurerm_virtual_network.current
+  subnet_name           = var.subnet_name
 
   tags = {
     vendor      = "cosmotech"

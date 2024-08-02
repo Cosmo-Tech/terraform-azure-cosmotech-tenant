@@ -1,7 +1,7 @@
 locals {
   pre_name       = "Cosmo Tech "
   post_name      = " ${var.common_resource_group} For ${var.tenant_resource_group}"
-  subnet_name    = "default"
+  subnet_name    = var.subnet_name
   identifier_uri = "https://${var.dns_record}.${var.dns_zone_name}/${var.tenant_resource_group}"
   platform_url   = var.platform_url != "" ? var.platform_url : "https://${var.dns_record}.${var.dns_zone_name}"
   webapp_url     = var.webapp_url != "" ? var.webapp_url : "https://${var.dns_record}.app.cosmotech.com"
@@ -13,6 +13,14 @@ locals {
     project     = var.project_name
     cost_center = var.cost_center
   }
+  # Azure IDs
+  microsoft_graph_resource_access_id = "00000003-0000-0000-c000-000000000000" # Microsoft Graph
+  user_read_resource_access_id       = "e1fe6dd8-ba31-4d61-89e7-88639da4683d" # User.Read
+  platform_resource_access_id        = "6332363e-bcba-4c4a-a605-c25f23117400" # platform
+  application_access_role_id         = "bb49d61f-8b6a-4a19-b5bd-06a29d6b8e60" # role
+  # URIs
+  public_client_redirect_uri         = "http://localhost:8484/" 
+  webapp_spa_redirect_uri            = "http://localhost:3000/scenario"
 }
 
 data "azuread_users" "owners" {
@@ -30,10 +38,10 @@ resource "azuread_application" "platform" {
   tags = ["HideApp", "WindowsAzureActiveDirectoryIntegratedApp", var.project_stage, var.customer_name, var.project_name, "terraformed"]
 
   required_resource_access {
-    resource_app_id = "00000003-0000-0000-c000-000000000000" # Microsoft Graph
+    resource_app_id = local.microsoft_graph_resource_access_id # Microsoft Graph
 
     resource_access {
-      id   = "e1fe6dd8-ba31-4d61-89e7-88639da4683d" # User.Read
+      id   = local.user_read_resource_access_id # User.Read
       type = "Scope"
     }
   }
@@ -54,7 +62,7 @@ resource "azuread_application" "platform" {
       admin_consent_description  = "Allow the application to use the Cosmo Tech Platform with user account"
       admin_consent_display_name = "Cosmo Tech Platform Impersonate"
       enabled                    = true
-      id                         = "6332363e-bcba-4c4a-a605-c25f23117400"
+      id                         = local.platform_resource_access_id
       type                       = "User"
       user_consent_description   = "Allow the application to use the Cosmo Tech Platform with your account"
       user_consent_display_name  = "Cosmo Tech Platform Usage"
@@ -97,7 +105,7 @@ resource "azuread_service_principal" "platform" {
 resource "azuread_application_api_access" "add_role_api" {
   application_id = "/applications/${azuread_application.platform.object_id}"
   api_client_id  = azuread_application.platform.client_id
-  role_ids       = ["bb49d61f-8b6a-4a19-b5bd-06a29d6b8e60"]
+  role_ids       = [local.application_access_role_id]
   depends_on     = [azuread_service_principal.platform]
 }
 
@@ -149,10 +157,10 @@ resource "azuread_application" "swagger" {
   tags = ["HideApp", "WindowsAzureActiveDirectoryIntegratedApp", var.project_stage, var.customer_name, var.project_name, "terraformed"]
 
   required_resource_access {
-    resource_app_id = "00000003-0000-0000-c000-000000000000" # Microsoft Graph
+    resource_app_id = local.microsoft_graph_resource_access_id # Microsoft Graph
 
     resource_access {
-      id   = "e1fe6dd8-ba31-4d61-89e7-88639da4683d" # User.Read
+      id   = local.user_read_resource_access_id # User.Read
       type = "Scope"
     }
   }
@@ -161,7 +169,7 @@ resource "azuread_application" "swagger" {
     resource_app_id = azuread_application.platform.client_id # Cosmo Tech Platform
 
     resource_access {
-      id   = "6332363e-bcba-4c4a-a605-c25f23117400" # platform
+      id   = local.platform_resource_access_id # platform
       type = "Scope"
     }
   }
@@ -197,10 +205,10 @@ resource "azuread_application" "restish" {
   tags             = ["HideApp", "WindowsAzureActiveDirectoryIntegratedApp", var.project_stage, var.customer_name, var.project_name, "terraformed"]
 
   required_resource_access {
-    resource_app_id = "00000003-0000-0000-c000-000000000000" # Microsoft Graph
+    resource_app_id = local.microsoft_graph_resource_access_id # Microsoft Graph
 
     resource_access {
-      id   = "e1fe6dd8-ba31-4d61-89e7-88639da4683d" # User.Read
+      id   = local.user_read_resource_access_id # User.Read
       type = "Scope"
     }
   }
@@ -209,13 +217,13 @@ resource "azuread_application" "restish" {
     resource_app_id = azuread_application.platform.client_id # Cosmo Tech Platform
 
     resource_access {
-      id   = "6332363e-bcba-4c4a-a605-c25f23117400" # platform
+      id   = local.platform_resource_access_id # platform
       type = "Scope"
     }
   }
 
   public_client {
-    redirect_uris = ["http://localhost:8484/"]
+    redirect_uris = [local.public_client_redirect_uri]
   }
 }
 
@@ -270,10 +278,10 @@ resource "azuread_application" "webapp" {
   tags = ["HideApp", "WindowsAzureActiveDirectoryIntegratedApp", var.project_stage, var.customer_name, var.project_name, "terraformed"]
 
   required_resource_access {
-    resource_app_id = "00000003-0000-0000-c000-000000000000" # Microsoft Graph
+    resource_app_id = local.microsoft_graph_resource_access_id # Microsoft Graph
 
     resource_access {
-      id   = "e1fe6dd8-ba31-4d61-89e7-88639da4683d" # User.Read
+      id   = local.user_read_resource_access_id # User.Read
       type = "Scope"
     }
   }
@@ -282,13 +290,13 @@ resource "azuread_application" "webapp" {
     resource_app_id = azuread_application.platform.client_id # Cosmo Tech Platform
 
     resource_access {
-      id   = "6332363e-bcba-4c4a-a605-c25f23117400" # platform
+      id   = local.platform_resource_access_id # platform
       type = "Scope"
     }
   }
 
   single_page_application {
-    redirect_uris = ["http://localhost:3000/scenario", "${local.webapp_url}/platform", "${local.webapp_url}/sign-in"]
+    redirect_uris = [local.webapp_spa_redirect_uri, "${local.webapp_url}/platform", "${local.webapp_url}/sign-in"]
   }
 }
 
@@ -326,10 +334,10 @@ resource "azuread_application" "babylon" {
   tags = ["HideApp", "WindowsAzureActiveDirectoryIntegratedApp", var.project_stage, var.customer_name, var.project_name, "terraformed"]
 
   required_resource_access {
-    resource_app_id = "00000003-0000-0000-c000-000000000000" # Microsoft Graph
+    resource_app_id = local.microsoft_graph_resource_access_id # Microsoft Graph
 
     resource_access {
-      id   = "e1fe6dd8-ba31-4d61-89e7-88639da4683d" # User.Read
+      id   = local.user_read_resource_access_id # User.Read
       type = "Scope"
     }
   }
@@ -338,18 +346,18 @@ resource "azuread_application" "babylon" {
     resource_app_id = azuread_application.platform.client_id # Cosmo Tech Platform
 
     resource_access {
-      id   = "6332363e-bcba-4c4a-a605-c25f23117400" # platform
+      id   = local.platform_resource_access_id # platform
       type = "Scope"
     }
 
     resource_access {
-      id   = "bb49d61f-8b6a-4a19-b5bd-06a29d6b8e60"
+      id   = local.application_access_role_id
       type = "Role"
     }
   }
 
   public_client {
-    redirect_uris = ["http://localhost:8484/"]
+    redirect_uris = [local.public_client_redirect_uri]
   }
 
   lifecycle {

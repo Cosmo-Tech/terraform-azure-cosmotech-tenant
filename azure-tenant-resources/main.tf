@@ -5,7 +5,9 @@ locals {
   kusto_name                = substr("kusto${local.cleaned_tenant_name}${random_string.random_storage_id.result}", 0, 21)
   storage_name              = substr("${local.cleaned_tenant_name}${random_string.random_storage_id.result}", 0, 23)
   container_registry_name   = substr("acr${local.cleaned_tenant_name}${random_string.random_storage_id.result}", 0, 50)
-  subnet_name               = "default"
+  backup_instance_name      = "cosmo-backup-instance-${local.cleaned_tenant_name}"
+  backup_policy_name        = "cosmo-backup-policy-${local.cleaned_tenant_name}"
+  subnet_name               = var.subnet_name
   tags                      = var.tags
 }
 

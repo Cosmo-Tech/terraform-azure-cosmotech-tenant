@@ -1,13 +1,11 @@
 variable "tags" {
   description = "Tags to be applied to the resources"
   type        = map(string)
-  default     = {}
 }
 
 variable "subnet_name" {
   description = "Name of the subnet"
   type        = string
-  default     = "default"
 }
 
 variable "subscription_id" {
