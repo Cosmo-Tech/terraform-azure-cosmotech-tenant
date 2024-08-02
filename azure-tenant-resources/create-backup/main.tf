@@ -14,7 +14,7 @@ resource "azurerm_data_protection_backup_policy_disk" "backup_policy" {
   name     = var.backup_policy_name
   vault_id = azurerm_data_protection_backup_vault.vault.id
 
-  backup_repeating_time_intervals = ["R/2021-05-19T06:33:16+00:00/PT24H"]
+  backup_repeating_time_intervals = var.backup_repeating_time_intervals
   default_retention_duration      = "P7D"
 
   retention_rule {

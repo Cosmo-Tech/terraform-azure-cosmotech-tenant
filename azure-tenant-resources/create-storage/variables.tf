@@ -43,3 +43,23 @@ variable "subnet_id" {
 variable "public_network_access_enabled" {
   type = bool
 }
+
+variable "default_to_oauth_authentication" {
+  type = bool
+}
+
+variable "min_tls_version" {
+  type = string
+}
+
+variable "shared_access_key_enabled" {
+  type = bool
+}
+
+variable "enable_https_traffic_only" {
+  type = bool
+}
+
+variable "access_tier" {
+  type = string
+}

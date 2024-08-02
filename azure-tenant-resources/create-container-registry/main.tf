@@ -3,19 +3,14 @@ resource "azurerm_container_registry" "acr" {
   resource_group_name       = var.resource_group
   location                  = var.location
   sku                       = "Standard"
-  admin_enabled             = true
-  quarantine_policy_enabled = false
-  trust_policy = [{
-    enabled = false
-  }]
-  retention_policy = [{
-    days    = 7
-    enabled = false
-  }]
-  data_endpoint_enabled         = false
-  public_network_access_enabled = true
+  admin_enabled             = var.admin_enabled
+  quarantine_policy_enabled = var.quarantine_policy_enabled
+  trust_policy = var.trust_policy
+  retention_policy = var.retention_policy
+  data_endpoint_enabled         = var.data_endpoint_enabled
+  public_network_access_enabled = var.public_network_access_enabled
   network_rule_bypass_option    = "AzureServices"
-  zone_redundancy_enabled       = false
+  zone_redundancy_enabled       = var.zone_redundancy_enabled
   tags                          = var.tags
 }
 

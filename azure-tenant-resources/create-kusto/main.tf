@@ -9,13 +9,13 @@ resource "azurerm_kusto_cluster" "kusto" {
   identity {
     type = "SystemAssigned"
   }
-  trusted_external_tenants      = ["*"]
-  disk_encryption_enabled       = false
-  streaming_ingestion_enabled   = true
-  purge_enabled                 = false
-  double_encryption_enabled     = false
-  engine                        = "V2"
-  public_network_access_enabled = true
+  trusted_external_tenants      = var.trusted_external_tenants
+  disk_encryption_enabled       = var.disk_encryption_enabled
+  streaming_ingestion_enabled   = var.streaming_ingestion_enabled
+  purge_enabled                 = var.purge_enabled
+  double_encryption_enabled     = var.double_encryption_enabled
+  engine                        = var.kusto_engine
+  public_network_access_enabled = var.public_network_access_enabled
   auto_stop_enabled             = var.auto_stop_kusto
   tags                          = var.tags
 }
