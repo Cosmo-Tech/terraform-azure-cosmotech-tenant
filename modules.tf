@@ -55,6 +55,12 @@ module "azure-tenant-resources" {
   create_eventhub                              = var.create_eventhub
   public_network_access_enabled                = var.public_network_access_enabled
 
+  redis_disk_size_gb = var.redis_disk_size_gb
+  redis_disk_sku     = var.redis_disk_sku
+  redis_disk_tier    = var.redis_disk_tier
+  create_backup      = var.create_backup
+  managed_disk_name  = var.managed_disk_name
+
   blob_privatedns_zonename     = var.blob_privatedns_zonename
   queue_privatedns_zonename    = var.queue_privatedns_zonename
   table_privatedns_zonename    = var.table_privatedns_zonename
@@ -108,7 +114,7 @@ module "create-vault-entries" {
 
 module "platform-tenant-resources" {
   source  = "Cosmo-Tech/cosmotech-tenant/kubernetes"
-  version = "0.1.5"
+  version = "0.1.6"
 
   api_dns_name                            = var.api_dns_name
   api_replicas                            = var.api_replicas
@@ -123,7 +129,6 @@ module "platform-tenant-resources" {
   kubernetes_tenant_namespace             = var.kubernetes_tenant_namespace
   monitoring_enabled                      = var.monitoring_enabled == "true" ? true : false
   monitoring_namespace                    = var.monitoring_namespace
-  chart_package_version                   = var.chart_package_version
   tenant_resource_group                   = var.tenant_resource_group
   redis_port                              = var.redis_port
   argo_minio_persistence_size             = var.argo_minio_persistence_size
@@ -157,6 +162,7 @@ module "platform-tenant-resources" {
   identity_token_url                      = var.identity_token_url
   deploy_api                              = var.deploy_api
   create_platform_config                  = var.create_platform_config
+  cosmotech_api_chart_package_version     = var.cosmotech_api_chart_package_version
 
   depends_on = [module.azure-tenant-resources]
 }
