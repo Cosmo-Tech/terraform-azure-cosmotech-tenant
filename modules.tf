@@ -53,7 +53,8 @@ module "azure-tenant-resources" {
   vnet_resource_group                          = var.network_resource_group
   create_adx                                   = var.kusto_deploy
   create_eventhub                              = var.create_eventhub
-  public_network_access_enabled                = var.public_network_access_enabled
+  eventhub_capacity                            = var.eventhub_capacity
+  eventhub_public_network_access_enabled       = var.eventhub_public_network_access_enabled
 
   blob_privatedns_zonename     = var.blob_private_dns_zonename
   queue_privatedns_zonename    = var.queue_private_dns_zonename
