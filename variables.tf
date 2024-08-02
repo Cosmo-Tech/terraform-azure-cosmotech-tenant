@@ -731,3 +731,27 @@ variable "identity_authorization_url" {
 variable "identity_token_url" {
   type = string
 }
+
+variable "redis_disk_size_gb" {
+  type = string
+}
+
+variable "redis_disk_sku" {
+  type = string
+}
+
+variable "redis_disk_tier" {
+  type = string
+}
+
+variable "create_backup" {
+  type = string
+}
+
+variable "managed_disk_name" {
+  type = string
+}
+
+variable "cosmotech_api_chart_package_version" {
+  type = string
+}
