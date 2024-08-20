@@ -111,13 +111,13 @@ module "azure-tenant-resources" {
   storage_enable_https_traffic_only       = var.storage_enable_https_traffic_only
   storage_access_tier                     = var.storage_access_tier
 
-  create_backup = var.create_backup
+  create_backup                   = var.create_backup
   backup_repeating_time_intervals = var.backup_repeating_time_intervals
 
-  managed_disk_name = var.managed_disk_name
+  managed_disk_name  = var.managed_disk_name
   redis_disk_size_gb = var.redis_disk_size_gb
-  redis_disk_sku = var.redis_disk_sku
-  redis_disk_tier = var.redis_disk_tier
+  redis_disk_sku     = var.redis_disk_sku
+  redis_disk_tier    = var.redis_disk_tier
 
   tenant_group_id           = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_tenant_group_id : var.tenant_group_id
   tenant_sp_object_id       = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.tenant_sp_object_id
