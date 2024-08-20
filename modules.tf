@@ -57,12 +57,6 @@ module "azure-tenant-resources" {
   eventhub_capacity                            = var.eventhub_capacity
   eventhub_public_network_access_enabled       = var.eventhub_public_network_access_enabled
 
-  redis_disk_size_gb = var.redis_disk_size_gb
-  redis_disk_sku     = var.redis_disk_sku
-  redis_disk_tier    = var.redis_disk_tier
-  create_backup      = var.create_backup
-  managed_disk_name  = var.managed_disk_name
-
   blob_privatedns_zonename     = var.blob_privatedns_zonename
   queue_privatedns_zonename    = var.queue_privatedns_zonename
   table_privatedns_zonename    = var.table_privatedns_zonename
