@@ -323,5 +323,5 @@ variable "container_retention_policy" {
   }))
 }
 variable "backup_repeating_time_intervals" {
-  type = list()
+  type = list(string)
 }
