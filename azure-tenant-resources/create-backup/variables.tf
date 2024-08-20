@@ -33,7 +33,7 @@ variable "managed_disk_id" {
 }
 
 variable "backup_repeating_time_intervals" {
-  type = list()
+  type = list(string)
 }
 
 
