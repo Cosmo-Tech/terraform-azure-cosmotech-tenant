@@ -24,7 +24,7 @@
 | <a name="module_azure-tenant-prerequisites"></a> [azure-tenant-prerequisites](#module\_azure-tenant-prerequisites) | ./azure-tenant-prerequisites | n/a |
 | <a name="module_azure-tenant-resources"></a> [azure-tenant-resources](#module\_azure-tenant-resources) | ./azure-tenant-resources | n/a |
 | <a name="module_create-vault-entries"></a> [create-vault-entries](#module\_create-vault-entries) | ./create-vault-entries | n/a |
-| <a name="module_platform-tenant-resources"></a> [platform-tenant-resources](#module\_platform-tenant-resources) | Cosmo-Tech/cosmotech-tenant/kubernetes | 0.1.5 |
+| <a name="module_platform-tenant-resources"></a> [platform-tenant-resources](#module\_platform-tenant-resources) | Cosmo-Tech/cosmotech-tenant/kubernetes | 0.1.6 |
 
 ## Resources
 
@@ -74,7 +74,7 @@
 | <a name="input_babylon_client_id"></a> [babylon\_client\_id](#input\_babylon\_client\_id) | n/a | `string` | `""` | no |
 | <a name="input_babylon_client_secret"></a> [babylon\_client\_secret](#input\_babylon\_client\_secret) | n/a | `string` | `""` | no |
 | <a name="input_babylon_sp_object_id"></a> [babylon\_sp\_object\_id](#input\_babylon\_sp\_object\_id) | n/a | `string` | `""` | no |
-| <a name="input_backup_repeating_time_intervals"></a> [backup\_repeating\_time\_intervals](#input\_backup\_repeating\_time\_intervals) | n/a | `list()` | <pre>[<br>  "R/2021-05-19T06:33:16+00:00/PT24H"<br>]</pre> | no |
+| <a name="input_backup_repeating_time_intervals"></a> [backup\_repeating\_time\_intervals](#input\_backup\_repeating\_time\_intervals) | n/a | `list(string)` | <pre>[<br>  "R/2021-05-19T06:33:16+00:00/PT24H"<br>]</pre> | no |
 | <a name="input_blob_privatedns_zonename"></a> [blob\_privatedns\_zonename](#input\_blob\_privatedns\_zonename) | n/a | `string` | `"privatelink.blob.core.windows.net"` | no |
 | <a name="input_chart_package_version"></a> [chart\_package\_version](#input\_chart\_package\_version) | The version of the Cosmo Tech API chart to deploy | `string` | `"3.1.2"` | no |
 | <a name="input_client_id"></a> [client\_id](#input\_client\_id) | The client id | `string` | `""` | no |
