@@ -45,13 +45,13 @@ data "azurerm_kubernetes_cluster" "current" {
 }
 
 data "azurerm_public_ip" "current" {
-  name                = var.public_ip_name
+  name                = var.publicip_name
   resource_group_name = var.publicip_resource_group
 }
 
 data "azurerm_virtual_network" "current" {
-  name                = var.vnet_name
-  resource_group_name = var.vnet_resource_group
+  name                = var.network_name
+  resource_group_name = var.network_resource_group
 }
 
 resource "azurerm_resource_group" "tenant_rg" {
@@ -63,4 +63,10 @@ resource "azurerm_resource_group" "tenant_rg" {
 data "azurerm_resource_group" "tenant_rg" {
   count = var.deployment_type != "ARM" ? 0 : 1
   name  = var.tenant_resource_group
+}
+
+resource "kubernetes_namespace" "main_namespace" {
+  metadata {
+    name = var.kubernetes_tenant_namespace
+  }
 }

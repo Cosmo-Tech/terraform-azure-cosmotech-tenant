@@ -152,13 +152,8 @@ variable "create_babylon" {
   type        = bool
 }
 
-variable "create_webapp" {
-  description = "Create the Azure Active Directory Application for WebApp"
-  type        = bool
-}
-
-variable "create_secrets" {
-  description = "Create secret for application registrtations"
+variable "create_platform" {
+  description = "Create the Azure Active Directory Application for Platform"
   type        = bool
 }
 

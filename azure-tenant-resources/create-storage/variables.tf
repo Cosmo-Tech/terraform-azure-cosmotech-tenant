@@ -63,3 +63,7 @@ variable "enable_https_traffic_only" {
 variable "access_tier" {
   type = string
 }
+
+variable "kubernetes_tenant_namespace" {
+  type = string
+}

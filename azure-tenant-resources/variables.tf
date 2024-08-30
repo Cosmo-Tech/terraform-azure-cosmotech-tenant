@@ -246,10 +246,6 @@ variable "storage_access_tier" {
   type = string
 }
 
-variable "tenant_group_id" {
-  type = string
-}
-
 variable "tenant_sp_object_id" {
   type = string
 }
@@ -302,10 +298,6 @@ variable "auto_stop_kusto" {
   type = bool
 }
 
-variable "common_platform_object_id" {
-  type = string
-}
-
 variable "container_admin_enabled" {
   type = bool
 }
@@ -340,4 +332,8 @@ variable "container_retention_policy" {
 }
 variable "backup_repeating_time_intervals" {
   type = list(string)
+}
+
+variable "kubernetes_tenant_namespace" {
+  type = string
 }

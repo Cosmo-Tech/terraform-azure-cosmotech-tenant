@@ -1,29 +1,16 @@
-variable "namespace" {
-  type = string
-}
-
-variable "monitoring_namespace" {
-  type = string
-}
-
-variable "argo_release_name" {
-  type    = string
-  default = "argo"
-}
-
-variable "helm_repo_url" {
+variable "argo_helm_repo_url" {
   type    = string
   default = "https://argoproj.github.io/argo-helm"
 }
 
-variable "helm_chart" {
+variable "argo_helm_chart" {
   type    = string
   default = "argo-workflows"
 }
 
 variable "argo_version" {
   type    = string
-  default = "0.16.6"
+  default = "0.41.2"
 }
 
 variable "argo_service_account" {
@@ -34,16 +21,6 @@ variable "argo_service_account" {
 variable "argo_bucket_name" {
   type    = string
   default = "argo-workflows"
-}
-
-variable "minio_release_name" {
-  type    = string
-  default = "miniocsmv2"
-}
-
-variable "postgres_release_name" {
-  type    = string
-  default = "postgrescsmv2"
 }
 
 variable "argo_database" {
@@ -64,4 +41,14 @@ variable "requeue_time" {
 variable "archive_ttl" {
   type    = string
   default = "3d"
+}
+
+variable "argo_minio_persistence_size" {
+  type    = string
+  default = "16Gi"
+}
+
+variable "argo_minio_requests_memory" {
+  type    = string
+  default = "2Gi"
 }
