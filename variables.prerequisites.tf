@@ -23,18 +23,6 @@ variable "audience" {
 variable "location" {
   description = "The Azure location"
   type        = string
-  default     = "West Europe"
-}
-
-variable "dns_record" {
-  description = "The DNS zone name to create platform subdomain. Example: myplatform"
-  type        = string
-}
-
-variable "dns_zone_name" {
-  description = "The DNS zone name to create platform subdomain. Example: api.cosmotech.com"
-  type        = string
-  default     = "api.cosmotech.com"
 }
 
 variable "dns_zone_rg" {
@@ -180,7 +168,7 @@ variable "create_powerbi" {
 variable "create_babylon" {
   description = "Create the Azure Active Directory Application for Babylon"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "create_webapp" {
@@ -192,5 +180,10 @@ variable "create_webapp" {
 variable "create_secrets" {
   description = "Create secrets for newly created app registrations"
   type        = bool
-  default     = true
+  default     = false
+}
+
+variable "create_platform" {
+  type    = string
+  default = true
 }

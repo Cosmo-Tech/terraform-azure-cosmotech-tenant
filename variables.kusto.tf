@@ -1,4 +1,4 @@
-variable "auto_stop_kusto" {
+variable "kusto_auto_stop" {
   description = "Specifies if the cluster could be automatically stopped"
   type        = bool
   default     = false
@@ -48,3 +48,9 @@ variable "kusto_public_network_access_enabled" {
   type    = bool
   default = true
 }
+
+variable "kusto_privatedns_zonename" {
+  type    = string
+  default = "privatelink.kusto.core.windows.net"
+}
+

@@ -5,7 +5,7 @@ variable "platform_name" {
   default     = ""
 }
 
-variable "babylon_client_id" {
+variable "babylon_sp_client_id" {
   type    = string
   default = ""
 }
@@ -15,7 +15,7 @@ variable "babylon_sp_object_id" {
   default = ""
 }
 
-variable "babylon_client_secret" {
+variable "babylon_sp_client_secret" {
   type    = string
   default = ""
 }

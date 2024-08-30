@@ -1,5 +1,17 @@
 output "out_acr_login_server" {
-  value     = module.azure-tenant-resources.out_acr_login_server
+  value = module.azure-tenant-resources.out_acr_login_server
+}
+
+output "out_acr_login_username" {
+  value = module.azure-tenant-resources.out_acr_login_username
+}
+
+output "out_acr_login_server_url" {
+  value = module.azure-tenant-resources.out_acr_login_server_url
+}
+
+output "out_acr_login_password" {
+  value     = module.azure-tenant-resources.out_acr_login_password
   sensitive = true
 }
 
@@ -15,23 +27,23 @@ output "out_cluster_adx_name" {
   value = module.azure-tenant-resources.out_adx_name
 }
 
-output "out_cosmos_api_url" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_cosmos_api_url : "https://${var.dns_record}.${var.dns_zone_name}/cosmotech-api/${var.kubernetes_tenant_namespace}"
+output "out_cosmo_api_url" {
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_cosmo_api_url : "https://${var.network_dns_record}.${var.network_dns_zone_name}/${var.kubernetes_tenant_namespace}/${var.cosmotech_api_version_path}"
 }
 
-output "out_cosmos_api_scope" {
-  value = "https://${var.dns_record}.${var.dns_zone_name}/${var.kubernetes_tenant_namespace}/.default"
+output "out_cosmo_api_scope" {
+  value = "https://${var.network_dns_record}.${var.network_dns_zone_name}/${var.kubernetes_tenant_namespace}/.default"
 }
 
-output "out_cosmos_api_version_path" {
-  value = var.api_version_path
+output "out_cosmo_api_version_path" {
+  value = var.cosmotech_api_version_path
 }
 
-output "out_tenant_resource_group_name" {
+output "out_tenant_resource_group" {
   value = var.tenant_resource_group
 }
 
-output "out_resource_location" {
+output "out_location" {
   value = var.location
 }
 
@@ -39,21 +51,21 @@ output "out_storage_account_name" {
   value = module.azure-tenant-resources.out_storage_account_name
 }
 
-output "out_storage_account_secret" {
+output "out_storage_account_key" {
   value     = module.azure-tenant-resources.out_storage_account_key
   sensitive = true
 }
 
-output "out_babylon_client_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_client_id : var.babylon_client_id
+output "out_babylon_sp_client_id" {
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_sp_client_id : var.babylon_sp_client_id
 }
 
-output "out_babylon_principal_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_principal_id : var.babylon_sp_object_id
+output "out_babylon_sp_object_id" {
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_sp_object_id : var.babylon_sp_object_id
 }
 
 output "out_babylon_client_secret" {
-  value     = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_secret : var.babylon_client_secret
+  value     = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_sp_client_secret : var.babylon_sp_client_secret
   sensitive = true
 }
 

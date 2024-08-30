@@ -22,24 +22,17 @@ resource "azurerm_role_assignment" "rg_owner" {
   scope                = var.tenant_resource_group.id
   role_definition_name = "Owner"
   principal_id         = var.tenant_sp_object_id
+  timeouts {
+    create = "3m"
+  }
 }
 
-resource "azurerm_role_assignment" "publicip_contributor" {
+resource "azurerm_role_assignment" "rg_network_owner" {
   count                = var.deployment_type != "ARM" ? 1 : 0
   scope                = var.tenant_resource_group.id
-  role_definition_name = "Contributor"
+  role_definition_name = "Owner"
   principal_id         = var.network_sp_object_id
-}
-
-# resource "azurerm_role_assignment" "publicip_owner" {
-#   scope                = var.public_ip_id
-#   role_definition_name = "Owner"
-#   principal_id         = var.network_sp_object_id
-# }
-
-resource "azurerm_role_assignment" "tenant_contributor" {
-  count                = var.deployment_type != "ARM" ? 1 : 0
-  scope                = var.tenant_resource_group.id
-  role_definition_name = "Contributor"
-  principal_id         = var.common_platform_object_id
+  timeouts {
+    create = "3m"
+  }
 }

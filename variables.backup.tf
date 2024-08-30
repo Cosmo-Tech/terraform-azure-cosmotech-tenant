@@ -1,4 +1,4 @@
-variable "create_backup" {
+variable "backup_create" {
   type = bool
 }
 

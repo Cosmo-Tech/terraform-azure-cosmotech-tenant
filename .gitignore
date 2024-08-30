@@ -5,3 +5,4 @@ modules.json
 terraform.*
 tfplan*
 *.sh
+out_*

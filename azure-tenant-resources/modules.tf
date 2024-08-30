@@ -3,13 +3,13 @@ module "create-backup" {
 
   count = var.create_backup ? 1 : 0
 
-  tags                     = local.tags
-  backup_policy_name       = local.backup_policy_name
-  backup_instance_name     = local.backup_instance_name
-  location                 = var.location
-  tenant_resource_group    = var.tenant_resource_group.name
-  tenant_resource_group_id = var.tenant_resource_group.id
-  managed_disk_id          = module.create-disk.out_managed_disk_id
+  tags                            = local.tags
+  backup_policy_name              = local.backup_policy_name
+  backup_instance_name            = local.backup_instance_name
+  location                        = var.location
+  tenant_resource_group           = var.tenant_resource_group.name
+  tenant_resource_group_id        = var.tenant_resource_group.id
+  managed_disk_id                 = module.create-disk.out_managed_disk_id
   backup_repeating_time_intervals = var.backup_repeating_time_intervals
 
   depends_on = [module.create-network-resources, module.create-disk]
@@ -31,6 +31,7 @@ module "create-container-registry" {
   zone_redundancy_enabled       = var.container_zone_redundancy_enabled
   trust_policy                  = var.container_trust_policy
   retention_policy              = var.container_retention_policy
+  kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
 
   depends_on = [module.create-network-resources]
 }
@@ -40,23 +41,23 @@ module "create-cosmosdb" {
 
   count = var.create_cosmosdb ? 1 : 0
 
-  tags                  = local.tags
-  cosmosdb_name         = local.cosmosdb_name
-  location              = var.location
-  tenant_resource_group = var.tenant_resource_group.name
-  failover_priority = var.cosmosdb_failover_priority
-  public_network_access_enabled = var.cosmosdb_public_network_access_enabled
-  is_virtual_network_filter_enabled = var.cosmosdb_is_virtual_network_filter_enabled
-  access_key_metadata_writes_enabled = var.cosmosdb_access_key_metadata_writes_enabled
-  analytical_storage_enabled = var.cosmosdb_analytical_storage_enabled
+  tags                                  = local.tags
+  cosmosdb_name                         = local.cosmosdb_name
+  location                              = var.location
+  tenant_resource_group                 = var.tenant_resource_group.name
+  failover_priority                     = var.cosmosdb_failover_priority
+  public_network_access_enabled         = var.cosmosdb_public_network_access_enabled
+  is_virtual_network_filter_enabled     = var.cosmosdb_is_virtual_network_filter_enabled
+  access_key_metadata_writes_enabled    = var.cosmosdb_access_key_metadata_writes_enabled
+  analytical_storage_enabled            = var.cosmosdb_analytical_storage_enabled
   network_acl_bypass_for_azure_services = var.cosmosdb_network_acl_bypass_for_azure_services
-  consistency_level = var.cosmosdb_consistency_level
-  consistency_interval_in_minutes = var.cosmosdb_consistency_interval_in_minutes
-  consistency_max_staleness_prefix = var.cosmosdb_consistency_max_staleness_prefix
-  backup_type = var.cosmosdb_backup_type
-  backup_interval_in_minutes = var.cosmosdb_backup_interval_in_minutes
-  backup_retention_in_hours = var.cosmosdb_backup_retention_in_hours
-  backup_storage_redundancy = var.cosmosdb_backup_storage_redundancy
+  consistency_level                     = var.cosmosdb_consistency_level
+  consistency_interval_in_minutes       = var.cosmosdb_consistency_interval_in_minutes
+  consistency_max_staleness_prefix      = var.cosmosdb_consistency_max_staleness_prefix
+  backup_type                           = var.cosmosdb_backup_type
+  backup_interval_in_minutes            = var.cosmosdb_backup_interval_in_minutes
+  backup_retention_in_hours             = var.cosmosdb_backup_retention_in_hours
+  backup_storage_redundancy             = var.cosmosdb_backup_storage_redundancy
 
   depends_on = [module.create-network-resources]
 }
@@ -66,14 +67,14 @@ module "create-eventhub" {
 
   count = var.create_eventhub ? 1 : 0
 
-  tags                  = local.tags
-  eventhub_name         = local.eventhub_name
-  eventhub_capacity     = var.eventhub_capacity
-  location              = var.location
-  tenant_resource_group = var.tenant_resource_group.name
-  common_resource_group = var.common_resource_group.name
-  private_dns_zone_id   = module.create-network-resources.out_blob_private_dns_zone_id
-  subnet_id             = module.create-network-resources.out_subnet_id
+  tags                          = local.tags
+  eventhub_name                 = local.eventhub_name
+  eventhub_capacity             = var.eventhub_capacity
+  location                      = var.location
+  tenant_resource_group         = var.tenant_resource_group.name
+  common_resource_group         = var.common_resource_group.name
+  private_dns_zone_id           = module.create-network-resources.out_blob_private_dns_zone_id
+  subnet_id                     = module.create-network-resources.out_subnet_id
   public_network_access_enabled = var.eventhub_public_network_access_enabled
 
   depends_on = [module.create-network-resources]
@@ -140,6 +141,7 @@ module "create-storage" {
   access_tier                     = var.storage_access_tier
   private_dns_zone_id             = module.create-network-resources.out_blob_private_dns_zone_id
   subnet_id                       = module.create-network-resources.out_subnet_id
+  kubernetes_tenant_namespace     = var.kubernetes_tenant_namespace
 
   depends_on = [module.create-network-resources]
 }

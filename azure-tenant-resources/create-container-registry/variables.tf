@@ -60,3 +60,7 @@ variable "retention_policy" {
     enabled = bool
   }))
 }
+
+variable "kubernetes_tenant_namespace" {
+  type = string
+}
