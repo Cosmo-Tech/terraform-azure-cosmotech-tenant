@@ -80,3 +80,7 @@ output "out_tenant_sp_object_id" {
 output "out_subscription_id" {
   value = var.subscription_id
 }
+
+output "out_identifier_uri" {
+  value = var.identifier_uri
+}
