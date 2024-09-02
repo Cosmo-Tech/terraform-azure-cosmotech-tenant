@@ -29,6 +29,8 @@ resource "kubernetes_secret" "acr_login_password" {
 
   data = {
     "password" = azurerm_container_registry.acr.admin_password
+    "username" = azurerm_container_registry.acr.admin_username
+    "registry" = azurerm_container_registry.acr.login_server
   }
 
   type = "Opaque"
