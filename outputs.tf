@@ -84,3 +84,7 @@ output "out_subscription_id" {
 output "out_identifier_uri" {
   value = var.identifier_uri
 }
+
+output "out_monitoring_namespace" {
+  value = var.monitoring_namespace
+}
