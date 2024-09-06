@@ -337,3 +337,63 @@ variable "backup_repeating_time_intervals" {
 variable "kubernetes_tenant_namespace" {
   type = string
 }
+
+variable "cosmotech_api_reader_username" {
+  type = string
+}
+
+variable "cosmotech_api_writer_username" {
+  type = string
+}
+
+variable "cosmotech_api_admin_username" {
+  type = string
+}
+
+variable "postgresql_initdb_secret_name" {
+  type = string
+}
+
+variable "argo_postgresql_user" {
+  type = string
+}
+
+variable "postgresql_secret_name" {
+  type = string
+}
+
+variable "argo_database" {
+  type = string
+}
+
+variable "monitoring_namespace" {
+  type = string
+}
+
+variable "create_platform_config" {
+  type = bool
+}
+
+variable "allowed_namespace" {
+  type = string
+}
+
+variable "tenant_id" {
+  type = string
+}
+
+variable "vault_address" {
+  type = string
+}
+
+variable "vault_namespace" {
+  type = string
+}
+
+variable "vault_sops_namespace" {
+  type = string
+}
+
+variable "organization" {
+  type = string
+}

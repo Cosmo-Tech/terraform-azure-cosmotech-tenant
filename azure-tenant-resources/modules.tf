@@ -164,3 +164,33 @@ module "create-storage" {
 
   depends_on = [module.create-network-resources]
 }
+
+module "config_vault" {
+  source = "./create-vault-config"
+
+  count = var.create_platform_config ? 1 : 0
+
+  allowed_namespace    = var.allowed_namespace
+  cluster_name         = var.cluster_name
+  tenant_id            = var.tenant_id
+  vault_address        = var.vault_address
+  vault_namespace      = var.vault_namespace
+  vault_sops_namespace = var.vault_sops_namespace
+  organization         = var.organization
+
+}
+
+module "create-secrets" {
+  source = "./create-secrets"
+
+  argo_database                 = var.argo_database
+  postgresql_initdb_secret_name = var.postgresql_initdb_secret_name
+  postgresql_secret_name        = var.postgresql_secret_name
+  argo_postgresql_user          = var.argo_postgresql_user
+  cosmotech_api_admin_username  = var.cosmotech_api_admin_username
+  cosmotech_api_reader_username = var.cosmotech_api_reader_username
+  cosmotech_api_writer_username = var.cosmotech_api_writer_username
+  monitoring_namespace          = var.monitoring_namespace
+  tenant_resource_group         = var.tenant_resource_group.name
+  
+}
