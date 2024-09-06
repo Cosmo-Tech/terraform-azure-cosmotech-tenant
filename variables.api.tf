@@ -1,7 +1,3 @@
-variable "deploy_api" {
-  type = bool
-}
-
 variable "create_platform_config" {
   type = bool
 }
