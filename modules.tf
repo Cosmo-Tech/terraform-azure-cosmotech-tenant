@@ -32,6 +32,7 @@ module "azure-tenant-prerequisites" {
   create_platform                = var.create_platform
   cost_center                    = var.cost_center
   kubernetes_tenant_namespace    = var.kubernetes_tenant_namespace
+
 }
 
 module "azure-tenant-resources" {
@@ -129,7 +130,22 @@ module "azure-tenant-resources" {
     customertag = var.customertag
   }
 
-  kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
+  kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
+  cosmotech_api_admin_username  = var.cosmotech_api_admin_username
+  cosmotech_api_reader_username = var.cosmotech_api_reader_username
+  cosmotech_api_writer_username = var.cosmotech_api_writer_username
+  argo_database                 = var.argo_database
+  argo_postgresql_user          = var.argo_postgresql_user
+  postgresql_initdb_secret_name = var.postgresql_initdb_secret_name
+  postgresql_secret_name        = var.postgresql_secret_name
+  monitoring_namespace          = var.monitoring_namespace
+  create_platform_config        = var.create_platform_config
+  allowed_namespace             = var.allowed_namespace
+  organization                  = var.organization
+  tenant_id                     = var.tenant_client_id
+  vault_address                 = var.vault_address
+  vault_namespace               = var.vault_namespace
+  vault_sops_namespace          = var.vault_sops_namespace
 
   depends_on = [module.azure-tenant-prerequisites]
 }

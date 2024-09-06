@@ -9,6 +9,9 @@ locals {
   backup_policy_name        = "cosmo-backup-policy-${local.cleaned_tenant_name}"
   subnet_name               = var.subnet_name
   tags                      = var.tags
+  local_deployer = {
+    "NAMESPACE" = var.allowed_namespace
+  }
 }
 
 resource "random_string" "random_storage_id" {
@@ -35,4 +38,26 @@ resource "azurerm_role_assignment" "rg_network_owner" {
   timeouts {
     create = "3m"
   }
+}
+
+resource "kubectl_manifest" "deployer_sacc" {
+  validate_schema = false
+  yaml_body       = templatefile("${path.module}/manifests/sacc.yaml", local.local_deployer)
+}
+
+resource "kubectl_manifest" "deployer_role" {
+  validate_schema = false
+  yaml_body       = templatefile("${path.module}/manifests/role.yaml", local.local_deployer)
+  depends_on = [
+    kubectl_manifest.deployer_sacc
+  ]
+}
+
+resource "kubectl_manifest" "deployer_rolb" {
+  validate_schema = false
+  yaml_body       = templatefile("${path.module}/manifests/rolb.yaml", local.local_deployer)
+
+  depends_on = [
+    kubectl_manifest.deployer_role
+  ]
 }
