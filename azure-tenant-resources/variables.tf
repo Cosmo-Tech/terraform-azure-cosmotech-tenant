@@ -349,3 +349,7 @@ variable "backup_repeating_time_intervals" {
 variable "kubernetes_tenant_namespace" {
   type = string
 }
+
+variable "services_secrets_create" {
+  type = bool
+}
