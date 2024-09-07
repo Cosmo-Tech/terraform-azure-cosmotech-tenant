@@ -41,10 +41,6 @@ variable "auto_stop_kusto" {
   type = bool
 }
 
-variable "kusto_engine" {
-  type = string
-}
-
 variable "trusted_external_tenants" {
   type = list(string)
 }

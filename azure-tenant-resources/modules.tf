@@ -30,7 +30,7 @@ module "create-container-registry" {
   public_network_access_enabled = var.container_public_network_access_enabled
   zone_redundancy_enabled       = var.container_zone_redundancy_enabled
   trust_policy                  = var.container_trust_policy
-  retention_policy              = var.container_retention_policy
+  retention_policy_days         = var.container_retention_policy
   kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
 
   depends_on = [module.create-network-resources]
@@ -91,7 +91,6 @@ module "create-kusto" {
   tenant_resource_group         = var.tenant_resource_group.name
   kusto_instance_type           = var.kusto_instance_type
   kustonr_instances             = var.kustonr_instances
-  kusto_engine                  = var.kusto_engine
   trusted_external_tenants      = var.kusto_trusted_external_tenants
   disk_encryption_enabled       = var.kusto_disk_encryption_enabled
   streaming_ingestion_enabled   = var.kusto_streaming_ingestion_enabled
@@ -165,7 +164,7 @@ module "services-secrets" {
   source = "./create-services-secrets"
 
   count = var.services_secrets_create ? 1 : 0
-  
+
   argo_database                 = var.argo_database
   postgresql_initdb_secret_name = var.postgresql_initdb_secret_name
   postgresql_secret_name        = var.postgresql_secret_name
