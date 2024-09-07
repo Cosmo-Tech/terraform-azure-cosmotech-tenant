@@ -26,10 +26,20 @@ variable "argo_database" {
   type = string
 }
 
-variable "tenant_resource_group" {
+variable "kubernetes_namespace" {
   type = string
 }
 
 variable "monitoring_namespace" {
   type = string
+}
+
+variable "rabbitmq_listener_username" {
+  type    = string
+  default = "cosmotech_api_listener"
+}
+
+variable "rabbitmq_sender_username" {
+  type    = string
+  default = "cosmotech_run_sender"
 }
