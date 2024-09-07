@@ -33,12 +33,12 @@ variable "argo_postgresql_secret_name" {
   default = "postgres-config"
 }
 
-variable "requeue_time" {
+variable "argo_requeue_time" {
   type    = string
   default = "1s"
 }
 
-variable "archive_ttl" {
+variable "argo_archive_ttl" {
   type    = string
   default = "3d"
 }

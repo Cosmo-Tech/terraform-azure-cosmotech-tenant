@@ -54,3 +54,8 @@ variable "kusto_privatedns_zonename" {
   default = "privatelink.kusto.core.windows.net"
 }
 
+variable "kusto_deploy" {
+  description = "Whether to create Azure digital explorer"
+  type        = bool
+  default     = true
+}

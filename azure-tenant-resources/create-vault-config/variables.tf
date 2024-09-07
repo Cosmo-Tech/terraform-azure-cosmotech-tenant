@@ -22,6 +22,6 @@ variable "cluster_name" {
   type = string
 }
 
-variable "organization" {
+variable "engine_secret" {
   type = string
 }

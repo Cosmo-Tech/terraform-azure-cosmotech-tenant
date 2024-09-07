@@ -176,13 +176,15 @@ module "config_vault" {
   vault_address        = var.vault_address
   vault_namespace      = var.vault_namespace
   vault_sops_namespace = var.vault_sops_namespace
-  organization         = var.organization
+  engine_secret        = var.engine_secret
 
 }
 
-module "create-secrets" {
-  source = "./create-secrets"
+module "services-secrets" {
+  source = "./create-services-secrets"
 
+  count = var.services_secrets_create ? 1 : 0
+  
   argo_database                 = var.argo_database
   postgresql_initdb_secret_name = var.postgresql_initdb_secret_name
   postgresql_secret_name        = var.postgresql_secret_name

@@ -65,11 +65,6 @@ variable "audience" {
   }
 }
 
-variable "webapp_url" {
-  description = "The Web Application URL"
-  type        = string
-}
-
 variable "location" {
   description = "The Azure location"
 }
@@ -162,5 +157,9 @@ variable "cost_center" {
 }
 
 variable "kubernetes_tenant_namespace" {
+  type = string
+}
+
+variable "cluster_name" {
   type = string
 }

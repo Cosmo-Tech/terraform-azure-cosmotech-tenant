@@ -7,10 +7,6 @@ variable "allowed_namespace" {
   type = string
 }
 
-variable "cluster_name" {
-  type = string
-}
-
 variable "vault_address" {
   type = string
 }
@@ -24,7 +20,8 @@ variable "organization_name" {
 }
 
 variable "vault_token" {
-  type = string
+  type    = string
+  default = ""
 }
 
 variable "vault_create_entries" {
