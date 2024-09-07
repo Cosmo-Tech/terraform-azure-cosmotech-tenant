@@ -14,16 +14,16 @@ until kubectl get pods -n $VAULT_NAMESPACE | grep vault-0 | grep -q Running; do
 done
 
 # Vérifier si le secret engine existe, sinon le créer
-if ! vault_cmd secrets list | grep -q "^${organization}/"; then
-  echo "Creating ${organization} secret engine"
-  vault_cmd secrets enable -path=${organization} kv-v2
+if ! vault_cmd secrets list | grep -q "^${engine_secret}/"; then
+  echo "Creating ${engine_secret} secret engine"
+  vault_cmd secrets enable -path=${engine_secret} kv-v2
 else
-  echo "${organization} secret engine already exists"
+  echo "${engine_secret} secret engine already exists"
 fi
 
 # Créer des politiques et des rôles pour namespace
 NAMESPACE_POLICY='
-path "${organization}/data/${cluster_name}/${allowed_namespace}-platform-secrets" {
+path "${engine_secret}/data/${cluster_name}/${allowed_namespace}-platform-secrets" {
   capabilities = ["create", "read", "update", "patch", "delete", "list"]
 }
 '

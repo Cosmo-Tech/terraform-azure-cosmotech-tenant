@@ -13,9 +13,8 @@ module "azure-tenant-prerequisites" {
   project_name                   = var.project_name
   owner_list                     = var.owner_list
   audience                       = var.audience
-  webapp_url                     = var.webapp_url
   tenant_resource_group          = var.tenant_resource_group
-  common_resource_group          = var.common_resource_group
+  common_resource_group          = var.kubernetes_resource_group
   dns_record                     = var.network_dns_record
   dns_zone_name                  = var.network_dns_zone_name
   virtual_network_address_prefix = var.network_tenant_address_prefix
@@ -32,7 +31,7 @@ module "azure-tenant-prerequisites" {
   create_platform                = var.create_platform
   cost_center                    = var.cost_center
   kubernetes_tenant_namespace    = var.kubernetes_tenant_namespace
-
+  cluster_name                   = var.cluster_name
 }
 
 module "azure-tenant-resources" {
@@ -52,7 +51,7 @@ module "azure-tenant-resources" {
   storage_kind                                 = var.storage_kind
   vnet_resource_group                          = var.network_resource_group
   create_cosmosdb                              = var.create_cosmosdb
-  create_adx                                   = var.create_adx
+  create_adx                                   = var.kusto_deploy
   create_eventhub                              = var.create_eventhub
   eventhub_capacity                            = var.eventhub_capacity
   eventhub_public_network_access_enabled       = var.eventhub_public_network_access_enabled
@@ -116,10 +115,11 @@ module "azure-tenant-resources" {
   tenant_sp_object_id   = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.tenant_sp_object_id
   tenant_resource_group = var.deployment_type != "ARM" ? azurerm_resource_group.tenant_rg.0 : data.azurerm_resource_group.tenant_rg.0
 
-  public_ip_id          = data.azurerm_public_ip.current.id
-  common_resource_group = data.azurerm_resource_group.current
-  vnet                  = data.azurerm_virtual_network.current
-  subnet_name           = var.network_subnet_name
+  public_ip_id            = data.azurerm_public_ip.current.id
+  common_resource_group   = data.azurerm_resource_group.current
+  vnet                    = data.azurerm_virtual_network.current
+  subnet_name             = var.network_subnet_name
+  services_secrets_create = var.services_secrets_create
 
   tags = {
     vendor      = "cosmotech"
@@ -141,8 +141,8 @@ module "azure-tenant-resources" {
   monitoring_namespace          = var.monitoring_namespace
   create_platform_config        = var.create_platform_config
   allowed_namespace             = var.allowed_namespace
-  organization                  = var.organization
-  tenant_id                     = var.tenant_client_id
+  engine_secret                 = var.engine_secret
+  tenant_id                     = var.client_id
   vault_address                 = var.vault_address
   vault_namespace               = var.vault_namespace
   vault_sops_namespace          = var.vault_sops_namespace

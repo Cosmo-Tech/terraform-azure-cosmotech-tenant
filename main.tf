@@ -36,12 +36,12 @@ locals {
 }
 
 data "azurerm_resource_group" "current" {
-  name = var.common_resource_group
+  name = var.kubernetes_resource_group
 }
 
 data "azurerm_kubernetes_cluster" "current" {
   name                = var.cluster_name
-  resource_group_name = var.common_resource_group
+  resource_group_name = var.kubernetes_resource_group
 }
 
 data "azurerm_public_ip" "current" {

@@ -12,7 +12,7 @@ resource "kubernetes_config_map" "vault_config_script" {
       VAULT_SECRETS_OPERATOR_NAMESPACE = var.vault_sops_namespace
       tenant_id                        = var.tenant_id
       cluster_name                     = var.cluster_name
-      organization                     = var.organization
+      engine_secret                     = var.engine_secret
     })
   }
 }
@@ -93,7 +93,7 @@ resource "kubectl_manifest" "platform_vault_secret" {
     allowed_namespace = var.allowed_namespace,
     tenant_id         = var.tenant_id,
     cluster_name      = var.cluster_name,
-    organization      = var.organization
+    engine_secret      = var.engine_secret
   })
 
   depends_on = [

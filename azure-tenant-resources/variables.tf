@@ -378,6 +378,10 @@ variable "vault_sops_namespace" {
   type = string
 }
 
-variable "organization" {
+variable "engine_secret" {
   type = string
+}
+
+variable "services_secrets_create" {
+  type = bool
 }

@@ -70,7 +70,7 @@ output "out_babylon_client_secret" {
 }
 
 output "out_tenant_sp_client_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : var.tenant_client_id
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : var.client_id
 }
 
 output "out_tenant_sp_object_id" {
