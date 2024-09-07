@@ -8,7 +8,7 @@ resource "azurerm_storage_account" "storage_account" {
   default_to_oauth_authentication = var.default_to_oauth_authentication
   min_tls_version                 = var.min_tls_version
   shared_access_key_enabled       = var.shared_access_key_enabled
-  enable_https_traffic_only       = var.enable_https_traffic_only
+  https_traffic_only_enabled      = var.enable_https_traffic_only
   access_tier                     = var.access_tier
   public_network_access_enabled   = var.public_network_access_enabled # Must be false with private endpoints
   tags                            = var.tags

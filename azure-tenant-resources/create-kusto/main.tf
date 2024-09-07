@@ -14,7 +14,6 @@ resource "azurerm_kusto_cluster" "kusto" {
   streaming_ingestion_enabled   = var.streaming_ingestion_enabled
   purge_enabled                 = var.purge_enabled
   double_encryption_enabled     = var.double_encryption_enabled
-  engine                        = var.kusto_engine
   public_network_access_enabled = var.public_network_access_enabled
   auto_stop_enabled             = var.auto_stop_kusto
   tags                          = var.tags

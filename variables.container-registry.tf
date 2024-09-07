@@ -24,21 +24,11 @@ variable "container_zone_redundancy_enabled" {
 }
 
 variable "container_trust_policy" {
-  type = list(object({
-    enabled = bool
-  }))
-  default = [{
-    enabled = false
-  }]
+  type    = bool
+  default = false
 }
 
 variable "container_retention_policy" {
-  type = list(object({
-    days    = number
-    enabled = bool
-  }))
-  default = [{
-    days    = 7
-    enabled = false
-  }]
+  type    = number
+  default = 7
 }

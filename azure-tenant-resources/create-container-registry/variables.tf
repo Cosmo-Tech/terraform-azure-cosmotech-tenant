@@ -49,16 +49,11 @@ variable "zone_redundancy_enabled" {
 }
 
 variable "trust_policy" {
-  type = list(object({
-    enabled = bool
-  }))
+  type = bool
 }
 
-variable "retention_policy" {
-  type = list(object({
-    days    = number
-    enabled = bool
-  }))
+variable "retention_policy_days" {
+  type = number
 }
 
 variable "kubernetes_tenant_namespace" {

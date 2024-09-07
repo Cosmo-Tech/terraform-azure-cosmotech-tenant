@@ -2,19 +2,19 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~>3.54.0"
+      version = "~>4.1.0"
     }
     azuread = {
       source  = "hashicorp/azuread"
-      version = "2.48.0"
+      version = "2.53.1"
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = "2.20.0"
+      version = "2.32.0"
     }
     helm = {
       source  = "hashicorp/helm"
-      version = "2.9.0"
+      version = "2.15.0"
     }
     kubectl = {
       source  = "alekc/kubectl"
@@ -22,7 +22,7 @@ terraform {
     }
     http = {
       source  = "hashicorp/http"
-      version = "3.4.0"
+      version = "3.4.4"
     }
   }
   required_version = ">= 1.3.9"
@@ -41,4 +41,29 @@ provider "azuread" {
   tenant_id     = var.tenant_id
   client_id     = var.client_id
   client_secret = var.client_secret
+}
+
+provider "kubernetes" {
+  host                   = local.host
+  client_certificate     = local.client_certificate
+  client_key             = local.client_key
+  cluster_ca_certificate = local.cluster_ca_certificate
+}
+
+provider "helm" {
+  kubernetes {
+    host                   = local.host
+    client_certificate     = local.client_certificate
+    client_key             = local.client_key
+    cluster_ca_certificate = local.cluster_ca_certificate
+  }
+}
+
+provider "kubectl" {
+  host                   = local.host
+  client_certificate     = local.client_certificate
+  client_key             = local.client_key
+  cluster_ca_certificate = local.cluster_ca_certificate
+
+  load_config_file = false
 }

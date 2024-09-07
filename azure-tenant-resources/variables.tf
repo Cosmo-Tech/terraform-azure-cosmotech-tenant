@@ -319,17 +319,13 @@ variable "container_zone_redundancy_enabled" {
 }
 
 variable "container_trust_policy" {
-  type = list(object({
-    enabled = bool
-  }))
+  type = bool
 }
 
 variable "container_retention_policy" {
-  type = list(object({
-    days    = number
-    enabled = bool
-  }))
+  type = number
 }
+
 variable "backup_repeating_time_intervals" {
   type = list(string)
 }
