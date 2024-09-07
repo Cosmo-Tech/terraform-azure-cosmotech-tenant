@@ -47,7 +47,7 @@ resource "random_password" "postgresql_admin_password" {
 resource "kubernetes_secret" "postgresql_data" {
   metadata {
     name      = "postgresql-admin-data"
-    namespace = var.tenant_resource_group
+    namespace = var.kubernetes_namespace
   }
   data = {
     password = random_password.postgres_postgresql_password.result
@@ -67,7 +67,7 @@ resource "random_password" "redis_admin_password" {
 resource "kubernetes_secret" "redis_admin_password" {
   metadata {
     name      = "redis-admin-secret"
-    namespace = var.tenant_resource_group
+    namespace = var.kubernetes_namespace
   }
   data = {
     password = random_password.redis_admin_password.result
@@ -81,7 +81,7 @@ resource "kubernetes_secret" "redis_admin_password" {
 resource "kubernetes_secret" "postgresql-initdb" {
   metadata {
     name      = "postgres-initdb"
-    namespace = var.tenant_resource_group
+    namespace = var.kubernetes_namespace
     labels = {
       "app" = "postgres"
     }
@@ -98,7 +98,7 @@ resource "kubernetes_secret" "postgresql-initdb" {
 resource "kubernetes_secret" "postgres-config" {
   metadata {
     name      = "postgres-config"
-    namespace = var.tenant_resource_group
+    namespace = var.kubernetes_namespace
     labels = {
       "app" = "postgres"
     }
@@ -118,4 +118,115 @@ resource "kubernetes_secret" "postgres-config" {
   }
 
   type = "Opaque"
+}
+
+resource "random_password" "rabbitmq_admin_password" {
+  length  = 30
+  special = false
+}
+
+resource "random_password" "rabbitmq_listener_password" {
+  length  = 30
+  special = false
+}
+
+resource "random_password" "rabbitmq_sender_password" {
+  length  = 30
+  special = false
+}
+
+resource "kubectl_manifest" "rabbitmq_load_data" {
+  yaml_body = <<YAML
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rabbitmq-data-secret
+  namespace: ${var.kubernetes_namespace}
+type: Opaque
+stringData:
+  admin: ${random_password.rabbitmq_admin_password.result}
+  listener: ${random_password.rabbitmq_listener_password.result}
+  sender: ${random_password.rabbitmq_sender_password.result}
+YAML
+}
+
+resource "kubernetes_secret" "rabbitmq-secret" {
+  metadata {
+    name      = "rabbitmq-${var.kubernetes_namespace}-secret"
+    namespace = var.kubernetes_namespace
+    labels = {
+      "app" = "rabbitmq"
+    }
+  }
+
+  data = {
+    admin-username    = "admin"
+    admin-password    = random_password.rabbitmq_admin_password.result
+    listener-username = var.rabbitmq_listener_username
+    listener-password = random_password.rabbitmq_listener_password.result
+    sender-username   = var.rabbitmq_sender_username
+    sender-password   = random_password.rabbitmq_sender_password.result
+  }
+
+  type = "Opaque"
+}
+
+resource "kubectl_manifest" "rabbitmq_load_definition" {
+  yaml_body = <<YAML
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rabbitmq-load-definition
+  namespace: ${var.kubernetes_namespace}
+type: Opaque
+stringData:
+  load_definition.json: |-
+      {
+        "users": [
+          {
+            "name": "admin",
+            "password": "${random_password.rabbitmq_admin_password.result}",
+            "tags": "administrator"
+          },
+          {
+            "name": "${var.rabbitmq_listener_username}",
+            "password": "${random_password.rabbitmq_listener_password.result}",
+            "tags": ""
+          },
+          {
+            "name": "${var.rabbitmq_sender_username}",
+            "password": "${random_password.rabbitmq_sender_password.result}",
+            "tags": ""
+          }
+        ],
+        "vhosts": [
+          {
+            "name": "/"
+          }
+        ],
+        "permissions": [
+          {
+            "user": "admin",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+          },
+          {
+            "user": "${var.rabbitmq_listener_username}",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+          },
+          {
+            "user": "${var.rabbitmq_sender_username}",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+          }
+        ]
+      }
+  YAML  
 }

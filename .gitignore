@@ -4,6 +4,5 @@ modules.json
 .terraform.*
 terraform.*
 tfplan*
-*.sh
-!/**/*.sh
 out_*
+export_*

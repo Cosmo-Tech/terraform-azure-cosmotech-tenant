@@ -191,6 +191,5 @@ module "create-secrets" {
   cosmotech_api_reader_username = var.cosmotech_api_reader_username
   cosmotech_api_writer_username = var.cosmotech_api_writer_username
   monitoring_namespace          = var.monitoring_namespace
-  tenant_resource_group         = var.tenant_resource_group.name
-  
+  kubernetes_namespace          = var.kubernetes_tenant_namespace
 }
