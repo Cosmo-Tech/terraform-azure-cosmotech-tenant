@@ -6,7 +6,6 @@ resource "azurerm_container_registry" "acr" {
   admin_enabled                 = var.admin_enabled
   quarantine_policy_enabled     = var.quarantine_policy_enabled
   trust_policy_enabled          = var.trust_policy
-  retention_policy_in_days      = var.retention_policy_days
   data_endpoint_enabled         = var.data_endpoint_enabled
   public_network_access_enabled = var.public_network_access_enabled
   network_rule_bypass_option    = "AzureServices"
