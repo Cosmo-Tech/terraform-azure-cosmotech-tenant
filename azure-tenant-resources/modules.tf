@@ -119,6 +119,7 @@ module "create-kusto" {
   private_dns_zone_id           = module.create-network-resources.out_blob_private_dns_zone_id
   subnet_id                     = module.create-network-resources.out_subnet_id
   auto_stop_kusto               = var.auto_stop_kusto
+  kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
 
   depends_on = [module.create-network-resources]
 }
