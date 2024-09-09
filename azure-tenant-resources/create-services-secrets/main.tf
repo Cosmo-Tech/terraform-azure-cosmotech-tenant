@@ -176,7 +176,7 @@ resource "kubectl_manifest" "rabbitmq_load_definition" {
 apiVersion: v1
 kind: Secret
 metadata:
-  name: rabbitmq-load-definition
+  name: rabbitmq-${var.kubernetes_namespace}-load-definition
   namespace: ${var.kubernetes_namespace}
 type: Opaque
 stringData:
