@@ -163,3 +163,7 @@ variable "kubernetes_tenant_namespace" {
 variable "cluster_name" {
   type = string
 }
+
+variable "servlet_context_path" {
+  type = string
+}

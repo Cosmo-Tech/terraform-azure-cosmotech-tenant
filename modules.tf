@@ -32,6 +32,7 @@ module "azure-tenant-prerequisites" {
   cost_center                    = var.cost_center
   kubernetes_tenant_namespace    = var.kubernetes_tenant_namespace
   cluster_name                   = var.cluster_name
+  servlet_context_path           = var.servlet_context_path
 }
 
 module "azure-tenant-resources" {
