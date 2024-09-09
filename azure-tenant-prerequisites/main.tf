@@ -325,7 +325,8 @@ resource "kubernetes_secret" "platform_client_secret" {
   }
 
   data = {
-    "password" = azuread_application_password.platform_password.value
+    "client_id" = azuread_application.platform.client_id
+    "password"  = azuread_application_password.platform_password.value
   }
 
   type       = "Opaque"

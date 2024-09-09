@@ -44,6 +44,7 @@ resource "kubernetes_secret" "storage_account_password" {
   }
 
   data = {
+    "name" = azurerm_storage_account.storage_account.name
     "password" = azurerm_storage_account.storage_account.primary_access_key
   }
 
