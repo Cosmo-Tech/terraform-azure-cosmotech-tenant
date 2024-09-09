@@ -64,3 +64,7 @@ variable "double_encryption_enabled" {
 variable "public_network_access_enabled" {
   type = bool
 }
+
+variable "kubernetes_tenant_namespace" {
+  type = string
+}
