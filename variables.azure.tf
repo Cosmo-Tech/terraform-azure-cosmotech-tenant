@@ -37,10 +37,6 @@ variable "platform_object_id" {
 variable "identifier_uri" {
   description = "The platform identifier uri"
   default     = ""
-  validation {
-    condition     = can(regex("^https:\\/\\/${var.network_dns_record}", var.identifier_uri))
-    error_message = "identifier uri and dns match error"
-  }
 }
 
 variable "tenant_resource_group" {
