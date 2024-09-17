@@ -7,6 +7,92 @@ terraform {
   }
 }
 
+resource "kubernetes_config_map" "vault_config_script" {
+  metadata {
+    name      = "vault-config-script"
+    namespace = var.vault_namespace
+  }
+
+  data = {
+    "configure-vault.sh" = templatefile("${path.module}/configure-vault.sh", {
+      allowed_namespace                = var.kubernetes_tenant_namespace
+      VAULT_NAMESPACE                  = var.vault_namespace
+      VAULT_SECRETS_OPERATOR_NAMESPACE = var.vault_sops_namespace
+      tenant_id                        = var.tenant_id
+      cluster_name                     = var.cluster_name
+      engine_secret                    = var.engine_secret
+    })
+  }
+}
+
+data "kubernetes_secret" "vault_secret" {
+  metadata {
+    name      = "vault-token-secret"
+    namespace = "vault"
+  }
+}
+
+
+
+resource "kubernetes_job" "vault_config" {
+  metadata {
+    name      = "vault-config-job"
+    namespace = var.vault_namespace
+  }
+
+  spec {
+    template {
+      metadata {
+        name = "vault-config"
+      }
+
+      spec {
+        restart_policy       = "Never"
+        service_account_name = "vault-unseal"
+        container {
+          name    = "vault-config"
+          image   = "bitnami/kubectl:latest"
+          command = ["/bin/bash", "-c", "bash /scripts/configure-vault.sh"]
+
+          env {
+            name  = "VAULT_ADDR"
+            value = var.vault_addr
+          }
+
+          env {
+            name  = "VAULT_NAMESPACE"
+            value = var.vault_namespace
+          }
+
+          volume_mount {
+            name       = "config"
+            mount_path = "/scripts"
+          }
+        }
+
+        volume {
+          name = "config"
+          config_map {
+            name = kubernetes_config_map.vault_config_script.metadata[0].name
+          }
+        }
+      }
+    }
+
+    backoff_limit = 4
+  }
+
+  wait_for_completion = true
+  timeouts {
+    create = "5m"
+    update = "5m"
+  }
+
+  depends_on = [
+    kubernetes_config_map.vault_config_script
+  ]
+}
+
 resource "kubectl_manifest" "create-vault-entries" {
   yaml_body = <<YAML
 apiVersion: v1
@@ -17,14 +103,18 @@ metadata:
 spec:
   containers:
   - name: create-vault-entries-pod
+    imagePullPolicy: Always
     image: ghcr.io/cosmo-tech/backend-tf-state-to-vault:latest
+    command: ["/bin/bash", "-c", "python main.py config write --use-azure"]
     env:
     - name: VAULT_ADDR
       value: ${var.vault_addr}
     - name: VAULT_TOKEN
-      value: ${var.vault_token}
+      value: ${var.vault_token == "" ? data.kubernetes_secret.vault_secret.data.ROOT_TOKEN : var.vault_token}
     - name: TENANT_ID
       value: ${var.tenant_id}
+    - name: CLUSTER_NAME
+      value: ${var.cluster_name}
     - name: ORGANIZATION_NAME
       value: ${var.organization_name}
     - name: STORAGE_ACCOUNT_NAME
@@ -34,7 +124,7 @@ spec:
     - name: STORAGE_CONTAINER
       value: ${var.storage_container}
     - name: TFSTATE_BLOB_NAME
-      value: ${var.tfstate_blob_name}
+      value: ${var.tf_blob_name_tenant}
     - name: PLATFORM_NAME
       value: ${var.platform_name}
   nodeSelector:
@@ -46,4 +136,6 @@ spec:
     effect: "NoSchedule"
   restartPolicy: Never
 YAML
+
+  depends_on = [kubernetes_job.vault_config]
 }
