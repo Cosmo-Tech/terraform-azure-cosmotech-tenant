@@ -34,6 +34,22 @@ variable "storage_container" {
   type = string
 }
 
-variable "tfstate_blob_name" {
+variable "tf_blob_name_tenant" {
+  type = string
+}
+
+variable "cluster_name" {
+  type = string
+}
+
+variable "vault_namespace" {
+  type = string
+}
+
+variable "vault_sops_namespace" {
+  type = string
+}
+
+variable "engine_secret" {
   type = string
 }

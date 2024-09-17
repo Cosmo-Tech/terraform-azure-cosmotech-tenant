@@ -165,5 +165,9 @@ module "create-vault-entries" {
   storage_account_name        = var.tf_storage_account_name
   storage_account_key         = var.tf_access_key
   storage_container           = var.tf_container_name
-  tfstate_blob_name           = var.tf_blob_name_tenant
+  tf_blob_name_tenant         = var.tf_blob_name_tenant
+  cluster_name                = var.cluster_name
+  vault_namespace             = var.vault_namespace
+  vault_sops_namespace        = var.vault_sops_namespace
+  engine_secret               = var.engine_secret
 }
