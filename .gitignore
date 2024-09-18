@@ -12,4 +12,4 @@ tfplan*
 out_*
 export_*
 providers.azure.tf
-*.sh
+common_init.sh
