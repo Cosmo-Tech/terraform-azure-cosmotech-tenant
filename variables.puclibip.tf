@@ -1,7 +1,6 @@
 variable "publicip_create" {
   description = "Create the public IP for the platform"
   type        = bool
-  default     = false
 }
 
 variable "publicip_name" {
