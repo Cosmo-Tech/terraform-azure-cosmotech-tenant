@@ -12,7 +12,6 @@ variable "redis_disk_tier" {
 
 variable "redis_managed_disk_name" {
   type    = string
-  default = ""
 }
 
 variable "redis_port" {
