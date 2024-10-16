@@ -1,6 +1,5 @@
 variable "vault_namespace" {
   type    = string
-  default = "vault"
 }
 
 variable "allowed_namespace" {
@@ -21,7 +20,6 @@ variable "organization_name" {
 
 variable "vault_token" {
   type    = string
-  default = ""
 }
 
 variable "vault_create_entries" {

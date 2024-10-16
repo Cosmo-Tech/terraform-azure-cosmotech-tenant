@@ -13,3 +13,5 @@ out_*
 export_*
 providers.azure.tf
 common_init.sh
+!terraform.defaults.tfvars
+extract_defaults.sh
