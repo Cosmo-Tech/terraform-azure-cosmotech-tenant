@@ -22,16 +22,12 @@ variable "tenant_id" {
   description = "The tenant id"
 }
 
-variable "tenant_id" {
-  description = "The tenant id"
-}
-
 variable "subscription_id" {
   description = "The subscription id"
 }
 
 variable "platform_object_id" {
-  type = string
+  type    = string
 }
 
 variable "identifier_uri" {
