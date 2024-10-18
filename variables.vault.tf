@@ -19,8 +19,7 @@ variable "organization_name" {
 }
 
 variable "vault_token" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "vault_create_entries" {
