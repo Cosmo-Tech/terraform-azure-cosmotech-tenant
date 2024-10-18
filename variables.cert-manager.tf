@@ -1,11 +1,9 @@
 variable "cluster_issuer_name" {
-  type    = string
-  default = "letsencrypt-prod"
+  type = string
 }
 
 variable "tls_certificate_type" {
-  type    = string
-  default = "let_s_encrypt"
+  type = string
   validation {
     condition = contains([
       "let_s_encrypt",
@@ -17,11 +15,9 @@ variable "tls_certificate_type" {
 }
 
 variable "tls_certificate_custom_certificate" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "tls_certificate_custom_key" {
-  type    = string
-  default = ""
+  type = string
 }

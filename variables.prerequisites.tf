@@ -1,6 +1,5 @@
 variable "platform_url" {
   description = "The platform url"
-  default     = ""
 }
 
 variable "owner_list" {
@@ -28,7 +27,6 @@ variable "location" {
 variable "dns_zone_rg" {
   description = "The DNS zone resource group"
   type        = string
-  default     = "phoenix"
 }
 
 variable "user_app_role" {
@@ -149,41 +147,34 @@ variable "user_app_role" {
 }
 
 variable "image_path" {
-  type    = string
-  default = "./cosmotech.png"
+  type = string
 }
 
 variable "create_restish" {
   description = "Create the Azure Active Directory Application for Restish"
   type        = bool
-  default     = false
 }
 
 variable "create_powerbi" {
   description = "Create the Azure Active Directory Application for PowerBI"
   type        = bool
-  default     = false
 }
 
 variable "create_babylon" {
   description = "Create the Azure Active Directory Application for Babylon"
   type        = bool
-  default     = false
 }
 
 variable "create_webapp" {
   description = "Create the Azure Active Directory Application for WebApp"
   type        = bool
-  default     = false
 }
 
 variable "create_secrets" {
   description = "Create secrets for newly created app registrations"
   type        = bool
-  default     = false
 }
 
 variable "create_platform" {
-  type    = string
-  default = true
+  type = string
 }

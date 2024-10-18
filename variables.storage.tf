@@ -1,39 +1,31 @@
 variable "storage_class_sku" {
-  type    = string
-  default = "Standard_LRS"
+  type = string
 }
 
 variable "storage_kind" {
-  type    = string
-  default = "StorageV2"
+  type = string
 }
 
 variable "storage_public_network_access_enabled" {
-  type    = bool
-  default = false
+  type = bool
 }
 
 variable "storage_default_to_oauth_authentication" {
-  type    = bool
-  default = false
+  type = bool
 }
 
 variable "storage_min_tls_version" {
-  type    = string
-  default = "TLS1_2"
+  type = string
 }
 
 variable "storage_shared_access_key_enabled" {
-  type    = bool
-  default = true
+  type = bool
 }
 
 variable "storage_enable_https_traffic_only" {
-  type    = bool
-  default = true
+  type = bool
 }
 
 variable "storage_access_tier" {
-  type    = string
-  default = "Hot"
+  type = string
 }

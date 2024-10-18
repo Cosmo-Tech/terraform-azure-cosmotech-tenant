@@ -1,29 +1,23 @@
 variable "cosmotech_api_reader_username" {
-  type    = string
-  default = "cosmotech_api_reader"
+  type = string
 }
 
 variable "cosmotech_api_writer_username" {
-  type    = string
-  default = "cosmotech_api_writer"
+  type = string
 }
 
 variable "cosmotech_api_admin_username" {
-  type    = string
-  default = "cosmotech_api_admin"
+  type = string
 }
 
 variable "postgresql_initdb_secret_name" {
-  type    = string
-  default = "postgres-initdb"
+  type = string
 }
 
 variable "argo_postgresql_user" {
-  type    = string
-  default = "argo"
+  type = string
 }
 
 variable "postgresql_secret_name" {
-  type    = string
-  default = "postgres-config"
+  type = string
 }

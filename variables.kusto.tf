@@ -1,61 +1,49 @@
 variable "kusto_auto_stop" {
   description = "Specifies if the cluster could be automatically stopped"
   type        = bool
-  default     = false
 }
 
 variable "kusto_instance_type" {
-  type    = string
-  default = "Standard_D12_v2"
+  type = string
 }
 
 variable "kustonr_instances" {
-  type    = number
-  default = 2
+  type = number
 }
 
 variable "kusto_engine" {
-  type    = string
-  default = "V2"
+  type = string
 }
 
 variable "kusto_trusted_external_tenants" {
-  type    = list(string)
-  default = ["*"]
+  type = list(string)
 }
 
 variable "kusto_disk_encryption_enabled" {
-  type    = bool
-  default = false
+  type = bool
 }
 
 variable "kusto_streaming_ingestion_enabled" {
-  type    = bool
-  default = true
+  type = bool
 }
 
 variable "kusto_purge_enabled" {
-  type    = bool
-  default = false
+  type = bool
 }
 
 variable "kusto_double_encryption_enabled" {
-  type    = bool
-  default = false
+  type = bool
 }
 
 variable "kusto_public_network_access_enabled" {
-  type    = bool
-  default = true
+  type = bool
 }
 
 variable "kusto_privatedns_zonename" {
-  type    = string
-  default = "privatelink.kusto.core.windows.net"
+  type = string
 }
 
 variable "kusto_deploy" {
   description = "Whether to create Azure digital explorer"
   type        = bool
-  default     = true
 }

@@ -1,6 +1,5 @@
 variable "monitoring_namespace" {
-  type    = string
-  default = "cosmotech-monitoring"
+  type = string
 }
 
 variable "kubernetes_tenant_namespace" {
@@ -9,8 +8,7 @@ variable "kubernetes_tenant_namespace" {
 }
 
 variable "monitoring_enabled" {
-  type    = string
-  default = "true"
+  type = string
 }
 
 variable "api_dns_name" {
