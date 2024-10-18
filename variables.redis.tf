@@ -11,7 +11,7 @@ variable "redis_disk_tier" {
 }
 
 variable "redis_managed_disk_name" {
-  type    = string
+  type = string
 }
 
 variable "redis_port" {

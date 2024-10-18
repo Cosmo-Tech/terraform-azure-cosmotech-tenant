@@ -4,53 +4,53 @@ variable "create_cosmosdb" {
 }
 
 variable "cosmosdb_failover_priority" {
-  type    = number
+  type = number
 }
 
 variable "cosmosdb_public_network_access_enabled" {
-  type    = bool
+  type = bool
 }
 
 variable "cosmosdb_is_virtual_network_filter_enabled" {
-  type    = bool
+  type = bool
 }
 
 variable "cosmosdb_access_key_metadata_writes_enabled" {
-  type    = bool
+  type = bool
 }
 
 variable "cosmosdb_analytical_storage_enabled" {
-  type    = bool
+  type = bool
 }
 
 variable "cosmosdb_network_acl_bypass_for_azure_services" {
-  type    = bool
+  type = bool
 }
 
 variable "cosmosdb_consistency_level" {
-  type    = string
+  type = string
 }
 
 variable "cosmosdb_consistency_interval_in_minutes" {
-  type    = number
+  type = number
 }
 
 variable "cosmosdb_consistency_max_staleness_prefix" {
-  type    = number
+  type = number
 }
 
 variable "cosmosdb_backup_type" {
-  type    = string
+  type = string
 }
 
 variable "cosmosdb_backup_interval_in_minutes" {
-  type    = number
+  type = number
 }
 
 variable "cosmosdb_backup_retention_in_hours" {
-  type    = number
+  type = number
 }
 
 variable "cosmosdb_backup_storage_redundancy" {
-  type    = string
+  type = string
 }
