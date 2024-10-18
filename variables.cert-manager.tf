@@ -1,9 +1,9 @@
 variable "cluster_issuer_name" {
-  type    = string
+  type = string
 }
 
 variable "tls_certificate_type" {
-  type    = string
+  type = string
   validation {
     condition = contains([
       "let_s_encrypt",
@@ -15,9 +15,9 @@ variable "tls_certificate_type" {
 }
 
 variable "tls_certificate_custom_certificate" {
-  type    = string
+  type = string
 }
 
 variable "tls_certificate_custom_key" {
-  type    = string
+  type = string
 }

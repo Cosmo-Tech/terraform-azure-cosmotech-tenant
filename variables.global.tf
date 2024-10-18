@@ -1,5 +1,5 @@
 variable "monitoring_namespace" {
-  type    = string
+  type = string
 }
 
 variable "kubernetes_tenant_namespace" {
@@ -8,7 +8,7 @@ variable "kubernetes_tenant_namespace" {
 }
 
 variable "monitoring_enabled" {
-  type    = string
+  type = string
 }
 
 variable "api_dns_name" {

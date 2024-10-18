@@ -5,13 +5,13 @@ variable "platform_name" {
 }
 
 variable "babylon_sp_client_id" {
-  type    = string
+  type = string
 }
 
 variable "babylon_sp_object_id" {
-  type    = string
+  type = string
 }
 
 variable "babylon_sp_client_secret" {
-  type    = string
+  type = string
 }

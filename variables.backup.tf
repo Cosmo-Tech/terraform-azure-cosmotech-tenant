@@ -3,5 +3,5 @@ variable "backup_create" {
 }
 
 variable "backup_repeating_time_intervals" {
-  type    = list(string)
+  type = list(string)
 }

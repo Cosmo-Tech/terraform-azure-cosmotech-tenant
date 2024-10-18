@@ -1,7 +1,7 @@
 variable "vault_secrets_operator_namespace" {
-  type    = string
+  type = string
 }
 
 variable "vault_secrets_operator_vault_address" {
-  type    = string
+  type = string
 }
