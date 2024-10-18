@@ -27,7 +27,7 @@ variable "subscription_id" {
 }
 
 variable "platform_object_id" {
-  type    = string
+  type = string
 }
 
 variable "identifier_uri" {
