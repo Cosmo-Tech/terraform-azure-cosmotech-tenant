@@ -1,43 +1,43 @@
 variable "argo_helm_repo_url" {
-  type    = string
+  type = string
 }
 
 variable "argo_helm_chart" {
-  type    = string
+  type = string
 }
 
 variable "argo_version" {
-  type    = string
+  type = string
 }
 
 variable "argo_service_account" {
-  type    = string
+  type = string
 }
 
 variable "argo_bucket_name" {
-  type    = string
+  type = string
 }
 
 variable "argo_database" {
-  type    = string
+  type = string
 }
 
 variable "argo_postgresql_secret_name" {
-  type    = string
+  type = string
 }
 
 variable "argo_requeue_time" {
-  type    = string
+  type = string
 }
 
 variable "argo_archive_ttl" {
-  type    = string
+  type = string
 }
 
 variable "argo_minio_persistence_size" {
-  type    = string
+  type = string
 }
 
 variable "argo_minio_requests_memory" {
-  type    = string
+  type = string
 }

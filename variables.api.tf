@@ -25,6 +25,6 @@ variable "cosmotech_api_version" {
 }
 
 variable "servlet_context_path" {
-  type = string
+  type        = string
   description = "ex: /cosmotech-api"
 }

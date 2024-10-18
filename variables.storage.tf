@@ -1,31 +1,31 @@
 variable "storage_class_sku" {
-  type    = string
+  type = string
 }
 
 variable "storage_kind" {
-  type    = string
+  type = string
 }
 
 variable "storage_public_network_access_enabled" {
-  type    = bool
+  type = bool
 }
 
 variable "storage_default_to_oauth_authentication" {
-  type    = bool
+  type = bool
 }
 
 variable "storage_min_tls_version" {
-  type    = string
+  type = string
 }
 
 variable "storage_shared_access_key_enabled" {
-  type    = bool
+  type = bool
 }
 
 variable "storage_enable_https_traffic_only" {
-  type    = bool
+  type = bool
 }
 
 variable "storage_access_tier" {
-  type    = string
+  type = string
 }

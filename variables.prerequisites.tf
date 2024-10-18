@@ -147,7 +147,7 @@ variable "user_app_role" {
 }
 
 variable "image_path" {
-  type    = string
+  type = string
 }
 
 variable "create_restish" {
@@ -176,5 +176,5 @@ variable "create_secrets" {
 }
 
 variable "create_platform" {
-  type    = string
+  type = string
 }

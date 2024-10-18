@@ -7,7 +7,7 @@ variable "customer_name" {
 }
 
 variable "customertag" {
-  type    = string
+  type = string
 }
 
 variable "project_stage" {

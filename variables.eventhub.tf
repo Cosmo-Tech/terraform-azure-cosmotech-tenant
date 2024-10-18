@@ -4,9 +4,9 @@ variable "create_eventhub" {
 }
 
 variable "eventhub_capacity" {
-  type    = number
+  type = number
 }
 
 variable "eventhub_public_network_access_enabled" {
-  type    = bool
+  type = bool
 }
