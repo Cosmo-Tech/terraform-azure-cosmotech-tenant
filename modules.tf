@@ -51,7 +51,6 @@ module "azure-tenant-resources" {
   network_sp_object_id                         = var.network_sp_object_id
   storage_kind                                 = var.storage_kind
   vnet_resource_group                          = var.network_resource_group
-  create_cosmosdb                              = var.create_cosmosdb
   create_adx                                   = var.kusto_deploy
   create_eventhub                              = var.create_eventhub
   eventhub_capacity                            = var.eventhub_capacity
@@ -70,20 +69,6 @@ module "azure-tenant-resources" {
   container_zone_redundancy_enabled       = var.container_zone_redundancy_enabled
   container_trust_policy                  = var.container_trust_policy
   container_retention_policy              = var.container_retention_policy
-
-  cosmosdb_failover_priority                     = var.cosmosdb_failover_priority
-  cosmosdb_public_network_access_enabled         = var.cosmosdb_public_network_access_enabled
-  cosmosdb_is_virtual_network_filter_enabled     = var.cosmosdb_is_virtual_network_filter_enabled
-  cosmosdb_access_key_metadata_writes_enabled    = var.cosmosdb_access_key_metadata_writes_enabled
-  cosmosdb_analytical_storage_enabled            = var.cosmosdb_analytical_storage_enabled
-  cosmosdb_network_acl_bypass_for_azure_services = var.cosmosdb_network_acl_bypass_for_azure_services
-  cosmosdb_consistency_level                     = var.cosmosdb_consistency_level
-  cosmosdb_consistency_interval_in_minutes       = var.cosmosdb_consistency_interval_in_minutes
-  cosmosdb_consistency_max_staleness_prefix      = var.cosmosdb_consistency_max_staleness_prefix
-  cosmosdb_backup_type                           = var.cosmosdb_backup_type
-  cosmosdb_backup_interval_in_minutes            = var.cosmosdb_backup_interval_in_minutes
-  cosmosdb_backup_retention_in_hours             = var.cosmosdb_backup_retention_in_hours
-  cosmosdb_backup_storage_redundancy             = var.cosmosdb_backup_storage_redundancy
 
   kusto_instance_type                 = var.kusto_instance_type
   kustonr_instances                   = var.kustonr_instances

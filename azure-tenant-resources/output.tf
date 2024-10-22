@@ -30,16 +30,6 @@ output "out_managed_disk_id" {
   value = module.create-disk.out_managed_disk_id
 }
 
-output "out_cosmos_uri" {
-  value     = var.create_cosmosdb ? module.create-cosmosdb[0].endpoint : ""
-  sensitive = true
-}
-
-output "out_cosmos_key" {
-  value     = var.create_cosmosdb ? module.create-cosmosdb[0].primary_key : ""
-  sensitive = true
-}
-
 output "out_eventbus_uri" {
   value     = var.create_eventhub ? module.create-eventhub.0.out_eventbus_uri : ""
   sensitive = true
