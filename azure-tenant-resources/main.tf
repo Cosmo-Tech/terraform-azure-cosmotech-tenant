@@ -1,6 +1,6 @@
 locals {
   cleaned_tenant_name       = replace(var.tenant_resource_group.name, "/[[:^alnum:]]/", "")
-  cosmosdb_name             = "csm${local.cleaned_tenant_name}-${local.cleaned_tenant_name}"
+  cleaned_managed_disk_name = replace(var.managed_disk_name, "/[[:^alnum:]]/", "")
   eventhub_name             = substr("evname-${local.cleaned_tenant_name}", 0, 50)
   kusto_name                = substr("kusto${local.cleaned_tenant_name}${random_string.random_storage_id.result}", 0, 21)
   storage_name              = substr("${local.cleaned_tenant_name}${random_string.random_storage_id.result}", 0, 23)

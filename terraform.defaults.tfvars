@@ -251,22 +251,3 @@ vault_token     = ""
 vault_secrets_operator_namespace     = "vault-secrets-operator"
 vault_secrets_operator_vault_address = "http://vault.vault.svc.cluster.local:8200"
 
-
-
-
-# Cosmos DB
-create_cosmosdb                                = false
-cosmosdb_failover_priority                     = 0
-cosmosdb_public_network_access_enabled         = true
-cosmosdb_is_virtual_network_filter_enabled     = false
-cosmosdb_access_key_metadata_writes_enabled    = true
-cosmosdb_analytical_storage_enabled            = false
-cosmosdb_network_acl_bypass_for_azure_services = false
-cosmosdb_consistency_level                     = "Session"
-cosmosdb_consistency_interval_in_minutes       = 5
-cosmosdb_consistency_max_staleness_prefix      = 100
-cosmosdb_backup_type                           = "Periodic"
-cosmosdb_backup_interval_in_minutes            = 240
-cosmosdb_backup_retention_in_hours             = 8
-cosmosdb_backup_storage_redundancy             = "Geo"
-

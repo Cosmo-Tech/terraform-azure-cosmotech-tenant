@@ -36,28 +36,21 @@ module "create-container-registry" {
   depends_on = [module.create-network-resources]
 }
 
-module "create-cosmosdb" {
-  source = "./create-cosmosdb"
+module "create-disk" {
+  source = "./create-disk"
 
-  count = var.create_cosmosdb ? 1 : 0
-
-  tags                                  = local.tags
-  cosmosdb_name                         = local.cosmosdb_name
-  location                              = var.location
-  tenant_resource_group                 = var.tenant_resource_group.name
-  failover_priority                     = var.cosmosdb_failover_priority
-  public_network_access_enabled         = var.cosmosdb_public_network_access_enabled
-  is_virtual_network_filter_enabled     = var.cosmosdb_is_virtual_network_filter_enabled
-  access_key_metadata_writes_enabled    = var.cosmosdb_access_key_metadata_writes_enabled
-  analytical_storage_enabled            = var.cosmosdb_analytical_storage_enabled
-  network_acl_bypass_for_azure_services = var.cosmosdb_network_acl_bypass_for_azure_services
-  consistency_level                     = var.cosmosdb_consistency_level
-  consistency_interval_in_minutes       = var.cosmosdb_consistency_interval_in_minutes
-  consistency_max_staleness_prefix      = var.cosmosdb_consistency_max_staleness_prefix
-  backup_type                           = var.cosmosdb_backup_type
-  backup_interval_in_minutes            = var.cosmosdb_backup_interval_in_minutes
-  backup_retention_in_hours             = var.cosmosdb_backup_retention_in_hours
-  backup_storage_redundancy             = var.cosmosdb_backup_storage_redundancy
+  tags                     = local.tags
+  tenant_managed_disk_name = local.managed_disk_name
+  location                 = var.location
+  tenant_resource_group    = var.tenant_resource_group.name
+  redis_disk_size_gb       = var.redis_disk_size_gb
+  redis_disk_sku           = var.redis_disk_sku
+  redis_disk_tier          = var.redis_disk_tier
+  network_sp_object_id     = var.network_sp_object_id
+  tenant_sp_object_id      = var.tenant_sp_object_id
+  private_dns_zone_id      = module.create-network-resources.out_blob_private_dns_zone_id
+  subnet_id                = module.create-network-resources.out_subnet_id
+  deployment_type          = var.deployment_type
 
   depends_on = [module.create-network-resources]
 }
