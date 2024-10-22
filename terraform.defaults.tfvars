@@ -145,8 +145,8 @@ tf_access_key           = ""
 # Network
 network_client_secret                = ""
 network_sp_object_id                 = ""
-network_tenant_address_prefix        = "10.40.0.0/16"
-network_tenant_subnet_address_prefix = "10.40.0.0/24"
+network_tenant_address_prefix        = "10.10.0.0/16"
+network_tenant_subnet_address_prefix = "10.10.0.0/24"
 network_subnet_name                  = "default"
 network_dns_record_create            = false
 blob_private_dns_zonename            = "privatelink.blob.core.windows.net"
