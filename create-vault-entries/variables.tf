@@ -10,6 +10,10 @@ variable "platform_name" {
   type = string
 }
 
+variable "cluster_name" {
+  type = string
+}
+
 variable "organization_name" {
   type = string
 }

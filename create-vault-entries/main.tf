@@ -17,7 +17,7 @@ metadata:
 spec:
   containers:
   - name: create-vault-entries-pod
-    image: ghcr.io/cosmo-tech/backend-tf-state-to-vault:latest
+    image: ghcr.io/cosmo-tech/backend-tf-state-to-vault:1.2.3
     env:
     - name: VAULT_ADDR
       value: ${var.vault_addr}
@@ -27,6 +27,8 @@ spec:
       value: ${var.tenant_id}
     - name: ORGANIZATION_NAME
       value: ${var.organization_name}
+    - name: CLUSTER_NAME
+      value: ${var.cluster_name}
     - name: STORAGE_ACCOUNT_NAME
       value: ${var.storage_account_name}
     - name: STORAGE_ACCOUNT_KEY
