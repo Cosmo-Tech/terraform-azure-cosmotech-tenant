@@ -148,6 +148,8 @@ module "azure-tenant-resources" {
   vault_namespace               = var.vault_namespace
   vault_sops_namespace          = var.vault_sops_namespace
 
+  argo_version = var.argo_version
+
   depends_on = [module.azure-tenant-prerequisites]
 }
 

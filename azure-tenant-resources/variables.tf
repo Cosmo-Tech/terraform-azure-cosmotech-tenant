@@ -397,3 +397,7 @@ variable "engine_secret" {
 variable "services_secrets_create" {
   type = bool
 }
+
+variable "argo_version" {
+  type = string
+}

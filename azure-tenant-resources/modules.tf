@@ -195,3 +195,9 @@ module "services-secrets" {
   monitoring_namespace          = var.monitoring_namespace
   kubernetes_namespace          = var.kubernetes_tenant_namespace
 }
+
+module "argo-crds" {
+  source = "./create-argo-crds"
+
+  argo_version = var.argo_version
+}

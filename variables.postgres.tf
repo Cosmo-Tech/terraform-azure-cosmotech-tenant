@@ -14,6 +14,14 @@ variable "postgresql_initdb_secret_name" {
   type = string
 }
 
+variable "argo_database" {
+  type = string
+}
+
+variable "argo_postgresql_secret_name" {
+  type = string
+}
+
 variable "argo_postgresql_user" {
   type = string
 }
