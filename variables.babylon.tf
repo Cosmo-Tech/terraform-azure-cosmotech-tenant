@@ -1,4 +1,3 @@
-
 variable "platform_name" {
   description = "The platform id for babylon v4"
   type        = string
