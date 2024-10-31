@@ -89,6 +89,7 @@ module "azure-tenant-resources" {
   storage_shared_access_key_enabled       = var.storage_shared_access_key_enabled
   storage_enable_https_traffic_only       = var.storage_enable_https_traffic_only
   storage_access_tier                     = var.storage_access_tier
+  storage_default_action                  = var.storage_default_action
 
   create_backup                   = var.backup_create
   backup_repeating_time_intervals = var.backup_repeating_time_intervals
