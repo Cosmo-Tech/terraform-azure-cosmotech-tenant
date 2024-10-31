@@ -244,8 +244,10 @@ redis_managed_disk_name = ""
 redis_port              = 6379
 
 # Vault
-vault_namespace = "vault"
-vault_token     = ""
+vault_namespace      = "vault"
+vault_token          = ""
+vault_sops_deploy    = false
+vault_create_entries = false
 
 # Vault secrets operator
 vault_secrets_operator_namespace     = "vault-secrets-operator"
