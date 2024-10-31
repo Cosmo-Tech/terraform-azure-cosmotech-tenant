@@ -6,10 +6,6 @@ variable "kubernetes_tenant_namespace" {
   type = string
 }
 
-variable "platform_name" {
-  type = string
-}
-
 variable "organization_name" {
   type = string
 }
@@ -38,10 +34,6 @@ variable "tf_blob_name_tenant" {
   type = string
 }
 
-variable "cluster_name" {
-  type = string
-}
-
 variable "vault_namespace" {
   type = string
 }
@@ -51,5 +43,21 @@ variable "vault_sops_namespace" {
 }
 
 variable "engine_secret" {
+  type = string
+}
+
+variable "engine_version" {
+  type = string
+}
+
+variable "vault_sops_deploy" {
+  type = bool
+}
+
+variable "platform_id" {
+  type = string
+}
+
+variable "container_tag" {
   type = string
 }

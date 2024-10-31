@@ -25,3 +25,19 @@ variable "vault_token" {
 variable "vault_create_entries" {
   type = bool
 }
+
+variable "engine_version" {
+  type = string
+}
+
+variable "vault_sops_deploy" {
+  type = bool
+}
+
+variable "platform_id" {
+  type = string
+}
+
+variable "container_tag" {
+  type = string
+}

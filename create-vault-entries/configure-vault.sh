@@ -16,14 +16,14 @@ done
 # Vérifier si le secret engine existe, sinon le créer
 if ! vault_cmd secrets list | grep -q "^${engine_secret}/"; then
   echo "Creating ${engine_secret} secret engine"
-  vault_cmd secrets enable -path=${engine_secret} kv-v2
+  vault_cmd secrets enable -path=${engine_secret} "kv-${engine_version}"
 else
   echo "${engine_secret} secret engine already exists"
 fi
 
 # Créer des politiques et des rôles pour namespace
 NAMESPACE_POLICY='
-path "${engine_secret}/data/${cluster_name}/${allowed_namespace}-platform-secrets" {
+path "${engine_secret}/data/${allowed_namespace}-platform-secrets" {
   capabilities = ["create", "read", "update", "patch", "delete", "list"]
 }
 '
