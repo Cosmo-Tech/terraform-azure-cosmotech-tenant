@@ -73,6 +73,7 @@
 | <a name="input_container_public_network_access_enabled"></a> [container\_public\_network\_access\_enabled](#input\_container\_public\_network\_access\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_container_quarantine_policy_enabled"></a> [container\_quarantine\_policy\_enabled](#input\_container\_quarantine\_policy\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_container_retention_policy"></a> [container\_retention\_policy](#input\_container\_retention\_policy) | n/a | `number` | n/a | yes |
+| <a name="input_container_tag"></a> [container\_tag](#input\_container\_tag) | n/a | `string` | n/a | yes |
 | <a name="input_container_trust_policy"></a> [container\_trust\_policy](#input\_container\_trust\_policy) | n/a | `bool` | n/a | yes |
 | <a name="input_container_zone_redundancy_enabled"></a> [container\_zone\_redundancy\_enabled](#input\_container\_zone\_redundancy\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_cosmotech_api_admin_username"></a> [cosmotech\_api\_admin\_username](#input\_cosmotech\_api\_admin\_username) | n/a | `string` | n/a | yes |
@@ -96,6 +97,7 @@
 | <a name="input_deployment_type"></a> [deployment\_type](#input\_deployment\_type) | Represents the kind of deployment. Currently two modes: ARM or Terraform | `string` | n/a | yes |
 | <a name="input_dns_zone_rg"></a> [dns\_zone\_rg](#input\_dns\_zone\_rg) | The DNS zone resource group | `string` | n/a | yes |
 | <a name="input_engine_secret"></a> [engine\_secret](#input\_engine\_secret) | n/a | `string` | n/a | yes |
+| <a name="input_engine_version"></a> [engine\_version](#input\_engine\_version) | n/a | `string` | n/a | yes |
 | <a name="input_eventhub_capacity"></a> [eventhub\_capacity](#input\_eventhub\_capacity) | n/a | `number` | n/a | yes |
 | <a name="input_eventhub_private_dns_zonename"></a> [eventhub\_private\_dns\_zonename](#input\_eventhub\_private\_dns\_zonename) | n/a | `string` | n/a | yes |
 | <a name="input_eventhub_public_network_access_enabled"></a> [eventhub\_public\_network\_access\_enabled](#input\_eventhub\_public\_network\_access\_enabled) | n/a | `bool` | n/a | yes |
@@ -131,6 +133,7 @@
 | <a name="input_network_tenant_subnet_address_prefix"></a> [network\_tenant\_subnet\_address\_prefix](#input\_network\_tenant\_subnet\_address\_prefix) | n/a | `string` | n/a | yes |
 | <a name="input_organization_name"></a> [organization\_name](#input\_organization\_name) | n/a | `string` | n/a | yes |
 | <a name="input_owner_list"></a> [owner\_list](#input\_owner\_list) | List of mail addresses for App Registration owners | `list(string)` | n/a | yes |
+| <a name="input_platform_id"></a> [platform\_id](#input\_platform\_id) | n/a | `string` | n/a | yes |
 | <a name="input_platform_name"></a> [platform\_name](#input\_platform\_name) | The platform id for babylon v4 | `string` | n/a | yes |
 | <a name="input_platform_object_id"></a> [platform\_object\_id](#input\_platform\_object\_id) | n/a | `string` | n/a | yes |
 | <a name="input_platform_url"></a> [platform\_url](#input\_platform\_url) | The platform url | `any` | n/a | yes |
@@ -178,6 +181,7 @@
 | <a name="input_vault_namespace"></a> [vault\_namespace](#input\_vault\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_vault_secrets_operator_namespace"></a> [vault\_secrets\_operator\_namespace](#input\_vault\_secrets\_operator\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_vault_secrets_operator_vault_address"></a> [vault\_secrets\_operator\_vault\_address](#input\_vault\_secrets\_operator\_vault\_address) | n/a | `string` | n/a | yes |
+| <a name="input_vault_sops_deploy"></a> [vault\_sops\_deploy](#input\_vault\_sops\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_vault_sops_namespace"></a> [vault\_sops\_namespace](#input\_vault\_sops\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_vault_token"></a> [vault\_token](#input\_vault\_token) | n/a | `string` | n/a | yes |
 
