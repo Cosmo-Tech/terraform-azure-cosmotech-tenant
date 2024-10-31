@@ -173,6 +173,7 @@ storage_min_tls_version                 = "TLS1_2"
 storage_shared_access_key_enabled       = true
 storage_enable_https_traffic_only       = true
 storage_access_tier                     = "Hot"
+storage_default_action                  = "Allow"
 
 # Babylon
 platform_name            = ""

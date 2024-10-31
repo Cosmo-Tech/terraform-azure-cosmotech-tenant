@@ -29,3 +29,7 @@ variable "storage_enable_https_traffic_only" {
 variable "storage_access_tier" {
   type = string
 }
+
+variable "storage_default_action" {
+  type = string
+}

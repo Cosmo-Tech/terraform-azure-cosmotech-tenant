@@ -67,3 +67,7 @@ variable "access_tier" {
 variable "kubernetes_tenant_namespace" {
   type = string
 }
+
+variable "storage_default_action" {
+  type = string
+}

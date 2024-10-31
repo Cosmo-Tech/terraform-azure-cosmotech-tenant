@@ -340,3 +340,7 @@ variable "engine_secret" {
 variable "services_secrets_create" {
   type = bool
 }
+
+variable "storage_default_action" {
+  type = string
+}
