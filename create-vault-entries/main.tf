@@ -121,6 +121,8 @@ spec:
       value: ${var.storage_container}
     - name: TFSTATE_BLOB_NAME
       value: ${var.tf_blob_name_tenant}
+    - name: PLATFORM_ID
+      value: ${var.platform_id}
   nodeSelector:
     "cosmotech.com/tier": "services"
   tolerations:
@@ -152,6 +154,8 @@ spec:
       value: ${var.storage_container}
     - name: TFSTATE_BLOB_NAME
       value: ${var.tf_blob_name_tenant}
+    - name: PLATFORM_ID
+      value: ${var.platform_id}
   nodeSelector:
     "cosmotech.com/tier": "services"
   tolerations:
