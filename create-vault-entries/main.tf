@@ -103,7 +103,7 @@ spec:
   - name: tenant-enable-pod
     imagePullPolicy: Always
     image: ghcr.io/cosmo-tech/backend-tf-state-to-vault:${var.container_tag}
-    command: ["/bin/bash", "-c", "python main.py tenant enable --name ${var.platform_id}"]
+    command: ["/bin/bash", "-c", "python main.py tenant enable --engine ${var.engine_version} --name ${var.platform_id}"]
     env:
     - name: VAULT_ADDR
       value: ${var.vault_addr}
@@ -136,7 +136,7 @@ spec:
   - name: create-vault-entries-pod
     imagePullPolicy: Always
     image: ghcr.io/cosmo-tech/backend-tf-state-to-vault:${var.container_tag}
-    command: ["/bin/bash", "-c", "python main.py config write --use-azure --platform-id ${var.platform_id}"]
+    command: ["/bin/bash", "-c", "python main.py config write --use-azure --engine ${var.engine_version} --platform-id ${var.platform_id}"]
     env:
     - name: VAULT_ADDR
       value: ${var.vault_addr}
