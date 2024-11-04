@@ -11,7 +11,8 @@ variable "customertag" {
 }
 
 variable "project_stage" {
-  description = "The platform stage"
+  description = "The Project stage"
+  type        = string
   validation {
     condition = contains([
       "OnBoarding",
@@ -19,10 +20,13 @@ variable "project_stage" {
       "QA",
       "IA",
       "EA",
+      "Doc",
+      "Support",
       "Demo",
-      "Prod"
+      "Prod",
+      "PreProd"
     ], var.project_stage)
-    error_message = "Stage must be either: OnBoarding, Dev, QA, IA, EA, Demo, Prod."
+    error_message = "Stage must be either: OnBoarding, Dev, QA, IA, EA, Demo, Prod, PreProd, Doc, Support."
   }
 }
 
