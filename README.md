@@ -140,7 +140,7 @@
 | <a name="input_postgresql_initdb_secret_name"></a> [postgresql\_initdb\_secret\_name](#input\_postgresql\_initdb\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_secret_name"></a> [postgresql\_secret\_name](#input\_postgresql\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The project name | `any` | n/a | yes |
-| <a name="input_project_stage"></a> [project\_stage](#input\_project\_stage) | The platform stage | `any` | n/a | yes |
+| <a name="input_project_stage"></a> [project\_stage](#input\_project\_stage) | The Project stage | `string` | n/a | yes |
 | <a name="input_publicip_create"></a> [publicip\_create](#input\_publicip\_create) | Create the public IP for the platform | `bool` | n/a | yes |
 | <a name="input_publicip_name"></a> [publicip\_name](#input\_publicip\_name) | The public IP resource of the platform | `string` | n/a | yes |
 | <a name="input_publicip_resource_group"></a> [publicip\_resource\_group](#input\_publicip\_resource\_group) | n/a | `string` | n/a | yes |
