@@ -15,7 +15,7 @@ variable "cosmotech_api_version_path" {
   description = "The API version path"
   type        = string
   validation {
-    condition     = "v${split(".", var.cosmotech_api_version)[0]}-${split(".", var.cosmotech_api_version)[1]}" == var.cosmotech_api_version_path
+    condition     = "v${split(".", var.cosmotech_api_version)[0]}" == var.cosmotech_api_version_path
     error_message = "The version of cosmotech api do not match with version path"
   }
 }
