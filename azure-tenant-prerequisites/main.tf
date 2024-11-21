@@ -198,8 +198,8 @@ resource "azuread_application" "restish" {
     resource_app_id = azuread_application.platform.client_id
 
     resource_access {
-      id   = local.platform_resource_access_id
-      type = "Scope"
+      id   = local.application_access_role_id
+      type = "Role"
     }
   }
 
@@ -270,11 +270,6 @@ resource "azuread_application" "babylon" {
 
   required_resource_access {
     resource_app_id = azuread_application.platform.client_id
-
-    resource_access {
-      id   = local.platform_resource_access_id
-      type = "Scope"
-    }
 
     resource_access {
       id   = local.application_access_role_id
