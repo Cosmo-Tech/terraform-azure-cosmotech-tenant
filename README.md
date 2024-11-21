@@ -150,6 +150,8 @@
 | <a name="input_redis_disk_tier"></a> [redis\_disk\_tier](#input\_redis\_disk\_tier) | n/a | `string` | n/a | yes |
 | <a name="input_redis_managed_disk_name"></a> [redis\_managed\_disk\_name](#input\_redis\_managed\_disk\_name) | n/a | `string` | n/a | yes |
 | <a name="input_redis_port"></a> [redis\_port](#input\_redis\_port) | n/a | `number` | n/a | yes |
+| <a name="input_restish_sp_client_id"></a> [restish\_sp\_client\_id](#input\_restish\_sp\_client\_id) | n/a | `string` | n/a | yes |
+| <a name="input_restish_sp_client_secret"></a> [restish\_sp\_client\_secret](#input\_restish\_sp\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_services_secrets_create"></a> [services\_secrets\_create](#input\_services\_secrets\_create) | n/a | `bool` | n/a | yes |
 | <a name="input_servlet_context_path"></a> [servlet\_context\_path](#input\_servlet\_context\_path) | ex: /cosmotech-api | `string` | n/a | yes |
 | <a name="input_storage_access_tier"></a> [storage\_access\_tier](#input\_storage\_access\_tier) | n/a | `string` | n/a | yes |
@@ -206,6 +208,8 @@
 | <a name="output_out_identifier_uri"></a> [out\_identifier\_uri](#output\_out\_identifier\_uri) | n/a |
 | <a name="output_out_location"></a> [out\_location](#output\_out\_location) | n/a |
 | <a name="output_out_monitoring_namespace"></a> [out\_monitoring\_namespace](#output\_out\_monitoring\_namespace) | n/a |
+| <a name="output_out_restish_sp_client_id"></a> [out\_restish\_sp\_client\_id](#output\_out\_restish\_sp\_client\_id) | n/a |
+| <a name="output_out_restish_sp_client_secret"></a> [out\_restish\_sp\_client\_secret](#output\_out\_restish\_sp\_client\_secret) | n/a |
 | <a name="output_out_storage_account_key"></a> [out\_storage\_account\_key](#output\_out\_storage\_account\_key) | n/a |
 | <a name="output_out_storage_account_name"></a> [out\_storage\_account\_name](#output\_out\_storage\_account\_name) | n/a |
 | <a name="output_out_subscription_id"></a> [out\_subscription\_id](#output\_out\_subscription\_id) | n/a |
