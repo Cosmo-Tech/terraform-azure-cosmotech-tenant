@@ -103,7 +103,7 @@ spec:
   - name: tenant-enable-pod
     imagePullPolicy: Always
     image: ghcr.io/cosmo-tech/backend-tf-state-to-vault:${var.container_tag}
-    command: ["/bin/bash", "-c", "python main.py tenant enable --engine ${var.engine_version} --name ${var.platform_id}"]
+    command: ["/bin/bash", "-c", "python main.py tenant enable --engine ${var.engine_version} --name ${var.organization_name}"]
     env:
     - name: VAULT_ADDR
       value: ${var.vault_addr}
