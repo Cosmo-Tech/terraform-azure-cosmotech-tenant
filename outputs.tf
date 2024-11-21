@@ -88,3 +88,11 @@ output "out_identifier_uri" {
 output "out_monitoring_namespace" {
   value = var.monitoring_namespace
 }
+
+output "out_restish_sp_client_id" {
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_restish_sp_client_id : var.restish_sp_client_id
+}
+
+output "out_restish_sp_client_secret" {
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_restish_sp_client_secret : var.restish_sp_client_secret
+}
