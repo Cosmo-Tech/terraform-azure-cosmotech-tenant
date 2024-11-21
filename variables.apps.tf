@@ -3,5 +3,6 @@ variable "restish_sp_client_id" {
 }
 
 variable "restish_sp_client_secret" {
-  type = string
+  type      = string
+  sensitive = true
 }
