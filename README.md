@@ -195,8 +195,8 @@
 | <a name="output_out_acr_login_server_url"></a> [out\_acr\_login\_server\_url](#output\_out\_acr\_login\_server\_url) | n/a |
 | <a name="output_out_acr_login_username"></a> [out\_acr\_login\_username](#output\_out\_acr\_login\_username) | n/a |
 | <a name="output_out_adx_uri"></a> [out\_adx\_uri](#output\_out\_adx\_uri) | n/a |
-| <a name="output_out_babylon_client_secret"></a> [out\_babylon\_client\_secret](#output\_out\_babylon\_client\_secret) | n/a |
 | <a name="output_out_babylon_sp_client_id"></a> [out\_babylon\_sp\_client\_id](#output\_out\_babylon\_sp\_client\_id) | n/a |
+| <a name="output_out_babylon_sp_client_secret"></a> [out\_babylon\_sp\_client\_secret](#output\_out\_babylon\_sp\_client\_secret) | n/a |
 | <a name="output_out_babylon_sp_object_id"></a> [out\_babylon\_sp\_object\_id](#output\_out\_babylon\_sp\_object\_id) | n/a |
 | <a name="output_out_cluster_adx_name"></a> [out\_cluster\_adx\_name](#output\_out\_cluster\_adx\_name) | n/a |
 | <a name="output_out_cluster_adx_principal_id"></a> [out\_cluster\_adx\_principal\_id](#output\_out\_cluster\_adx\_principal\_id) | n/a |
