@@ -158,4 +158,8 @@ module "create-vault-entries" {
   engine_version              = var.engine_version
   vault_sops_deploy           = var.vault_sops_deploy
   container_tag               = var.container_tag
+
+  depends_on = [
+    module.azure-tenant-resources
+  ]
 }
