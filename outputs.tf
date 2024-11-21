@@ -64,7 +64,7 @@ output "out_babylon_sp_object_id" {
   value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_sp_object_id : var.babylon_sp_object_id
 }
 
-output "out_babylon_client_secret" {
+output "out_babylon_sp_client_secret" {
   value     = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_sp_client_secret : var.babylon_sp_client_secret
   sensitive = true
 }
