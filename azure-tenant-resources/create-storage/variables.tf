@@ -71,3 +71,7 @@ variable "kubernetes_tenant_namespace" {
 variable "storage_default_action" {
   type = string
 }
+
+variable "storage_csm_ip" {
+  type = string
+}

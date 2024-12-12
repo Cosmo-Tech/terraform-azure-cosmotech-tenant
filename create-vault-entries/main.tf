@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+locals {
+  storage_key = var.storage_account_key == "" ? data.kubernetes_secret.storage_secret.data.password : var.storage_account_key
+}
+
 resource "kubernetes_config_map" "vault_config_script" {
   count = var.vault_sops_deploy ? 1 : 0
   metadata {
@@ -28,6 +32,13 @@ data "kubernetes_secret" "vault_secret" {
   metadata {
     name      = "vault-token-secret"
     namespace = "vault"
+  }
+}
+
+data "kubernetes_secret" "storage_secret" {
+  metadata {
+    name      = "storage-account-secret"
+    namespace = var.kubernetes_tenant_namespace
   }
 }
 
@@ -116,7 +127,7 @@ spec:
     - name: STORAGE_ACCOUNT_NAME
       value: ${var.storage_account_name}
     - name: STORAGE_ACCOUNT_KEY
-      value: ${var.storage_account_key}
+      value: ${local.storage_key}
     - name: STORAGE_CONTAINER
       value: ${var.storage_container}
     - name: TFSTATE_BLOB_NAME
@@ -149,7 +160,7 @@ spec:
     - name: STORAGE_ACCOUNT_NAME
       value: ${var.storage_account_name}
     - name: STORAGE_ACCOUNT_KEY
-      value: ${var.storage_account_key}
+      value: ${local.storage_key}
     - name: STORAGE_CONTAINER
       value: ${var.storage_container}
     - name: TFSTATE_BLOB_NAME

@@ -136,6 +136,7 @@ module "create-storage" {
   subnet_id                       = module.create-network-resources.out_subnet_id
   kubernetes_tenant_namespace     = var.kubernetes_tenant_namespace
   storage_default_action          = var.storage_default_action
+  storage_csm_ip                  = var.storage_csm_ip
 
   depends_on = [module.create-network-resources]
 }

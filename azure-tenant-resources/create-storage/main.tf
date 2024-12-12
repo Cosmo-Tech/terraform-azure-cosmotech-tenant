@@ -13,8 +13,10 @@ resource "azurerm_storage_account" "storage_account" {
   public_network_access_enabled   = var.public_network_access_enabled # Must be false with private endpoints
   tags                            = var.tags
   network_rules {
-    bypass         = ["AzureServices"]
-    default_action = var.storage_default_action # Same as for public_network_access
+    bypass                     = ["AzureServices"]
+    default_action             = var.storage_default_action # Same as for public_network_access
+    ip_rules                   = [var.storage_csm_ip]
+    virtual_network_subnet_ids = [var.subnet_id]
   }
 }
 
@@ -44,7 +46,7 @@ resource "kubernetes_secret" "storage_account_password" {
   }
 
   data = {
-    "name" = azurerm_storage_account.storage_account.name
+    "name"     = azurerm_storage_account.storage_account.name
     "password" = azurerm_storage_account.storage_account.primary_access_key
   }
 
