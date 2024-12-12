@@ -133,6 +133,7 @@ module "azure-tenant-resources" {
   vault_address                 = var.vault_address
   vault_namespace               = var.vault_namespace
   vault_sops_namespace          = var.vault_sops_namespace
+  storage_csm_ip                = var.storage_csm_ip
 
   depends_on = [module.azure-tenant-prerequisites]
 }

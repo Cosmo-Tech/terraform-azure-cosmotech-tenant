@@ -5,8 +5,9 @@ resource "azurerm_virtual_network" "tenant_vnet" {
   address_space       = [var.tenant_virtual_network_address_prefix]
 
   subnet {
-    name             = var.subnet_name
-    address_prefixes = [var.tenant_virtual_subnet_network_address_prefix]
+    name              = var.subnet_name
+    address_prefixes  = [var.tenant_virtual_subnet_network_address_prefix]
+    service_endpoints = ["Microsoft.Storage"]
   }
   tags = var.tags
 }

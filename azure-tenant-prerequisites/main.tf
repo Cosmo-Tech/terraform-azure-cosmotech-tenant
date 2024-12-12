@@ -304,15 +304,6 @@ resource "azuread_application_password" "babylon_password" {
   end_date_relative = "4464h"
 }
 
-# create the Azure AD resource group
-resource "azuread_group" "platform_group" {
-  display_name     = "Cosmotech-Platform-${var.project_name}-${var.common_resource_group}"
-  owners           = data.azuread_users.owners.object_ids
-  security_enabled = true
-  members          = data.azuread_users.owners.object_ids
-}
-
-
 resource "kubernetes_secret" "platform_client_secret" {
   metadata {
     name      = "platform-client-secret"

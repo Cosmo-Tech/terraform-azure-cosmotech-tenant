@@ -329,3 +329,7 @@ variable "services_secrets_create" {
 variable "storage_default_action" {
   type = string
 }
+
+variable "storage_csm_ip" {
+  type = string
+}
