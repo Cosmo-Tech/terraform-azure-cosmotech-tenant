@@ -156,6 +156,7 @@ eventhub_private_dns_zonename        = "privatelink.servicebus.windows.net"
 adt_private_dns_zonename             = "privatelink.digitaltwins.azure.net"
 network_dns_zone_name                = "api.cosmotech.com"
 publicip_create                      = false
+storage_csm_ip                       = ""
 
 # Project
 customer_name = "cosmotech"
@@ -173,7 +174,7 @@ storage_min_tls_version                 = "TLS1_2"
 storage_shared_access_key_enabled       = true
 storage_enable_https_traffic_only       = true
 storage_access_tier                     = "Hot"
-storage_default_action                  = "Allow"
+storage_default_action                  = "Deny"
 
 # Babylon
 platform_name            = ""

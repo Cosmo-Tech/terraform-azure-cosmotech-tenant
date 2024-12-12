@@ -83,3 +83,6 @@ variable "publicip_resource_group" {
   type = string
 }
 
+variable "storage_csm_ip" {
+  type = string
+}
