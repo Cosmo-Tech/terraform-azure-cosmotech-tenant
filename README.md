@@ -156,6 +156,7 @@
 | <a name="input_servlet_context_path"></a> [servlet\_context\_path](#input\_servlet\_context\_path) | ex: /cosmotech-api | `string` | n/a | yes |
 | <a name="input_storage_access_tier"></a> [storage\_access\_tier](#input\_storage\_access\_tier) | n/a | `string` | n/a | yes |
 | <a name="input_storage_class_sku"></a> [storage\_class\_sku](#input\_storage\_class\_sku) | n/a | `string` | n/a | yes |
+| <a name="input_storage_csm_ip"></a> [storage\_csm\_ip](#input\_storage\_csm\_ip) | n/a | `string` | n/a | yes |
 | <a name="input_storage_default_action"></a> [storage\_default\_action](#input\_storage\_default\_action) | n/a | `string` | n/a | yes |
 | <a name="input_storage_default_to_oauth_authentication"></a> [storage\_default\_to\_oauth\_authentication](#input\_storage\_default\_to\_oauth\_authentication) | n/a | `bool` | n/a | yes |
 | <a name="input_storage_enable_https_traffic_only"></a> [storage\_enable\_https\_traffic\_only](#input\_storage\_enable\_https\_traffic\_only) | n/a | `bool` | n/a | yes |
