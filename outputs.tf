@@ -97,3 +97,7 @@ output "out_restish_sp_client_secret" {
   value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_restish_sp_client_secret : var.restish_sp_client_secret
   sensitive = true
 }
+
+output "out_swagger_sp_client_id" {
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_swagger_sp_client_id : var.swagger_sp_client_id
+}

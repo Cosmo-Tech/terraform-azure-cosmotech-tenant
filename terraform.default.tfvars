@@ -142,6 +142,12 @@ tf_container_name       = ""
 tf_blob_name_tenant     = ""
 tf_access_key           = ""
 
+# restish
+restish_sp_client_id     = ""
+restish_sp_client_secret = ""
+
+swagger_sp_client_id = ""
+
 # Network
 network_client_secret                = ""
 network_sp_object_id                 = ""
