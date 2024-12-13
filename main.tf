@@ -6,7 +6,7 @@ locals {
 }
 
 locals {
-  kube_config     = data.azurerm_kubernetes_cluster.current.kube_config
+  kube_config     = data.azurerm_kubernetes_cluster.current.kube_admin_config
   tls_secret_name = var.tls_certificate_type == "let_s_encrypt" ? "letsencrypt-prod" : "custom-tls-secret"
 }
 
