@@ -140,7 +140,7 @@ tf_resource_group_name  = ""
 tf_storage_account_name = ""
 tf_container_name       = ""
 tf_blob_name_tenant     = ""
-tf_access_key           = ""
+# tf_access_key           = ""
 
 # restish
 restish_sp_client_id     = ""
