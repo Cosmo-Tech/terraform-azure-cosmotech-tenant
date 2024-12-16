@@ -165,6 +165,7 @@
 | <a name="input_storage_public_network_access_enabled"></a> [storage\_public\_network\_access\_enabled](#input\_storage\_public\_network\_access\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_storage_shared_access_key_enabled"></a> [storage\_shared\_access\_key\_enabled](#input\_storage\_shared\_access\_key\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | The subscription id | `any` | n/a | yes |
+| <a name="input_swagger_sp_client_id"></a> [swagger\_sp\_client\_id](#input\_swagger\_sp\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_table_private_dns_zonename"></a> [table\_private\_dns\_zonename](#input\_table\_private\_dns\_zonename) | n/a | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to be applied to the resources | `map(string)` | n/a | yes |
 | <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | The tenant id | `any` | n/a | yes |
@@ -214,6 +215,7 @@
 | <a name="output_out_storage_account_key"></a> [out\_storage\_account\_key](#output\_out\_storage\_account\_key) | n/a |
 | <a name="output_out_storage_account_name"></a> [out\_storage\_account\_name](#output\_out\_storage\_account\_name) | n/a |
 | <a name="output_out_subscription_id"></a> [out\_subscription\_id](#output\_out\_subscription\_id) | n/a |
+| <a name="output_out_swagger_sp_client_id"></a> [out\_swagger\_sp\_client\_id](#output\_out\_swagger\_sp\_client\_id) | n/a |
 | <a name="output_out_tenant_resource_group"></a> [out\_tenant\_resource\_group](#output\_out\_tenant\_resource\_group) | n/a |
 | <a name="output_out_tenant_sp_client_id"></a> [out\_tenant\_sp\_client\_id](#output\_out\_tenant\_sp\_client\_id) | n/a |
 | <a name="output_out_tenant_sp_object_id"></a> [out\_tenant\_sp\_object\_id](#output\_out\_tenant\_sp\_object\_id) | n/a |
