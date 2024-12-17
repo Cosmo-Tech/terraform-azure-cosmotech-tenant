@@ -69,20 +69,6 @@ variable "network_dns_zone_name" {
   type        = string
 }
 
-variable "publicip_create" {
-  description = "Create the public IP for the platform"
-  type        = bool
-}
-
-variable "publicip_name" {
-  description = "The public IP resource of the platform"
-  type        = string
-}
-
-variable "publicip_resource_group" {
-  type = string
-}
-
 variable "storage_csm_ip" {
   type = string
 }

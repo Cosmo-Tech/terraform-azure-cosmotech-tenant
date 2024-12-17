@@ -176,10 +176,6 @@ variable "common_resource_group" {
   })
 }
 
-variable "public_ip_id" {
-  type = string
-}
-
 variable "vnet" {
   type = object({
     id   = string
