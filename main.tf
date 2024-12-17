@@ -19,11 +19,6 @@ data "azurerm_kubernetes_cluster" "current" {
   resource_group_name = var.kubernetes_resource_group
 }
 
-data "azurerm_public_ip" "current" {
-  name                = var.publicip_name
-  resource_group_name = var.publicip_resource_group
-}
-
 data "azurerm_virtual_network" "current" {
   name                = var.network_name
   resource_group_name = var.network_resource_group
