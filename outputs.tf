@@ -101,3 +101,15 @@ output "out_restish_sp_client_secret" {
 output "out_swagger_sp_client_id" {
   value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_swagger_sp_client_id : var.swagger_sp_client_id
 }
+
+output "out_babylon_sp_name" {
+  value = module.azure-tenant-prerequisites.0.out_babylon_sp_name
+}
+
+output "out_platform_sp_name" {
+  value = module.azure-tenant-prerequisites.0.out_platform_name
+}
+
+output "out_swagger_sp_name" {
+  value = module.azure-tenant-prerequisites.0.out_swagger_name
+}
