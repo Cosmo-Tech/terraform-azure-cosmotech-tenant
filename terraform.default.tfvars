@@ -261,3 +261,5 @@ vault_create_entries = false
 vault_secrets_operator_namespace     = "vault-secrets-operator"
 vault_secrets_operator_vault_address = "http://vault.vault.svc.cluster.local:8200"
 
+# admin user or not
+kubernetes_cluster_admin_activate = true
