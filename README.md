@@ -205,13 +205,16 @@
 | <a name="output_out_azure_storage_account_name"></a> [out\_azure\_storage\_account\_name](#output\_out\_azure\_storage\_account\_name) | n/a |
 | <a name="output_out_babylon_sp_client_id"></a> [out\_babylon\_sp\_client\_id](#output\_out\_babylon\_sp\_client\_id) | n/a |
 | <a name="output_out_babylon_sp_client_secret"></a> [out\_babylon\_sp\_client\_secret](#output\_out\_babylon\_sp\_client\_secret) | n/a |
+| <a name="output_out_babylon_sp_name"></a> [out\_babylon\_sp\_name](#output\_out\_babylon\_sp\_name) | n/a |
 | <a name="output_out_babylon_sp_object_id"></a> [out\_babylon\_sp\_object\_id](#output\_out\_babylon\_sp\_object\_id) | n/a |
 | <a name="output_out_identifier_uri"></a> [out\_identifier\_uri](#output\_out\_identifier\_uri) | n/a |
 | <a name="output_out_monitoring_namespace"></a> [out\_monitoring\_namespace](#output\_out\_monitoring\_namespace) | n/a |
+| <a name="output_out_platform_sp_name"></a> [out\_platform\_sp\_name](#output\_out\_platform\_sp\_name) | n/a |
 | <a name="output_out_restish_sp_client_id"></a> [out\_restish\_sp\_client\_id](#output\_out\_restish\_sp\_client\_id) | n/a |
 | <a name="output_out_restish_sp_client_secret"></a> [out\_restish\_sp\_client\_secret](#output\_out\_restish\_sp\_client\_secret) | n/a |
 | <a name="output_out_subscription_id"></a> [out\_subscription\_id](#output\_out\_subscription\_id) | n/a |
 | <a name="output_out_swagger_sp_client_id"></a> [out\_swagger\_sp\_client\_id](#output\_out\_swagger\_sp\_client\_id) | n/a |
+| <a name="output_out_swagger_sp_name"></a> [out\_swagger\_sp\_name](#output\_out\_swagger\_sp\_name) | n/a |
 | <a name="output_out_tenant_resource_group"></a> [out\_tenant\_resource\_group](#output\_out\_tenant\_resource\_group) | n/a |
 | <a name="output_out_tenant_sp_client_id"></a> [out\_tenant\_sp\_client\_id](#output\_out\_tenant\_sp\_client\_id) | n/a |
 | <a name="output_out_tenant_sp_object_id"></a> [out\_tenant\_sp\_object\_id](#output\_out\_tenant\_sp\_object\_id) | n/a |
