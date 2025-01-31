@@ -59,25 +59,6 @@ resource "kubernetes_secret" "postgresql_data" {
   type = "Opaque"
 }
 
-resource "random_password" "redis_admin_password" {
-  length  = 30
-  special = false
-}
-
-resource "kubernetes_secret" "redis_admin_password" {
-  metadata {
-    name      = "redis-admin-secret"
-    namespace = var.kubernetes_namespace
-  }
-  data = {
-    password = random_password.redis_admin_password.result
-  }
-  type = "Opaque"
-
-  depends_on = [kubernetes_secret.redis_admin_password]
-}
-
-
 resource "kubernetes_secret" "postgresql-initdb" {
   metadata {
     name      = "postgres-initdb"
