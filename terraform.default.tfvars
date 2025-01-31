@@ -192,17 +192,7 @@ babylon_sp_client_secret = ""
 servlet_context_path = ""
 
 # Argo
-argo_helm_repo_url          = "https://argoproj.github.io/argo-helm"
-argo_helm_chart             = "argo-workflows"
-argo_version                = "0.41.2"
-argo_service_account        = ""
-argo_bucket_name            = "argo-workflows"
-argo_database               = "argo_workflows"
-argo_postgresql_secret_name = "postgres-config"
-argo_requeue_time           = "1s"
-argo_archive_ttl            = "3d"
-argo_minio_persistence_size = "16Gi"
-argo_minio_requests_memory  = "2Gi"
+argo_database = "argo_workflows"
 
 # Backups
 backup_repeating_time_intervals = ["R/2021-05-19T06:33:16+00:00/PT24H"]
@@ -256,6 +246,8 @@ vault_namespace      = "vault"
 vault_token          = ""
 vault_sops_deploy    = false
 vault_create_entries = false
+
+services_secrets_create = true
 
 # Vault secrets operator
 vault_secrets_operator_namespace     = "vault-secrets-operator"
