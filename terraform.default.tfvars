@@ -257,3 +257,11 @@ vault_secrets_operator_vault_address = "http://vault.vault.svc.cluster.local:820
 kubernetes_cluster_admin_activate = true
 
 first_tenant_in_cluster = false
+
+# pvc
+pv_redis_deploy               = true
+pv_redis_storage_gbi          = 128
+pv_redis_storage_account_type = "Standard_LRS"
+pv_redis_storage_class_name   = "default"
+pv_redis_replicas             = 1
+pv_redis_provider             = "azure"
