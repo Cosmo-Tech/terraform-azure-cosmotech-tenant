@@ -281,3 +281,5 @@ pv_seaweedfs_storage_account_type = "Standard_LRS"
 pv_seaweedfs_storage_class_name   = "default"
 pv_seaweedfs_replicas             = 1
 pv_seaweedfs_provider             = "azure"
+
+first_tenant_in_cluster = false
