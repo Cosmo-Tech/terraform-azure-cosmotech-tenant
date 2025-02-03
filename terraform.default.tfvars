@@ -171,7 +171,7 @@ project_stage = "Dev"
 cost_center   = "NA"
 tags          = {}
 
-# Storage
+# Storage Account
 storage_class_sku                       = "Standard_LRS"
 storage_kind                            = "StorageV2"
 storage_public_network_access_enabled   = false
@@ -272,3 +272,11 @@ pv_postgres_storage_account_type = "Standard_LRS"
 pv_postgres_storage_class_name   = "default"
 pv_postgres_replicas             = 1
 pv_postgres_provider             = "azure"
+
+# seaweedfs
+pv_seaweedfs_deploy               = true
+pv_seaweedfs_storage_gbi          = 128
+pv_seaweedfs_storage_account_type = "Standard_LRS"
+pv_seaweedfs_storage_class_name   = "default"
+pv_seaweedfs_replicas             = 1
+pv_seaweedfs_provider             = "azure"
