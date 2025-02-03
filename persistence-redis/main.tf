@@ -44,6 +44,8 @@ resource "kubernetes_persistent_volume" "pv_redis_master" {
       }
     }
   }
+
+  depends_on = [ azurerm_managed_disk.redis_master ]
 }
 
 resource "kubernetes_persistent_volume" "pv_redis_replicas" {
@@ -66,5 +68,7 @@ resource "kubernetes_persistent_volume" "pv_redis_replicas" {
       }
     }
   }
+
+  depends_on = [ azurerm_managed_disk.redis_replicas ]
 }
 
