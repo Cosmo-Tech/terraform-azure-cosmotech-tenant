@@ -27,6 +27,7 @@
 | <a name="module_create-vault-entries"></a> [create-vault-entries](#module\_create-vault-entries) | ./create-vault-entries | n/a |
 | <a name="module_deploy-persistence-postgres"></a> [deploy-persistence-postgres](#module\_deploy-persistence-postgres) | ./persistence-postgres | n/a |
 | <a name="module_deploy-persistence-redis"></a> [deploy-persistence-redis](#module\_deploy-persistence-redis) | ./persistence-redis | n/a |
+| <a name="module_deploy-persistence-seaweedfs"></a> [deploy-persistence-seaweedfs](#module\_deploy-persistence-seaweedfs) | ./persistence-seaweedfs | n/a |
 
 ## Resources
 
@@ -146,6 +147,12 @@
 | <a name="input_pv_redis_storage_account_type"></a> [pv\_redis\_storage\_account\_type](#input\_pv\_redis\_storage\_account\_type) | n/a | `string` | n/a | yes |
 | <a name="input_pv_redis_storage_class_name"></a> [pv\_redis\_storage\_class\_name](#input\_pv\_redis\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pv_redis_storage_gbi"></a> [pv\_redis\_storage\_gbi](#input\_pv\_redis\_storage\_gbi) | n/a | `number` | n/a | yes |
+| <a name="input_pv_seaweedfs_deploy"></a> [pv\_seaweedfs\_deploy](#input\_pv\_seaweedfs\_deploy) | n/a | `bool` | n/a | yes |
+| <a name="input_pv_seaweedfs_provider"></a> [pv\_seaweedfs\_provider](#input\_pv\_seaweedfs\_provider) | n/a | `string` | n/a | yes |
+| <a name="input_pv_seaweedfs_replicas"></a> [pv\_seaweedfs\_replicas](#input\_pv\_seaweedfs\_replicas) | n/a | `number` | n/a | yes |
+| <a name="input_pv_seaweedfs_storage_account_type"></a> [pv\_seaweedfs\_storage\_account\_type](#input\_pv\_seaweedfs\_storage\_account\_type) | n/a | `string` | n/a | yes |
+| <a name="input_pv_seaweedfs_storage_class_name"></a> [pv\_seaweedfs\_storage\_class\_name](#input\_pv\_seaweedfs\_storage\_class\_name) | n/a | `string` | n/a | yes |
+| <a name="input_pv_seaweedfs_storage_gbi"></a> [pv\_seaweedfs\_storage\_gbi](#input\_pv\_seaweedfs\_storage\_gbi) | n/a | `number` | n/a | yes |
 | <a name="input_queue_private_dns_zonename"></a> [queue\_private\_dns\_zonename](#input\_queue\_private\_dns\_zonename) | n/a | `string` | n/a | yes |
 | <a name="input_redis_disk_size_gb"></a> [redis\_disk\_size\_gb](#input\_redis\_disk\_size\_gb) | n/a | `number` | n/a | yes |
 | <a name="input_redis_disk_sku"></a> [redis\_disk\_sku](#input\_redis\_disk\_sku) | n/a | `string` | n/a | yes |
