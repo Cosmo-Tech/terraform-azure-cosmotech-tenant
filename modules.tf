@@ -134,6 +134,8 @@ module "azure-tenant-resources" {
   vault_sops_namespace          = var.vault_sops_namespace
   storage_csm_ip                = var.storage_csm_ip
 
+  first_tenant_in_cluster = var.first_tenant_in_cluster
+
   depends_on = [module.azure-tenant-prerequisites]
 }
 
