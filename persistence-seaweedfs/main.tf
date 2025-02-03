@@ -14,7 +14,7 @@ resource "azurerm_managed_disk" "seaweedfs_master" {
 
 resource "kubernetes_persistent_volume" "pv_seaweedfs_master" {
   metadata {
-    name = "pvc-${local.disk_master_name}"
+    name = "pv-${local.disk_master_name}"
   }
   spec {
     capacity = {
