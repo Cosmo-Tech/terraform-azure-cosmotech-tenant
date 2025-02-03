@@ -265,3 +265,11 @@ pv_redis_storage_account_type = "Standard_LRS"
 pv_redis_storage_class_name   = "default"
 pv_redis_replicas             = 1
 pv_redis_provider             = "azure"
+
+# postgres
+pv_postgres_deploy               = true
+pv_postgres_storage_gbi          = 128
+pv_postgres_storage_account_type = "Standard_LRS"
+pv_postgres_storage_class_name   = "default"
+pv_postgres_replicas             = 1
+pv_postgres_provider             = "azure"
