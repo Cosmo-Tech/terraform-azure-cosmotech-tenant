@@ -211,3 +211,22 @@ stringData:
       }
   YAML  
 }
+
+resource "random_password" "redis_admin_password" {
+  count   = var.first_tenant_in_cluster ? 0 : 1
+  length  = 30
+  special = false
+}
+
+resource "kubernetes_secret" "redis_admin_password" {
+  count = var.first_tenant_in_cluster ? 0 : 1
+  metadata {
+    name      = "redis-admin-secret"
+    namespace = var.kubernetes_namespace
+  }
+  data = {
+    password = random_password.redis_admin_password.0.result
+  }
+  type = "Opaque"
+  depends_on = [kubernetes_secret.redis_admin_password]
+}

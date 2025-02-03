@@ -170,4 +170,5 @@ module "services-secrets" {
   cosmotech_api_writer_username = var.cosmotech_api_writer_username
   monitoring_namespace          = var.monitoring_namespace
   kubernetes_namespace          = var.kubernetes_tenant_namespace
+  first_tenant_in_cluster       = var.first_tenant_in_cluster
 }

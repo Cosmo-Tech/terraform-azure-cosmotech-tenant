@@ -43,3 +43,7 @@ variable "rabbitmq_sender_username" {
   type    = string
   default = "cosmotech_run_sender"
 }
+
+variable "first_tenant_in_cluster" {
+  type = bool
+}
