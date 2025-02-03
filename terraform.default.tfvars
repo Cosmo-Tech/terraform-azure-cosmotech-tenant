@@ -295,3 +295,6 @@ copilot_ada_deployment_name     = "text-embedding-ada-002"
 copilot_ada_model               = "text-embedding-ada-002"
 copilot_gpt4_deployment_name    = "GPT-4-0613"
 copilot_gpt4_model              = "GPT-4"
+
+
+first_tenant_in_cluster = false
