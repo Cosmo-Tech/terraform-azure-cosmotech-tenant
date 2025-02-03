@@ -171,7 +171,7 @@ project_stage = "Dev"
 cost_center   = "NA"
 tags          = {}
 
-# Storage
+# Storage Account
 storage_class_sku                       = "Standard_LRS"
 storage_kind                            = "StorageV2"
 storage_public_network_access_enabled   = false
