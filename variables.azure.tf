@@ -48,3 +48,7 @@ variable "tenant_sp_object_id" {
   description = "The object id of the platform service principal"
   type        = string
 }
+
+variable "first_tenant_in_cluster" {
+  type = bool
+}

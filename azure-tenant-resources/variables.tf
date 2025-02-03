@@ -329,3 +329,7 @@ variable "storage_default_action" {
 variable "storage_csm_ip" {
   type = string
 }
+
+variable "first_tenant_in_cluster" {
+  type = bool
+}
