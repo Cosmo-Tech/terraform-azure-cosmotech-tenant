@@ -255,3 +255,5 @@ vault_secrets_operator_vault_address = "http://vault.vault.svc.cluster.local:820
 
 # admin user or not
 kubernetes_cluster_admin_activate = true
+
+first_tenant_in_cluster = false
