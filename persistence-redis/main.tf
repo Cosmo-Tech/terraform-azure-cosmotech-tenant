@@ -27,7 +27,7 @@ resource "azurerm_managed_disk" "redis_replicas" {
 
 resource "kubernetes_persistent_volume" "pv_redis_master" {
   metadata {
-    name = "pvc-${local.disk_master_name}"
+    name = "pv-${local.disk_master_name}"
   }
   spec {
     capacity = {
@@ -51,7 +51,7 @@ resource "kubernetes_persistent_volume" "pv_redis_master" {
 resource "kubernetes_persistent_volume" "pv_redis_replicas" {
   count = var.pv_redis_replicas
   metadata {
-    name = "pvc-${local.disk_replica_name}-${count.index}"
+    name = "pv-${local.disk_replica_name}-${count.index}"
   }
   spec {
     capacity = {
