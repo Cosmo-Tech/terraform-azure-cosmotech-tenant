@@ -26,6 +26,7 @@
 | <a name="module_azure-tenant-prerequisites"></a> [azure-tenant-prerequisites](#module\_azure-tenant-prerequisites) | ./azure-tenant-prerequisites | n/a |
 | <a name="module_azure-tenant-resources"></a> [azure-tenant-resources](#module\_azure-tenant-resources) | ./azure-tenant-resources | n/a |
 | <a name="module_create-vault-entries"></a> [create-vault-entries](#module\_create-vault-entries) | ./create-vault-entries | n/a |
+| <a name="module_deploy-redis-persistence"></a> [deploy-redis-persistence](#module\_deploy-redis-persistence) | ./persistence-redis | n/a |
 
 ## Resources
 
@@ -116,6 +117,7 @@
 | <a name="input_identifier_uri"></a> [identifier\_uri](#input\_identifier\_uri) | The platform identifier uri | `any` | n/a | yes |
 | <a name="input_image_path"></a> [image\_path](#input\_image\_path) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_cluster_admin_activate"></a> [kubernetes\_cluster\_admin\_activate](#input\_kubernetes\_cluster\_admin\_activate) | n/a | `bool` | n/a | yes |
+| <a name="input_kubernetes_mc_resource_group_name"></a> [kubernetes\_mc\_resource\_group\_name](#input\_kubernetes\_mc\_resource\_group\_name) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_resource_group"></a> [kubernetes\_resource\_group](#input\_kubernetes\_resource\_group) | Existing Resource group which contain common platform resources | `string` | n/a | yes |
 | <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | The kubernetes namespace to create | `string` | n/a | yes |
 | <a name="input_kusto_auto_stop"></a> [kusto\_auto\_stop](#input\_kusto\_auto\_stop) | Specifies if the cluster could be automatically stopped | `bool` | n/a | yes |
@@ -154,6 +156,12 @@
 | <a name="input_postgresql_secret_name"></a> [postgresql\_secret\_name](#input\_postgresql\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The project name | `any` | n/a | yes |
 | <a name="input_project_stage"></a> [project\_stage](#input\_project\_stage) | The Project stage | `string` | n/a | yes |
+| <a name="input_pv_redis_deploy"></a> [pv\_redis\_deploy](#input\_pv\_redis\_deploy) | n/a | `bool` | n/a | yes |
+| <a name="input_pv_redis_provider"></a> [pv\_redis\_provider](#input\_pv\_redis\_provider) | n/a | `string` | n/a | yes |
+| <a name="input_pv_redis_replicas"></a> [pv\_redis\_replicas](#input\_pv\_redis\_replicas) | n/a | `number` | n/a | yes |
+| <a name="input_pv_redis_storage_account_type"></a> [pv\_redis\_storage\_account\_type](#input\_pv\_redis\_storage\_account\_type) | n/a | `string` | n/a | yes |
+| <a name="input_pv_redis_storage_class_name"></a> [pv\_redis\_storage\_class\_name](#input\_pv\_redis\_storage\_class\_name) | n/a | `string` | n/a | yes |
+| <a name="input_pv_redis_storage_gbi"></a> [pv\_redis\_storage\_gbi](#input\_pv\_redis\_storage\_gbi) | n/a | `number` | n/a | yes |
 | <a name="input_queue_private_dns_zonename"></a> [queue\_private\_dns\_zonename](#input\_queue\_private\_dns\_zonename) | n/a | `string` | n/a | yes |
 | <a name="input_redis_disk_size_gb"></a> [redis\_disk\_size\_gb](#input\_redis\_disk\_size\_gb) | n/a | `number` | n/a | yes |
 | <a name="input_redis_disk_sku"></a> [redis\_disk\_sku](#input\_redis\_disk\_sku) | n/a | `string` | n/a | yes |
