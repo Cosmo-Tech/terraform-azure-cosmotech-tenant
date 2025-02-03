@@ -58,7 +58,7 @@ resource "kubernetes_persistent_volume" "pv_redis_replicas" {
       storage = "${var.pv_redis_storage_gbi}Gi"
     }
     access_modes       = ["ReadWriteOnce"]
-    storage_class_name = "cosmotech-retain"
+    storage_class_name = var.pv_redis_storage_class_name
     persistent_volume_source {
       azure_disk {
         caching_mode  = "None"
