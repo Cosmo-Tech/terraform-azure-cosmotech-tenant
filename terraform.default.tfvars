@@ -297,4 +297,12 @@ copilot_gpt4_deployment_name    = "GPT-4-0613"
 copilot_gpt4_model              = "GPT-4"
 
 
+# minio
+pv_minio_deploy               = true
+pv_minio_storage_gbi          = 128
+pv_minio_storage_account_type = "Standard_LRS"
+pv_minio_storage_class_name   = "default"
+pv_minio_replicas             = 1
+pv_minio_provider             = "azure"
+
 first_tenant_in_cluster = false
