@@ -3,6 +3,7 @@ locals {
   cleaned_managed_disk_name = replace(var.managed_disk_name, "/[[:^alnum:]]/", "")
   eventhub_name             = substr("evname-${local.cleaned_tenant_name}", 0, 50)
   kusto_name                = substr("kusto${local.cleaned_tenant_name}${random_string.random_storage_id.result}", 0, 21)
+  managed_disk_name         = local.cleaned_managed_disk_name != "" ? local.cleaned_managed_disk_name : substr("cosmotech-database-disk-${local.cleaned_tenant_name}", 0, 80)
   storage_name              = substr("${local.cleaned_tenant_name}${random_string.random_storage_id.result}", 0, 23)
   container_registry_name   = substr("acr${local.cleaned_tenant_name}${random_string.random_storage_id.result}", 0, 50)
   backup_instance_name      = "cosmo-backup-instance-${local.cleaned_tenant_name}"
