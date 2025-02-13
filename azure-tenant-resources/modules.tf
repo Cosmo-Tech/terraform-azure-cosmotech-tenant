@@ -172,3 +172,49 @@ module "services-secrets" {
   kubernetes_namespace          = var.kubernetes_tenant_namespace
   first_tenant_in_cluster       = var.first_tenant_in_cluster
 }
+
+module "create-copilot" {
+  source = "./create-copilot"
+
+  count = var.create_copilot ? 1 : 0
+
+  tenant_resource_group = var.tenant_resource_group.name
+  location              = var.location
+
+  bot_name         = var.copilot_bot_name
+  bot_location     = var.copilot_bot_location
+  bot_sku          = var.copilot_bot_sku
+  bot_display_name = var.copilot_bot_display_name
+  bot_endpoint     = var.copilot_bot_endpoint
+  microsoft_app_id = var.copilot_microsoft_app_id
+  bot_site_name    = var.copilot_bot_site_name
+
+  openai_name             = var.copilot_openai_name
+  openai_kind             = var.copilot_openai_kind
+  openai_sku              = var.copilot_openai_sku
+  openai_custom_subdomain = var.copilot_openai_custom_subdomain
+
+  search_service_name    = var.copilot_search_service_name
+  search_sku             = var.copilot_search_sku
+  search_replica_count   = var.copilot_search_replica_count
+  search_partition_count = var.copilot_search_partition_count
+  search_index_name      = var.copilot_search_index_name
+
+  function_storage_name = var.copilot_function_storage_name
+  function_plan_name    = var.copilot_function_plan_name
+  function_app_name     = var.copilot_function_app_name
+  python_version        = var.copilot_python_version
+
+  webapp_plan_name = var.copilot_webapp_plan_name
+  web_app_name     = var.copilot_web_app_name
+
+  blob_storage_id     = module.create-storage.out_storage_account_id
+  blob_container_name = var.copilot_blob_container_name
+
+  ada_deployment_name  = var.copilot_ada_deployment_name
+  ada_model            = var.copilot_ada_model
+  gpt4_deployment_name = var.copilot_gpt4_deployment_name
+  gpt4_model           = var.copilot_gpt4_model
+
+  depends_on = [module.create-storage]
+}
