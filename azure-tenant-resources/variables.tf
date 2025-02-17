@@ -426,10 +426,6 @@ variable "copilot_web_app_name" {
   type = string
 }
 
-variable "copilot_blob_container_name" {
-  type = string
-}
-
 variable "copilot_ada_deployment_name" {
   type = string
 }

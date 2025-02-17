@@ -208,9 +208,6 @@ module "create-copilot" {
   webapp_plan_name = var.copilot_webapp_plan_name
   web_app_name     = var.copilot_web_app_name
 
-  blob_storage_id     = module.create-storage.out_storage_account_id
-  blob_container_name = var.copilot_blob_container_name
-
   ada_deployment_name  = var.copilot_ada_deployment_name
   ada_model            = var.copilot_ada_model
   gpt4_deployment_name = var.copilot_gpt4_deployment_name

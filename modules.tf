@@ -164,8 +164,6 @@ module "azure-tenant-resources" {
   copilot_webapp_plan_name = var.copilot_webapp_plan_name
   copilot_web_app_name     = var.copilot_web_app_name
 
-  copilot_blob_container_name = var.copilot_blob_container_name
-
   copilot_ada_deployment_name  = var.copilot_ada_deployment_name
   copilot_ada_model            = var.copilot_ada_model
   copilot_gpt4_deployment_name = var.copilot_gpt4_deployment_name
