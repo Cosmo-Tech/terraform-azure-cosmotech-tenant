@@ -67,7 +67,6 @@
 | <a name="input_container_zone_redundancy_enabled"></a> [container\_zone\_redundancy\_enabled](#input\_container\_zone\_redundancy\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_copilot_ada_deployment_name"></a> [copilot\_ada\_deployment\_name](#input\_copilot\_ada\_deployment\_name) | Deployment name for the Ada model. | `string` | n/a | yes |
 | <a name="input_copilot_ada_model"></a> [copilot\_ada\_model](#input\_copilot\_ada\_model) | Model to be used for the Ada deployment. | `string` | n/a | yes |
-| <a name="input_copilot_blob_container_name"></a> [copilot\_blob\_container\_name](#input\_copilot\_blob\_container\_name) | Name of the container for storing documents. | `string` | n/a | yes |
 | <a name="input_copilot_bot_display_name"></a> [copilot\_bot\_display\_name](#input\_copilot\_bot\_display\_name) | Display name for the bot. | `string` | n/a | yes |
 | <a name="input_copilot_bot_endpoint"></a> [copilot\_bot\_endpoint](#input\_copilot\_bot\_endpoint) | The endpoint URL for the bot. | `string` | n/a | yes |
 | <a name="input_copilot_bot_location"></a> [copilot\_bot\_location](#input\_copilot\_bot\_location) | Location for the bot. Must be 'global' since bot resources are deployed globally. | `string` | n/a | yes |
