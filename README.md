@@ -4,20 +4,19 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.9 |
-| <a name="requirement_azuread"></a> [azuread](#requirement\_azuread) | 2.53.1 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~>4.1.0 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.15.0 |
-| <a name="requirement_http"></a> [http](#requirement\_http) | 3.4.4 |
-| <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | 2.0.4 |
-| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.32.0 |
-| <a name="requirement_restapi"></a> [restapi](#requirement\_restapi) | 1.20.0 |
+| <a name="requirement_azuread"></a> [azuread](#requirement\_azuread) | 3.1.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 4.19.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.17.0 |
+| <a name="requirement_http"></a> [http](#requirement\_http) | 3.4.5 |
+| <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | 2.1.3 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.35.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~>4.1.0 |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.32.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.19.0 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.35.1 |
 
 ## Modules
 
@@ -35,14 +34,12 @@
 
 | Name | Type |
 |------|------|
-| [azurerm_resource_group.tenant_rg](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
-| [azurerm_search_service.search_service](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/search_service) | resource |
-| [kubernetes_namespace.main_namespace](https://registry.terraform.io/providers/hashicorp/kubernetes/2.32.0/docs/resources/namespace) | resource |
-| [azurerm_kubernetes_cluster.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/kubernetes_cluster) | data source |
-| [azurerm_resource_group.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
-| [azurerm_resource_group.tenant_rg](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
-| [azurerm_search_service_keys.search_keys](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/search_service_keys) | data source |
-| [azurerm_virtual_network.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/virtual_network) | data source |
+| [azurerm_resource_group.tenant_rg](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/resources/resource_group) | resource |
+| [kubernetes_namespace.main_namespace](https://registry.terraform.io/providers/hashicorp/kubernetes/2.35.1/docs/resources/namespace) | resource |
+| [azurerm_kubernetes_cluster.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/data-sources/kubernetes_cluster) | data source |
+| [azurerm_resource_group.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/data-sources/resource_group) | data source |
+| [azurerm_resource_group.tenant_rg](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/data-sources/resource_group) | data source |
+| [azurerm_virtual_network.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/data-sources/virtual_network) | data source |
 
 ## Inputs
 
