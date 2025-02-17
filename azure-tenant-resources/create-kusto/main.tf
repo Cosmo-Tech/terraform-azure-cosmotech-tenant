@@ -1,5 +1,5 @@
 resource "azurerm_kusto_cluster" "kusto" {
-  name                = strrev(var.kusto_name)
+  name                = var.kusto_name
   location            = var.location
   resource_group_name = var.tenant_resource_group
   sku {
