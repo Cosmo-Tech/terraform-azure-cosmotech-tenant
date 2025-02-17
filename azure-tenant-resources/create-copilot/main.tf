@@ -196,8 +196,18 @@ resource "azurerm_app_service" "web_app" {
   }
 }
 
+############################
+# 6. Azure Blob Storage for Documents
+############################
+
+resource "azurerm_storage_container" "documents" {
+  name                  = var.blob_container_name
+  storage_account_id    = var.blob_storage_id
+  container_access_type = "private"
+}
+
 #############################
-# 6. ARM Deployments for Azure Open AI (Ada & GPT‑4)
+# 7. ARM Deployments for Azure Open AI (Ada & GPT‑4)
 #############################
 resource "azurerm_template_deployment" "ada_deployment" {
   name                = "ada-deployment"

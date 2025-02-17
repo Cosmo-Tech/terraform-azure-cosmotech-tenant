@@ -123,6 +123,17 @@ variable "web_app_name" {
   description = "Name of the Azure Web App."
 }
 
+# Azure Blob Storage for Documents
+variable "blob_storage_id" {
+  type        = string
+  description = "ID of the Storage Account for Blob Storage."
+}
+
+variable "blob_container_name" {
+  type        = string
+  description = "Name of the container for storing documents."
+}
+
 # ARM Deployments for Azure Open AI Models
 variable "ada_deployment_name" {
   type        = string
