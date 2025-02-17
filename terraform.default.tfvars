@@ -289,5 +289,3 @@ pv_minio_storage_account_type = "Standard_LRS"
 pv_minio_storage_class_name   = "default"
 pv_minio_replicas             = 1
 pv_minio_provider             = "azure"
-
-first_tenant_in_cluster = false
