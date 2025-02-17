@@ -2,32 +2,27 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~>4.1.0"
+      version = "4.19.0"
     }
     azuread = {
       source  = "hashicorp/azuread"
-      version = "2.53.1"
+      version = "3.1.0"
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = "2.32.0"
+      version = "2.35.1"
     }
     helm = {
       source  = "hashicorp/helm"
-      version = "2.15.0"
+      version = "2.17.0"
     }
     kubectl = {
       source  = "alekc/kubectl"
-      version = "2.0.4"
+      version = "2.1.3"
     }
     http = {
       source  = "hashicorp/http"
       version = "3.4.4"
-    }
-    # For ai search index deployment
-    restapi = {
-      source  = "Mastercard/restapi"
-      version = "1.20.0"
     }
   }
   required_version = ">= 1.3.9"
@@ -36,11 +31,10 @@ terraform {
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
-  resource_provider_registrations = "none"
-  subscription_id                 = var.subscription_id
-  client_id                       = var.client_id
-  client_secret                   = var.client_secret
-  tenant_id                       = var.tenant_id
+  subscription_id = var.subscription_id
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  tenant_id       = var.tenant_id
 }
 
 provider "azuread" {
