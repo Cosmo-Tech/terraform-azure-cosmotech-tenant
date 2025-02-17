@@ -2,7 +2,7 @@ locals {
   cleaned_tenant_name       = replace(var.tenant_resource_group.name, "/[[:^alnum:]]/", "")
   cleaned_managed_disk_name = replace(var.managed_disk_name, "/[[:^alnum:]]/", "")
   eventhub_name             = substr("evname-${local.cleaned_tenant_name}", 0, 50)
-  kusto_name                = substr("${random_string.random_storage_id.result}kusto${local.cleaned_tenant_name}", 0, 21)
+  kusto_name                = substr("kusto${local.cleaned_tenant_name}${random_string.random_storage_id.result}", 0, 21)
   managed_disk_name         = local.cleaned_managed_disk_name != "" ? local.cleaned_managed_disk_name : substr("cosmotech-database-disk-${local.cleaned_tenant_name}", 0, 80)
   storage_name              = substr("${local.cleaned_tenant_name}${random_string.random_storage_id.result}", 0, 23)
   container_registry_name   = substr("acr${local.cleaned_tenant_name}${random_string.random_storage_id.result}", 0, 50)
