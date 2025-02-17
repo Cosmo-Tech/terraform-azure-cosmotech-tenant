@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    kubectl = {
-      source  = "alekc/kubectl"
-      version = "2.0.4"
-    }
-  }
-}
-
 locals {
   storage_key = var.storage_account_key == "" ? data.kubernetes_secret.storage_secret.data.password : var.storage_account_key
 }
