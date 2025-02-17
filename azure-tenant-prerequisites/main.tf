@@ -127,7 +127,6 @@ resource "azuread_app_role_assignment" "add_user_admin_platform" {
 resource "azuread_application_password" "platform_password" {
   display_name      = "platform_secret"
   application_id    = azuread_application.platform.id
-  end_date_relative = "4464h"
 }
 
 # Application swagger
@@ -221,7 +220,6 @@ resource "azuread_application_password" "restish_password" {
   display_name      = "restish_secret"
   count             = var.create_restish ? 1 : 0
   application_id    = azuread_application.restish[0].id
-  end_date_relative = "4464h"
 }
 
 # Application powerbi
@@ -247,7 +245,6 @@ resource "azuread_application_password" "powerbi_password" {
   display_name      = "powerbi_secret"
   count             = var.create_powerbi ? 1 : 0
   application_id    = azuread_application.powerbi[0].id
-  end_date_relative = "4464h"
 }
 
 # Application babylon
@@ -301,7 +298,6 @@ resource "azuread_application_password" "babylon_password" {
   display_name      = "babylon_secret"
   count             = var.create_babylon ? 1 : 0
   application_id    = azuread_application.babylon[0].id
-  end_date_relative = "4464h"
 }
 
 resource "kubernetes_secret" "platform_client_secret" {
