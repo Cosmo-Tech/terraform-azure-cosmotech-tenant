@@ -103,15 +103,15 @@ output "out_swagger_sp_client_id" {
 }
 
 output "out_babylon_sp_name" {
-  value = var.create_babylon ? module.azure-tenant-prerequisites.0.out_babylon_sp_name : null
+  value = var.create_babylon ? module.azure-tenant-prerequisites.0.out_babylon_sp_name : ""
 }
 
 output "out_platform_sp_name" {
-  value = var.create_platform ? module.azure-tenant-prerequisites.0.out_platform_name : null
+  value = var.create_platform ? module.azure-tenant-prerequisites.0.out_platform_name : ""
 }
 
 output "out_swagger_sp_name" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_swagger_name : null
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_swagger_name : ""
 }
 
 output "out_copilot_bot_name" {
