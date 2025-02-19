@@ -27,7 +27,7 @@ output "out_acr_login_password" {
 }
 
 output "out_managed_disk_id" {
-  value = module.create-disk.0.out_managed_disk_id
+  value = var.disk_deploy ? module.create-disk.0.out_managed_disk_id : null
 }
 
 output "out_eventbus_uri" {
