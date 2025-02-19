@@ -333,3 +333,7 @@ variable "storage_csm_ip" {
 variable "first_tenant_in_cluster" {
   type = bool
 }
+
+variable "disk_deploy" {
+  type = bool
+}
