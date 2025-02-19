@@ -65,15 +65,15 @@ output "out_azure_storage_account_key" {
 }
 
 output "out_babylon_sp_client_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_sp_client_id : var.babylon_sp_client_id
+  value = var.create_babylon ? module.azure-tenant-prerequisites.0.out_babylon_sp_client_id : var.babylon_sp_client_id
 }
 
 output "out_babylon_sp_object_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_sp_object_id : var.babylon_sp_object_id
+  value = var.create_babylon ? module.azure-tenant-prerequisites.0.out_babylon_sp_object_id : var.babylon_sp_object_id
 }
 
 output "out_babylon_sp_client_secret" {
-  value     = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_babylon_sp_client_secret : var.babylon_sp_client_secret
+  value     = var.create_babylon ? module.azure-tenant-prerequisites.0.out_babylon_sp_client_secret : var.babylon_sp_client_secret
   sensitive = true
 }
 
@@ -90,11 +90,11 @@ output "out_monitoring_namespace" {
 }
 
 output "out_restish_sp_client_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_restish_sp_client_id : var.restish_sp_client_id
+  value = var.create_restish ? module.azure-tenant-prerequisites.0.out_restish_sp_client_id : var.restish_sp_client_id
 }
 
 output "out_restish_sp_client_secret" {
-  value     = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_restish_sp_client_secret : var.restish_sp_client_secret
+  value     = var.create_restish ? module.azure-tenant-prerequisites.0.out_restish_sp_client_secret : var.restish_sp_client_secret
   sensitive = true
 }
 
@@ -103,15 +103,15 @@ output "out_swagger_sp_client_id" {
 }
 
 output "out_babylon_sp_name" {
-  value = module.azure-tenant-prerequisites.0.out_babylon_sp_name
+  value = var.create_babylon ? module.azure-tenant-prerequisites.0.out_babylon_sp_name : null
 }
 
 output "out_platform_sp_name" {
-  value = module.azure-tenant-prerequisites.0.out_platform_name
+  value = var.create_platform ? module.azure-tenant-prerequisites.0.out_platform_name : null
 }
 
 output "out_swagger_sp_name" {
-  value = module.azure-tenant-prerequisites.0.out_swagger_name
+  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_swagger_name : null
 }
 
 output "out_copilot_bot_name" {
