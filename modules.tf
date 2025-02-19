@@ -93,6 +93,7 @@ module "azure-tenant-resources" {
   storage_default_action                  = var.storage_default_action
 
   create_backup                   = var.backup_create
+  disk_deploy                     = var.disk_deploy
   backup_repeating_time_intervals = var.backup_repeating_time_intervals
 
   managed_disk_name  = var.redis_managed_disk_name

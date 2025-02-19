@@ -334,6 +334,10 @@ variable "first_tenant_in_cluster" {
   type = bool
 }
 
+variable "disk_deploy" {
+  type = bool
+}
+
 variable "create_copilot" {
   type = bool
 }

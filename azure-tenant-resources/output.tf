@@ -27,7 +27,7 @@ output "out_acr_login_password" {
 }
 
 output "out_managed_disk_id" {
-  value = module.create-disk.out_managed_disk_id
+  value = module.create-disk.0.out_managed_disk_id
 }
 
 output "out_eventbus_uri" {

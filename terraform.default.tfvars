@@ -125,6 +125,7 @@ platform_object_id  = ""
 identifier_uri      = ""
 tenant_sp_name      = ""
 tenant_sp_object_id = ""
+disk_deploy         = false
 
 # Container registry
 container_admin_enabled                 = true
