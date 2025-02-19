@@ -107,6 +107,7 @@
 | <a name="input_customer_name"></a> [customer\_name](#input\_customer\_name) | The customer name | `any` | n/a | yes |
 | <a name="input_customertag"></a> [customertag](#input\_customertag) | n/a | `string` | n/a | yes |
 | <a name="input_deployment_type"></a> [deployment\_type](#input\_deployment\_type) | Represents the kind of deployment. Currently two modes: ARM or Terraform | `string` | n/a | yes |
+| <a name="input_disk_deploy"></a> [disk\_deploy](#input\_disk\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_dns_zone_rg"></a> [dns\_zone\_rg](#input\_dns\_zone\_rg) | The DNS zone resource group | `string` | n/a | yes |
 | <a name="input_engine_secret"></a> [engine\_secret](#input\_engine\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_engine_version"></a> [engine\_version](#input\_engine\_version) | n/a | `string` | n/a | yes |
