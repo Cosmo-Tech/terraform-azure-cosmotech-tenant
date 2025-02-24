@@ -1,4 +1,7 @@
 locals {
+  seaweedfs_username        = "seaweedfs"
+  seaweedfs_password_secret = "${var.postgresql_secret_name}-seaweedfs"
+  seaweedfs_database        = "seaweedfs"
   values_postgresql = {
     "POSTGRESQL_INITDB_SECRET" = var.postgresql_initdb_secret_name
     "MONITORING_NAMESPACE"     = var.monitoring_namespace
@@ -15,6 +18,13 @@ locals {
     "ARGO_POSTGRESQL_USER"          = var.argo_postgresql_user
     "ARGO_POSTGRESQL_PASSWORD"      = random_password.argo_postgresql_password.result
     "ARGO_DATABSE"                  = var.argo_database
+    "SEAWEEDFS_USERNAME"            = local.seaweedfs_username
+    "SEAWEEDFS_PASSWORD"            = random_password.seaweedfs_postgresql_password.result
+    "SEAWEEDFS_DATABASE"            = local.seaweedfs_database
+  }
+  s3_config_values = {
+    "ARGO_WORKFLOWS_USERNAME" = "argo_workflows"
+    "ARGO_WORKFLOWS_PASSWORD" = random_password.argo_workflows_password.result
   }
 }
 
@@ -87,6 +97,7 @@ resource "kubernetes_secret" "postgres-config" {
 
   data = {
     argo-username                 = var.argo_postgresql_user
+    database-password             = random_password.argo_postgresql_password.result
     argo-password                 = random_password.argo_postgresql_password.result
     postgres-username             = "postgres"
     postgres-password             = random_password.postgres_postgresql_password.result
@@ -227,6 +238,44 @@ resource "kubernetes_secret" "redis_admin_password" {
   data = {
     password = random_password.redis_admin_password.0.result
   }
-  type = "Opaque"
+  type       = "Opaque"
   depends_on = [kubernetes_secret.redis_admin_password]
+}
+
+
+# seaweedfs
+resource "random_password" "seaweedfs_argo_workflows_password" {
+  length  = 30
+  special = false
+}
+
+resource "kubernetes_secret" "s3_credentials" {
+  metadata {
+    name      = "seaweedfs-${var.kubernetes_namespace}-s3-auth"
+    namespace = var.kubernetes_namespace
+    labels = {
+      "app" = "seaweedfs"
+    }
+  }
+
+  type = "Opaque"
+  data = {
+    "argo-workflows-username" = "argo_workflows"
+    "argo-workflows-password" = random_password.seaweedfs_argo_workflows_password.result
+  }
+}
+
+resource "kubernetes_secret" "s3_auth_config" {
+  metadata {
+    name      = "seaweedfs-${var.kubernetes_namespace}-s3-config"
+    namespace = var.kubernetes_namespace
+    labels = {
+      "app" = "seaweedfs"
+    }
+  }
+
+  type = "Opaque"
+  data = {
+    "config.json" = templatefile("${path.module}/s3_config.json", local.s3_config_values)
+  }
 }
