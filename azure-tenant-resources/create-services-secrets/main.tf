@@ -280,3 +280,20 @@ resource "kubernetes_secret" "s3_auth_config" {
     "config.json" = templatefile("${path.module}/s3_config.json", local.s3_config_values)
   }
 }
+
+resource "kubernetes_secret" "postgres-seaweedfs-config" {
+  metadata {
+    name      = local.seaweedfs_password_secret
+    namespace = var.kubernetes_namespace
+    labels = {
+      "app" = "postgres"
+    }
+  }
+
+  data = {
+    postgresql-username = var.seaweedfs_username
+    postgresql-password = random_password.seaweedfs_argo_workflows_password.result
+  }
+
+  type = "Opaque"
+}
