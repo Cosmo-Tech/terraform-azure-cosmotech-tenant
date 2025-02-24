@@ -36,14 +36,24 @@ variable "monitoring_namespace" {
 
 variable "rabbitmq_listener_username" {
   type    = string
-  default = "cosmotech_api_listener"
 }
 
 variable "rabbitmq_sender_username" {
   type    = string
-  default = "cosmotech_run_sender"
 }
 
 variable "first_tenant_in_cluster" {
   type = bool
+}
+
+variable "argo_workflows_s3_username" {
+  type = string
+}
+
+variable "seaweedfs_username" {
+  type = string
+}
+
+variable "seaweedfs_database" {
+  type = string
 }

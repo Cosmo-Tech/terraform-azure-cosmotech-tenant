@@ -192,7 +192,8 @@ babylon_sp_client_secret = ""
 servlet_context_path = ""
 
 # Argo
-argo_database = "argo_workflows"
+argo_database              = "argo_workflows"
+argo_workflows_s3_username = "argo_workflows"
 
 # Backups
 backup_repeating_time_intervals = ["R/2021-05-19T06:33:16+00:00/PT24H"]
@@ -235,7 +236,13 @@ argo_postgresql_user          = "argo"
 postgresql_secret_name        = "postgres-config"
 
 # Rabbitmq
-create_rabbitmq = false
+create_rabbitmq            = false
+rabbitmq_listener_username = "cosmotech_api_listener"
+rabbitmq_sender_username   = "cosmotech_run_sender"
+
+# seaweedfs
+seaweedfs_database = "seaweedfs"
+seaweedfs_username = "seaweedfs"
 
 # Vault
 vault_namespace      = "vault"

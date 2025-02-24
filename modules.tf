@@ -125,6 +125,11 @@ module "azure-tenant-resources" {
   vault_namespace               = var.vault_namespace
   vault_sops_namespace          = var.vault_sops_namespace
   storage_csm_ip                = var.storage_csm_ip
+  argo_workflows_s3_username    = var.argo_workflows_s3_username
+  rabbitmq_listener_username    = var.rabbitmq_listener_username
+  rabbitmq_sender_username      = var.rabbitmq_sender_username
+  seaweedfs_database            = var.seaweedfs_database
+  seaweedfs_username            = var.seaweedfs_username
 
   first_tenant_in_cluster = var.first_tenant_in_cluster
 
@@ -200,7 +205,6 @@ module "deploy-persistence-seaweedfs" {
   pv_seaweedfs_storage_account_type = var.pv_seaweedfs_storage_account_type
   pv_seaweedfs_storage_class_name   = var.pv_seaweedfs_storage_class_name
   pv_seaweedfs_storage_gbi          = var.pv_seaweedfs_storage_gbi
-  pv_seaweedfs_replicas             = var.pv_seaweedfs_replicas
 }
 
 module "deploy-persistence-minio" {

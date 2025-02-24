@@ -1,7 +1,5 @@
 locals {
-  seaweedfs_username        = "seaweedfs"
   seaweedfs_password_secret = "${var.postgresql_secret_name}-seaweedfs"
-  seaweedfs_database        = "seaweedfs"
   values_postgresql = {
     "POSTGRESQL_INITDB_SECRET" = var.postgresql_initdb_secret_name
     "MONITORING_NAMESPACE"     = var.monitoring_namespace
@@ -18,17 +16,17 @@ locals {
     "ARGO_POSTGRESQL_USER"          = var.argo_postgresql_user
     "ARGO_POSTGRESQL_PASSWORD"      = random_password.argo_postgresql_password.result
     "ARGO_DATABSE"                  = var.argo_database
-    "SEAWEEDFS_USERNAME"            = local.seaweedfs_username
-    "SEAWEEDFS_PASSWORD"            = random_password.seaweedfs_postgresql_password.result
-    "SEAWEEDFS_DATABASE"            = local.seaweedfs_database
+    "SEAWEEDFS_USERNAME"            = var.seaweedfs_username
+    "SEAWEEDFS_PASSWORD"            = random_password.seaweedfs_argo_workflows_password.result
+    "SEAWEEDFS_DATABASE"            = var.seaweedfs_database
   }
   s3_config_values = {
-    "ARGO_WORKFLOWS_USERNAME" = "argo_workflows"
-    "ARGO_WORKFLOWS_PASSWORD" = random_password.argo_workflows_password.result
+    "ARGO_WORKFLOWS_USERNAME" = var.argo_workflows_s3_username 
+    "ARGO_WORKFLOWS_PASSWORD" = random_password.seaweedfs_argo_workflows_password.result
   }
 }
 
-
+# postgres
 resource "random_password" "postgres_postgresql_password" {
   length  = 30
   special = false
@@ -112,6 +110,8 @@ resource "kubernetes_secret" "postgres-config" {
   type = "Opaque"
 }
 
+
+# rabbitmq
 resource "random_password" "rabbitmq_admin_password" {
   length  = 30
   special = false
@@ -223,6 +223,8 @@ stringData:
   YAML  
 }
 
+
+# redis
 resource "random_password" "redis_admin_password" {
   count   = var.first_tenant_in_cluster ? 0 : 1
   length  = 30
@@ -257,10 +259,9 @@ resource "kubernetes_secret" "s3_credentials" {
       "app" = "seaweedfs"
     }
   }
-
   type = "Opaque"
   data = {
-    "argo-workflows-username" = "argo_workflows"
+    "argo-workflows-username" = var.argo_workflows_s3_username
     "argo-workflows-password" = random_password.seaweedfs_argo_workflows_password.result
   }
 }

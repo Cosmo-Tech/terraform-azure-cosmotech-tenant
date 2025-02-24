@@ -1,6 +1,6 @@
 locals {
   disk_master_name = "disk-seaweedfs-tenant-${var.kubernetes_tenant_namespace}-master"
-  disk_replica_name = "disk-seaweedfs-tenant-${var.kubernetes_tenant_namespace}-replicas"
+  disk_volume_name = "disk-seaweedfs-tenant-${var.kubernetes_tenant_namespace}-volume"
 }
 
 resource "azurerm_managed_disk" "seaweedfs_master" {
@@ -13,9 +13,9 @@ resource "azurerm_managed_disk" "seaweedfs_master" {
   disk_size_gb         = var.pv_seaweedfs_storage_gbi
 }
 
-resource "azurerm_managed_disk" "seaweedfs_replicas" {
+resource "azurerm_managed_disk" "seaweedfs_volume" {
   count                = var.pv_seaweedfs_provider == "azure" ? 1 : 0
-  name                 = local.disk_replica_name
+  name                 = local.disk_volume_name
   location             = var.location
   resource_group_name  = var.kubernetes_mc_resource_group_name
   storage_account_type = var.pv_seaweedfs_storage_account_type
@@ -46,10 +46,9 @@ resource "kubernetes_persistent_volume" "pv_seaweedfs_master" {
   depends_on = [ azurerm_managed_disk.seaweedfs_master ]
 }
 
-resource "kubernetes_persistent_volume" "pv_redis_replicas" {
-  count = var.pv_seaweedfs_replicas
+resource "kubernetes_persistent_volume" "pv_redis_volume" {
   metadata {
-    name = "pv-${local.disk_replica_name}-${count.index}"
+    name = "pv-${local.disk_volume_name}"
   }
   spec {
     capacity = {
@@ -60,12 +59,12 @@ resource "kubernetes_persistent_volume" "pv_redis_replicas" {
     persistent_volume_source {
       azure_disk {
         caching_mode  = "None"
-        data_disk_uri = azurerm_managed_disk.seaweedfs_replicas[count.index].id
-        disk_name     = azurerm_managed_disk.seaweedfs_replicas[count.index].name
+        data_disk_uri = azurerm_managed_disk.seaweedfs_volume.0.id
+        disk_name     = azurerm_managed_disk.seaweedfs_volume.0.name
         kind          = "Managed"
       }
     }
   }
 
-  depends_on = [ azurerm_managed_disk.seaweedfs_replicas ]
+  depends_on = [ azurerm_managed_disk.seaweedfs_volume ]
 }
