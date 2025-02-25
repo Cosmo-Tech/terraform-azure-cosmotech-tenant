@@ -2,7 +2,7 @@ variable "pv_minio_deploy" {
   type = bool
 }
 variable "pv_minio_storage_gbi" {
-  type = string
+  type = number
 }
 variable "pv_minio_storage_account_type" {
   type = string
