@@ -46,13 +46,13 @@ resource "kubernetes_persistent_volume" "pv_seaweedfs_master" {
   depends_on = [ azurerm_managed_disk.seaweedfs_master ]
 }
 
-resource "kubernetes_persistent_volume" "pv_redis_volume" {
+resource "kubernetes_persistent_volume" "pv_seaweedfs_volume" {
   metadata {
     name = "pv-${local.disk_volume_name}"
   }
   spec {
     capacity = {
-      storage = var.pv_seaweedfs_storage_gbi
+      storage = "${var.pv_seaweedfs_storage_gbi}Gi"
     }
     access_modes       = ["ReadWriteOnce"]
     storage_class_name = var.pv_seaweedfs_storage_class_name

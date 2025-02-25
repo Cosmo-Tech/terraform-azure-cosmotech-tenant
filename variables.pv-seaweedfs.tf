@@ -2,7 +2,7 @@ variable "pv_seaweedfs_deploy" {
   type = bool
 }
 variable "pv_seaweedfs_storage_gbi" {
-  type = string
+  type = number
 }
 variable "pv_seaweedfs_storage_account_type" {
   type = string

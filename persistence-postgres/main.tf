@@ -18,7 +18,7 @@ resource "kubernetes_persistent_volume" "pv_postgres_master" {
   }
   spec {
     capacity = {
-      storage = var.pv_postgres_storage_gbi
+      storage = "${var.pv_postgres_storage_gbi}Gi"
     }
     access_modes       = ["ReadWriteOnce"]
     storage_class_name = var.pv_postgres_storage_class_name
