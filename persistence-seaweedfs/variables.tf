@@ -11,7 +11,7 @@ variable "location" {
 }
 
 variable "pv_seaweedfs_storage_gbi" {
-  type = number
+  type = string
 }
 variable "pv_seaweedfs_storage_account_type" {
   type = string
