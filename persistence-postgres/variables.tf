@@ -9,7 +9,7 @@ variable "location" {
 }
 
 variable "pv_postgres_storage_gbi" {
-  type = number
+  type = string
 }
 variable "pv_postgres_storage_account_type" {
   type = string

@@ -9,7 +9,7 @@ variable "location" {
 }
 
 variable "pv_redis_storage_gbi" {
-  type = number
+  type = string
 }
 variable "pv_redis_storage_account_type" {
   type = string

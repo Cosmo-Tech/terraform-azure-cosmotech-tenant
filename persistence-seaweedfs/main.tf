@@ -52,7 +52,7 @@ resource "kubernetes_persistent_volume" "pv_redis_volume" {
   }
   spec {
     capacity = {
-      storage = "${var.pv_seaweedfs_storage_gbi}Gi"
+      storage = var.pv_seaweedfs_storage_gbi
     }
     access_modes       = ["ReadWriteOnce"]
     storage_class_name = var.pv_seaweedfs_storage_class_name

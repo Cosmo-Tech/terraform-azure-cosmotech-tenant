@@ -31,7 +31,7 @@ resource "kubernetes_persistent_volume" "pv_redis_master" {
   }
   spec {
     capacity = {
-      storage = "${var.pv_redis_storage_gbi}Gi"
+      storage = var.pv_redis_storage_gbi
     }
     access_modes       = ["ReadWriteOnce"]
     storage_class_name = var.pv_redis_storage_class_name
