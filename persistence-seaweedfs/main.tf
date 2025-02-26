@@ -11,6 +11,8 @@ resource "azurerm_managed_disk" "seaweedfs_master" {
   storage_account_type = var.pv_seaweedfs_storage_account_type
   create_option        = "Empty"
   disk_size_gb         = var.pv_seaweedfs_storage_gbi
+  os_type              = "Linux"
+  
 }
 
 resource "azurerm_managed_disk" "seaweedfs_volume" {
@@ -21,6 +23,7 @@ resource "azurerm_managed_disk" "seaweedfs_volume" {
   storage_account_type = var.pv_seaweedfs_storage_account_type
   create_option        = "Empty"
   disk_size_gb         = var.pv_seaweedfs_storage_gbi
+  os_type              = "Linux"
 }
 
 resource "kubernetes_persistent_volume" "pv_seaweedfs_master" {
@@ -43,7 +46,7 @@ resource "kubernetes_persistent_volume" "pv_seaweedfs_master" {
     }
   }
 
-  depends_on = [ azurerm_managed_disk.seaweedfs_master ]
+  depends_on = [azurerm_managed_disk.seaweedfs_master]
 }
 
 resource "kubernetes_persistent_volume" "pv_seaweedfs_volume" {
@@ -66,5 +69,5 @@ resource "kubernetes_persistent_volume" "pv_seaweedfs_volume" {
     }
   }
 
-  depends_on = [ azurerm_managed_disk.seaweedfs_volume ]
+  depends_on = [azurerm_managed_disk.seaweedfs_volume]
 }
