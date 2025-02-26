@@ -263,32 +263,32 @@ first_tenant_in_cluster = false
 
 # pvc
 pv_redis_deploy               = true
-pv_redis_storage_gbi          = 128
-pv_redis_storage_account_type = "Standard_LRS"
+pv_redis_storage_gbi          = 32
+pv_redis_storage_account_type = "PremiumV2_LRS"
 pv_redis_storage_class_name   = "default"
 pv_redis_replicas             = 1
 pv_redis_provider             = "azure"
 
 # postgres
 pv_postgres_deploy               = true
-pv_postgres_storage_gbi          = 128
-pv_postgres_storage_account_type = "Standard_LRS"
+pv_postgres_storage_gbi          = 32
+pv_postgres_storage_account_type = "PremiumV2_LRS"
 pv_postgres_storage_class_name   = "default"
 pv_postgres_replicas             = 1
 pv_postgres_provider             = "azure"
 
 # seaweedfs
 pv_seaweedfs_deploy               = true
-pv_seaweedfs_storage_gbi          = 128
-pv_seaweedfs_storage_account_type = "Standard_LRS"
+pv_seaweedfs_storage_gbi          = 32
+pv_seaweedfs_storage_account_type = "PremiumV2_LRS"
 pv_seaweedfs_storage_class_name   = "default"
 pv_seaweedfs_replicas             = 1
 pv_seaweedfs_provider             = "azure"
 
 # minio
 pv_minio_deploy               = true
-pv_minio_storage_gbi          = 128
-pv_minio_storage_account_type = "Standard_LRS"
+pv_minio_storage_gbi          = 32
+pv_minio_storage_account_type = "PremiumV2_LRS"
 pv_minio_storage_class_name   = "default"
 pv_minio_replicas             = 1
 pv_minio_provider             = "azure"
