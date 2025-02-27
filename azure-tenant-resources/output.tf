@@ -71,42 +71,57 @@ output "out_adx_cluster_principal_id" {
   value = var.create_adx ? module.create-kusto.0.out_adx_principal_id : ""
 }
 
-output "copilot_bot_name" {
+output "out_copilot_bot_name" {
   value       = var.create_copilot ? module.create-copilot.0.out_copilot_bot_name : ""
 }
 
-output "copilot_bot_endpoint" {
+output "out_copilot_bot_endpoint" {
   value       = var.create_copilot ? module.create-copilot.0.out_copilot_bot_endpoint : ""
 }
 
-output "copilot_microsoft_app_id" {
+output "out_copilot_microsoft_app_id" {
   value       = var.create_copilot ? module.create-copilot.0.out_copilot_microsoft_app_id : ""
 }
 
-output "copilot_openai_endpoint" {
+output "out_copilot_openai_endpoint" {
   value       = var.create_copilot ? module.create-copilot.0.out_copilot_openai_endpoint : ""
 }
 
-output "copilot_search_endpoint" {
+output "out_copilot_search_endpoint" {
   value       = var.create_copilot ? module.create-copilot.0.out_copilot_search_endpoint : ""
 }
 
-output "copilot_search_index_name" {
+output "out_copilot_search_index_name" {
   value       = var.create_copilot ? module.create-copilot.0.out_copilot_search_index_name : ""
 }
 
-output "copilot_function_app_url" {
+output "out_copilot_function_app_url" {
   value       = var.create_copilot ? module.create-copilot.0.out_copilot_function_app_url : ""
 }
 
-output "copilot_web_app_url" {
+output "out_copilot_web_app_url" {
   value       = var.create_copilot ? module.create-copilot.0.out_copilot_web_app_url : ""
 }
 
-output "copilot_ada_deployment_name" {
+output "out_copilot_ada_deployment_name" {
   value       = var.create_copilot ? module.create-copilot.0.out_copilot_ada_deployment_name : ""
 }
 
-output "copilot_gpt4_deployment_name" {
+output "out_copilot_gpt4_deployment_name" {
   value       = var.create_copilot ? module.create-copilot.0.out_copilot_gpt4_deployment_name : ""
+}
+
+output "out_copilot_bot_directline_secret" {
+  value       = var.create_copilot ? module.create-copilot.0.out_copilot_bot_directline_secret : ""
+  sensitive   = true
+}
+
+output "out_copilot_openai_api_key" {
+  value       = var.create_copilot ? module.create-copilot.0.out_copilot_openai_api_key : ""
+  sensitive   = true
+}
+
+output "out_copilot_search_api_key" {
+  value       = var.create_copilot ? module.create-copilot.0.out_copilot_search_api_key : ""
+  sensitive   = true
 }

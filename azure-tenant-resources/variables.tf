@@ -338,19 +338,7 @@ variable "create_copilot" {
   type = bool
 }
 
-variable "copilot_bot_name" {
-  type = string
-}
-
-variable "copilot_bot_location" {
-  type = string
-}
-
 variable "copilot_bot_sku" {
-  type = string
-}
-
-variable "copilot_bot_display_name" {
   type = string
 }
 
@@ -362,27 +350,11 @@ variable "copilot_microsoft_app_id" {
   type = string
 }
 
-variable "copilot_bot_site_name" {
-  type = string
-}
-
-variable "copilot_openai_name" {
-  type = string
-}
-
 variable "copilot_openai_kind" {
   type = string
 }
 
 variable "copilot_openai_sku" {
-  type = string
-}
-
-variable "copilot_openai_custom_subdomain" {
-  type = string
-}
-
-variable "copilot_search_service_name" {
   type = string
 }
 
@@ -402,27 +374,7 @@ variable "copilot_search_index_name" {
   type = string
 }
 
-variable "copilot_function_storage_name" {
-  type = string
-}
-
-variable "copilot_function_plan_name" {
-  type = string
-}
-
-variable "copilot_function_app_name" {
-  type = string
-}
-
 variable "copilot_python_version" {
-  type = string
-}
-
-variable "copilot_webapp_plan_name" {
-  type = string
-}
-
-variable "copilot_web_app_name" {
   type = string
 }
 

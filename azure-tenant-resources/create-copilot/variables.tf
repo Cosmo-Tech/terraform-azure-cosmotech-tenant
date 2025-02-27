@@ -8,25 +8,15 @@ variable "location" {
   description = "Azure region for the resources (e.g., 'francecentral')."
 }
 
-# Azure Bot
-variable "bot_name" {
-  type        = string
-  description = "Name of the Azure Bot."
+variable "kubernetes_tenant_namespace" {
+  type = string
 }
 
-variable "bot_location" {
-  type        = string
-  description = "Location for the bot. Must be 'global' since bot resources are deployed globally."
-}
+# Azure Bot
 
 variable "bot_sku" {
   type        = string
   description = "SKU of the bot."
-}
-
-variable "bot_display_name" {
-  type        = string
-  description = "Display name for the bot."
 }
 
 variable "bot_endpoint" {
@@ -39,16 +29,7 @@ variable "microsoft_app_id" {
   description = "Microsoft App ID associated with the bot."
 }
 
-variable "bot_site_name" {
-  type        = string
-  description = "Name of the site used for bot channels (e.g., DirectLine, WebChat)."
-}
-
 # Cognitive Services / Azure Open AI
-variable "openai_name" {
-  type        = string
-  description = "Name of the Cognitive Services account for Azure Open AI."
-}
 
 variable "openai_kind" {
   type        = string
@@ -60,16 +41,7 @@ variable "openai_sku" {
   description = "SKU for the Cognitive Services account."
 }
 
-variable "openai_custom_subdomain" {
-  type        = string
-  description = "Custom subdomain name for the Cognitive Services account."
-}
-
 # Azure Search
-variable "search_service_name" {
-  type        = string
-  description = "Name of the Azure Search service."
-}
 
 variable "search_sku" {
   type        = string
@@ -92,35 +64,10 @@ variable "search_index_name" {
 }
 
 # Azure Function App
-variable "function_storage_name" {
-  type        = string
-  description = "Name of the Storage Account for the Function App."
-}
-
-variable "function_plan_name" {
-  type        = string
-  description = "Name of the App Service Plan for the Function App."
-}
-
-variable "function_app_name" {
-  type        = string
-  description = "Name of the Linux Function App."
-}
 
 variable "python_version" {
   type        = string
   description = "Python version used by the Function App."
-}
-
-# Azure Web App
-variable "webapp_plan_name" {
-  type        = string
-  description = "Name of the App Service Plan for the Web App."
-}
-
-variable "web_app_name" {
-  type        = string
-  description = "Name of the Azure Web App."
 }
 
 # Azure Blob Storage for Documents

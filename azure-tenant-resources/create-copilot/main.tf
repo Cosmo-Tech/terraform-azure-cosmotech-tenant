@@ -1,12 +1,28 @@
+locals {
+  namespace = var.kubernetes_tenant_namespace
+  
+  bot_name = "${var.kubernetes_tenant_namespace}-bot"
+  bot_display_name = "${title(replace(var.kubernetes_tenant_namespace, "-", " "))} Bot"
+  bot_site_name = "${var.kubernetes_tenant_namespace}-copilot-bot"
+  openai_name = "${var.kubernetes_tenant_namespace}-openai"
+  openai_custom_subdomain = "${var.kubernetes_tenant_namespace}-openai"
+  search_service_name = "${var.kubernetes_tenant_namespace}-search"
+  function_storage_name = replace("${var.kubernetes_tenant_namespace}copilotst", "-", "")
+  function_plan_name = "${var.kubernetes_tenant_namespace}-copilot-plan"
+  function_app_name = "${var.kubernetes_tenant_namespace}-copilot-func"
+  webapp_plan_name = "${var.kubernetes_tenant_namespace}-copilot-webapp-plan"
+  web_app_name = "${var.kubernetes_tenant_namespace}-copilot-webapp"
+}
+
 ############################
 # 1. Azure Bot
 ############################
 resource "azurerm_bot_channels_registration" "bot" {
-  name                = var.bot_name
-  location            = var.bot_location
+  name                = local.bot_name
+  location            = "global"
   resource_group_name = var.tenant_resource_group
   sku                 = var.bot_sku
-  display_name        = var.bot_display_name
+  display_name        = local.bot_display_name
   endpoint            = var.bot_endpoint
   microsoft_app_id    = var.microsoft_app_id
 }
@@ -17,7 +33,7 @@ resource "azurerm_bot_channel_directline" "directline" {
   resource_group_name = var.tenant_resource_group
 
   site {
-    name    = var.bot_site_name
+    name    = local.bot_site_name
     enabled = true
   }
 }
@@ -28,7 +44,7 @@ resource "azurerm_bot_channel_webchat" "webchat" {
   resource_group_name = var.tenant_resource_group
 
   site {
-    name = var.bot_site_name
+    name = local.bot_site_name
   }
 }
 
@@ -36,12 +52,12 @@ resource "azurerm_bot_channel_webchat" "webchat" {
 # 2. Cognitive Services for Azure Open AI
 ############################
 resource "azurerm_cognitive_account" "openai" {
-  name                          = var.openai_name
+  name                          = local.openai_name
   location                      = var.location
   resource_group_name           = var.tenant_resource_group
   kind                          = var.openai_kind
   sku_name                      = var.openai_sku
-  custom_subdomain_name         = var.openai_custom_subdomain
+  custom_subdomain_name         = local.openai_custom_subdomain
   public_network_access_enabled = true
 }
 
@@ -49,7 +65,7 @@ resource "azurerm_cognitive_account" "openai" {
 # 3. Azure AI Search & Index
 ############################
 resource "azurerm_search_service" "search_service" {
-  name                = var.search_service_name
+  name                = local.search_service_name
   location            = var.location
   resource_group_name = var.tenant_resource_group
   sku                 = var.search_sku
@@ -132,7 +148,7 @@ resource "azurerm_search_index" "ai_search_index" {
 # 4. Azure Function App
 ############################
 resource "azurerm_storage_account" "function_storage" {
-  name                     = var.function_storage_name
+  name                     = local.function_storage_name
   resource_group_name      = var.tenant_resource_group
   location                 = var.location
   account_tier             = "Standard"
@@ -140,7 +156,7 @@ resource "azurerm_storage_account" "function_storage" {
 }
 
 resource "azurerm_app_service_plan" "function_plan" {
-  name                = var.function_plan_name
+  name                = local.function_plan_name
   location            = var.location
   resource_group_name = var.tenant_resource_group
   kind                = "FunctionApp"
@@ -153,7 +169,7 @@ resource "azurerm_app_service_plan" "function_plan" {
 }
 
 resource "azurerm_linux_function_app" "function_app" {
-  name                       = var.function_app_name
+  name                       = local.function_app_name
   location                   = var.location
   resource_group_name        = var.tenant_resource_group
   service_plan_id            = azurerm_app_service_plan.function_plan.id
@@ -175,7 +191,7 @@ resource "azurerm_linux_function_app" "function_app" {
 # 5. Azure Web App
 ############################
 resource "azurerm_app_service_plan" "webapp_plan" {
-  name                = var.webapp_plan_name
+  name                = local.webapp_plan_name
   location            = var.location
   resource_group_name = var.tenant_resource_group
 
@@ -186,7 +202,7 @@ resource "azurerm_app_service_plan" "webapp_plan" {
 }
 
 resource "azurerm_app_service" "web_app" {
-  name                = var.web_app_name
+  name                = local.web_app_name
   location            = var.location
   resource_group_name = var.tenant_resource_group
   app_service_plan_id = azurerm_app_service_plan.webapp_plan.id
@@ -199,7 +215,6 @@ resource "azurerm_app_service" "web_app" {
 ############################
 # 6. Azure Blob Storage for Documents
 ############################
-
 resource "azurerm_storage_container" "documents" {
   name                  = var.blob_container_name
   storage_account_id    = var.blob_storage_id
@@ -216,7 +231,7 @@ resource "azurerm_template_deployment" "ada_deployment" {
 
   template_body = <<TEMPLATE
 {
-  "\$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "accountName": { "type": "string" },
@@ -253,7 +268,7 @@ resource "azurerm_template_deployment" "gpt4_deployment" {
 
   template_body = <<TEMPLATE
 {
-  "\$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "accountName": { "type": "string" },

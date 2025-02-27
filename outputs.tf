@@ -113,3 +113,58 @@ output "out_platform_sp_name" {
 output "out_swagger_sp_name" {
   value = module.azure-tenant-prerequisites.0.out_swagger_name
 }
+
+output "out_copilot_bot_name" {
+  value       = module.azure-tenant-resources.out_copilot_bot_name
+}
+
+output "out_copilot_bot_endpoint" {
+  value       = module.azure-tenant-resources.out_copilot_bot_endpoint
+}
+
+output "out_copilot_microsoft_app_id" {
+  value       = module.azure-tenant-resources.out_copilot_microsoft_app_id
+}
+
+output "out_copilot_openai_endpoint" {
+  value       = module.azure-tenant-resources.out_copilot_openai_endpoint
+}
+
+output "out_copilot_search_endpoint" {
+  value       = module.azure-tenant-resources.out_copilot_search_endpoint
+}
+
+output "out_copilot_search_index_name" {
+  value       = module.azure-tenant-resources.out_copilot_search_index_name
+}
+
+output "out_copilot_function_app_url" {
+  value       = module.azure-tenant-resources.out_copilot_function_app_url
+}
+
+output "out_copilot_web_app_url" {
+  value       = module.azure-tenant-resources.out_copilot_web_app_url
+}
+
+output "out_copilot_ada_deployment_name" {
+  value       = module.azure-tenant-resources.out_copilot_ada_deployment_name
+}
+
+output "out_copilot_gpt4_deployment_name" {
+  value       = module.azure-tenant-resources.out_copilot_gpt4_deployment_name
+}
+
+output "out_copilot_bot_directline_secret" {
+  value       = module.azure-tenant-resources.out_copilot_bot_directline_secret
+  sensitive   = true
+}
+
+output "out_copilot_openai_api_key" {
+  value       = module.azure-tenant-resources.out_copilot_openai_api_key
+  sensitive   = true
+}
+
+output "out_copilot_search_api_key" {
+  value       = module.azure-tenant-resources.out_copilot_search_api_key
+  sensitive   = true
+}

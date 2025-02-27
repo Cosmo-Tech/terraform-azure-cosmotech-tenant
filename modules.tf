@@ -137,32 +137,19 @@ module "azure-tenant-resources" {
   first_tenant_in_cluster = var.first_tenant_in_cluster
 
   create_copilot           = var.create_copilot
-  copilot_bot_name         = var.copilot_bot_name
-  copilot_bot_location     = var.copilot_bot_location
   copilot_bot_sku          = var.copilot_bot_sku
-  copilot_bot_display_name = var.copilot_bot_display_name
   copilot_bot_endpoint     = var.copilot_bot_endpoint
   copilot_microsoft_app_id = var.copilot_microsoft_app_id
-  copilot_bot_site_name    = var.copilot_bot_site_name
 
-  copilot_openai_name             = var.copilot_openai_name
   copilot_openai_kind             = var.copilot_openai_kind
   copilot_openai_sku              = var.copilot_openai_sku
-  copilot_openai_custom_subdomain = var.copilot_openai_custom_subdomain
 
-  copilot_search_service_name    = var.copilot_search_service_name
   copilot_search_sku             = var.copilot_search_sku
   copilot_search_replica_count   = var.copilot_search_replica_count
   copilot_search_partition_count = var.copilot_search_partition_count
   copilot_search_index_name      = var.copilot_search_index_name
 
-  copilot_function_storage_name = var.copilot_function_storage_name
-  copilot_function_plan_name    = var.copilot_function_plan_name
-  copilot_function_app_name     = var.copilot_function_app_name
   copilot_python_version        = var.copilot_python_version
-
-  copilot_webapp_plan_name = var.copilot_webapp_plan_name
-  copilot_web_app_name     = var.copilot_web_app_name
 
   copilot_blob_container_name = var.copilot_blob_container_name
 
