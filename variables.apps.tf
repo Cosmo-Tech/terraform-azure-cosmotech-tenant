@@ -10,3 +10,7 @@ variable "restish_sp_client_secret" {
 variable "swagger_sp_client_id" {
   type = string
 }
+
+variable "create_keycloak" {
+  type = bool
+}
