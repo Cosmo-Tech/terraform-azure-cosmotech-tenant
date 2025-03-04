@@ -73,75 +73,75 @@ resource "azurerm_search_service" "search_service" {
   partition_count     = var.search_partition_count
 }
 
-resource "azapi_resource" "ai_search_index" {
-  type      = "Microsoft.Search/searchServices/indexes@2023-11-01"
-  name      = var.search_index_name
-  parent_id = azurerm_search_service.search_service.id
-  
-  body = jsonencode({
-    properties = {
-      fields = [
-        {
-          name        = "id"
-          type        = "Edm.String"
-          key         = true
-          searchable  = false
-          filterable  = true
-          retrievable = true
-          sortable    = false
-          facetable   = false
-        },
-        {
-          name        = "title"
-          type        = "Edm.String"
-          searchable  = true
-          filterable  = false
-          retrievable = true
-          sortable    = false
-          facetable   = false
-        },
-        {
-          name        = "last_update"
-          type        = "Edm.DateTimeOffset"
-          searchable  = false
-          filterable  = true
-          retrievable = true
-          sortable    = true
-          facetable   = false
-        },
-        {
-          name        = "chunk_id"
-          type        = "Edm.String"
-          searchable  = false
-          filterable  = true
-          retrievable = true
-          sortable    = false
-          facetable   = false
-        },
-        {
-          name        = "chunk"
-          type        = "Edm.String"
-          searchable  = true
-          filterable  = false
-          retrievable = true
-          sortable    = false
-          facetable   = false
-        },
-        {
-          name        = "vector"
-          type        = "Collection(Edm.Single)"
-          searchable  = false
-          filterable  = false
-          retrievable = true
-          sortable    = false
-          facetable   = false
-        }
-      ],
-      corsOptions = {
-        allowedOrigins = ["*"]
+resource "restapi_object" "ai_search_index" {
+  path         = "/indexes"
+  query_string = "api-version=2023-11-01"
+  data = jsonencode({
+    name = var.search_index_name
+    fields = [
+      {
+        name        = "id"
+        type        = "Edm.String"
+        key         = true
+        searchable  = false
+        filterable  = true
+        retrievable = true
+        sortable    = false
+        facetable   = false
+      },
+      {
+        name        = "title"
+        type        = "Edm.String"
+        searchable  = true
+        filterable  = false
+        retrievable = true
+        sortable    = false
+        facetable   = false
+      },
+      {
+        name        = "last_update"
+        type        = "Edm.DateTimeOffset"
+        searchable  = false
+        filterable  = true
+        retrievable = true
+        sortable    = true
+        facetable   = false
+      },
+      {
+        name        = "chunk_id"
+        type        = "Edm.String"
+        searchable  = false
+        filterable  = true
+        retrievable = true
+        sortable    = false
+        facetable   = false
+      },
+      {
+        name        = "chunk"
+        type        = "Edm.String"
+        searchable  = true
+        filterable  = false
+        retrievable = true
+        sortable    = false
+        facetable   = false
+      },
+      {
+        name        = "vector"
+        type        = "Collection(Edm.Single)"
+        searchable  = false
+        filterable  = false
+        retrievable = true
+        sortable    = false
+        facetable   = false
       }
+    ],
+    corsOptions = {
+      allowedOrigins = ["*"]
     }
   })
+  id_attribute = "name"
+  
+  depends_on   = [azurerm_search_service.search_service]
 }
 
 ############################
