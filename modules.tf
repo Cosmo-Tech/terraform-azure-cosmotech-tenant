@@ -29,10 +29,12 @@ module "azure-tenant-prerequisites" {
   create_powerbi                 = var.create_powerbi
   create_babylon                 = var.create_babylon
   create_platform                = var.create_platform
+  create_keycloak                = var.create_keycloak
   cost_center                    = var.cost_center
   kubernetes_tenant_namespace    = var.kubernetes_tenant_namespace
   cluster_name                   = var.cluster_name
   servlet_context_path           = var.servlet_context_path
+  api_dns_name                   = var.api_dns_name
 }
 
 module "azure-tenant-resources" {

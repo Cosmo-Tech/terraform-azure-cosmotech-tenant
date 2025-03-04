@@ -314,3 +314,46 @@ resource "kubernetes_secret" "platform_client_secret" {
   type       = "Opaque"
   depends_on = [azuread_service_principal.platform]
 }
+
+
+# keycloak
+resource "azuread_application" "keycloak_app" {
+  display_name     = "${local.pre_name}Keycloak${local.post_name}"
+  logo_image       = filebase64(var.image_path)
+  owners           = data.azuread_users.owners.object_ids
+  sign_in_audience = var.audience
+
+  tags = local.app_tags
+  web {
+    redirect_uris = ["https://${var.api_dns_name}/keycloak/realms/${var.kubernetes_tenant_namespace}/broker/azure-oidc/endpoint"]
+  }
+}
+
+resource "azuread_service_principal" "keycloak_sapp" {
+  client_id = azuread_application.keycloak_app.client_id
+  owners    = data.azuread_users.owners.object_ids
+  tags      = local.app_tags
+
+  depends_on = [azuread_application.keycloak_app]
+}
+
+resource "azuread_application_password" "keycloak_sapp_password" {
+  count          = var.create_keycloak ? 1 : 0
+  display_name   = "keycloak_secret"
+  application_id = azuread_application.keycloak_app.id
+}
+
+resource "kubernetes_secret" "keycloak_client_secret" {
+  metadata {
+    name      = "keycloak-client-secret"
+    namespace = var.kubernetes_tenant_namespace
+  }
+
+  data = {
+    "client_id" = azuread_application.keycloak_app.client_id
+    "password"  = azuread_application_password.keycloak_sapp_password.0.value
+  }
+
+  type       = "Opaque"
+  depends_on = [azuread_application_password.keycloak_sapp_password]
+}
