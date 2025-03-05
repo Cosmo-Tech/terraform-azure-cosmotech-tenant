@@ -216,9 +216,15 @@
 | <a name="output_out_babylon_sp_name"></a> [out\_babylon\_sp\_name](#output\_out\_babylon\_sp\_name) | n/a |
 | <a name="output_out_babylon_sp_object_id"></a> [out\_babylon\_sp\_object\_id](#output\_out\_babylon\_sp\_object\_id) | n/a |
 | <a name="output_out_copilot_ada_deployment_name"></a> [out\_copilot\_ada\_deployment\_name](#output\_out\_copilot\_ada\_deployment\_name) | n/a |
+| <a name="output_out_copilot_bot_app_credentials"></a> [out\_copilot\_bot\_app\_credentials](#output\_out\_copilot\_bot\_app\_credentials) | n/a |
+| <a name="output_out_copilot_bot_application_id"></a> [out\_copilot\_bot\_application\_id](#output\_out\_copilot\_bot\_application\_id) | n/a |
+| <a name="output_out_copilot_bot_application_object_id"></a> [out\_copilot\_bot\_application\_object\_id](#output\_out\_copilot\_bot\_application\_object\_id) | n/a |
+| <a name="output_out_copilot_bot_client_secret"></a> [out\_copilot\_bot\_client\_secret](#output\_out\_copilot\_bot\_client\_secret) | n/a |
 | <a name="output_out_copilot_bot_directline_secret"></a> [out\_copilot\_bot\_directline\_secret](#output\_out\_copilot\_bot\_directline\_secret) | n/a |
 | <a name="output_out_copilot_bot_endpoint"></a> [out\_copilot\_bot\_endpoint](#output\_out\_copilot\_bot\_endpoint) | n/a |
 | <a name="output_out_copilot_bot_name"></a> [out\_copilot\_bot\_name](#output\_out\_copilot\_bot\_name) | n/a |
+| <a name="output_out_copilot_bot_service_principal_id"></a> [out\_copilot\_bot\_service\_principal\_id](#output\_out\_copilot\_bot\_service\_principal\_id) | n/a |
+| <a name="output_out_copilot_bot_service_principal_object_id"></a> [out\_copilot\_bot\_service\_principal\_object\_id](#output\_out\_copilot\_bot\_service\_principal\_object\_id) | n/a |
 | <a name="output_out_copilot_function_app_url"></a> [out\_copilot\_function\_app\_url](#output\_out\_copilot\_function\_app\_url) | n/a |
 | <a name="output_out_copilot_gpt4_deployment_name"></a> [out\_copilot\_gpt4\_deployment\_name](#output\_out\_copilot\_gpt4\_deployment\_name) | n/a |
 | <a name="output_out_copilot_microsoft_app_id"></a> [out\_copilot\_microsoft\_app\_id](#output\_out\_copilot\_microsoft\_app\_id) | n/a |
