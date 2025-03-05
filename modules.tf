@@ -33,6 +33,8 @@ module "azure-tenant-prerequisites" {
   kubernetes_tenant_namespace    = var.kubernetes_tenant_namespace
   cluster_name                   = var.cluster_name
   servlet_context_path           = var.servlet_context_path
+  create_copilot                 = var.create_copilot
+  bot_endpoint                   = var.copilot_bot_endpoint
 }
 
 module "azure-tenant-resources" {
@@ -139,17 +141,17 @@ module "azure-tenant-resources" {
   create_copilot           = var.create_copilot
   copilot_bot_sku          = var.copilot_bot_sku
   copilot_bot_endpoint     = var.copilot_bot_endpoint
-  copilot_microsoft_app_id = var.copilot_microsoft_app_id
+  copilot_microsoft_app_id = module.azure-tenant-prerequisites.out_bot_application_id
 
-  copilot_openai_kind             = var.copilot_openai_kind
-  copilot_openai_sku              = var.copilot_openai_sku
+  copilot_openai_kind = var.copilot_openai_kind
+  copilot_openai_sku  = var.copilot_openai_sku
 
   copilot_search_sku             = var.copilot_search_sku
   copilot_search_replica_count   = var.copilot_search_replica_count
   copilot_search_partition_count = var.copilot_search_partition_count
   copilot_search_index_name      = var.copilot_search_index_name
 
-  copilot_python_version        = var.copilot_python_version
+  copilot_python_version = var.copilot_python_version
 
   copilot_blob_container_name = var.copilot_blob_container_name
 

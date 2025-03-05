@@ -318,3 +318,54 @@ resource "kubernetes_secret" "platform_client_secret" {
   type       = "Opaque"
   depends_on = [azuread_service_principal.platform]
 }
+
+# Application Bot
+resource "azuread_application" "bot" {
+  display_name     = "${local.pre_name}Bot${local.post_name}"
+  count            = var.create_copilot ? 1 : 0
+  logo_image       = filebase64(var.image_path)
+  owners           = data.azuread_users.owners.object_ids
+  sign_in_audience = var.audience
+  tags             = local.app_tags
+
+  required_resource_access {
+    resource_app_id = local.microsoft_graph_resource_access_id
+
+    resource_access {
+      id   = local.user_read_resource_access_id
+      type = "Scope"
+    }
+  }
+
+  required_resource_access {
+    resource_app_id = azuread_application.platform.client_id
+
+    resource_access {
+      id   = local.platform_resource_access_id
+      type = "Role"
+    }
+  }
+
+  web {
+    homepage_url  = var.bot_endpoint
+    redirect_uris = [var.bot_endpoint]
+    implicit_grant {
+      access_token_issuance_enabled = true
+    }
+  }
+}
+
+resource "azuread_service_principal" "bot" {
+  client_id                    = azuread_application.bot[0].client_id
+  count                        = var.create_copilot ? 1 : 0
+  app_role_assignment_required = false
+  owners                       = data.azuread_users.owners.object_ids
+  tags                         = local.app_tags
+}
+
+resource "azuread_application_password" "bot_password" {
+  count             = var.create_copilot ? 1 : 0
+  display_name      = "bot_secret"
+  application_id    = azuread_application.bot[0].id
+  end_date_relative = "4464h"
+}

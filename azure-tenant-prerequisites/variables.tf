@@ -25,7 +25,7 @@ variable "identifier_uri" {
 
 variable "project_stage" {
   description = "The Project stage"
-  type = string
+  type        = string
 }
 
 variable "project_name" {
@@ -150,5 +150,13 @@ variable "cluster_name" {
 }
 
 variable "servlet_context_path" {
+  type = string
+}
+
+variable "create_copilot" {
+  type = bool
+}
+
+variable "bot_endpoint" {
   type = string
 }
