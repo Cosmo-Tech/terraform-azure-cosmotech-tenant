@@ -116,8 +116,6 @@ create_babylon  = false
 create_webapp   = false
 create_secrets  = false
 create_platform = true
-backup_create   = false
-disk_deploy     = false
 
 # Azure
 deployment_type     = "Terraform"
@@ -127,8 +125,6 @@ platform_object_id  = ""
 identifier_uri      = ""
 tenant_sp_name      = ""
 tenant_sp_object_id = ""
-disk_deploy         = false
-
 
 # Container registry
 container_admin_enabled                 = true
@@ -206,9 +202,6 @@ create_platform_config              = false
 argo_database              = "argo_workflows"
 argo_workflows_s3_username = "argo_workflows"
 
-# Backups
-backup_repeating_time_intervals = ["R/2021-05-19T06:33:16+00:00/PT24H"]
-
 # Cert-manager
 cluster_issuer_name                = "letsencrypt-prod"
 tls_certificate_type               = "let_s_encrypt"
@@ -275,7 +268,6 @@ container_tag        = ""
 allowed_namespace    = ""
 platform_id          = ""
 
-services_secrets_create = true
 
 # Vault secrets operator
 vault_secrets_operator_namespace     = "vault-secrets-operator"
@@ -284,7 +276,6 @@ vault_secrets_operator_vault_address = "http://vault.vault.svc.cluster.local:820
 services_secrets_create           = true
 kubernetes_mc_resource_group_name = ""
 first_tenant_in_cluster           = false
-
 
 # pvc
 pv_redis_deploy               = true
