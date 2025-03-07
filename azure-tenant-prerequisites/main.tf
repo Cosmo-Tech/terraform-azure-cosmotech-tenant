@@ -125,8 +125,8 @@ resource "azuread_app_role_assignment" "add_user_admin_platform" {
 }
 
 resource "azuread_application_password" "platform_password" {
-  display_name      = "platform_secret"
-  application_id    = azuread_application.platform.id
+  display_name   = "platform_secret"
+  application_id = azuread_application.platform.id
 }
 
 # Application swagger
@@ -217,9 +217,9 @@ resource "azuread_service_principal" "restish" {
 }
 
 resource "azuread_application_password" "restish_password" {
-  display_name      = "restish_secret"
-  count             = var.create_restish ? 1 : 0
-  application_id    = azuread_application.restish[0].id
+  display_name   = "restish_secret"
+  count          = var.create_restish ? 1 : 0
+  application_id = azuread_application.restish[0].id
 }
 
 # Application powerbi
@@ -242,9 +242,9 @@ resource "azuread_service_principal" "powerbi" {
 }
 
 resource "azuread_application_password" "powerbi_password" {
-  display_name      = "powerbi_secret"
-  count             = var.create_powerbi ? 1 : 0
-  application_id    = azuread_application.powerbi[0].id
+  display_name   = "powerbi_secret"
+  count          = var.create_powerbi ? 1 : 0
+  application_id = azuread_application.powerbi[0].id
 }
 
 # Application babylon
@@ -295,9 +295,9 @@ resource "azuread_service_principal" "babylon" {
 }
 
 resource "azuread_application_password" "babylon_password" {
-  display_name      = "babylon_secret"
-  count             = var.create_babylon ? 1 : 0
-  application_id    = azuread_application.babylon[0].id
+  display_name   = "babylon_secret"
+  count          = var.create_babylon ? 1 : 0
+  application_id = azuread_application.babylon[0].id
 }
 
 resource "kubernetes_secret" "platform_client_secret" {
@@ -318,6 +318,7 @@ resource "kubernetes_secret" "platform_client_secret" {
 
 # keycloak
 resource "azuread_application" "keycloak_app" {
+  count            = var.create_keycloak ? 1 : 0
   display_name     = "${local.pre_name}Keycloak${local.post_name}"
   logo_image       = filebase64(var.image_path)
   owners           = data.azuread_users.owners.object_ids
@@ -347,7 +348,7 @@ resource "azuread_application" "keycloak_app" {
 }
 
 resource "azuread_service_principal" "keycloak_sapp" {
-  client_id = azuread_application.keycloak_app.client_id
+  client_id = azuread_application.keycloak_app.0.client_id
   owners    = data.azuread_users.owners.object_ids
   tags      = local.app_tags
 
@@ -355,9 +356,10 @@ resource "azuread_service_principal" "keycloak_sapp" {
 }
 
 resource "azuread_application_password" "keycloak_sapp_password" {
-  count          = var.create_keycloak ? 1 : 0
   display_name   = "keycloak_secret"
-  application_id = azuread_application.keycloak_app.id
+  application_id = azuread_application.keycloak_app.0.id
+
+  depends_on = [azuread_application.keycloak_app]
 }
 
 resource "kubernetes_secret" "keycloak_client_secret" {
@@ -367,8 +369,8 @@ resource "kubernetes_secret" "keycloak_client_secret" {
   }
 
   data = {
-    "client_id" = azuread_application.keycloak_app.client_id
-    "password"  = azuread_application_password.keycloak_sapp_password.0.value
+    "client_id" = azuread_application.keycloak_app.0.client_id
+    "password"  = azuread_application_password.keycloak_sapp_password.value
   }
 
   type       = "Opaque"
