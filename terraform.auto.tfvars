@@ -303,6 +303,8 @@ pv_seaweedfs_provider             = "azure"
 
 # minio
 pv_minio_deploy               = true
+pv_minio_disk_deploy          = true
+pv_minio_disk_source_existing = false
 pv_minio_storage_gbi          = 32
 pv_minio_storage_account_type = "Premium_LRS"
 pv_minio_storage_class_name   = "cosmotech-retain"
