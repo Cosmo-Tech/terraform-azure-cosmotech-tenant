@@ -24,3 +24,9 @@ variable "pv_redis_provider" {
     error_message = "Provider must be either: azure, aws, longhorn"
   }
 }
+variable "pv_redis_master_disk_deploy" {
+  type = bool
+}
+variable "pv_redis_master_disk_source_existing" {
+  type = bool
+}

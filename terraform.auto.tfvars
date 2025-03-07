@@ -278,12 +278,14 @@ kubernetes_mc_resource_group_name = ""
 first_tenant_in_cluster           = false
 
 # pvc
-pv_redis_deploy               = true
-pv_redis_storage_gbi          = 32
-pv_redis_storage_account_type = "Premium_LRS"
-pv_redis_storage_class_name   = "cosmotech-retain"
-pv_redis_replicas             = 1
-pv_redis_provider             = "azure"
+pv_redis_deploy                      = true
+pv_redis_master_disk_deploy          = true
+pv_redis_master_disk_source_existing = false
+pv_redis_storage_gbi                 = 32
+pv_redis_storage_account_type        = "Premium_LRS"
+pv_redis_storage_class_name          = "cosmotech-retain"
+pv_redis_replicas                    = 1
+pv_redis_provider                    = "azure"
 
 # postgres
 pv_postgres_deploy               = true
