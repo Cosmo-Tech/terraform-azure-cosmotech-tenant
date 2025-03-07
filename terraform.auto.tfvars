@@ -287,6 +287,8 @@ pv_redis_provider             = "azure"
 
 # postgres
 pv_postgres_deploy               = true
+pv_postgres_disk_deploy          = true
+pv_postgres_disk_source_existing = false
 pv_postgres_storage_gbi          = 32
 pv_postgres_storage_account_type = "Premium_LRS"
 pv_postgres_storage_class_name   = "cosmotech-retain"
