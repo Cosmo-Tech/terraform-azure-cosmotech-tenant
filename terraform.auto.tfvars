@@ -298,12 +298,16 @@ pv_postgres_replicas             = 1
 pv_postgres_provider             = "azure"
 
 # seaweedfs
-pv_seaweedfs_deploy               = true
-pv_seaweedfs_storage_gbi          = 32
-pv_seaweedfs_storage_account_type = "Premium_LRS"
-pv_seaweedfs_storage_class_name   = "cosmotech-retain"
-pv_seaweedfs_replicas             = 1
-pv_seaweedfs_provider             = "azure"
+pv_seaweedfs_deploy                      = true
+pv_seaweedfs_master_disk_deploy          = true
+pv_seaweedfs_master_disk_source_existing = false
+pv_seaweedfs_volume_disk_deploy          = true
+pv_seaweedfs_volume_disk_source_existing = false
+pv_seaweedfs_storage_gbi                 = 32
+pv_seaweedfs_storage_account_type        = "Premium_LRS"
+pv_seaweedfs_storage_class_name          = "cosmotech-retain"
+pv_seaweedfs_replicas                    = 1
+pv_seaweedfs_provider                    = "azure"
 
 # minio
 pv_minio_deploy               = true

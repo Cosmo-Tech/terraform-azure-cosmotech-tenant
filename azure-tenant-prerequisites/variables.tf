@@ -152,3 +152,11 @@ variable "cluster_name" {
 variable "servlet_context_path" {
   type = string
 }
+
+variable "create_keycloak" {
+  type = bool
+}
+
+variable "api_dns_name" {
+  type = string
+}
