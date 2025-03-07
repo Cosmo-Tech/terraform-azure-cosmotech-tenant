@@ -118,13 +118,15 @@ create_secrets  = false
 create_platform = true
 
 # Azure
-deployment_type     = "Terraform"
-client_id           = ""
-client_secret       = ""
-platform_object_id  = ""
-identifier_uri      = ""
-tenant_sp_name      = ""
-tenant_sp_object_id = ""
+deployment_type               = "Terraform"
+client_id                     = ""
+client_secret                 = ""
+platform_object_id            = ""
+identifier_uri                = ""
+tenant_sp_name                = ""
+tenant_sp_object_id           = ""
+cloud_provider                = "azure"
+azure_tenant_resources_deploy = false
 
 # Container registry
 container_admin_enabled                 = true

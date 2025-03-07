@@ -1,34 +1,34 @@
 output "out_acr_login_server" {
-  value = module.azure-tenant-resources.out_acr_login_server
+  value = var.azure_tenant_resources_deploy ? module.azure-tenant-resources.0.out_acr_login_server : ""
 }
 
 output "out_acr_login_username" {
-  value = module.azure-tenant-resources.out_acr_login_username
+  value = var.azure_tenant_resources_deploy ? module.azure-tenant-resources.0.out_acr_login_username : ""
 }
 
 output "out_acr_login_server_url" {
-  value = module.azure-tenant-resources.out_acr_login_server_url
+  value = var.azure_tenant_resources_deploy ? module.azure-tenant-resources.0.out_acr_login_server_url : ""
 }
 
 output "out_acr_login_password" {
-  value     = module.azure-tenant-resources.out_acr_login_password
+  value     = var.azure_tenant_resources_deploy ? module.azure-tenant-resources.0.out_acr_login_password : ""
   sensitive = true
 }
 
 output "out_adx_cluster_uri" {
-  value = module.azure-tenant-resources.out_adx_cluster_uri
+  value = var.azure_tenant_resources_deploy ? module.azure-tenant-resources.0.out_adx_cluster_uri : ""
 }
 
 output "out_adx_cluster_principal_id" {
-  value = module.azure-tenant-resources.out_adx_cluster_principal_id
+  value = var.azure_tenant_resources_deploy ? module.azure-tenant-resources.0.out_adx_cluster_principal_id : ""
 }
 
 output "out_adx_cluster_name" {
-  value = module.azure-tenant-resources.out_adx_cluster_name
+  value = var.azure_tenant_resources_deploy ? module.azure-tenant-resources.0.out_adx_cluster_name : ""
 }
 
 output "out_api_cosmo_url" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_cosmo_api_url : "https://${var.network_dns_record}.${var.network_dns_zone_name}/${var.kubernetes_tenant_namespace}/${var.cosmotech_api_version_path}"
+  value = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_cosmo_api_url : "https://${var.network_dns_record}.${var.network_dns_zone_name}/${var.kubernetes_tenant_namespace}/${var.cosmotech_api_version_path}"
 }
 
 output "out_api_cosmo_scope" {
@@ -44,11 +44,11 @@ output "out_tenant_resource_group" {
 }
 
 output "out_tenant_sp_client_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : var.client_id
+  value = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : var.client_id
 }
 
 output "out_tenant_sp_object_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.tenant_sp_object_id
+  value = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.tenant_sp_object_id
 }
 
 output "out_azure_resource_location" {
@@ -56,11 +56,11 @@ output "out_azure_resource_location" {
 }
 
 output "out_azure_storage_account_name" {
-  value = module.azure-tenant-resources.out_azure_storage_account_name
+  value = var.azure_tenant_resources_deploy ? module.azure-tenant-resources.0.out_azure_storage_account_name : ""
 }
 
 output "out_azure_storage_account_key" {
-  value     = module.azure-tenant-resources.out_azure_storage_account_key
+  value     = var.azure_tenant_resources_deploy ? module.azure-tenant-resources.0.out_azure_storage_account_key : ""
   sensitive = true
 }
 
@@ -99,7 +99,7 @@ output "out_restish_sp_client_secret" {
 }
 
 output "out_swagger_sp_client_id" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_swagger_sp_client_id : var.swagger_sp_client_id
+  value = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_swagger_sp_client_id : var.swagger_sp_client_id
 }
 
 output "out_babylon_sp_name" {
@@ -111,5 +111,5 @@ output "out_platform_sp_name" {
 }
 
 output "out_swagger_sp_name" {
-  value = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_swagger_name : ""
+  value = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_swagger_name : ""
 }

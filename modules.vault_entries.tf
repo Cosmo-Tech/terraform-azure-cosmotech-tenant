@@ -24,3 +24,18 @@ module "create-vault-entries" {
     module.azure-tenant-resources
   ]
 }
+
+module "config_vault" {
+  source = "./create-vault-config"
+
+  count = var.create_platform_config ? 1 : 0
+
+  allowed_namespace    = var.allowed_namespace
+  cluster_name         = var.cluster_name
+  tenant_id            = var.tenant_id
+  vault_address        = var.vault_address
+  vault_namespace      = var.vault_namespace
+  vault_sops_namespace = var.vault_sops_namespace
+  engine_secret        = var.engine_secret
+
+}

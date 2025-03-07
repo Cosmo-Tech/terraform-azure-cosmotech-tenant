@@ -27,3 +27,7 @@ variable "kubernetes_resource_group" {
 variable "services_secrets_create" {
   type = bool
 }
+
+variable "cloud_provider" {
+  type = string
+}

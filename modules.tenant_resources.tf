@@ -1,6 +1,8 @@
 module "azure-tenant-resources" {
   source = "./azure-tenant-resources"
 
+  count = var.azure_tenant_resources_deploy ? 1 : 0
+
   deployment_type                              = var.deployment_type
   subscription_id                              = var.subscription_id
   location                                     = var.location
@@ -57,8 +59,8 @@ module "azure-tenant-resources" {
   tenant_sp_object_id   = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.tenant_sp_object_id
   tenant_resource_group = var.deployment_type != "ARM" ? azurerm_resource_group.tenant_rg.0 : data.azurerm_resource_group.tenant_rg.0
 
-  common_resource_group   = data.azurerm_resource_group.current
-  vnet                    = data.azurerm_virtual_network.current
+  common_resource_group   = data.azurerm_resource_group.current.0
+  vnet                    = data.azurerm_virtual_network.current.0
   subnet_name             = var.network_subnet_name
   services_secrets_create = var.services_secrets_create
 

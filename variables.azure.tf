@@ -52,3 +52,7 @@ variable "tenant_sp_object_id" {
 variable "first_tenant_in_cluster" {
   type = bool
 }
+
+variable "azure_tenant_resources_deploy" {
+  type = bool
+}
