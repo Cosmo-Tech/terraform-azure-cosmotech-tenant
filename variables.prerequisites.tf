@@ -70,3 +70,7 @@ variable "create_secrets" {
 variable "create_platform" {
   type = string
 }
+
+variable "azure_prerequisites_deploy" {
+  type = bool
+}

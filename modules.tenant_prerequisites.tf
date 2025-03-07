@@ -1,7 +1,7 @@
 module "azure-tenant-prerequisites" {
   source = "./azure-tenant-prerequisites"
 
-  count = var.deployment_type != "ARM" ? 1 : 0
+  count = var.azure_prerequisites_deploy ? 1 : 0
 
   tenant_id                      = var.tenant_id
   client_id                      = var.client_id
