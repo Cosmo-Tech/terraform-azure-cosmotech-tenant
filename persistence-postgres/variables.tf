@@ -7,7 +7,12 @@ variable "kubernetes_mc_resource_group_name" {
 variable "location" {
   type = string
 }
-
+variable "pv_postgres_disk_deploy" {
+  type = bool
+}
+variable "pv_postgres_disk_source_existing" {
+  type = bool
+}
 variable "pv_postgres_storage_gbi" {
   type = number
 }
