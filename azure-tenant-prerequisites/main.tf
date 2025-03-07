@@ -327,6 +327,23 @@ resource "azuread_application" "keycloak_app" {
   web {
     redirect_uris = ["https://${var.api_dns_name}/keycloak/realms/${var.kubernetes_tenant_namespace}/broker/azure-oidc/endpoint"]
   }
+
+  dynamic "app_role" {
+    for_each = toset(var.user_app_role)
+    iterator = app_role
+
+    content {
+      allowed_member_types = [
+        "User",
+        "Application"
+      ]
+      description  = app_role.value.description
+      display_name = app_role.value.display_name
+      id           = app_role.value.id
+      enabled      = true
+      value        = app_role.value.role_value
+    }
+  }
 }
 
 resource "azuread_service_principal" "keycloak_sapp" {
