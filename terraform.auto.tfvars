@@ -117,6 +117,11 @@ create_webapp   = false
 create_secrets  = false
 create_platform = false
 
+host                   = ""
+client_certificate     = ""
+client_key             = ""
+cluster_ca_certificate = ""
+
 # Azure
 deployment_type               = "Terraform"
 client_id                     = ""
