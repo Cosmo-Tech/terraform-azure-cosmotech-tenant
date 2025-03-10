@@ -20,7 +20,7 @@ data "azurerm_virtual_network" "current" {
 }
 
 data "azurerm_resource_group" "tenant_rg" {
-  count = var.cloud_provider == "azure" ? 1 : 0
+  count = var.deployment_type == "ARM" ? 1 : 0
   name  = var.tenant_resource_group
 }
 

@@ -21,8 +21,17 @@ locals {
     "SEAWEEDFS_DATABASE"            = var.seaweedfs_database
   }
   s3_config_values = {
-    "ARGO_WORKFLOWS_USERNAME" = var.argo_workflows_s3_username 
+    "ARGO_WORKFLOWS_USERNAME" = var.argo_workflows_s3_username
     "ARGO_WORKFLOWS_PASSWORD" = random_password.seaweedfs_argo_workflows_password.result
+  }
+
+  rabbitmq_load_values = {
+    "PASSWORD_ADMIN"    = random_password.rabbitmq_admin_password.result
+    "USER_LISTENER"     = var.rabbitmq_listener_username
+    "PASSWORD_LISTENER" = random_password.rabbitmq_listener_password.result
+    "USER_SENDER"       = var.rabbitmq_sender_username
+    "PASSWORD_SENDER"   = random_password.rabbitmq_sender_password.result
+
   }
 }
 
@@ -127,19 +136,17 @@ resource "random_password" "rabbitmq_sender_password" {
   special = false
 }
 
-resource "kubectl_manifest" "rabbitmq_load_data" {
-  yaml_body = <<YAML
-apiVersion: v1
-kind: Secret
-metadata:
-  name: rabbitmq-data-secret
-  namespace: ${var.kubernetes_namespace}
-type: Opaque
-stringData:
-  admin: ${random_password.rabbitmq_admin_password.result}
-  listener: ${random_password.rabbitmq_listener_password.result}
-  sender: ${random_password.rabbitmq_sender_password.result}
-YAML
+resource "kubernetes_secret" "rabbitmq_load_data" {
+  metadata {
+    name      = "rabbitmq-data-secret"
+    namespace = var.kubernetes_namespace
+  }
+
+  data = {
+    admin    = random_password.rabbitmq_admin_password.result
+    listener = random_password.rabbitmq_listener_password.result
+    sender   = random_password.rabbitmq_sender_password.result
+  }
 }
 
 resource "kubernetes_secret" "rabbitmq-secret" {
@@ -163,64 +170,15 @@ resource "kubernetes_secret" "rabbitmq-secret" {
   type = "Opaque"
 }
 
-resource "kubectl_manifest" "rabbitmq_load_definition" {
-  yaml_body = <<YAML
-apiVersion: v1
-kind: Secret
-metadata:
-  name: rabbitmq-${var.kubernetes_namespace}-load-definition
-  namespace: ${var.kubernetes_namespace}
-type: Opaque
-stringData:
-  load_definition.json: |-
-      {
-        "users": [
-          {
-            "name": "admin",
-            "password": "${random_password.rabbitmq_admin_password.result}",
-            "tags": "administrator"
-          },
-          {
-            "name": "${var.rabbitmq_listener_username}",
-            "password": "${random_password.rabbitmq_listener_password.result}",
-            "tags": ""
-          },
-          {
-            "name": "${var.rabbitmq_sender_username}",
-            "password": "${random_password.rabbitmq_sender_password.result}",
-            "tags": ""
-          }
-        ],
-        "vhosts": [
-          {
-            "name": "/"
-          }
-        ],
-        "permissions": [
-          {
-            "user": "admin",
-            "vhost": "/",
-            "configure": ".*",
-            "write": ".*",
-            "read": ".*"
-          },
-          {
-            "user": "${var.rabbitmq_listener_username}",
-            "vhost": "/",
-            "configure": ".*",
-            "write": ".*",
-            "read": ".*"
-          },
-          {
-            "user": "${var.rabbitmq_sender_username}",
-            "vhost": "/",
-            "configure": ".*",
-            "write": ".*",
-            "read": ".*"
-          }
-        ]
-      }
-  YAML  
+resource "kubernetes_secret" "rabbitmq_load_definition" {
+  metadata {
+    name      = "rabbitmq-${var.kubernetes_namespace}-load-definition"
+    namespace = var.kubernetes_namespace
+  }
+
+  data = {
+    "load_definition.json" = templatefile("${path.module}/rabbitmq_load.json", local.rabbitmq_load_values)
+  }
 }
 
 
