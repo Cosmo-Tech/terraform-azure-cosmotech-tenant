@@ -30,3 +30,9 @@ variable "pv_redis_master_disk_deploy" {
 variable "pv_redis_master_disk_source_existing" {
   type = bool
 }
+variable "pv_redis_disk_master_name" {
+  type = string
+}
+variable "pv_redis_disk_replica_name" {
+  type = string
+}

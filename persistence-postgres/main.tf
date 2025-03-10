@@ -1,10 +1,6 @@
-locals {
-  disk_master_name = "disk-postgres-tenant-${var.kubernetes_tenant_namespace}"
-}
-
 resource "azurerm_managed_disk" "postgres_master" {
   count                = var.pv_postgres_provider == "azure" && var.pv_postgres_disk_deploy ? 1 : 0
-  name                 = local.disk_master_name
+  name                 = var.pv_postgres_disk_master_name
   location             = var.location
   resource_group_name  = var.kubernetes_mc_resource_group_name
   storage_account_type = var.pv_postgres_storage_account_type
@@ -14,13 +10,14 @@ resource "azurerm_managed_disk" "postgres_master" {
 
 data "azurerm_managed_disk" "disk_managed_postgres" {
   count               = var.pv_postgres_provider == "azure" && var.pv_postgres_disk_source_existing ? 1 : 0
-  name                = local.disk_master_name
+  name                = var.pv_postgres_disk_master_name
   resource_group_name = var.kubernetes_mc_resource_group_name
 }
 
 resource "kubernetes_persistent_volume" "pv_postgres_master" {
+  count = var.pv_postgres_provider == "azure" ? 1 : 0
   metadata {
-    name = "pv-${local.disk_master_name}"
+    name = "pv-${var.pv_postgres_disk_master_name}"
   }
   spec {
     capacity = {
@@ -42,4 +39,26 @@ resource "kubernetes_persistent_volume" "pv_postgres_master" {
     azurerm_managed_disk.postgres_master,
     data.azurerm_managed_disk.disk_managed_postgres
   ]
+}
+
+
+resource "kubernetes_persistent_volume" "pv_postgres_master_lognhorn" {
+  count = var.pv_postgres_provider == "longhorn" ? 1 : 0
+  metadata {
+    name = "pv-${var.pv_postgres_disk_master_name}"
+  }
+  spec {
+    capacity = {
+      storage = "${var.pv_postgres_storage_gbi}Gi"
+    }
+    access_modes       = ["ReadWriteOnce"]
+    storage_class_name = var.pv_postgres_storage_class_name
+    persistent_volume_source {
+      csi {
+        driver        = "driver.longhorn.io"
+        fs_type       = "ext4"
+        volume_handle = var.pv_postgres_disk_master_name
+      }
+    }
+  }
 }

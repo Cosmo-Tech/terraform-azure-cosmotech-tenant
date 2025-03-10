@@ -13,4 +13,6 @@ module "deploy-persistence-redis" {
   pv_redis_replicas                    = var.pv_redis_replicas
   pv_redis_master_disk_deploy          = var.pv_redis_master_disk_deploy
   pv_redis_master_disk_source_existing = var.pv_redis_master_disk_source_existing
+  pv_redis_disk_master_name            = var.pv_redis_disk_master_name
+  pv_redis_disk_replica_name           = var.pv_redis_disk_replica_name
 }

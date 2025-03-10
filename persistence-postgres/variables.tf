@@ -28,3 +28,6 @@ variable "pv_postgres_storage_class_name" {
 variable "pv_postgres_provider" {
   type = string
 }
+variable "pv_postgres_disk_master_name" {
+  type = string
+}

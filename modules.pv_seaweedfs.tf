@@ -14,4 +14,6 @@ module "deploy-persistence-seaweedfs" {
   pv_seaweedfs_master_disk_source_existing = var.pv_seaweedfs_master_disk_source_existing
   pv_seaweedfs_volume_disk_deploy          = var.pv_seaweedfs_volume_disk_deploy
   pv_seaweedfs_volume_disk_source_existing = var.pv_seaweedfs_volume_disk_source_existing
+  pv_seaweedfs_disk_master_name            = var.pv_seaweedfs_disk_master_name
+  pv_seaweedfs_disk_volume_name            = var.pv_seaweedfs_disk_volume_name
 }
