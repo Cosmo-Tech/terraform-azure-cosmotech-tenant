@@ -93,80 +93,107 @@ resource "kubernetes_job" "vault_config" {
   ]
 }
 
-resource "kubectl_manifest" "create-vault-entries" {
-  yaml_body = <<YAML
-apiVersion: v1
-kind: Pod
-metadata:
-  name: create-vault-entries
-  namespace: ${var.kubernetes_tenant_namespace}
-spec:
-  initContainers:
-  - name: tenant-enable-pod
-    imagePullPolicy: Always
-    image: ghcr.io/cosmo-tech/backend-tf-state-to-vault:${var.container_tag}
-    command: ["/bin/bash", "-c", "python main.py tenant enable --engine ${var.engine_version} --name ${var.organization_name}"]
-    env:
-    - name: VAULT_ADDR
-      value: ${var.vault_addr}
-    - name: VAULT_TOKEN
-      value: ${var.vault_token == "" ? data.kubernetes_secret.vault_secret.data.ROOT_TOKEN : var.vault_token}
-    - name: TENANT_ID
-      value: ${var.tenant_id}
-    - name: ORGANIZATION_NAME
-      value: ${var.organization_name}
-    - name: STORAGE_ACCOUNT_NAME
-      value: ${var.storage_account_name}
-    - name: STORAGE_ACCOUNT_KEY
-      value: ${local.storage_key}
-    - name: STORAGE_CONTAINER
-      value: ${var.storage_container}
-    - name: TFSTATE_BLOB_NAME
-      value: ${var.tf_blob_name_tenant}
-    - name: PLATFORM_ID
-      value: ${var.platform_id}
-  nodeSelector:
-    "cosmotech.com/tier": "services"
-  tolerations:
-  - key: "vendor"
-    operator: "Equal"
-    value: "cosmotech"
-    effect: "NoSchedule"
-  restartPolicy: Never
+resource "kubernetes_pod" "create-vault-entries" {
+  metadata {
+    name      = "create-vault-entries"
+    namespace = var.kubernetes_tenant_namespace
+  }
+  spec {
+    toleration {
+      key      = "vendor"
+      operator = "Equal"
+      effect   = "NoSchedule"
+      value    = "cosmotech"
+    }
+    node_selector = {
+      "cosmotech.com/tier" : "services"
+    }
+    init_container {
+      name              = "tenant-enable-pod"
+      image_pull_policy = "Always"
+      image             = "ghcr.io/cosmo-tech/backend-tf-state-to-vault:${var.container_tag}"
+      command           = ["/bin/bash", "-c", "python main.py tenant enable --engine ${var.engine_version} --name ${var.organization_name}"]
+      env {
+        name  = "VAULT_ADDR"
+        value = var.vault_addr
+      }
+      env {
+        name  = "VAULT_TOKEN"
+        value = var.vault_token == "" ? data.kubernetes_secret.vault_secret.data.ROOT_TOKEN : var.vault_token
+      }
+      env {
+        name  = "TENANT_ID"
+        value = var.tenant_id
+      }
+      env {
+        name  = "ORGANIZATION_NAME"
+        value = var.organization_name
+      }
+      env {
+        name  = "STORAGE_ACCOUNT_NAME"
+        value = var.storage_account_name
+      }
+      env {
+        name  = "STORAGE_ACCOUNT_KEY"
+        value = local.storage_key
+      }
+      env {
+        name  = "STORAGE_CONTAINER"
+        value = var.storage_container
+      }
+      env {
+        name  = "TFSTATE_BLOB_NAME"
+        value = var.tf_blob_name_tenant
+      }
+      env {
+        name  = "PLATFORM_ID"
+        value = var.platform_id
+      }
+    }
 
-  containers:
-  - name: create-vault-entries-pod
-    imagePullPolicy: Always
-    image: ghcr.io/cosmo-tech/backend-tf-state-to-vault:${var.container_tag}
-    command: ["/bin/bash", "-c", "python main.py config write --resource all --use-azure --engine ${var.engine_version} --platform-id ${var.platform_id}"]
-    env:
-    - name: VAULT_ADDR
-      value: ${var.vault_addr}
-    - name: VAULT_TOKEN
-      value: ${var.vault_token == "" ? data.kubernetes_secret.vault_secret.data.ROOT_TOKEN : var.vault_token}
-    - name: TENANT_ID
-      value: ${var.tenant_id}
-    - name: ORGANIZATION_NAME
-      value: ${var.organization_name}
-    - name: STORAGE_ACCOUNT_NAME
-      value: ${var.storage_account_name}
-    - name: STORAGE_ACCOUNT_KEY
-      value: ${local.storage_key}
-    - name: STORAGE_CONTAINER
-      value: ${var.storage_container}
-    - name: TFSTATE_BLOB_NAME
-      value: ${var.tf_blob_name_tenant}
-    - name: PLATFORM_ID
-      value: ${var.platform_id}
-  nodeSelector:
-    "cosmotech.com/tier": "services"
-  tolerations:
-  - key: "vendor"
-    operator: "Equal"
-    value: "cosmotech"
-    effect: "NoSchedule"
-  restartPolicy: Never
-YAML
+    container {
+      name              = "create-vault-entries-pod"
+      image             = "ghcr.io/cosmo-tech/backend-tf-state-to-vault:${var.container_tag}"
+      image_pull_policy = "Always"
+      command           = ["/bin/bash", "-c", "python main.py config write --resource all --use-azure --engine ${var.engine_version} --platform-id ${var.platform_id}"]
+      env {
+        name  = "VAULT_ADDR"
+        value = var.vault_addr
+      }
+      env {
+        name  = "VAULT_TOKEN"
+        value = var.vault_token == "" ? data.kubernetes_secret.vault_secret.data.ROOT_TOKEN : var.vault_token
+      }
+      env {
+        name  = "TENANT_ID"
+        value = var.tenant_id
+      }
+      env {
+        name  = "ORGANIZATION_NAME"
+        value = var.organization_name
+      }
+      env {
+        name  = "STORAGE_ACCOUNT_NAME"
+        value = var.storage_account_name
+      }
+      env {
+        name  = "STORAGE_ACCOUNT_KEY"
+        value = local.storage_key
+      }
+      env {
+        name  = "STORAGE_CONTAINER"
+        value = var.storage_container
+      }
+      env {
+        name  = "TFSTATE_BLOB_NAME"
+        value = var.tf_blob_name_tenant
+      }
+      env {
+        name  = "PLATFORM_ID"
+        value = var.platform_id
+      }
+    }
+  }
 
   depends_on = [kubernetes_job.vault_config]
 }
