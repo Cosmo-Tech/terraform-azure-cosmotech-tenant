@@ -115,7 +115,7 @@ create_powerbi  = false
 create_babylon  = false
 create_webapp   = false
 create_secrets  = false
-create_platform = true
+create_platform = false
 
 # Azure
 deployment_type               = "Terraform"
@@ -128,6 +128,13 @@ tenant_sp_object_id           = ""
 cloud_provider                = "azure"
 azure_tenant_resources_deploy = false
 
+# kubernetes
+kubernetes_mc_resource_group_name = ""
+first_tenant_in_cluster           = false
+
+# services
+services_secrets_create = false
+
 # Container registry
 container_admin_enabled                 = true
 container_quarantine_policy_enabled     = false
@@ -137,14 +144,14 @@ container_zone_redundancy_enabled       = false
 container_trust_policy                  = false
 container_retention_policy              = 7
 
-# Backend remote
+# backend remote
 tf_resource_group_name  = ""
 tf_storage_account_name = ""
 tf_container_name       = ""
 tf_blob_name_tenant     = ""
 tf_access_key           = ""
 
-# Network
+# network
 network_client_secret                = ""
 network_tenant_address_prefix        = "10.10.0.0/16"
 network_tenant_subnet_address_prefix = "10.10.0.0/24"
@@ -158,14 +165,14 @@ adt_private_dns_zonename             = "privatelink.digitaltwins.azure.net"
 network_dns_zone_name                = "api.cosmotech.com"
 network_dns_record                   = "warp"
 
-# Project
+# project
 customer_name = "cosmotech"
 customertag   = ""
 project_stage = "Dev"
 cost_center   = "NA"
 tags          = {}
 
-# Storage
+# storage
 storage_class_sku                       = "Standard_LRS"
 storage_kind                            = "StorageV2"
 storage_min_tls_version                 = "TLS1_2"
@@ -193,7 +200,7 @@ create_keycloak = true
 # swagger
 swagger_sp_client_id = ""
 
-# Cosmotech API
+# cosmotech api
 servlet_context_path                = ""
 cosmotech_api_chart_package_version = "3.3.2"
 cosmotech_api_version               = "3.3.2"
@@ -204,22 +211,22 @@ create_platform_config              = false
 argo_database              = "argo_workflows"
 argo_workflows_s3_username = "argo_workflows"
 
-# Cert-manager
+# cert-manager
 cluster_issuer_name                = "letsencrypt-prod"
 tls_certificate_type               = "let_s_encrypt"
 tls_certificate_custom_certificate = ""
 tls_certificate_custom_key         = ""
 
-# Event Hub
+# event Hub
 create_eventhub                        = false
 eventhub_capacity                      = 2
 eventhub_public_network_access_enabled = true
 
-# Monitoring
+# monitoring
 monitoring_namespace = "cosmotech-monitoring"
 monitoring_enabled   = true
 
-# Kusto
+# kusto
 kusto_auto_stop                     = false
 kusto_instance_type                 = "Standard_D12_v2"
 kustonr_instances                   = 2
@@ -233,7 +240,7 @@ kusto_public_network_access_enabled = true
 kusto_privatedns_zonename           = "privatelink.kusto.core.windows.net"
 kusto_deploy                        = true
 
-# Postgres
+# postgres
 cosmotech_api_reader_username = "cosmotech_api_reader"
 cosmotech_api_writer_username = "cosmotech_api_writer"
 cosmotech_api_admin_username  = "cosmotech_api_admin"
@@ -241,7 +248,7 @@ postgresql_initdb_secret_name = "postgres-initdb"
 argo_postgresql_user          = "argo"
 postgresql_secret_name        = "postgres-config"
 
-# Rabbitmq
+# rabbitmq
 create_rabbitmq            = false
 rabbitmq_listener_username = "cosmotech_api_listener"
 rabbitmq_sender_username   = "cosmotech_run_sender"
@@ -250,14 +257,14 @@ rabbitmq_sender_username   = "cosmotech_run_sender"
 seaweedfs_database = "seaweedfs"
 seaweedfs_username = "seaweedfs"
 
-# Redis
+# redis
 redis_managed_disk_name = ""
 redis_port              = 6379
 redis_disk_size_gb      = 64
 redis_disk_sku          = "Premium_LRS"
 redis_disk_tier         = "P6"
 
-# Vault
+# vault
 vault_address        = ""
 vault_namespace      = "vault"
 vault_token          = ""
@@ -270,53 +277,54 @@ container_tag        = ""
 allowed_namespace    = ""
 platform_id          = ""
 
-
 # Vault secrets operator
 vault_secrets_operator_namespace     = "vault-secrets-operator"
 vault_secrets_operator_vault_address = "http://vault.vault.svc.cluster.local:8200"
 
-services_secrets_create           = true
-kubernetes_mc_resource_group_name = ""
-first_tenant_in_cluster           = false
-
-# pvc
-pv_redis_deploy                      = true
-pv_redis_master_disk_deploy          = true
+# redis pvc
+pv_redis_deploy                      = false
+pv_redis_master_disk_deploy          = false
 pv_redis_master_disk_source_existing = false
 pv_redis_storage_gbi                 = 32
 pv_redis_storage_account_type        = "Premium_LRS"
 pv_redis_storage_class_name          = "cosmotech-retain"
 pv_redis_replicas                    = 1
 pv_redis_provider                    = "azure"
+pv_redis_disk_master_name            = "disk-redis-master-tenant"
+pv_redis_disk_replica_name           = "disk-redis-replica-tenant"
 
-# postgres
-pv_postgres_deploy               = true
-pv_postgres_disk_deploy          = true
+# postgres pv
+pv_postgres_deploy               = false
+pv_postgres_disk_deploy          = false
 pv_postgres_disk_source_existing = false
 pv_postgres_storage_gbi          = 32
 pv_postgres_storage_account_type = "Premium_LRS"
 pv_postgres_storage_class_name   = "cosmotech-retain"
 pv_postgres_replicas             = 1
 pv_postgres_provider             = "azure"
+pv_postgres_disk_master_name     = "disk-postgres-tenant"
 
-# seaweedfs
-pv_seaweedfs_deploy                      = true
-pv_seaweedfs_master_disk_deploy          = true
+# seaweedfs pv
+pv_seaweedfs_deploy                      = false
+pv_seaweedfs_master_disk_deploy          = false
 pv_seaweedfs_master_disk_source_existing = false
-pv_seaweedfs_volume_disk_deploy          = true
+pv_seaweedfs_volume_disk_deploy          = false
 pv_seaweedfs_volume_disk_source_existing = false
 pv_seaweedfs_storage_gbi                 = 32
 pv_seaweedfs_storage_account_type        = "Premium_LRS"
 pv_seaweedfs_storage_class_name          = "cosmotech-retain"
 pv_seaweedfs_replicas                    = 1
 pv_seaweedfs_provider                    = "azure"
+pv_seaweedfs_disk_master_name            = "disk-seaweedfs-tenant-master"
+pv_seaweedfs_disk_volume_name            = "disk-seaweedfs-tenant-volume"
 
-# minio
-pv_minio_deploy               = true
-pv_minio_disk_deploy          = true
+# minio pv
+pv_minio_deploy               = false
+pv_minio_disk_deploy          = false
 pv_minio_disk_source_existing = false
 pv_minio_storage_gbi          = 32
 pv_minio_storage_account_type = "Premium_LRS"
 pv_minio_storage_class_name   = "cosmotech-retain"
 pv_minio_replicas             = 1
 pv_minio_provider             = "azure"
+pv_minio_disk_master_name     = "disk-minio-tenant"

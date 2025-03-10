@@ -28,3 +28,9 @@ variable "pv_redis_storage_class_name" {
 variable "pv_redis_provider" {
   type = string
 }
+variable "pv_redis_disk_master_name" {
+  type = string
+}
+variable "pv_redis_disk_replica_name" {
+  type = string
+}

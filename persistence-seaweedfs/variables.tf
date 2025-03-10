@@ -31,3 +31,9 @@ variable "pv_seaweedfs_storage_class_name" {
 variable "pv_seaweedfs_provider" {
   type = string
 }
+variable "pv_seaweedfs_disk_master_name" {
+  type = string
+}
+variable "pv_seaweedfs_disk_volume_name" {
+  type = string
+}

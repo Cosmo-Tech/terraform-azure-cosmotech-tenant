@@ -1,10 +1,6 @@
-locals {
-  disk_master_name = "disk-minio-tenant-${var.kubernetes_tenant_namespace}"
-}
-
 resource "azurerm_managed_disk" "minio_master" {
   count                = var.pv_minio_provider == "azure" && var.pv_minio_disk_deploy ? 1 : 0
-  name                 = local.disk_master_name
+  name                 = var.pv_minio_disk_master_name
   location             = var.location
   resource_group_name  = var.kubernetes_mc_resource_group_name
   storage_account_type = var.pv_minio_storage_account_type
@@ -14,13 +10,14 @@ resource "azurerm_managed_disk" "minio_master" {
 
 data "azurerm_managed_disk" "disk_managed_minio" {
   count               = var.pv_minio_provider == "azure" && var.pv_minio_disk_source_existing ? 1 : 0
-  name                = local.disk_master_name
+  name                = var.pv_minio_disk_master_name
   resource_group_name = var.kubernetes_mc_resource_group_name
 }
 
 resource "kubernetes_persistent_volume" "pv_minio_master" {
+  count = var.pv_minio_provider == "azure" ? 1 : 0
   metadata {
-    name = "pv-${local.disk_master_name}"
+    name = "pv-${var.pv_minio_disk_master_name}"
   }
   spec {
     capacity = {
@@ -42,4 +39,26 @@ resource "kubernetes_persistent_volume" "pv_minio_master" {
     azurerm_managed_disk.minio_master,
     data.azurerm_managed_disk.disk_managed_minio
   ]
+}
+
+
+resource "kubernetes_persistent_volume" "pv_minio_master_lognhorn" {
+  count = var.pv_minio_provider == "longhorn" ? 1 : 0
+  metadata {
+    name = "pv-${var.pv_minio_disk_master_name}"
+  }
+  spec {
+    capacity = {
+      storage = "${var.pv_minio_storage_gbi}Gi"
+    }
+    access_modes       = ["ReadWriteOnce"]
+    storage_class_name = var.pv_minio_storage_class_name
+    persistent_volume_source {
+      csi {
+        driver        = "driver.longhorn.io"
+        fs_type       = "ext4"
+        volume_handle = var.pv_minio_disk_master_name
+      }
+    }
+  }
 }

@@ -22,3 +22,6 @@ variable "pv_minio_disk_deploy" {
 variable "pv_minio_disk_source_existing" {
   type = bool
 }
+variable "pv_minio_disk_master_name" {
+  type = string
+}
