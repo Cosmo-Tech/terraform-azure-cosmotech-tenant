@@ -35,7 +35,7 @@ output "out_copilot_function_app_url" {
 
 output "out_copilot_web_app_url" {
   description = "The URL of the Azure Web App hosting the chatbot."
-  value       = "https://${azurerm_app_service.web_app.default_site_hostname}"
+  value       = var.deploy_test_web_app ? "https://${azurerm_linux_web_app.web_app[0].default_host_name}" : "Test Web App not deployed"
 }
 
 output "out_copilot_ada_deployment_name" {

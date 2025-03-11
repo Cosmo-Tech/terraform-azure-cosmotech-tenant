@@ -222,6 +222,7 @@ resource "azurerm_linux_function_app" "function_app" {
 # 5. Azure Web App
 ############################
 resource "azurerm_service_plan" "webapp_plan" {
+  count               = var.deploy_test_web_app ? 1 : 0
   name                = local.webapp_plan_name
   location            = var.location
   resource_group_name = var.tenant_resource_group
@@ -230,17 +231,18 @@ resource "azurerm_service_plan" "webapp_plan" {
 }
 
 resource "azurerm_linux_web_app" "web_app" {
+  count               = var.deploy_test_web_app ? 1 : 0
   name                = local.web_app_name
   location            = var.location
   resource_group_name = var.tenant_resource_group
-  service_plan_id     = azurerm_service_plan.webapp_plan.id
+  service_plan_id     = azurerm_service_plan.webapp_plan[0].id
 
   site_config {
     container_registry_use_managed_identity = false
     
     application_stack {
-      docker_image_name     = "csm-llm-wa"
-      docker_registry_url = var.acr_url
+      docker_image_name        = "csm-llm-wa"
+      docker_registry_url      = var.acr_url
       docker_registry_username = var.acr_username
       docker_registry_password = var.acr_password
     }

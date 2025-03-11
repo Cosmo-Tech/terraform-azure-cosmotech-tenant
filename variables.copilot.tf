@@ -4,6 +4,10 @@ variable "create_copilot" {
   description = "Deploy cosmotech copilot-api"
 }
 
+variable "copilot_deploy_test_web_app" {
+  type = bool
+}
+
 variable "copilot_bot_sku" {
   type        = string
   description = "SKU of the bot."

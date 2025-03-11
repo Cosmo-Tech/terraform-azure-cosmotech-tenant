@@ -178,6 +178,8 @@ module "create-copilot" {
 
   count = var.create_copilot ? 1 : 0
 
+  deploy_test_web_app = var.copilot_deploy_test_web_app
+
   acr_url      = module.create-container-registry.out_acr_login_server_url
   acr_username = module.create-container-registry.out_acr_login_username
   acr_password = module.create-container-registry.out_acr_login_password
