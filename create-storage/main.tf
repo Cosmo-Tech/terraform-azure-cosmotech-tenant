@@ -38,19 +38,3 @@ resource "azurerm_private_endpoint" "storage_private_endpoint" {
     private_dns_zone_ids = [var.private_dns_zone_id]
   }
 }
-
-resource "kubernetes_secret" "storage_account_password" {
-  metadata {
-    name      = "storage-account-secret"
-    namespace = var.kubernetes_tenant_namespace
-  }
-
-  data = {
-    "name"     = azurerm_storage_account.storage_account.name
-    "password" = azurerm_storage_account.storage_account.primary_access_key
-  }
-
-  type = "Opaque"
-
-  depends_on = [azurerm_storage_account.storage_account]
-}

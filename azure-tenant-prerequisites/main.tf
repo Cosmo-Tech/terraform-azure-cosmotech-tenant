@@ -300,22 +300,6 @@ resource "azuread_application_password" "babylon_password" {
   application_id = azuread_application.babylon[0].id
 }
 
-resource "kubernetes_secret" "platform_client_secret" {
-  metadata {
-    name      = "platform-client-secret"
-    namespace = var.kubernetes_tenant_namespace
-  }
-
-  data = {
-    "client_id" = azuread_application.platform.client_id
-    "password"  = azuread_application_password.platform_password.value
-  }
-
-  type       = "Opaque"
-  depends_on = [azuread_service_principal.platform]
-}
-
-
 # keycloak
 resource "azuread_application" "keycloak_app" {
   count            = var.create_keycloak ? 1 : 0
@@ -360,19 +344,4 @@ resource "azuread_application_password" "keycloak_sapp_password" {
   application_id = azuread_application.keycloak_app.0.id
 
   depends_on = [azuread_application.keycloak_app]
-}
-
-resource "kubernetes_secret" "keycloak_client_secret" {
-  metadata {
-    name      = "keycloak-client-secret"
-    namespace = var.kubernetes_tenant_namespace
-  }
-
-  data = {
-    "client_id" = azuread_application.keycloak_app.0.client_id
-    "password"  = azuread_application_password.keycloak_sapp_password.value
-  }
-
-  type       = "Opaque"
-  depends_on = [azuread_application_password.keycloak_sapp_password]
 }

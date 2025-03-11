@@ -255,3 +255,80 @@ resource "kubernetes_secret" "postgres-seaweedfs-config" {
 
   type = "Opaque"
 }
+
+# acr
+resource "kubernetes_secret" "acr_login_password" {
+  metadata {
+    name      = "acr-admin-secret"
+    namespace = var.kubernetes_namespace
+  }
+
+  data = {
+    "password" = var.acr_admin_password
+    "username" = var.acr_admin_username
+    "registry" = var.acr_login_server
+  }
+
+  type = "Opaque"
+}
+
+# kusto
+resource "kubernetes_secret" "kusto_account_password" {
+  metadata {
+    name      = "adx-admin-secret"
+    namespace = var.kubernetes_namespace
+  }
+
+  data = {
+    "name"         = var.kusto_name
+    "uri"          = var.kusto_data_ingestion_uri
+    "principal_id" = var.kusto_principal_id
+  }
+
+  type = "Opaque"
+}
+
+# storage
+resource "kubernetes_secret" "storage_account_password" {
+  metadata {
+    name      = "storage-account-secret"
+    namespace = var.kubernetes_namespace
+  }
+
+  data = {
+    "name"     = var.storage_account_name
+    "password" = var.storage_account_primary_access_key
+  }
+
+  type = "Opaque"
+}
+
+# keycloak
+resource "kubernetes_secret" "keycloak_client_secret" {
+  metadata {
+    name      = "keycloak-client-secret"
+    namespace = var.kubernetes_namespace
+  }
+
+  data = {
+    "client_id" = var.keycloak_app_client_id
+    "password"  = var.keycloak_app_password
+  }
+
+  type = "Opaque"
+}
+
+# platform
+resource "kubernetes_secret" "platform_client_secret" {
+  metadata {
+    name      = "platform-client-secret"
+    namespace = var.kubernetes_namespace
+  }
+
+  data = {
+    "client_id" = var.platform_client_id
+    "password"  = var.platform_password
+  }
+
+  type = "Opaque"
+}

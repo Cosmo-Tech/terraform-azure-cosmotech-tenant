@@ -21,7 +21,11 @@ module "create-vault-entries" {
   container_tag               = var.container_tag
 
   depends_on = [
-    module.azure-tenant-resources
+    module.create-container-registry,
+    module.create-eventhub,
+    module.create-kusto,
+    module.create-storage,
+    module.create-network-resources,
   ]
 }
 

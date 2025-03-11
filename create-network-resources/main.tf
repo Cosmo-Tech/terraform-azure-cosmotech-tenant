@@ -34,11 +34,11 @@ resource "azurerm_role_assignment" "vnet_network_contributor" {
 
 data "azurerm_private_dns_zone" "platform_vnetlink" {
   name                = var.blob_privatedns_zonename
-  resource_group_name = var.common_resource_group
+  resource_group_name = var.kubernetes_resource_group
 }
 resource "azurerm_private_dns_zone_virtual_network_link" "private_link" {
   name                  = "${var.tenant_resource_group}-vnet-link"
-  resource_group_name   = var.common_resource_group
+  resource_group_name   = var.kubernetes_resource_group
   private_dns_zone_name = data.azurerm_private_dns_zone.platform_vnetlink.name
   virtual_network_id    = azurerm_virtual_network.tenant_vnet.id
 }

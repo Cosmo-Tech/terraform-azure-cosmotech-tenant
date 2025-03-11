@@ -37,21 +37,3 @@ resource "azurerm_private_endpoint" "kusto_private_endpoint" {
     private_dns_zone_ids = [var.private_dns_zone_id]
   }
 }
-
-
-resource "kubernetes_secret" "storage_account_password" {
-  metadata {
-    name      = "adx-admin-secret"
-    namespace = var.kubernetes_tenant_namespace
-  }
-
-  data = {
-    "name"         = azurerm_kusto_cluster.kusto.name
-    "uri"          = azurerm_kusto_cluster.kusto.data_ingestion_uri
-    "principal_id" = azurerm_kusto_cluster.kusto.identity.0.principal_id
-  }
-
-  type = "Opaque"
-
-  depends_on = [azurerm_kusto_cluster.kusto]
-}

@@ -19,20 +19,3 @@ resource "azurerm_role_assignment" "acr_contributor" {
   role_definition_name = "Contributor"
   principal_id         = var.tenant_sp_object_id
 }
-
-resource "kubernetes_secret" "acr_login_password" {
-  metadata {
-    name      = "acr-admin-secret"
-    namespace = var.kubernetes_tenant_namespace
-  }
-
-  data = {
-    "password" = azurerm_container_registry.acr.admin_password
-    "username" = azurerm_container_registry.acr.admin_username
-    "registry" = azurerm_container_registry.acr.login_server
-  }
-
-  type = "Opaque"
-
-  depends_on = [azurerm_container_registry.acr]
-}
