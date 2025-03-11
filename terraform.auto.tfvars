@@ -1,4 +1,4 @@
-# Azure
+# azure
 deployment_type     = "Terraform"
 client_id           = ""
 client_secret       = ""
@@ -27,12 +27,12 @@ monitoring_namespace = "cosmotech-monitoring"
 monitoring_enabled   = true
 
 # kubernetes
+kube_config                       = ""
+kube_context                      = ""
 kubernetes_mc_resource_group_name = ""
 first_tenant_in_cluster           = false
 
-
-
-# Container registry
+# container registry
 acr_deploy                        = false
 acr_admin_enabled                 = true
 acr_quarantine_policy_enabled     = false
@@ -55,7 +55,7 @@ table_private_dns_zonename           = "privatelink.table.core.windows.net"
 eventhub_private_dns_zonename        = "privatelink.servicebus.windows.net"
 adt_private_dns_zonename             = "privatelink.digitaltwins.azure.net"
 network_dns_zone_name                = "api.cosmotech.com"
-network_dns_record                   = "warp"
+network_dns_record                   = ""
 
 # storage
 storage_account_deploy                  = false
@@ -76,7 +76,7 @@ tls_certificate_type               = "let_s_encrypt"
 tls_certificate_custom_certificate = ""
 tls_certificate_custom_key         = ""
 
-# event Hub
+# eventhub
 create_eventhub                        = false
 eventhub_capacity                      = 2
 eventhub_public_network_access_enabled = true
