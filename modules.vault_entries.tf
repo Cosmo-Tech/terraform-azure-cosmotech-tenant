@@ -14,10 +14,10 @@ module "create-vault-entries" {
   storage_container           = var.tf_container_name
   tf_blob_name_tenant         = var.tf_blob_name_tenant
   vault_namespace             = var.vault_namespace
-  vault_sops_namespace        = var.vault_sops_namespace
+  vault_sops_namespace        = var.vault_secrets_operator_namespace
   engine_secret               = var.engine_secret
   engine_version              = var.engine_version
-  vault_sops_deploy           = var.vault_sops_deploy
+  vault_sops_deploy           = var.vault_secrets_operator_deploy
   container_tag               = var.container_tag
 
   depends_on = [
