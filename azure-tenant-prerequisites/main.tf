@@ -328,24 +328,6 @@ resource "azuread_application" "bot" {
   sign_in_audience = var.audience
   tags             = local.app_tags
 
-  required_resource_access {
-    resource_app_id = local.microsoft_graph_resource_access_id
-
-    resource_access {
-      id   = local.user_read_resource_access_id
-      type = "Scope"
-    }
-  }
-
-  required_resource_access {
-    resource_app_id = azuread_application.platform.client_id
-
-    resource_access {
-      id   = local.platform_resource_access_id
-      type = "Role"
-    }
-  }
-
   web {
     homepage_url  = var.bot_endpoint
     redirect_uris = [var.bot_endpoint]

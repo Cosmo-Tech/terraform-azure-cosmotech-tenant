@@ -178,6 +178,10 @@ module "create-copilot" {
 
   count = var.create_copilot ? 1 : 0
 
+  acr_url      = module.create-container-registry.out_acr_login_server_url
+  acr_username = module.create-container-registry.out_acr_login_username
+  acr_password = module.create-container-registry.out_acr_login_password
+
   tenant_resource_group       = var.tenant_resource_group.name
   location                    = var.location
   kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
@@ -196,7 +200,6 @@ module "create-copilot" {
 
   python_version = var.copilot_python_version
 
-  blob_storage_id     = module.create-storage.out_storage_account_id
   blob_container_name = var.copilot_blob_container_name
 
   ada_deployment_name  = var.copilot_ada_deployment_name
@@ -204,5 +207,5 @@ module "create-copilot" {
   gpt4_deployment_name = var.copilot_gpt4_deployment_name
   gpt4_model           = var.copilot_gpt4_model
 
-  depends_on = [module.create-storage]
+  depends_on = [module.create-storage, module.create-container-registry]
 }

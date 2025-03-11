@@ -168,6 +168,13 @@ resource "azurerm_app_service_plan" "function_plan" {
   }
 }
 
+resource "azurerm_application_insights" "app_insights" {
+  name                = "${local.function_app_name}-insights"
+  location            = var.location
+  resource_group_name = var.tenant_resource_group
+  application_type    = "web"
+}
+
 resource "azurerm_linux_function_app" "function_app" {
   name                       = local.function_app_name
   location                   = var.location
@@ -177,38 +184,74 @@ resource "azurerm_linux_function_app" "function_app" {
   storage_account_access_key = azurerm_storage_account.function_storage.primary_access_key
 
   site_config {
+    container_registry_use_managed_identity = false
+    
     application_stack {
-      python_version = var.python_version
+      docker {
+        registry_url      = var.acr_url
+        image_name        = "csm-llm-af"
+        image_tag         = "latest"
+        registry_username = var.acr_username
+        registry_password = var.acr_password
+      }
     }
   }
 
   app_settings = {
-    "FUNCTIONS_WORKER_RUNTIME" = "python"
+    "APPINSIGHTS_INSTRUMENTATIONKEY"               = azurerm_application_insights.app_insights.instrumentation_key
+    "APPLICATIONINSIGHTS_CONNECTION_STRING"        = azurerm_application_insights.app_insights.connection_string
+    "AzureWebJobsStorage"                          = azurerm_storage_account.function_storage.primary_connection_string
+    "BUILD_FLAGS"                                  = "UseExpressBuild"
+    "DOCKER_ENABLE_CI"                             = "true"
+    "DOCKER_REGISTRY_SERVER_PASSWORD"              = var.acr_password
+    "DOCKER_REGISTRY_SERVER_URL"                   = var.acr_url
+    "DOCKER_REGISTRY_SERVER_USERNAME"              = var.acr_username
+    "ENABLE_ORYX_BUILD"                            = "true"
+    "FUNCTIONS_EXTENSION_VERSION"                  = "~4"
+    "FUNCTIONS_WORKER_RUNTIME"                     = "python"
+    "SCM_DO_BUILD_DURING_DEPLOYMENT"               = "1"
+    "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING"     = azurerm_storage_account.function_storage.primary_connection_string
+    "WEBSITE_CONTENTSHARE"                         = local.function_app_name
+    "WEBSITE_ENABLE_SYNC_UPDATE_SITE"              = "true"
+    "WEBSITES_ENABLE_APP_SERVICE_STORAGE"          = "false"
+    "XDG_CACHE_HOME"                               = "/tmp/.cache"
   }
 }
 
 ############################
 # 5. Azure Web App
 ############################
-resource "azurerm_app_service_plan" "webapp_plan" {
+resource "azurerm_service_plan" "webapp_plan" {
   name                = local.webapp_plan_name
   location            = var.location
   resource_group_name = var.tenant_resource_group
-
-  sku {
-    tier = "Standard"
-    size = "S1"
-  }
+  os_type             = "Linux"
+  sku_name            = "S1"
 }
 
-resource "azurerm_app_service" "web_app" {
+resource "azurerm_linux_web_app" "web_app" {
   name                = local.web_app_name
   location            = var.location
   resource_group_name = var.tenant_resource_group
-  app_service_plan_id = azurerm_app_service_plan.webapp_plan.id
+  service_plan_id     = azurerm_service_plan.webapp_plan.id
+
+  site_config {
+    container_registry_use_managed_identity = false
+    
+    application_stack {
+      docker_image_name     = "csm-llm-wa"
+      docker_registry_url = var.acr_url
+      docker_registry_username = var.acr_username
+      docker_registry_password = var.acr_password
+    }
+  }
 
   app_settings = {
-    "WEBSITE_RUN_FROM_PACKAGE" = "1"
+    "DOCKER_ENABLE_CI"                = "true"
+    "DOCKER_REGISTRY_SERVER_PASSWORD" = var.acr_password
+    "DOCKER_REGISTRY_SERVER_URL"      = var.acr_url
+    "DOCKER_REGISTRY_SERVER_USERNAME" = var.acr_username
+    "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
   }
 }
 
@@ -217,7 +260,7 @@ resource "azurerm_app_service" "web_app" {
 ############################
 resource "azurerm_storage_container" "documents" {
   name                  = var.blob_container_name
-  storage_account_id    = var.blob_storage_id
+  storage_account_id    = azurerm_storage_account.function_storage.id
   container_access_type = "private"
 }
 

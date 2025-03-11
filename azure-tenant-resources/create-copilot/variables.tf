@@ -12,6 +12,20 @@ variable "kubernetes_tenant_namespace" {
   type = string
 }
 
+# ACR
+
+variable "acr_url" {
+  type = string
+}
+
+variable "acr_username" {
+  type = string
+}
+
+variable "acr_password" {
+  type = string
+}
+
 # Azure Bot
 
 variable "bot_sku" {
@@ -71,11 +85,6 @@ variable "python_version" {
 }
 
 # Azure Blob Storage for Documents
-variable "blob_storage_id" {
-  type        = string
-  description = "ID of the Storage Account for Blob Storage."
-}
-
 variable "blob_container_name" {
   type        = string
   description = "Name of the container for storing documents."
