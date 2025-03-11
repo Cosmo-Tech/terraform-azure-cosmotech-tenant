@@ -1,12 +1,13 @@
 # azure
-deployment_type     = "Terraform"
-client_id           = ""
-client_secret       = ""
-platform_object_id  = ""
-identifier_uri      = ""
-tenant_sp_name      = ""
-tenant_sp_object_id = ""
-cloud_provider      = "azure"
+deployment_type            = "Terraform"
+client_id                  = ""
+client_secret              = ""
+platform_object_id         = ""
+identifier_uri             = ""
+tenant_sp_name             = ""
+tenant_sp_object_id        = ""
+cloud_provider             = "azure"
+azure_prerequisites_deploy = false
 
 # project
 customer_name = "cosmotech"
@@ -99,7 +100,6 @@ kusto_privatedns_zonename           = "privatelink.kusto.core.windows.net"
 vault_address        = "http://vault.vault.svc.cluster.local:8200"
 vault_namespace      = "vault"
 vault_token          = ""
-vault_sops_deploy    = false
 vault_create_entries = false
 engine_secret        = "cosmotech"
 engine_version       = "v1"
@@ -109,6 +109,7 @@ allowed_namespace    = ""
 platform_id          = ""
 
 # Vault secrets operator
+vault_secrets_operator_deploy        = false
 vault_secrets_operator_namespace     = "vault-secrets-operator"
 vault_secrets_operator_vault_address = "http://vault.vault.svc.cluster.local:8200"
 

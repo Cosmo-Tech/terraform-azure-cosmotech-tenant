@@ -7,9 +7,6 @@ variable "allowed_namespace" {
 variable "vault_address" {
   type = string
 }
-variable "vault_sops_namespace" {
-  type = string
-}
 variable "organization_name" {
   type = string
 }
@@ -21,9 +18,6 @@ variable "vault_create_entries" {
 }
 variable "engine_version" {
   type = string
-}
-variable "vault_sops_deploy" {
-  type = bool
 }
 variable "platform_id" {
   type = string
