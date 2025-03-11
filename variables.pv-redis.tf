@@ -18,10 +18,9 @@ variable "pv_redis_provider" {
   validation {
     condition = contains([
       "azure",
-      "aws",
       "longhorn",
     ], var.pv_redis_provider)
-    error_message = "Provider must be either: azure, aws, longhorn"
+    error_message = "Provider must be either: azure, longhorn"
   }
 }
 variable "pv_redis_master_disk_deploy" {

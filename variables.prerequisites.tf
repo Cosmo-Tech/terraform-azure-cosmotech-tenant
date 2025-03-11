@@ -1,14 +1,11 @@
 variable "platform_url" {
-  description = "The platform url"
+  type = string
 }
-
 variable "owner_list" {
-  description = "List of mail addresses for App Registration owners"
-  type        = list(string)
+  type = list(string)
 }
-
 variable "audience" {
-  description = "The App Registration audience type"
+  type = string
   validation {
     condition = contains([
       "AzureADMyOrg",
@@ -17,19 +14,13 @@ variable "audience" {
     error_message = "Only AzureADMyOrg and AzureADMultipleOrgs are supported for audience."
   }
 }
-
 variable "location" {
-  description = "The Azure location"
-  type        = string
+  type = string
 }
-
 variable "dns_zone_rg" {
-  description = "The DNS zone resource group"
-  type        = string
+  type = string
 }
-
 variable "user_app_role" {
-  description = "App role for azuread_application"
   type = list(object({
     description  = string
     display_name = string
@@ -37,40 +28,53 @@ variable "user_app_role" {
     role_value   = string
   }))
 }
-
 variable "image_path" {
   type = string
 }
-
 variable "create_restish" {
-  description = "Create the Azure Active Directory Application for Restish"
-  type        = bool
+  type = bool
 }
-
 variable "create_powerbi" {
-  description = "Create the Azure Active Directory Application for PowerBI"
-  type        = bool
+  type = bool
 }
-
 variable "create_babylon" {
-  description = "Create the Azure Active Directory Application for Babylon"
-  type        = bool
+  type = bool
 }
-
 variable "create_webapp" {
-  description = "Create the Azure Active Directory Application for WebApp"
-  type        = bool
+  type = bool
 }
-
 variable "create_secrets" {
-  description = "Create secrets for newly created app registrations"
-  type        = bool
+  type = bool
 }
-
 variable "create_platform" {
   type = string
 }
-
 variable "azure_prerequisites_deploy" {
   type = bool
+}
+variable "restish_sp_client_id" {
+  type = string
+}
+variable "restish_sp_client_secret" {
+  type      = string
+  sensitive = true
+}
+variable "swagger_sp_client_id" {
+  type = string
+}
+variable "create_keycloak" {
+  type = bool
+}
+variable "platform_name" {
+  type = string
+}
+variable "babylon_sp_client_id" {
+  type = string
+}
+variable "babylon_sp_object_id" {
+  type = string
+}
+variable "babylon_sp_client_secret" {
+  type      = string
+  sensitive = true
 }

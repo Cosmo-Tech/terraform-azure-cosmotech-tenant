@@ -6,10 +6,10 @@ module "services-secrets" {
   argo_database                 = var.argo_database
   postgresql_initdb_secret_name = var.postgresql_initdb_secret_name
   postgresql_secret_name        = var.postgresql_secret_name
-  argo_postgresql_user          = var.argo_postgresql_user
-  cosmotech_api_admin_username  = var.cosmotech_api_admin_username
-  cosmotech_api_reader_username = var.cosmotech_api_reader_username
-  cosmotech_api_writer_username = var.cosmotech_api_writer_username
+  argo_postgresql_user          = var.postgresql_argo_user
+  cosmotech_api_admin_username  = var.postgresql_cosmotech_api_admin_username
+  cosmotech_api_reader_username = var.postgresql_cosmotech_api_reader_username
+  cosmotech_api_writer_username = var.postgresql_cosmotech_api_writer_username
   monitoring_namespace          = var.monitoring_namespace
   kubernetes_namespace          = var.kubernetes_tenant_namespace
   first_tenant_in_cluster       = var.first_tenant_in_cluster

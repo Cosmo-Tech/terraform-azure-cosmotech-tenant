@@ -28,7 +28,7 @@ output "out_adx_cluster_name" {
 }
 
 output "out_api_cosmo_url" {
-  value = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_cosmo_api_url : "https://${var.network_dns_record}.${var.network_dns_zone_name}/${var.kubernetes_tenant_namespace}/${var.cosmotech_api_version_path}"
+  value = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_cosmo_api_url : "https://${var.network_dns_record}.${var.network_dns_zone_name}/${var.kubernetes_tenant_namespace}/${var.api_version_path}"
 }
 
 output "out_api_cosmo_scope" {
@@ -36,7 +36,7 @@ output "out_api_cosmo_scope" {
 }
 
 output "out_api_cosmo_version_path" {
-  value = var.cosmotech_api_version_path
+  value = var.api_version_path
 }
 
 output "out_tenant_resource_group" {
