@@ -56,11 +56,11 @@ output "out_azure_resource_location" {
 }
 
 output "out_azure_storage_account_name" {
-  value = var.storage_account_deploy ? module.create-storage.0.out_azure_storage_account_name : ""
+  value = var.storage_account_deploy ? module.create-storage.0.out_storage_account_name : ""
 }
 
 output "out_azure_storage_account_key" {
-  value     = var.storage_account_deploy ? module.create-storage.0.out_azure_storage_account_key : ""
+  value     = var.storage_account_deploy ? module.create-storage.0.out_storage_account_key : ""
   sensitive = true
 }
 
