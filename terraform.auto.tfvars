@@ -1,8 +1,3 @@
-host                   = ""
-client_certificate     = ""
-client_key             = ""
-cluster_ca_certificate = ""
-
 # Azure
 deployment_type     = "Terraform"
 client_id           = ""
@@ -12,8 +7,6 @@ identifier_uri      = ""
 tenant_sp_name      = ""
 tenant_sp_object_id = ""
 cloud_provider      = "azure"
-
-
 
 # project
 customer_name = "cosmotech"
@@ -102,13 +95,6 @@ kusto_double_encryption_enabled     = false
 kusto_public_network_access_enabled = true
 kusto_privatedns_zonename           = "privatelink.kusto.core.windows.net"
 
-# redis
-redis_managed_disk_name = ""
-redis_port              = 6379
-redis_disk_size_gb      = 64
-redis_disk_sku          = "Premium_LRS"
-redis_disk_tier         = "P6"
-
 # vault
 vault_address        = "http://vault.vault.svc.cluster.local:8200"
 vault_namespace      = "vault"
@@ -177,12 +163,12 @@ pv_minio_disk_master_name     = ""
 # services
 services_secrets_create = false
 
-cosmotech_api_reader_username = "cosmotech_api_reader"
-cosmotech_api_writer_username = "cosmotech_api_writer"
-cosmotech_api_admin_username  = "cosmotech_api_admin"
-postgresql_initdb_secret_name = "postgres-initdb"
-argo_postgresql_user          = "argo"
-postgresql_secret_name        = "postgres-config"
+postgresql_cosmotech_api_reader_username = "cosmotech_api_reader"
+postgresql_cosmotech_api_writer_username = "cosmotech_api_writer"
+postgresql_cosmotech_api_admin_username  = "cosmotech_api_admin"
+postgresql_initdb_secret_name            = "postgres-initdb"
+postgresql_argo_user                     = "argo"
+postgresql_secret_name                   = "postgres-config"
 
 # rabbitmq
 create_rabbitmq            = false
@@ -220,15 +206,14 @@ create_secrets  = false
 create_platform = false
 
 # cosmotech api
-servlet_context_path                = ""
-cosmotech_api_chart_package_version = "3.3.2"
-cosmotech_api_version               = "3.3.2"
-cosmotech_api_version_path          = "v3"
-create_platform_config              = false
-audience                            = "AzureADMultipleOrgs"
-platform_name                       = ""
-platform_url                        = ""
-dns_zone_rg                         = "phoenix"
+api_servlet_context_path  = ""
+api_chart_package_version = "3.3.2"
+api_version               = "3.3.2"
+api_version_path          = "v3"
+audience                  = "AzureADMultipleOrgs"
+platform_name             = ""
+platform_url              = ""
+dns_zone_rg               = "phoenix"
 user_app_role = [{
   description  = "Workspace Writer",
   display_name = "Workspace Writer",

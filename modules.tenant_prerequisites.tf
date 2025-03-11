@@ -20,11 +20,13 @@ module "azure-tenant-prerequisites" {
   virtual_network_address_prefix = var.network_tenant_address_prefix
   subnet_name                    = var.network_subnet_name
   dns_zone_rg                    = var.dns_zone_rg
-  api_version_path               = var.cosmotech_api_version_path
   customer_name                  = var.customer_name
   user_app_role                  = var.user_app_role
   image_path                     = var.image_path
-  chart_package_version          = var.cosmotech_api_chart_package_version
+  api_version_path               = var.api_version_path
+  chart_package_version          = var.api_chart_package_version
+  servlet_context_path           = var.api_servlet_context_path
+  api_dns_name                   = var.api_dns_name
   create_restish                 = var.create_restish
   create_powerbi                 = var.create_powerbi
   create_babylon                 = var.create_babylon
@@ -33,6 +35,4 @@ module "azure-tenant-prerequisites" {
   cost_center                    = var.cost_center
   kubernetes_tenant_namespace    = var.kubernetes_tenant_namespace
   cluster_name                   = var.cluster_name
-  servlet_context_path           = var.servlet_context_path
-  api_dns_name                   = var.api_dns_name
 }

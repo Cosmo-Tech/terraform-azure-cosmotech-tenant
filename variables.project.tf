@@ -1,18 +1,14 @@
 variable "project_name" {
-  description = "The project name"
+  type = string
 }
-
 variable "customer_name" {
-  description = "The customer name"
+  type = string
 }
-
 variable "customertag" {
   type = string
 }
-
 variable "project_stage" {
-  description = "The Project stage"
-  type        = string
+  type = string
   validation {
     condition = contains([
       "OnBoarding",
@@ -29,13 +25,9 @@ variable "project_stage" {
     error_message = "Stage must be either: OnBoarding, Dev, QA, IA, EA, Demo, Prod, PreProd, Doc, Support."
   }
 }
-
 variable "cost_center" {
-  description = "The value associated to a resource (tag)"
-  type        = string
+  type = string
 }
-
 variable "tags" {
-  description = "Tags to be applied to the resources"
-  type        = map(string)
+  type = map(string)
 }
