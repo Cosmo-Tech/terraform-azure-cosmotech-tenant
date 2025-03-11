@@ -138,9 +138,7 @@ module "azure-tenant-resources" {
 
   first_tenant_in_cluster = var.first_tenant_in_cluster
 
-  create_copilot = var.create_copilot
-
-  copilot_deploy_test_web_app = var.copilot_deploy_test_web_app
+  create_copilot           = var.create_copilot
 
   copilot_bot_sku          = var.copilot_bot_sku
   copilot_bot_endpoint     = var.copilot_bot_endpoint

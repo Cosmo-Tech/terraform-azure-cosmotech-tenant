@@ -12,10 +12,6 @@ variable "kubernetes_tenant_namespace" {
   type = string
 }
 
-variable "deploy_test_web_app" {
-  type = bool
-}
-
 # ACR
 
 variable "acr_url" {

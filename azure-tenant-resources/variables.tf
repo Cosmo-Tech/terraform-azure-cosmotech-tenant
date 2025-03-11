@@ -397,7 +397,3 @@ variable "copilot_gpt4_deployment_name" {
 variable "copilot_gpt4_model" {
   type = string
 }
-
-variable "copilot_deploy_test_web_app" {
-  type = bool
-}
