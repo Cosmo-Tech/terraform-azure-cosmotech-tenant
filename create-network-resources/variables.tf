@@ -32,7 +32,7 @@ variable "tenant_resource_group" {
   type        = string
 }
 
-variable "common_resource_group" {
+variable "kubernetes_resource_group" {
   description = "Name of the resource group where the platform resources are created"
   type        = string
 }

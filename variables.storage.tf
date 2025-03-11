@@ -33,3 +33,7 @@ variable "storage_access_tier" {
 variable "storage_default_action" {
   type = string
 }
+
+variable "storage_account_deploy" {
+  type = bool
+}

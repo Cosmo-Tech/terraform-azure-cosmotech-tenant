@@ -1,7 +1,234 @@
-# Prerequisites
-audience     = "AzureADMultipleOrgs"
-platform_url = ""
-dns_zone_rg  = "phoenix"
+host                   = ""
+client_certificate     = ""
+client_key             = ""
+cluster_ca_certificate = ""
+
+# Azure
+deployment_type     = "Terraform"
+client_id           = ""
+client_secret       = ""
+platform_object_id  = ""
+identifier_uri      = ""
+tenant_sp_name      = ""
+tenant_sp_object_id = ""
+cloud_provider      = "azure"
+
+
+
+# project
+customer_name = "cosmotech"
+customertag   = ""
+project_stage = "Dev"
+cost_center   = "NA"
+tags          = {}
+
+# backend remote
+tf_resource_group_name  = ""
+tf_storage_account_name = ""
+tf_container_name       = ""
+tf_blob_name_tenant     = ""
+tf_access_key           = ""
+
+# monitoring
+monitoring_namespace = "cosmotech-monitoring"
+monitoring_enabled   = true
+
+# kubernetes
+kubernetes_mc_resource_group_name = ""
+first_tenant_in_cluster           = false
+
+
+
+# Container registry
+acr_deploy                        = false
+acr_admin_enabled                 = true
+acr_quarantine_policy_enabled     = false
+acr_data_endpoint_enabled         = false
+acr_public_network_access_enabled = true
+acr_zone_redundancy_enabled       = false
+acr_trust_policy                  = false
+acr_retention_policy              = 7
+
+# network
+network_deploy                       = false
+network_client_secret                = ""
+network_tenant_address_prefix        = "10.10.0.0/16"
+network_tenant_subnet_address_prefix = "10.10.0.0/24"
+network_subnet_name                  = "default"
+network_dns_record_create            = false
+blob_private_dns_zonename            = "privatelink.blob.core.windows.net"
+queue_private_dns_zonename           = "privatelink.queue.core.windows.net"
+table_private_dns_zonename           = "privatelink.table.core.windows.net"
+eventhub_private_dns_zonename        = "privatelink.servicebus.windows.net"
+adt_private_dns_zonename             = "privatelink.digitaltwins.azure.net"
+network_dns_zone_name                = "api.cosmotech.com"
+network_dns_record                   = "warp"
+
+# storage
+storage_account_deploy                  = false
+storage_class_sku                       = "Standard_LRS"
+storage_kind                            = "StorageV2"
+storage_min_tls_version                 = "TLS1_2"
+storage_default_to_oauth_authentication = false
+storage_shared_access_key_enabled       = true
+storage_enable_https_traffic_only       = true
+storage_access_tier                     = "Hot"
+storage_public_network_access_enabled   = true
+storage_default_action                  = "Deny"
+storage_csm_ip                          = "185.55.98.16/29"
+
+# cert-manager
+cluster_issuer_name                = "letsencrypt-prod"
+tls_certificate_type               = "let_s_encrypt"
+tls_certificate_custom_certificate = ""
+tls_certificate_custom_key         = ""
+
+# event Hub
+create_eventhub                        = false
+eventhub_capacity                      = 2
+eventhub_public_network_access_enabled = true
+
+# kusto
+kusto_deploy                        = false
+kusto_auto_stop                     = false
+kusto_instance_type                 = "Standard_D12_v2"
+kustonr_instances                   = 2
+kusto_engine                        = "V2"
+kusto_trusted_external_tenants      = ["*"]
+kusto_disk_encryption_enabled       = false
+kusto_streaming_ingestion_enabled   = true
+kusto_purge_enabled                 = false
+kusto_double_encryption_enabled     = false
+kusto_public_network_access_enabled = true
+kusto_privatedns_zonename           = "privatelink.kusto.core.windows.net"
+
+# redis
+redis_managed_disk_name = ""
+redis_port              = 6379
+redis_disk_size_gb      = 64
+redis_disk_sku          = "Premium_LRS"
+redis_disk_tier         = "P6"
+
+# vault
+vault_address        = "http://vault.vault.svc.cluster.local:8200"
+vault_namespace      = "vault"
+vault_token          = ""
+vault_sops_deploy    = false
+vault_create_entries = false
+engine_secret        = "cosmotech"
+engine_version       = "v1"
+organization_name    = "cosmotech"
+container_tag        = "1.3.6"
+allowed_namespace    = ""
+platform_id          = ""
+
+# Vault secrets operator
+vault_secrets_operator_namespace     = "vault-secrets-operator"
+vault_secrets_operator_vault_address = "http://vault.vault.svc.cluster.local:8200"
+
+# redis pvc
+pv_redis_deploy                      = false
+pv_redis_master_disk_deploy          = false
+pv_redis_master_disk_source_existing = false
+pv_redis_storage_gbi                 = 32
+pv_redis_storage_account_type        = "Premium_LRS"
+pv_redis_storage_class_name          = "cosmotech-retain"
+pv_redis_replicas                    = 1
+pv_redis_provider                    = "azure"
+pv_redis_disk_master_name            = ""
+pv_redis_disk_replica_name           = ""
+
+# postgres pv
+pv_postgres_deploy               = false
+pv_postgres_disk_deploy          = false
+pv_postgres_disk_source_existing = false
+pv_postgres_storage_gbi          = 32
+pv_postgres_storage_account_type = "Premium_LRS"
+pv_postgres_storage_class_name   = "cosmotech-retain"
+pv_postgres_replicas             = 1
+pv_postgres_provider             = "azure"
+pv_postgres_disk_master_name     = ""
+
+# seaweedfs pv
+pv_seaweedfs_deploy                      = false
+pv_seaweedfs_master_disk_deploy          = false
+pv_seaweedfs_master_disk_source_existing = false
+pv_seaweedfs_volume_disk_deploy          = false
+pv_seaweedfs_volume_disk_source_existing = false
+pv_seaweedfs_storage_gbi                 = 32
+pv_seaweedfs_storage_account_type        = "Premium_LRS"
+pv_seaweedfs_storage_class_name          = "cosmotech-retain"
+pv_seaweedfs_replicas                    = 1
+pv_seaweedfs_provider                    = "azure"
+pv_seaweedfs_disk_master_name            = ""
+pv_seaweedfs_disk_volume_name            = ""
+
+# minio pv
+pv_minio_deploy               = false
+pv_minio_disk_deploy          = false
+pv_minio_disk_source_existing = false
+pv_minio_storage_gbi          = 32
+pv_minio_storage_account_type = "Premium_LRS"
+pv_minio_storage_class_name   = "cosmotech-retain"
+pv_minio_replicas             = 1
+pv_minio_provider             = "azure"
+pv_minio_disk_master_name     = ""
+
+# services
+services_secrets_create = false
+
+cosmotech_api_reader_username = "cosmotech_api_reader"
+cosmotech_api_writer_username = "cosmotech_api_writer"
+cosmotech_api_admin_username  = "cosmotech_api_admin"
+postgresql_initdb_secret_name = "postgres-initdb"
+argo_postgresql_user          = "argo"
+postgresql_secret_name        = "postgres-config"
+
+# rabbitmq
+create_rabbitmq            = false
+rabbitmq_listener_username = "cosmotech_api_listener"
+rabbitmq_sender_username   = "cosmotech_run_sender"
+
+# seaweedfs
+seaweedfs_database = "seaweedfs"
+seaweedfs_username = "seaweedfs"
+
+# argo
+argo_database              = "argo_workflows"
+argo_workflows_s3_username = "argo_workflows"
+
+# restish
+create_restish           = false
+restish_sp_client_id     = ""
+restish_sp_client_secret = ""
+
+# Babylon
+create_babylon           = false
+babylon_sp_client_id     = ""
+babylon_sp_object_id     = ""
+babylon_sp_client_secret = ""
+
+# keycloak 
+create_keycloak = true
+
+# swagger
+swagger_sp_client_id = ""
+
+create_powerbi  = false
+create_webapp   = false
+create_secrets  = false
+create_platform = false
+
+# cosmotech api
+servlet_context_path                = ""
+cosmotech_api_chart_package_version = "3.3.2"
+cosmotech_api_version               = "3.3.2"
+cosmotech_api_version_path          = "v3"
+create_platform_config              = false
+audience                            = "AzureADMultipleOrgs"
+platform_name                       = ""
+platform_url                        = ""
+dns_zone_rg                         = "phoenix"
 user_app_role = [{
   description  = "Workspace Writer",
   display_name = "Workspace Writer",
@@ -109,227 +336,4 @@ user_app_role = [{
   role_value   = "Platform.Admin"
   }
 ]
-image_path      = "./cosmotech.png"
-create_restish  = false
-create_powerbi  = false
-create_babylon  = false
-create_webapp   = false
-create_secrets  = false
-create_platform = false
-
-host                   = ""
-client_certificate     = ""
-client_key             = ""
-cluster_ca_certificate = ""
-
-# Azure
-deployment_type               = "Terraform"
-client_id                     = ""
-client_secret                 = ""
-platform_object_id            = ""
-identifier_uri                = ""
-tenant_sp_name                = ""
-tenant_sp_object_id           = ""
-cloud_provider                = "azure"
-azure_tenant_resources_deploy = false
-
-# kubernetes
-kubernetes_mc_resource_group_name = ""
-first_tenant_in_cluster           = false
-
-# services
-services_secrets_create = false
-
-# Container registry
-container_admin_enabled                 = true
-container_quarantine_policy_enabled     = false
-container_data_endpoint_enabled         = false
-container_public_network_access_enabled = true
-container_zone_redundancy_enabled       = false
-container_trust_policy                  = false
-container_retention_policy              = 7
-
-# backend remote
-tf_resource_group_name  = ""
-tf_storage_account_name = ""
-tf_container_name       = ""
-tf_blob_name_tenant     = ""
-tf_access_key           = ""
-
-# network
-network_client_secret                = ""
-network_tenant_address_prefix        = "10.10.0.0/16"
-network_tenant_subnet_address_prefix = "10.10.0.0/24"
-network_subnet_name                  = "default"
-network_dns_record_create            = false
-blob_private_dns_zonename            = "privatelink.blob.core.windows.net"
-queue_private_dns_zonename           = "privatelink.queue.core.windows.net"
-table_private_dns_zonename           = "privatelink.table.core.windows.net"
-eventhub_private_dns_zonename        = "privatelink.servicebus.windows.net"
-adt_private_dns_zonename             = "privatelink.digitaltwins.azure.net"
-network_dns_zone_name                = "api.cosmotech.com"
-network_dns_record                   = "warp"
-
-# project
-customer_name = "cosmotech"
-customertag   = ""
-project_stage = "Dev"
-cost_center   = "NA"
-tags          = {}
-
-# storage
-storage_class_sku                       = "Standard_LRS"
-storage_kind                            = "StorageV2"
-storage_min_tls_version                 = "TLS1_2"
-storage_default_to_oauth_authentication = false
-storage_shared_access_key_enabled       = true
-storage_enable_https_traffic_only       = true
-storage_access_tier                     = "Hot"
-storage_public_network_access_enabled   = true
-storage_default_action                  = "Deny"
-storage_csm_ip                          = "185.55.98.16/29"
-
-# restish
-restish_sp_client_id     = ""
-restish_sp_client_secret = ""
-
-# Babylon
-platform_name            = ""
-babylon_sp_client_id     = ""
-babylon_sp_object_id     = ""
-babylon_sp_client_secret = ""
-
-# keycloak app
-create_keycloak = true
-
-# swagger
-swagger_sp_client_id = ""
-
-# cosmotech api
-servlet_context_path                = ""
-cosmotech_api_chart_package_version = "3.3.2"
-cosmotech_api_version               = "3.3.2"
-cosmotech_api_version_path          = "v3"
-create_platform_config              = false
-
-# argo
-argo_database              = "argo_workflows"
-argo_workflows_s3_username = "argo_workflows"
-
-# cert-manager
-cluster_issuer_name                = "letsencrypt-prod"
-tls_certificate_type               = "let_s_encrypt"
-tls_certificate_custom_certificate = ""
-tls_certificate_custom_key         = ""
-
-# event Hub
-create_eventhub                        = false
-eventhub_capacity                      = 2
-eventhub_public_network_access_enabled = true
-
-# monitoring
-monitoring_namespace = "cosmotech-monitoring"
-monitoring_enabled   = true
-
-# kusto
-kusto_auto_stop                     = false
-kusto_instance_type                 = "Standard_D12_v2"
-kustonr_instances                   = 2
-kusto_engine                        = "V2"
-kusto_trusted_external_tenants      = ["*"]
-kusto_disk_encryption_enabled       = false
-kusto_streaming_ingestion_enabled   = true
-kusto_purge_enabled                 = false
-kusto_double_encryption_enabled     = false
-kusto_public_network_access_enabled = true
-kusto_privatedns_zonename           = "privatelink.kusto.core.windows.net"
-kusto_deploy                        = true
-
-# postgres
-cosmotech_api_reader_username = "cosmotech_api_reader"
-cosmotech_api_writer_username = "cosmotech_api_writer"
-cosmotech_api_admin_username  = "cosmotech_api_admin"
-postgresql_initdb_secret_name = "postgres-initdb"
-argo_postgresql_user          = "argo"
-postgresql_secret_name        = "postgres-config"
-
-# rabbitmq
-create_rabbitmq            = false
-rabbitmq_listener_username = "cosmotech_api_listener"
-rabbitmq_sender_username   = "cosmotech_run_sender"
-
-# seaweedfs
-seaweedfs_database = "seaweedfs"
-seaweedfs_username = "seaweedfs"
-
-# redis
-redis_managed_disk_name = ""
-redis_port              = 6379
-redis_disk_size_gb      = 64
-redis_disk_sku          = "Premium_LRS"
-redis_disk_tier         = "P6"
-
-# vault
-vault_address        = ""
-vault_namespace      = "vault"
-vault_token          = ""
-vault_sops_deploy    = false
-vault_create_entries = false
-engine_secret        = "cosmotech"
-engine_version       = "v1"
-organization_name    = "cosmotech"
-container_tag        = ""
-allowed_namespace    = ""
-platform_id          = ""
-
-# Vault secrets operator
-vault_secrets_operator_namespace     = "vault-secrets-operator"
-vault_secrets_operator_vault_address = "http://vault.vault.svc.cluster.local:8200"
-
-# redis pvc
-pv_redis_deploy                      = false
-pv_redis_master_disk_deploy          = false
-pv_redis_master_disk_source_existing = false
-pv_redis_storage_gbi                 = 32
-pv_redis_storage_account_type        = "Premium_LRS"
-pv_redis_storage_class_name          = "cosmotech-retain"
-pv_redis_replicas                    = 1
-pv_redis_provider                    = "azure"
-pv_redis_disk_master_name            = "disk-redis-master-tenant"
-pv_redis_disk_replica_name           = "disk-redis-replica-tenant"
-
-# postgres pv
-pv_postgres_deploy               = false
-pv_postgres_disk_deploy          = false
-pv_postgres_disk_source_existing = false
-pv_postgres_storage_gbi          = 32
-pv_postgres_storage_account_type = "Premium_LRS"
-pv_postgres_storage_class_name   = "cosmotech-retain"
-pv_postgres_replicas             = 1
-pv_postgres_provider             = "azure"
-pv_postgres_disk_master_name     = "disk-postgres-tenant"
-
-# seaweedfs pv
-pv_seaweedfs_deploy                      = false
-pv_seaweedfs_master_disk_deploy          = false
-pv_seaweedfs_master_disk_source_existing = false
-pv_seaweedfs_volume_disk_deploy          = false
-pv_seaweedfs_volume_disk_source_existing = false
-pv_seaweedfs_storage_gbi                 = 32
-pv_seaweedfs_storage_account_type        = "Premium_LRS"
-pv_seaweedfs_storage_class_name          = "cosmotech-retain"
-pv_seaweedfs_replicas                    = 1
-pv_seaweedfs_provider                    = "azure"
-pv_seaweedfs_disk_master_name            = "disk-seaweedfs-tenant-master"
-pv_seaweedfs_disk_volume_name            = "disk-seaweedfs-tenant-volume"
-
-# minio pv
-pv_minio_deploy               = false
-pv_minio_disk_deploy          = false
-pv_minio_disk_source_existing = false
-pv_minio_storage_gbi          = 32
-pv_minio_storage_account_type = "Premium_LRS"
-pv_minio_storage_class_name   = "cosmotech-retain"
-pv_minio_replicas             = 1
-pv_minio_provider             = "azure"
-pv_minio_disk_master_name     = "disk-minio-tenant"
+image_path = "./cosmotech.png"

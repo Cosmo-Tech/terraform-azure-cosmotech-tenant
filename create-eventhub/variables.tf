@@ -32,7 +32,7 @@ variable "subnet_id" {
   type = string
 }
 
-variable "common_resource_group" {
+variable "kubernetes_resource_group" {
   type = string
 }
 
