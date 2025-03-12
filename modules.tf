@@ -163,8 +163,6 @@ module "azure-tenant-resources" {
   copilot_gpt4_deployment_name = var.copilot_gpt4_deployment_name
   copilot_gpt4_model_name      = var.copilot_gpt4_model_name
   copilot_gpt4_model_version   = var.copilot_gpt4_model_version
-
-  depends_on = [module.azure-tenant-prerequisites]
 }
 
 module "create-vault-entries" {
