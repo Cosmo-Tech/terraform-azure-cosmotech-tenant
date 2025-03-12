@@ -67,6 +67,10 @@
 | <a name="input_container_zone_redundancy_enabled"></a> [container\_zone\_redundancy\_enabled](#input\_container\_zone\_redundancy\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_copilot_ada_deployment_name"></a> [copilot\_ada\_deployment\_name](#input\_copilot\_ada\_deployment\_name) | Deployment name for the Ada model. | `string` | n/a | yes |
 | <a name="input_copilot_ada_model"></a> [copilot\_ada\_model](#input\_copilot\_ada\_model) | Model to be used for the Ada deployment. | `string` | n/a | yes |
+| <a name="input_copilot_azure_function_docker_image"></a> [copilot\_azure\_function\_docker\_image](#input\_copilot\_azure\_function\_docker\_image) | n/a | `string` | n/a | yes |
+| <a name="input_copilot_azure_function_docker_tag"></a> [copilot\_azure\_function\_docker\_tag](#input\_copilot\_azure\_function\_docker\_tag) | n/a | `string` | n/a | yes |
+| <a name="input_copilot_azure_webapp_docker_image"></a> [copilot\_azure\_webapp\_docker\_image](#input\_copilot\_azure\_webapp\_docker\_image) | n/a | `string` | n/a | yes |
+| <a name="input_copilot_azure_webapp_docker_tag"></a> [copilot\_azure\_webapp\_docker\_tag](#input\_copilot\_azure\_webapp\_docker\_tag) | n/a | `string` | n/a | yes |
 | <a name="input_copilot_blob_container_name"></a> [copilot\_blob\_container\_name](#input\_copilot\_blob\_container\_name) | Name of the container for storing documents. | `string` | n/a | yes |
 | <a name="input_copilot_bot_endpoint"></a> [copilot\_bot\_endpoint](#input\_copilot\_bot\_endpoint) | The endpoint URL for the bot. | `string` | n/a | yes |
 | <a name="input_copilot_bot_sku"></a> [copilot\_bot\_sku](#input\_copilot\_bot\_sku) | SKU of the bot. | `string` | n/a | yes |
