@@ -10,6 +10,7 @@
 | <a name="requirement_http"></a> [http](#requirement\_http) | 3.4.5 |
 | <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | 2.1.3 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.35.1 |
+| <a name="requirement_restapi"></a> [restapi](#requirement\_restapi) | 1.20.0 |
 
 ## Providers
 
@@ -39,6 +40,7 @@
 | [azurerm_kubernetes_cluster.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/data-sources/kubernetes_cluster) | data source |
 | [azurerm_resource_group.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/data-sources/resource_group) | data source |
 | [azurerm_resource_group.tenant_rg](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/data-sources/resource_group) | data source |
+| [azurerm_search_service_keys.search_keys](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/search_service_keys) | data source |
 | [azurerm_virtual_network.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/data-sources/virtual_network) | data source |
 
 ## Inputs
