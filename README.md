@@ -72,11 +72,9 @@
 | <a name="input_copilot_azure_webapp_docker_image"></a> [copilot\_azure\_webapp\_docker\_image](#input\_copilot\_azure\_webapp\_docker\_image) | n/a | `string` | n/a | yes |
 | <a name="input_copilot_azure_webapp_docker_tag"></a> [copilot\_azure\_webapp\_docker\_tag](#input\_copilot\_azure\_webapp\_docker\_tag) | n/a | `string` | n/a | yes |
 | <a name="input_copilot_blob_container_name"></a> [copilot\_blob\_container\_name](#input\_copilot\_blob\_container\_name) | Name of the container for storing documents. | `string` | n/a | yes |
-| <a name="input_copilot_bot_endpoint"></a> [copilot\_bot\_endpoint](#input\_copilot\_bot\_endpoint) | The endpoint URL for the bot. | `string` | n/a | yes |
 | <a name="input_copilot_bot_sku"></a> [copilot\_bot\_sku](#input\_copilot\_bot\_sku) | SKU of the bot. | `string` | n/a | yes |
 | <a name="input_copilot_gpt4_deployment_name"></a> [copilot\_gpt4\_deployment\_name](#input\_copilot\_gpt4\_deployment\_name) | Deployment name for the GPT-4 model. | `string` | n/a | yes |
 | <a name="input_copilot_gpt4_model"></a> [copilot\_gpt4\_model](#input\_copilot\_gpt4\_model) | Model to be used for the GPT-4 deployment. | `string` | n/a | yes |
-| <a name="input_copilot_microsoft_app_id"></a> [copilot\_microsoft\_app\_id](#input\_copilot\_microsoft\_app\_id) | Microsoft App ID associated with the bot. | `string` | n/a | yes |
 | <a name="input_copilot_openai_kind"></a> [copilot\_openai\_kind](#input\_copilot\_openai\_kind) | Type of the Cognitive Services account (must be 'OpenAI'). | `string` | n/a | yes |
 | <a name="input_copilot_openai_sku"></a> [copilot\_openai\_sku](#input\_copilot\_openai\_sku) | SKU for the Cognitive Services account. | `string` | n/a | yes |
 | <a name="input_copilot_search_index_name"></a> [copilot\_search\_index\_name](#input\_copilot\_search\_index\_name) | Name of the Azure Search index. | `string` | n/a | yes |
