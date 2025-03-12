@@ -158,9 +158,11 @@ module "azure-tenant-resources" {
   copilot_blob_container_name = var.copilot_blob_container_name
 
   copilot_ada_deployment_name  = var.copilot_ada_deployment_name
-  copilot_ada_model            = var.copilot_ada_model
+  copilot_ada_model_name       = var.copilot_ada_model_name
+  copilot_ada_model_version    = var.copilot_ada_model_version
   copilot_gpt4_deployment_name = var.copilot_gpt4_deployment_name
-  copilot_gpt4_model           = var.copilot_gpt4_model
+  copilot_gpt4_model_name      = var.copilot_gpt4_model_name
+  copilot_gpt4_model_version   = var.copilot_gpt4_model_version
 
   depends_on = [module.azure-tenant-prerequisites]
 }

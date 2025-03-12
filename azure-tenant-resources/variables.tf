@@ -378,7 +378,11 @@ variable "copilot_ada_deployment_name" {
   type = string
 }
 
-variable "copilot_ada_model" {
+variable "copilot_ada_model_name" {
+  type = string
+}
+
+variable "copilot_ada_model_version" {
   type = string
 }
 
@@ -386,7 +390,11 @@ variable "copilot_gpt4_deployment_name" {
   type = string
 }
 
-variable "copilot_gpt4_model" {
+variable "copilot_gpt4_model_name" {
+  type = string
+}
+
+variable "copilot_gpt4_model_version" {
   type = string
 }
 

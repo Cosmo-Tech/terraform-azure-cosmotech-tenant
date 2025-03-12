@@ -100,9 +100,14 @@ variable "ada_deployment_name" {
   description = "Deployment name for the Ada model."
 }
 
-variable "ada_model" {
+variable "ada_model_name" {
   type        = string
   description = "Model to be used for the Ada deployment."
+}
+
+variable "ada_model_version" {
+  type        = string
+  description = "Version to be used for the Ada deployment."
 }
 
 variable "gpt4_deployment_name" {
@@ -110,7 +115,12 @@ variable "gpt4_deployment_name" {
   description = "Deployment name for the GPT-4 model."
 }
 
-variable "gpt4_model" {
+variable "gpt4_model_name" {
   type        = string
   description = "Model to be used for the GPT-4 deployment."
+}
+
+variable "gpt4_model_version" {
+  type        = string
+  description = "Version to be used for the GPT-4 deployment."
 }

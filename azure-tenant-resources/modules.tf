@@ -205,9 +205,11 @@ module "create-copilot" {
   blob_container_name = var.copilot_blob_container_name
 
   ada_deployment_name  = var.copilot_ada_deployment_name
-  ada_model            = var.copilot_ada_model
+  ada_model_name       = var.copilot_ada_model_name
+  ada_model_version    = var.copilot_ada_model_version
   gpt4_deployment_name = var.copilot_gpt4_deployment_name
-  gpt4_model           = var.copilot_gpt4_model
+  gpt4_model_name      = var.copilot_gpt4_model_name
+  gpt4_model_version   = var.copilot_gpt4_model_version
 
   depends_on = [module.create-storage, module.create-container-registry]
 }

@@ -279,17 +279,27 @@ resource "azurerm_template_deployment" "ada_deployment" {
   "contentVersion": "1.0.0.0",
   "parameters": {
     "accountName": { "type": "string" },
-    "deploymentName": { "type": "string", "defaultValue": "${var.ada_deployment_name}" },
-    "model": { "type": "string", "defaultValue": "${var.ada_model}" }
+    "deploymentName": { "type": "string" },
+    "modelName": { "type": "string" },
+    "modelVersion": { "type": "string" }
   },
   "resources": [
     {
       "type": "Microsoft.CognitiveServices/accounts/deployments",
       "apiVersion": "2024-10-01",
       "name": "[concat(parameters('accountName'), '/', parameters('deploymentName'))]",
+      "sku": {
+        "name": "Standard",
+        "capacity": 120
+      },
       "properties": {
-        "model": "[parameters('model')]",
-        "scaleSettings": { "scaleType": "Standard", "capacity": 1 }
+        "model": {
+          "format": "OpenAI",
+          "name": "[parameters('modelName')]",
+          "version": "[parameters('modelVersion')]"
+        },
+        "versionUpgradeOption": "OnceNewDefaultVersionAvailable",
+        "raiPolicyName": "Microsoft.Default"
       }
     }
   ]
@@ -300,9 +310,12 @@ TEMPLATE
 {
   "accountName": { "value": "${azurerm_cognitive_account.openai.name}" },
   "deploymentName": { "value": "${var.ada_deployment_name}" },
-  "model": { "value": "${var.ada_model}" }
+  "modelName": { "value": "${var.ada_model_name}" },
+  "modelVersion": { "value": "${var.ada_model_version}" }
 }
 PARAMETERS
+
+  depends_on = [azurerm_cognitive_account.openai]
 }
 
 resource "azurerm_template_deployment" "gpt4_deployment" {
@@ -316,17 +329,27 @@ resource "azurerm_template_deployment" "gpt4_deployment" {
   "contentVersion": "1.0.0.0",
   "parameters": {
     "accountName": { "type": "string" },
-    "deploymentName": { "type": "string", "defaultValue": "${var.gpt4_deployment_name}" },
-    "model": { "type": "string", "defaultValue": "${var.gpt4_model}" }
+    "deploymentName": { "type": "string" },
+    "modelName": { "type": "string" },
+    "modelVersion": { "type": "string" }
   },
   "resources": [
     {
       "type": "Microsoft.CognitiveServices/accounts/deployments",
-      "apiVersion": "2022-12-01",
+      "apiVersion": "2024-10-01",
       "name": "[concat(parameters('accountName'), '/', parameters('deploymentName'))]",
+      "sku": {
+        "name": "Standard",
+        "capacity": 19
+      },
       "properties": {
-        "model": "[parameters('model')]",
-        "scaleSettings": { "scaleType": "Standard", "capacity": 1 }
+        "model": {
+          "format": "OpenAI",
+          "name": "[parameters('modelName')]",
+          "version": "[parameters('modelVersion')]"
+        },
+        "versionUpgradeOption": "OnceCurrentVersionExpired",
+        "raiPolicyName": "Microsoft.Default"
       }
     }
   ]
@@ -337,7 +360,103 @@ TEMPLATE
 {
   "accountName": { "value": "${azurerm_cognitive_account.openai.name}" },
   "deploymentName": { "value": "${var.gpt4_deployment_name}" },
-  "model": { "value": "${var.gpt4_model}" }
+  "modelName": { "value": "${var.gpt4_model_name}" },
+  "modelVersion": { "value": "${var.gpt4_model_version}" }
 }
 PARAMETERS
+
+  depends_on = [azurerm_cognitive_account.openai]
+}
+
+# RAI policies deployment
+resource "azurerm_template_deployment" "rai_policy_default" {
+  name                = "rai-policy-default"
+  resource_group_name = var.tenant_resource_group
+  deployment_mode     = "Incremental"
+
+  template_body = <<TEMPLATE
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "accountName": { "type": "string" }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.CognitiveServices/accounts/raiPolicies",
+      "apiVersion": "2024-10-01",
+      "name": "[concat(parameters('accountName'), '/Microsoft.Default')]",
+      "properties": {
+        "mode": "Blocking",
+        "contentFilters": [
+          {
+            "name": "Hate",
+            "severityThreshold": "Medium",
+            "blocking": true,
+            "enabled": true,
+            "source": "Prompt"
+          },
+          {
+            "name": "Hate",
+            "severityThreshold": "Medium",
+            "blocking": true,
+            "enabled": true,
+            "source": "Completion"
+          },
+          {
+            "name": "Sexual",
+            "severityThreshold": "Medium",
+            "blocking": true,
+            "enabled": true,
+            "source": "Prompt"
+          },
+          {
+            "name": "Sexual",
+            "severityThreshold": "Medium",
+            "blocking": true,
+            "enabled": true,
+            "source": "Completion"
+          },
+          {
+            "name": "Violence",
+            "severityThreshold": "Medium",
+            "blocking": true,
+            "enabled": true,
+            "source": "Prompt"
+          },
+          {
+            "name": "Violence",
+            "severityThreshold": "Medium",
+            "blocking": true,
+            "enabled": true,
+            "source": "Completion"
+          },
+          {
+            "name": "Selfharm",
+            "severityThreshold": "Medium",
+            "blocking": true,
+            "enabled": true,
+            "source": "Prompt"
+          },
+          {
+            "name": "Selfharm",
+            "severityThreshold": "Medium",
+            "blocking": true,
+            "enabled": true,
+            "source": "Completion"
+          }
+        ]
+      }
+    }
+  ]
+}
+TEMPLATE
+
+  parameters = <<PARAMETERS
+{
+  "accountName": { "value": "${azurerm_cognitive_account.openai.name}" }
+}
+PARAMETERS
+
+  depends_on = [azurerm_cognitive_account.openai]
 }
