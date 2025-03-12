@@ -192,7 +192,6 @@ module "create-copilot" {
   kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
 
   bot_sku          = var.copilot_bot_sku
-  bot_endpoint     = var.copilot_bot_endpoint
   microsoft_app_id = var.copilot_microsoft_app_id
 
   openai_kind = var.copilot_openai_kind

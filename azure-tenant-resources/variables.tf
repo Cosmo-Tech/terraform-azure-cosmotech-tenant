@@ -342,10 +342,6 @@ variable "copilot_bot_sku" {
   type = string
 }
 
-variable "copilot_bot_endpoint" {
-  type = string
-}
-
 variable "copilot_microsoft_app_id" {
   type = string
 }

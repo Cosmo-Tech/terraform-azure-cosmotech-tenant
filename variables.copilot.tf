@@ -9,16 +9,6 @@ variable "copilot_bot_sku" {
   description = "SKU of the bot."
 }
 
-variable "copilot_bot_endpoint" {
-  type        = string
-  description = "The endpoint URL for the bot."
-}
-
-variable "copilot_microsoft_app_id" {
-  type        = string
-  description = "Microsoft App ID associated with the bot."
-}
-
 # Cognitive Services / Azure Open AI
 
 variable "copilot_openai_kind" {

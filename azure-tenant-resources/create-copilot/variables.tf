@@ -49,11 +49,6 @@ variable "bot_sku" {
   description = "SKU of the bot."
 }
 
-variable "bot_endpoint" {
-  type        = string
-  description = "The endpoint URL for the bot."
-}
-
 variable "microsoft_app_id" {
   type        = string
   description = "Microsoft App ID associated with the bot."

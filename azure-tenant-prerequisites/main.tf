@@ -329,8 +329,6 @@ resource "azuread_application" "bot" {
   tags             = local.app_tags
 
   web {
-    homepage_url  = var.bot_endpoint
-    redirect_uris = [var.bot_endpoint]
     implicit_grant {
       access_token_issuance_enabled = true
     }

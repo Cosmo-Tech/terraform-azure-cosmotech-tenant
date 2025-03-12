@@ -156,7 +156,3 @@ variable "servlet_context_path" {
 variable "create_copilot" {
   type = bool
 }
-
-variable "bot_endpoint" {
-  type = string
-}

@@ -34,7 +34,6 @@ module "azure-tenant-prerequisites" {
   cluster_name                   = var.cluster_name
   servlet_context_path           = var.servlet_context_path
   create_copilot                 = var.create_copilot
-  bot_endpoint                   = var.copilot_bot_endpoint
 }
 
 module "azure-tenant-resources" {
@@ -141,7 +140,6 @@ module "azure-tenant-resources" {
   create_copilot = var.create_copilot
 
   copilot_bot_sku          = var.copilot_bot_sku
-  copilot_bot_endpoint     = var.copilot_bot_endpoint
   copilot_microsoft_app_id = module.azure-tenant-prerequisites.out_bot_application_id
 
   copilot_openai_kind = var.copilot_openai_kind

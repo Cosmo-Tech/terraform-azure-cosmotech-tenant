@@ -25,7 +25,6 @@ resource "azurerm_bot_channels_registration" "bot" {
   resource_group_name = var.tenant_resource_group
   sku                 = var.bot_sku
   display_name        = local.bot_display_name
-  endpoint            = var.bot_endpoint
   microsoft_app_id    = var.microsoft_app_id
 }
 
@@ -286,7 +285,7 @@ resource "azurerm_template_deployment" "ada_deployment" {
   "resources": [
     {
       "type": "Microsoft.CognitiveServices/accounts/deployments",
-      "apiVersion": "2022-12-01",
+      "apiVersion": "2024-10-01",
       "name": "[concat(parameters('accountName'), '/', parameters('deploymentName'))]",
       "properties": {
         "model": "[parameters('model')]",
