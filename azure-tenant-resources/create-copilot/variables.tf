@@ -93,13 +93,6 @@ variable "search_index_name" {
   description = "Name of the Azure Search index."
 }
 
-# Azure Function App
-
-variable "python_version" {
-  type        = string
-  description = "Python version used by the Function App."
-}
-
 # Azure Blob Storage for Documents
 variable "blob_container_name" {
   type        = string

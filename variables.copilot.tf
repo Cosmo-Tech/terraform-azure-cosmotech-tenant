@@ -71,12 +71,6 @@ variable "copilot_azure_webapp_docker_tag" {
   type = string
 }
 
-# Azure Function App
-variable "copilot_python_version" {
-  type        = string
-  description = "Python version used by the Function App."
-}
-
 # Azure Blob Storage for Documents
 variable "copilot_blob_container_name" {
   type        = string

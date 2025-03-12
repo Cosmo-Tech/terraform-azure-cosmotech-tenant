@@ -157,8 +157,6 @@ module "azure-tenant-resources" {
   copilot_azure_webapp_docker_image   = var.copilot_azure_webapp_docker_image
   copilot_azure_webapp_docker_tag     = var.copilot_azure_webapp_docker_tag
 
-  copilot_python_version = var.copilot_python_version
-
   copilot_blob_container_name = var.copilot_blob_container_name
 
   copilot_ada_deployment_name  = var.copilot_ada_deployment_name

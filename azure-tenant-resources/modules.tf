@@ -203,8 +203,6 @@ module "create-copilot" {
   search_partition_count = var.copilot_search_partition_count
   search_index_name      = var.copilot_search_index_name
 
-  python_version = var.copilot_python_version
-
   blob_container_name = var.copilot_blob_container_name
 
   ada_deployment_name  = var.copilot_ada_deployment_name

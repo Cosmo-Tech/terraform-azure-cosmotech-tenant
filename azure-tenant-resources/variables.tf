@@ -374,10 +374,6 @@ variable "copilot_search_index_name" {
   type = string
 }
 
-variable "copilot_python_version" {
-  type = string
-}
-
 variable "copilot_blob_container_name" {
   type = string
 }
