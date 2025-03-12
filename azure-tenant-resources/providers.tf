@@ -6,8 +6,9 @@ terraform {
     }
     # For ai search index deployment
     restapi = {
-      source  = "mastercard/restapi"
+      source  = "Mastercard/restapi"
       version = "1.20.0"
+      configuration_aliases = [restapi]
     }
   }
 }
