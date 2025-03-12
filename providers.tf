@@ -24,6 +24,11 @@ terraform {
       source  = "hashicorp/http"
       version = "3.4.4"
     }
+    # For ai search index deployment
+    restapi = {
+      source  = "mastercard/restapi"
+      version = "1.20.0"
+    }
   }
   required_version = ">= 1.3.9"
 }
@@ -67,4 +72,19 @@ provider "kubectl" {
   cluster_ca_certificate = local.cluster_ca_certificate
 
   load_config_file = false
+}
+
+data "azurerm_search_service_keys" "search_keys" {
+  name                = azurerm_search_service.search_service.name
+  resource_group_name = var.tenant_resource_group
+  depends_on          = [azurerm_search_service.search_service]
+}
+
+provider "restapi" {
+  uri                  = "https://${azurerm_search_service.search_service.name}.search.windows.net"
+  write_returns_object = true
+  headers = {
+    "api-key"      = data.azurerm_search_service_keys.search_keys.primary_key,
+    "Content-Type" = "application/json"
+  }
 }
