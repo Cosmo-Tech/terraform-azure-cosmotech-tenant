@@ -19,8 +19,8 @@ module "create-kusto" {
   purge_enabled                 = var.kusto_purge_enabled
   double_encryption_enabled     = var.kusto_double_encryption_enabled
   public_network_access_enabled = var.kusto_public_network_access_enabled
-  private_dns_zone_id           = module.create-network-resources.0.out_blob_private_dns_zone_id
-  subnet_id                     = module.create-network-resources.0.out_subnet_id
+  private_dns_zone_id           = var.network_deploy ? module.create-network-resources.0.out_blob_private_dns_zone_id : ""
+  subnet_id                     = var.network_deploy ? module.create-network-resources.0.out_subnet_id : ""
   auto_stop_kusto               = var.kusto_auto_stop
   kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
 
