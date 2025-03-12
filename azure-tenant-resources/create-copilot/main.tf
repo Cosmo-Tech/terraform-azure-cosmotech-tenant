@@ -1,3 +1,27 @@
+terraform {
+  required_providers {
+    restapi = {
+      source  = "Mastercard/restapi"
+      version = "1.20.0"
+    }
+  }
+}
+
+data "azurerm_search_service_keys" "search_keys" {
+  name                = azurerm_search_service.search_service.name
+  resource_group_name = var.tenant_resource_group
+  depends_on          = [azurerm_search_service.search_service]
+}
+
+provider "restapi" {
+  uri                  = "https://${azurerm_search_service.search_service.name}.search.windows.net"
+  write_returns_object = true
+  headers = {
+    "api-key"      = data.azurerm_search_service_keys.search_keys.primary_key,
+    "Content-Type" = "application/json"
+  }
+}
+
 locals {
   namespace = var.kubernetes_tenant_namespace
 
@@ -75,7 +99,7 @@ resource "azurerm_search_service" "search_service" {
 }
 
 resource "restapi_object" "ai_search_index" {
-  provider     = restapi.restapi_headers
+  provider     = restapi
   path         = "/indexes"
   query_string = "api-version=2023-11-01"
   data = jsonencode({
