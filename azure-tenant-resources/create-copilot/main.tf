@@ -75,6 +75,7 @@ resource "azurerm_search_service" "search_service" {
 }
 
 resource "restapi_object" "ai_search_index" {
+  provider = restapi.restapi_headers
   path         = "/indexes"
   query_string = "api-version=2023-11-01"
   data = jsonencode({
