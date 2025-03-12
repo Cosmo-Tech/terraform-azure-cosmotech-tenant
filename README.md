@@ -79,7 +79,6 @@
 | <a name="input_copilot_microsoft_app_id"></a> [copilot\_microsoft\_app\_id](#input\_copilot\_microsoft\_app\_id) | Microsoft App ID associated with the bot. | `string` | n/a | yes |
 | <a name="input_copilot_openai_kind"></a> [copilot\_openai\_kind](#input\_copilot\_openai\_kind) | Type of the Cognitive Services account (must be 'OpenAI'). | `string` | n/a | yes |
 | <a name="input_copilot_openai_sku"></a> [copilot\_openai\_sku](#input\_copilot\_openai\_sku) | SKU for the Cognitive Services account. | `string` | n/a | yes |
-| <a name="input_copilot_python_version"></a> [copilot\_python\_version](#input\_copilot\_python\_version) | Python version used by the Function App. | `string` | n/a | yes |
 | <a name="input_copilot_search_index_name"></a> [copilot\_search\_index\_name](#input\_copilot\_search\_index\_name) | Name of the Azure Search index. | `string` | n/a | yes |
 | <a name="input_copilot_search_partition_count"></a> [copilot\_search\_partition\_count](#input\_copilot\_search\_partition\_count) | Number of partitions for Azure Search. | `number` | n/a | yes |
 | <a name="input_copilot_search_replica_count"></a> [copilot\_search\_replica\_count](#input\_copilot\_search\_replica\_count) | Number of replicas for Azure Search. | `number` | n/a | yes |
