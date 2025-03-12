@@ -36,7 +36,7 @@ resource "azurerm_role_assignment" "rg_owner" {
   count                = var.deployment_type != "ARM" && var.cloud_provider == "azure" ? 1 : 0
   scope                = azurerm_resource_group.tenant_rg.0.id
   role_definition_name = "Owner"
-  principal_id         = var.tenant_sp_object_id
+  principal_id         = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.tenant_sp_object_id
   timeouts {
     create = "3m"
   }
