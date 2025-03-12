@@ -15,8 +15,7 @@ data "azurerm_managed_disk" "disk_managed_redis_master" {
 }
 
 resource "azurerm_managed_disk" "redis_replicas" {
-  count                = var.pv_redis_replicas
-  name                 = "${var.pv_redis_disk_replica_name}-${count.index}"
+  name                 = "${var.pv_redis_disk_replica_name}"
   location             = var.location
   resource_group_name  = var.kubernetes_mc_resource_group_name
   storage_account_type = var.pv_redis_storage_account_type
@@ -55,9 +54,8 @@ resource "kubernetes_persistent_volume" "pv_redis_master" {
 }
 
 resource "kubernetes_persistent_volume" "pv_redis_replicas" {
-  count = var.pv_redis_replicas
   metadata {
-    name = "pv-${var.pv_redis_disk_replica_name}-${count.index}"
+    name = "pv-${var.pv_redis_disk_replica_name}"
   }
   spec {
     capacity = {
@@ -68,8 +66,8 @@ resource "kubernetes_persistent_volume" "pv_redis_replicas" {
     persistent_volume_source {
       azure_disk {
         caching_mode  = "None"
-        data_disk_uri = azurerm_managed_disk.redis_replicas[count.index].id
-        disk_name     = azurerm_managed_disk.redis_replicas[count.index].name
+        data_disk_uri = azurerm_managed_disk.redis_replicas.id
+        disk_name     = azurerm_managed_disk.redis_replicas.name
         kind          = "Managed"
       }
     }
