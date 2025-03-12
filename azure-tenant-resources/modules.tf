@@ -178,6 +178,10 @@ module "services-secrets" {
 module "create-copilot" {
   source = "./create-copilot"
 
+  providers = {
+    restapi = restapi
+  }
+
   count = var.create_copilot ? 1 : 0
 
   acr_url      = module.create-container-registry.out_acr_login_server_url
