@@ -34,8 +34,8 @@ module "services-secrets" {
   storage_account_primary_access_key = var.storage_account_deploy ? module.create-storage.0.out_storage_account_key : ""
 
   # keycloak 
-  keycloak_app_client_id = var.create_keycloak ? module.azure-tenant-prerequisites.0.out_keycloak_sp_client_id : ""
-  keycloak_app_password  = var.create_keycloak ? module.azure-tenant-prerequisites.0.out_keycloak_sp_client_secret : ""
+  keycloak_app_client_id = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_keycloak_sp_client_id : ""
+  keycloak_app_password  = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_keycloak_sp_client_secret : ""
 
   # platform
   platform_client_id = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_platform_sp_client_id : ""
