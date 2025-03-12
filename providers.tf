@@ -24,6 +24,11 @@ terraform {
       source  = "hashicorp/http"
       version = "3.4.4"
     }
+    # For ai search index deployment
+    restapi = {
+      source  = "mastercard/restapi"
+      version = "1.20.0"
+    }
   }
   required_version = ">= 1.3.9"
 }
