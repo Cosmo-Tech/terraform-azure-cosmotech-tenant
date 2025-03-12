@@ -138,7 +138,7 @@ module "azure-tenant-resources" {
 
   first_tenant_in_cluster = var.first_tenant_in_cluster
 
-  create_copilot           = var.create_copilot
+  create_copilot = var.create_copilot
 
   copilot_bot_sku          = var.copilot_bot_sku
   copilot_bot_endpoint     = var.copilot_bot_endpoint
@@ -151,6 +151,11 @@ module "azure-tenant-resources" {
   copilot_search_replica_count   = var.copilot_search_replica_count
   copilot_search_partition_count = var.copilot_search_partition_count
   copilot_search_index_name      = var.copilot_search_index_name
+
+  copilot_azure_function_docker_image = var.copilot_azure_function_docker_image
+  copilot_azure_function_docker_tag   = var.copilot_azure_function_docker_tag
+  copilot_azure_webapp_docker_image   = var.copilot_azure_webapp_docker_image
+  copilot_azure_webapp_docker_tag     = var.copilot_azure_webapp_docker_tag
 
   copilot_python_version = var.copilot_python_version
 

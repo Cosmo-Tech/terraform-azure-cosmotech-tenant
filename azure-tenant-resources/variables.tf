@@ -397,3 +397,19 @@ variable "copilot_gpt4_deployment_name" {
 variable "copilot_gpt4_model" {
   type = string
 }
+
+variable "copilot_azure_function_docker_image" {
+  type = string
+}
+
+variable "copilot_azure_function_docker_tag" {
+  type = string
+}
+
+variable "copilot_azure_webapp_docker_image" {
+  type = string
+}
+
+variable "copilot_azure_webapp_docker_tag" {
+  type = string
+}

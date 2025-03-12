@@ -182,6 +182,11 @@ module "create-copilot" {
   acr_username = module.create-container-registry.out_acr_login_username
   acr_password = module.create-container-registry.out_acr_login_password
 
+  azure_function_docker_image = var.copilot_azure_function_docker_image
+  azure_function_docker_tag   = var.copilot_azure_function_docker_tag
+  azure_webapp_docker_image   = var.copilot_azure_webapp_docker_image
+  azure_webapp_docker_tag     = var.copilot_azure_webapp_docker_tag
+
   tenant_resource_group       = var.tenant_resource_group.name
   location                    = var.location
   kubernetes_tenant_namespace = var.kubernetes_tenant_namespace

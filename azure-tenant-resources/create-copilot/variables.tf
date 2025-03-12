@@ -26,6 +26,22 @@ variable "acr_password" {
   type = string
 }
 
+variable "azure_function_docker_image" {
+  type = string
+}
+
+variable "azure_function_docker_tag" {
+  type = string
+}
+
+variable "azure_webapp_docker_image" {
+  type = string
+}
+
+variable "azure_webapp_docker_tag" {
+  type = string
+}
+
 # Azure Bot
 
 variable "bot_sku" {

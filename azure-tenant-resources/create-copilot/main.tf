@@ -1,17 +1,19 @@
 locals {
   namespace = var.kubernetes_tenant_namespace
-  
-  bot_name = "${var.kubernetes_tenant_namespace}-bot"
-  bot_display_name = "${title(replace(var.kubernetes_tenant_namespace, "-", " "))} Bot"
-  bot_site_name = "${var.kubernetes_tenant_namespace}-copilot-bot"
-  openai_name = "${var.kubernetes_tenant_namespace}-openai"
+
+  bot_name                = "${var.kubernetes_tenant_namespace}-bot"
+  bot_display_name        = "${title(replace(var.kubernetes_tenant_namespace, "-", " "))} Bot"
+  bot_site_name           = "${var.kubernetes_tenant_namespace}-copilot-bot"
+  openai_name             = "${var.kubernetes_tenant_namespace}-openai"
   openai_custom_subdomain = "${var.kubernetes_tenant_namespace}-openai"
-  search_service_name = "${var.kubernetes_tenant_namespace}-search"
-  function_storage_name = replace("${var.kubernetes_tenant_namespace}copilotst", "-", "")
-  function_plan_name = "${var.kubernetes_tenant_namespace}-copilot-plan"
-  function_app_name = "${var.kubernetes_tenant_namespace}-copilot-func"
-  webapp_plan_name = "${var.kubernetes_tenant_namespace}-copilot-webapp-plan"
-  web_app_name = "${var.kubernetes_tenant_namespace}-copilot-webapp"
+  search_service_name     = "${var.kubernetes_tenant_namespace}-search"
+  function_storage_name   = replace("${var.kubernetes_tenant_namespace}copilotst", "-", "")
+  function_plan_name      = "${var.kubernetes_tenant_namespace}-copilot-plan"
+  function_app_name       = "${var.kubernetes_tenant_namespace}-copilot-func"
+  webapp_plan_name        = "${var.kubernetes_tenant_namespace}-copilot-webapp-plan"
+  web_app_name            = "${var.kubernetes_tenant_namespace}-copilot-webapp"
+
+  azure_webapp_docker_image = "${var.azure_webapp_docker_image}:${var.azure_webapp_docker_tag}"
 }
 
 ############################
@@ -140,8 +142,8 @@ resource "restapi_object" "ai_search_index" {
     }
   })
   id_attribute = "name"
-  
-  depends_on   = [azurerm_search_service.search_service]
+
+  depends_on = [azurerm_search_service.search_service]
 }
 
 ############################
@@ -185,12 +187,12 @@ resource "azurerm_linux_function_app" "function_app" {
 
   site_config {
     container_registry_use_managed_identity = false
-    
+
     application_stack {
       docker {
         registry_url      = var.acr_url
-        image_name        = "csm-llm-af"
-        image_tag         = "latest"
+        image_name        = var.azure_function_docker_image
+        image_tag         = var.azure_function_docker_tag
         registry_username = var.acr_username
         registry_password = var.acr_password
       }
@@ -198,23 +200,23 @@ resource "azurerm_linux_function_app" "function_app" {
   }
 
   app_settings = {
-    "APPINSIGHTS_INSTRUMENTATIONKEY"               = azurerm_application_insights.app_insights.instrumentation_key
-    "APPLICATIONINSIGHTS_CONNECTION_STRING"        = azurerm_application_insights.app_insights.connection_string
-    "AzureWebJobsStorage"                          = azurerm_storage_account.function_storage.primary_connection_string
-    "BUILD_FLAGS"                                  = "UseExpressBuild"
-    "DOCKER_ENABLE_CI"                             = "true"
-    "DOCKER_REGISTRY_SERVER_PASSWORD"              = var.acr_password
-    "DOCKER_REGISTRY_SERVER_URL"                   = var.acr_url
-    "DOCKER_REGISTRY_SERVER_USERNAME"              = var.acr_username
-    "ENABLE_ORYX_BUILD"                            = "true"
-    "FUNCTIONS_EXTENSION_VERSION"                  = "~4"
-    "FUNCTIONS_WORKER_RUNTIME"                     = "python"
-    "SCM_DO_BUILD_DURING_DEPLOYMENT"               = "1"
-    "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING"     = azurerm_storage_account.function_storage.primary_connection_string
-    "WEBSITE_CONTENTSHARE"                         = local.function_app_name
-    "WEBSITE_ENABLE_SYNC_UPDATE_SITE"              = "true"
-    "WEBSITES_ENABLE_APP_SERVICE_STORAGE"          = "false"
-    "XDG_CACHE_HOME"                               = "/tmp/.cache"
+    "APPINSIGHTS_INSTRUMENTATIONKEY"           = azurerm_application_insights.app_insights.instrumentation_key
+    "APPLICATIONINSIGHTS_CONNECTION_STRING"    = azurerm_application_insights.app_insights.connection_string
+    "AzureWebJobsStorage"                      = azurerm_storage_account.function_storage.primary_connection_string
+    "BUILD_FLAGS"                              = "UseExpressBuild"
+    "DOCKER_ENABLE_CI"                         = "true"
+    "DOCKER_REGISTRY_SERVER_PASSWORD"          = var.acr_password
+    "DOCKER_REGISTRY_SERVER_URL"               = var.acr_url
+    "DOCKER_REGISTRY_SERVER_USERNAME"          = var.acr_username
+    "ENABLE_ORYX_BUILD"                        = "true"
+    "FUNCTIONS_EXTENSION_VERSION"              = "~4"
+    "FUNCTIONS_WORKER_RUNTIME"                 = "python"
+    "SCM_DO_BUILD_DURING_DEPLOYMENT"           = "1"
+    "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING" = azurerm_storage_account.function_storage.primary_connection_string
+    "WEBSITE_CONTENTSHARE"                     = local.function_app_name
+    "WEBSITE_ENABLE_SYNC_UPDATE_SITE"          = "true"
+    "WEBSITES_ENABLE_APP_SERVICE_STORAGE"      = "false"
+    "XDG_CACHE_HOME"                           = "/tmp/.cache"
   }
 }
 
@@ -237,20 +239,20 @@ resource "azurerm_linux_web_app" "web_app" {
 
   site_config {
     container_registry_use_managed_identity = false
-    
+
     application_stack {
-      docker_image_name     = "csm-llm-wa"
-      docker_registry_url = var.acr_url
+      docker_image_name        = local.azure_webapp_docker_image
+      docker_registry_url      = var.acr_url
       docker_registry_username = var.acr_username
       docker_registry_password = var.acr_password
     }
   }
 
   app_settings = {
-    "DOCKER_ENABLE_CI"                = "true"
-    "DOCKER_REGISTRY_SERVER_PASSWORD" = var.acr_password
-    "DOCKER_REGISTRY_SERVER_URL"      = var.acr_url
-    "DOCKER_REGISTRY_SERVER_USERNAME" = var.acr_username
+    "DOCKER_ENABLE_CI"                    = "true"
+    "DOCKER_REGISTRY_SERVER_PASSWORD"     = var.acr_password
+    "DOCKER_REGISTRY_SERVER_URL"          = var.acr_url
+    "DOCKER_REGISTRY_SERVER_USERNAME"     = var.acr_username
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
   }
 }

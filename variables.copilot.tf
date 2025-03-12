@@ -53,6 +53,24 @@ variable "copilot_search_index_name" {
   description = "Name of the Azure Search index."
 }
 
+# Docker images for AZ function and webapp
+
+variable "copilot_azure_function_docker_image" {
+  type = string
+}
+
+variable "copilot_azure_function_docker_tag" {
+  type = string
+}
+
+variable "copilot_azure_webapp_docker_image" {
+  type = string
+}
+
+variable "copilot_azure_webapp_docker_tag" {
+  type = string
+}
+
 # Azure Function App
 variable "copilot_python_version" {
   type        = string
