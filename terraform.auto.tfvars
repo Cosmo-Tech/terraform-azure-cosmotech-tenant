@@ -120,7 +120,6 @@ pv_redis_master_disk_source_existing = false
 pv_redis_storage_gbi                 = 32
 pv_redis_storage_account_type        = "Premium_LRS"
 pv_redis_storage_class_name          = "cosmotech-retain"
-pv_redis_replicas                    = 1
 pv_redis_provider                    = "azure"
 pv_redis_disk_master_name            = ""
 pv_redis_disk_replica_name           = ""
