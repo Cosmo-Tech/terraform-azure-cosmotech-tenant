@@ -11,7 +11,7 @@ module "create-container-registry" {
   container_name                = local.container_registry_name
   location                      = var.location
   resource_group                = var.tenant_resource_group
-  tenant_sp_object_id           = var.tenant_sp_object_id
+  tenant_sp_object_id           = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.tenant_sp_object_id
   deployment_type               = var.deployment_type
   admin_enabled                 = var.acr_admin_enabled
   quarantine_policy_enabled     = var.acr_quarantine_policy_enabled
@@ -22,5 +22,8 @@ module "create-container-registry" {
   retention_policy_days         = var.acr_retention_policy
   kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
 
-  depends_on = [module.create-network-resources]
+  depends_on = [
+    module.azure-tenant-prerequisites,
+    module.create-network-resources
+  ]
 }

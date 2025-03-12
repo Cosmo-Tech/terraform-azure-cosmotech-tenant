@@ -22,8 +22,8 @@ module "create-storage" {
   shared_access_key_enabled       = var.storage_shared_access_key_enabled
   enable_https_traffic_only       = var.storage_enable_https_traffic_only
   access_tier                     = var.storage_access_tier
-  private_dns_zone_id             = module.create-network-resources.0.out_blob_private_dns_zone_id
-  subnet_id                       = module.create-network-resources.0.out_subnet_id
+  private_dns_zone_id             = var.network_deploy ? module.create-network-resources.0.out_blob_private_dns_zone_id : ""
+  subnet_id                       = var.network_deploy ? module.create-network-resources.0.out_subnet_id : ""
   kubernetes_tenant_namespace     = var.kubernetes_tenant_namespace
   storage_default_action          = var.storage_default_action
   storage_csm_ip                  = var.storage_csm_ip
