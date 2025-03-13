@@ -48,7 +48,7 @@ resource "azurerm_bot_channel_directline" "directline" {
   }
 }
 
-resource "azurerm_bot_channel_webchat" "webchat" {
+resource "azurerm_bot_channel_web_chat" "webchat" {
   bot_name            = azurerm_bot_channels_registration.bot.name
   location            = azurerm_bot_channels_registration.bot.location
   resource_group_name = var.tenant_resource_group
@@ -155,17 +155,12 @@ resource "azurerm_storage_account" "function_storage" {
   account_replication_type = "LRS"
 }
 
-resource "azurerm_app_service_plan" "function_plan" {
+resource "azurerm_service_plan" "function_plan" {
   name                = local.function_plan_name
   location            = var.location
   resource_group_name = var.tenant_resource_group
-  kind                = "FunctionApp"
-  reserved            = true
-
-  sku {
-    tier = "Dynamic"
-    size = "Y1"
-  }
+  os_type             = "Linux"
+  sku_name            = "Y1"
 }
 
 resource "azurerm_application_insights" "app_insights" {
@@ -267,12 +262,12 @@ resource "azurerm_storage_container" "documents" {
 #############################
 # 7. ARM Deployments for Azure Open AI (Ada & GPT‑4)
 #############################
-resource "azurerm_template_deployment" "ada_deployment" {
+resource "azurerm_resource_group_template_deployment" "ada_deployment" {
   name                = "ada-deployment"
   resource_group_name = var.tenant_resource_group
   deployment_mode     = "Incremental"
 
-  template_body = <<TEMPLATE
+  template_content = <<TEMPLATE
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -305,7 +300,7 @@ resource "azurerm_template_deployment" "ada_deployment" {
 }
 TEMPLATE
 
-  parameters = <<PARAMETERS
+  parameters_content = <<PARAMETERS
 {
   "accountName": { "value": "${azurerm_cognitive_account.openai.name}" },
   "deploymentName": { "value": "${var.ada_deployment_name}" },
@@ -317,12 +312,12 @@ PARAMETERS
   depends_on = [azurerm_cognitive_account.openai]
 }
 
-resource "azurerm_template_deployment" "gpt4_deployment" {
+resource "azurerm_resource_group_template_deployment" "gpt4_deployment" {
   name                = "gpt4-deployment"
   resource_group_name = var.tenant_resource_group
   deployment_mode     = "Incremental"
 
-  template_body = <<TEMPLATE
+  template_content = <<TEMPLATE
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -355,7 +350,7 @@ resource "azurerm_template_deployment" "gpt4_deployment" {
 }
 TEMPLATE
 
-  parameters = <<PARAMETERS
+  parameters_content = <<PARAMETERS
 {
   "accountName": { "value": "${azurerm_cognitive_account.openai.name}" },
   "deploymentName": { "value": "${var.gpt4_deployment_name}" },
@@ -368,12 +363,12 @@ PARAMETERS
 }
 
 # RAI policies deployment
-resource "azurerm_template_deployment" "rai_policy_default" {
+resource "azurerm_resource_group_template_deployment" "rai_policy_default" {
   name                = "rai-policy-default"
   resource_group_name = var.tenant_resource_group
   deployment_mode     = "Incremental"
 
-  template_body = <<TEMPLATE
+  template_content = <<TEMPLATE
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -451,7 +446,7 @@ resource "azurerm_template_deployment" "rai_policy_default" {
 }
 TEMPLATE
 
-  parameters = <<PARAMETERS
+  parameters_content = <<PARAMETERS
 {
   "accountName": { "value": "${azurerm_cognitive_account.openai.name}" }
 }

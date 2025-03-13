@@ -170,27 +170,38 @@ output "out_copilot_search_api_key" {
 }
 
 output "out_copilot_bot_application_id" {
-  value = module.azure-tenant-prerequisites.out_bot_application_id
+  value = module.azure-tenant-prerequisites.0.out_bot_application_id
 }
 
 output "out_copilot_bot_application_object_id" {
-  value = module.azure-tenant-prerequisites.out_bot_application_object_id
+  value = module.azure-tenant-prerequisites.0.out_bot_application_object_id
 }
 
 output "out_copilot_bot_service_principal_id" {
-  value = module.azure-tenant-prerequisites.out_bot_service_principal_id
+  value = module.azure-tenant-prerequisites.0.out_bot_service_principal_id
 }
 
 output "out_copilot_bot_service_principal_object_id" {
-  value = module.azure-tenant-prerequisites.out_bot_service_principal_object_id
+  value = module.azure-tenant-prerequisites.0.out_bot_service_principal_object_id
 }
 
 output "out_copilot_bot_client_secret" {
-  value     = module.azure-tenant-prerequisites.out_bot_client_secret
+  value     = module.azure-tenant-prerequisites.0.out_bot_client_secret
   sensitive = true
 }
 
 output "out_copilot_bot_app_credentials" {
-  value     = module.azure-tenant-prerequisites.out_bot_app_credentials
+  value     = module.azure-tenant-prerequisites.0.out_bot_app_credentials
   sensitive = true
+}
+
+output "out_copilot_search_api_key" {
+  description = "The API key for Azure Search service."
+  value       = azurerm_search_service.search_service.primary_key
+  sensitive   = true
+}
+
+output "out_copilot_search_endpoint" {
+  description = "The endpoint URL for the Azure Search service."
+  value       = "https://${azurerm_search_service.search_service.name}.search.windows.net"
 }

@@ -77,7 +77,7 @@ provider "restapi" {
   uri                  = "https://${local.search_service_name}.search.windows.net"
   write_returns_object = true
   headers = {
-    "api-key"      = data.azurerm_search_service_keys.search_keys.primary_key,
+    "api-key"      = "${azurerm_search_service.search_service.primary_key}",
     "Content-Type" = "application/json"
   }
 }

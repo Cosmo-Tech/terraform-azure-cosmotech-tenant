@@ -53,12 +53,3 @@ resource "azurerm_search_service" "search_service" {
   replica_count       = var.copilot_search_replica_count
   partition_count     = var.copilot_search_partition_count
 }
-
-data "azurerm_search_service_keys" "search_keys" {
-  count               = var.create_copilot ? 1 : 0
-  name                = local.search_service_name
-  resource_group_name = var.tenant_resource_group
-  depends_on          = [azurerm_search_service.search_service]
-}
-
-

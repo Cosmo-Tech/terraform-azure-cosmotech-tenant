@@ -141,7 +141,7 @@ module "azure-tenant-resources" {
   create_copilot = var.create_copilot
 
   copilot_bot_sku          = var.copilot_bot_sku
-  copilot_microsoft_app_id = module.azure-tenant-prerequisites.out_bot_application_id
+  copilot_microsoft_app_id = module.azure-tenant-prerequisites.0.out_bot_application_id
 
   copilot_openai_kind = var.copilot_openai_kind
   copilot_openai_sku  = var.copilot_openai_sku
