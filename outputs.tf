@@ -130,10 +130,6 @@ output "out_copilot_openai_endpoint" {
   value = module.azure-tenant-resources.out_copilot_openai_endpoint
 }
 
-output "out_copilot_search_endpoint" {
-  value = module.azure-tenant-resources.out_copilot_search_endpoint
-}
-
 output "out_copilot_search_index_name" {
   value = module.azure-tenant-resources.out_copilot_search_index_name
 }
@@ -161,11 +157,6 @@ output "out_copilot_bot_directline_secret" {
 
 output "out_copilot_openai_api_key" {
   value     = module.azure-tenant-resources.out_copilot_openai_api_key
-  sensitive = true
-}
-
-output "out_copilot_search_api_key" {
-  value     = module.azure-tenant-resources.out_copilot_search_api_key
   sensitive = true
 }
 
