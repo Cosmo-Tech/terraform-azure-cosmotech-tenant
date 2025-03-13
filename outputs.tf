@@ -130,10 +130,6 @@ output "out_copilot_openai_endpoint" {
   value = module.azure-tenant-resources.out_copilot_openai_endpoint
 }
 
-output "out_copilot_search_index_name" {
-  value = module.azure-tenant-resources.out_copilot_search_index_name
-}
-
 output "out_copilot_function_app_url" {
   value = module.azure-tenant-resources.out_copilot_function_app_url
 }
