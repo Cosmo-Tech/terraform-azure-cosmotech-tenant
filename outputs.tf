@@ -188,11 +188,11 @@ output "out_copilot_bot_app_credentials" {
 
 output "out_copilot_search_api_key" {
   description = "The API key for Azure Search service."
-  value       = azurerm_search_service.search_service.primary_key
+  value       = azurerm_search_service.search_service[0].primary_key
   sensitive   = true
 }
 
 output "out_copilot_search_endpoint" {
   description = "The endpoint URL for the Azure Search service."
-  value       = "https://${azurerm_search_service.search_service.name}.search.windows.net"
+  value       = "https://${azurerm_search_service.search_service[0].name}.search.windows.net"
 }

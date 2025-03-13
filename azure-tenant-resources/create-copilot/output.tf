@@ -40,7 +40,7 @@ output "out_copilot_gpt4_deployment_name" {
 
 output "out_copilot_bot_directline_secret" {
   description = "The DirectLine secret for the Azure Bot."
-  value       = azurerm_bot_channel_directline.directline.site[0].key
+  value       = [for site in azurerm_bot_channel_directline.directline.site : site.key][0]
   sensitive   = true
 }
 
