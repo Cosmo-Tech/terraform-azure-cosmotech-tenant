@@ -267,36 +267,21 @@ pv_redis_storage_class_name   = "default"
 pv_redis_replicas             = 1
 pv_redis_provider             = "azure"
 
-# copilot-api
-create_copilot          = false
-copilot_bot_name                = ""
-copilot_bot_location            = "global"
-copilot_bot_sku                 = "S1"
-copilot_bot_display_name        = ""
-copilot_bot_endpoint            = ""
-copilot_microsoft_app_id        = ""
-copilot_bot_site_name           = ""
-copilot_openai_name             = ""
-copilot_openai_kind             = "OpenAI"
-copilot_openai_sku              = "S0"
-copilot_openai_custom_subdomain = ""
-copilot_search_service_name     = ""
-copilot_search_sku              = "basic"
-copilot_search_replica_count    = 1
-copilot_search_partition_count  = 1
-copilot_search_index_name       = "supply-chain-index"
-copilot_function_storage_name   = ""
-copilot_function_plan_name      = ""
-copilot_function_app_name       = ""
-copilot_python_version          = "3.10"
-copilot_webapp_plan_name        = ""
-copilot_web_app_name            = ""
-copilot_blob_container_name     = "documents"
-copilot_ada_deployment_name     = "text-embedding-ada-002"
-copilot_ada_model               = "text-embedding-ada-002"
-copilot_gpt4_deployment_name    = "GPT-4-0613"
-copilot_gpt4_model              = "GPT-4"
+# postgres
+pv_postgres_deploy               = true
+pv_postgres_storage_gbi          = 128
+pv_postgres_storage_account_type = "Standard_LRS"
+pv_postgres_storage_class_name   = "default"
+pv_postgres_replicas             = 1
+pv_postgres_provider             = "azure"
 
+# seaweedfs
+pv_seaweedfs_deploy               = true
+pv_seaweedfs_storage_gbi          = 128
+pv_seaweedfs_storage_account_type = "Standard_LRS"
+pv_seaweedfs_storage_class_name   = "default"
+pv_seaweedfs_replicas             = 1
+pv_seaweedfs_provider             = "azure"
 
 # minio
 pv_minio_deploy               = true
@@ -306,32 +291,25 @@ pv_minio_storage_class_name   = "default"
 pv_minio_replicas             = 1
 pv_minio_provider             = "azure"
 
-# copilot-api
-create_copilot                  = false
-copilot_bot_name                = ""
-copilot_bot_location            = "global"
-copilot_bot_sku                 = "S1"
-copilot_bot_display_name        = ""
-copilot_bot_endpoint            = ""
-copilot_microsoft_app_id        = ""
-copilot_bot_site_name           = ""
-copilot_openai_name             = ""
-copilot_openai_kind             = "OpenAI"
-copilot_openai_sku              = "S0"
-copilot_openai_custom_subdomain = ""
-copilot_search_service_name     = ""
-copilot_search_sku              = "basic"
-copilot_search_replica_count    = 1
-copilot_search_partition_count  = 1
-copilot_search_index_name       = "supply-chain-index"
-copilot_function_storage_name   = ""
-copilot_function_plan_name      = ""
-copilot_function_app_name       = ""
-copilot_python_version          = "3.10"
-copilot_webapp_plan_name        = ""
-copilot_web_app_name            = ""
-copilot_blob_container_name     = "documents"
-copilot_ada_deployment_name     = "text-embedding-ada-002"
-copilot_ada_model               = "text-embedding-ada-002"
-copilot_gpt4_deployment_name    = "GPT-4-0613"
-copilot_gpt4_model              = "GPT-4"
+# Copilot API
+create_copilot                      = true
+copilot_azure_function_docker_image = "cosmotech-copilot-fa"
+copilot_azure_function_docker_tag   = "latest"
+copilot_azure_webapp_docker_image   = "cosmotech-copilot-wa"
+copilot_azure_webapp_docker_tag     = "latest"
+copilot_search_index_name           = ""
+copilot_blob_container_name         = ""
+
+copilot_bot_sku                = "S1"
+copilot_openai_kind            = "OpenAI"
+copilot_openai_sku             = "S0"
+copilot_search_sku             = "free"
+copilot_search_replica_count   = 1
+copilot_search_partition_count = 1
+
+copilot_ada_deployment_name  = "text-embedding-ada-002"
+copilot_ada_model_name       = "text-embedding-ada-002"
+copilot_ada_model_version    = "2"
+copilot_gpt4_deployment_name = "GPT-4-0613"
+copilot_gpt4_model_name      = "gpt-4"
+copilot_gpt4_model_version   = "0613"
