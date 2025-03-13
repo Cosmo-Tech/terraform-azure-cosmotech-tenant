@@ -1,20 +1,3 @@
-module "create-backup" {
-  source = "./create-backup"
-
-  count = var.create_backup ? 1 : 0
-
-  tags                            = local.tags
-  backup_policy_name              = local.backup_policy_name
-  backup_instance_name            = local.backup_instance_name
-  location                        = var.location
-  tenant_resource_group           = var.tenant_resource_group.name
-  tenant_resource_group_id        = var.tenant_resource_group.id
-  managed_disk_id                 = module.create-disk.out_managed_disk_id
-  backup_repeating_time_intervals = var.backup_repeating_time_intervals
-
-  depends_on = [module.create-network-resources, module.create-disk]
-}
-
 module "create-container-registry" {
   source = "./create-container-registry"
 

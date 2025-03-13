@@ -91,15 +91,6 @@ module "azure-tenant-resources" {
   storage_access_tier                     = var.storage_access_tier
   storage_default_action                  = var.storage_default_action
 
-  create_backup                   = var.backup_create
-  disk_deploy                     = var.disk_deploy
-  backup_repeating_time_intervals = var.backup_repeating_time_intervals
-
-  managed_disk_name  = var.redis_managed_disk_name
-  redis_disk_size_gb = var.redis_disk_size_gb
-  redis_disk_sku     = var.redis_disk_sku
-  redis_disk_tier    = var.redis_disk_tier
-
   tenant_sp_object_id   = var.deployment_type != "ARM" ? module.azure-tenant-prerequisites.0.out_platform_sp_object_id : var.tenant_sp_object_id
   tenant_resource_group = var.deployment_type != "ARM" ? azurerm_resource_group.tenant_rg.0 : data.azurerm_resource_group.tenant_rg.0
 

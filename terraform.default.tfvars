@@ -125,7 +125,6 @@ platform_object_id  = ""
 identifier_uri      = ""
 tenant_sp_name      = ""
 tenant_sp_object_id = ""
-disk_deploy         = false
 
 # Container registry
 container_admin_enabled                 = true
@@ -237,10 +236,6 @@ postgresql_secret_name        = "postgres-config"
 
 # Rabbitmq
 create_rabbitmq = false
-
-# Redis
-redis_managed_disk_name = ""
-redis_port              = 6379
 
 # Vault
 vault_namespace      = "vault"

@@ -49,10 +49,6 @@ variable "vnet_resource_group" {
   type = string
 }
 
-variable "create_backup" {
-  type = bool
-}
-
 variable "create_eventhub" {
   type    = bool
 }
@@ -234,50 +230,82 @@ variable "container_retention_policy" {
   type = number
 }
 
-variable "backup_repeating_time_intervals" {
-  type = list(string)
-}
-
 variable "kubernetes_tenant_namespace" {
   type = string
 }
 
-variable "container_admin_enabled" {
-  type = bool
-}
-
-variable "container_quarantine_policy_enabled" {
-  type = bool
-}
-
-variable "container_data_endpoint_enabled" {
-  type = bool
-}
-
-variable "container_public_network_access_enabled" {
-  type = bool
-}
-
-variable "container_zone_redundancy_enabled" {
-  type = bool
-}
-
-variable "container_trust_policy" {
-  type = list(object({
-    enabled = bool
-  }))
-}
-
-variable "container_retention_policy" {
-  type = list(object({
-    days    = number
-    enabled = bool
-  }))
-}
-variable "backup_repeating_time_intervals" {
-  type = list(string)
-}
-
-variable "kubernetes_tenant_namespace" {
+variable "cosmotech_api_reader_username" {
   type = string
+}
+
+variable "cosmotech_api_writer_username" {
+  type = string
+}
+
+variable "cosmotech_api_admin_username" {
+  type = string
+}
+
+variable "postgresql_initdb_secret_name" {
+  type = string
+}
+
+variable "argo_postgresql_user" {
+  type = string
+}
+
+variable "postgresql_secret_name" {
+  type = string
+}
+
+variable "argo_database" {
+  type = string
+}
+
+variable "monitoring_namespace" {
+  type = string
+}
+
+variable "create_platform_config" {
+  type = bool
+}
+
+variable "allowed_namespace" {
+  type = string
+}
+
+variable "tenant_id" {
+  type = string
+}
+
+variable "vault_address" {
+  type = string
+}
+
+variable "vault_namespace" {
+  type = string
+}
+
+variable "vault_sops_namespace" {
+  type = string
+}
+
+variable "engine_secret" {
+  type = string
+}
+
+variable "services_secrets_create" {
+  type = bool
+}
+
+variable "storage_default_action" {
+  type = string
+}
+
+variable "storage_csm_ip" {
+  type = string
+}
+
+variable "first_tenant_in_cluster" {
+  type = bool
 }
