@@ -11,3 +11,12 @@ terraform {
     }
   }
 }
+
+provider "restapi" {
+  uri                  = "https://${azurerm_search_service.search_service.name}.search.windows.net"
+  write_returns_object = true
+  headers = {
+    "api-key"      = "${azurerm_search_service.search_service.primary_key}",
+    "Content-Type" = "application/json"
+  }
+}

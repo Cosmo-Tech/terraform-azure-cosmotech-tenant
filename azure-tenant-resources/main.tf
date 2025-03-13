@@ -13,6 +13,8 @@ locals {
   local_deployer = {
     "NAMESPACE" = var.allowed_namespace
   }
+
+  search_service_name = "${var.kubernetes_tenant_namespace}-search"
 }
 
 resource "random_string" "random_storage_id" {
@@ -61,4 +63,15 @@ resource "kubectl_manifest" "deployer_rolb" {
   depends_on = [
     kubectl_manifest.deployer_role
   ]
+}
+
+# For copilot API
+resource "azurerm_search_service" "search_service" {
+  count               = var.create_copilot ? 1 : 0
+  name                = local.search_service_name
+  location            = var.location
+  resource_group_name = var.tenant_resource_group.name
+  sku                 = var.copilot_search_sku
+  replica_count       = var.copilot_search_replica_count
+  partition_count     = var.copilot_search_partition_count
 }
