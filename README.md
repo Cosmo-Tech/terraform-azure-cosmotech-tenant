@@ -267,7 +267,6 @@
 | <a name="output_out_copilot_openai_endpoint"></a> [out\_copilot\_openai\_endpoint](#output\_out\_copilot\_openai\_endpoint) | n/a |
 | <a name="output_out_copilot_search_api_key"></a> [out\_copilot\_search\_api\_key](#output\_out\_copilot\_search\_api\_key) | The API key for Azure Search service. |
 | <a name="output_out_copilot_search_endpoint"></a> [out\_copilot\_search\_endpoint](#output\_out\_copilot\_search\_endpoint) | The endpoint URL for the Azure Search service. |
-| <a name="output_out_copilot_search_index_name"></a> [out\_copilot\_search\_index\_name](#output\_out\_copilot\_search\_index\_name) | n/a |
 | <a name="output_out_copilot_web_app_url"></a> [out\_copilot\_web\_app\_url](#output\_out\_copilot\_web\_app\_url) | n/a |
 | <a name="output_out_identifier_uri"></a> [out\_identifier\_uri](#output\_out\_identifier\_uri) | n/a |
 | <a name="output_out_monitoring_namespace"></a> [out\_monitoring\_namespace](#output\_out\_monitoring\_namespace) | n/a |
