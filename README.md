@@ -41,7 +41,6 @@
 | [azurerm_kubernetes_cluster.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/data-sources/kubernetes_cluster) | data source |
 | [azurerm_resource_group.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/data-sources/resource_group) | data source |
 | [azurerm_resource_group.tenant_rg](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/data-sources/resource_group) | data source |
-| [azurerm_search_service_keys.search_keys](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/data-sources/search_service_keys) | data source |
 | [azurerm_virtual_network.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.19.0/docs/data-sources/virtual_network) | data source |
 
 ## Inputs
@@ -266,8 +265,8 @@
 | <a name="output_out_copilot_microsoft_app_id"></a> [out\_copilot\_microsoft\_app\_id](#output\_out\_copilot\_microsoft\_app\_id) | n/a |
 | <a name="output_out_copilot_openai_api_key"></a> [out\_copilot\_openai\_api\_key](#output\_out\_copilot\_openai\_api\_key) | n/a |
 | <a name="output_out_copilot_openai_endpoint"></a> [out\_copilot\_openai\_endpoint](#output\_out\_copilot\_openai\_endpoint) | n/a |
-| <a name="output_out_copilot_search_api_key"></a> [out\_copilot\_search\_api\_key](#output\_out\_copilot\_search\_api\_key) | n/a |
-| <a name="output_out_copilot_search_endpoint"></a> [out\_copilot\_search\_endpoint](#output\_out\_copilot\_search\_endpoint) | n/a |
+| <a name="output_out_copilot_search_api_key"></a> [out\_copilot\_search\_api\_key](#output\_out\_copilot\_search\_api\_key) | The API key for Azure Search service. |
+| <a name="output_out_copilot_search_endpoint"></a> [out\_copilot\_search\_endpoint](#output\_out\_copilot\_search\_endpoint) | The endpoint URL for the Azure Search service. |
 | <a name="output_out_copilot_search_index_name"></a> [out\_copilot\_search\_index\_name](#output\_out\_copilot\_search\_index\_name) | n/a |
 | <a name="output_out_copilot_web_app_url"></a> [out\_copilot\_web\_app\_url](#output\_out\_copilot\_web\_app\_url) | n/a |
 | <a name="output_out_identifier_uri"></a> [out\_identifier\_uri](#output\_out\_identifier\_uri) | n/a |
