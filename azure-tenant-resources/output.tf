@@ -87,14 +87,6 @@ output "out_copilot_openai_endpoint" {
   value       = var.create_copilot ? module.create-copilot.0.out_copilot_openai_endpoint : ""
 }
 
-output "out_copilot_search_endpoint" {
-  value       = var.create_copilot ? module.create-copilot.0.out_copilot_search_endpoint : ""
-}
-
-output "out_copilot_search_index_name" {
-  value       = var.create_copilot ? module.create-copilot.0.out_copilot_search_index_name : ""
-}
-
 output "out_copilot_function_app_url" {
   value       = var.create_copilot ? module.create-copilot.0.out_copilot_function_app_url : ""
 }
@@ -118,10 +110,5 @@ output "out_copilot_bot_directline_secret" {
 
 output "out_copilot_openai_api_key" {
   value       = var.create_copilot ? module.create-copilot.0.out_copilot_openai_api_key : ""
-  sensitive   = true
-}
-
-output "out_copilot_search_api_key" {
-  value       = var.create_copilot ? module.create-copilot.0.out_copilot_search_api_key : ""
   sensitive   = true
 }
