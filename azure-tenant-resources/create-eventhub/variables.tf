@@ -12,6 +12,10 @@ variable "eventhub_name" {
   type = string
 }
 
+variable "eventhub_capacity" {
+  type = number
+}
+
 variable "location" {
   type = string
 }
@@ -30,4 +34,8 @@ variable "subnet_id" {
 
 variable "common_resource_group" {
   type = string
+}
+
+variable "public_network_access_enabled" {
+  type = bool
 }

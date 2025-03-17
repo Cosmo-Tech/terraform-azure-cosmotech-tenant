@@ -20,22 +20,7 @@ variable "cluster_name" {
 
 variable "project_stage" {
   description = "The Project stage"
-  type        = string
-  validation {
-    condition = contains([
-      "OnBoarding",
-      "Dev",
-      "QA",
-      "IA",
-      "EA",
-      "Doc",
-      "Support",
-      "Demo",
-      "Prod",
-      "PreProd"
-    ], var.project_stage)
-    error_message = "Stage must be either: OnBoarding, Dev, QA, IA, EA, Demo, Prod, PreProd, Doc, Support."
-  }
+  type = string
 }
 
 variable "project_name" {
@@ -64,21 +49,21 @@ variable "vnet_resource_group" {
   type = string
 }
 
-variable "create_cosmosdb" {
-  description = "Used on Platform <=2.3"
-  type        = bool
-  # default     = false
-}
-
 variable "create_eventhub" {
   type    = bool
-  default = true
+}
+
+variable "eventhub_capacity" {
+  type = number
+}
+
+variable "eventhub_public_network_access_enabled" {
+  type = bool
 }
 
 variable "create_adx" {
   description = "If false, adx_ingestion_uri and adx_uri must be set manually in create-platform module"
   type        = bool
-  # default     = true
 }
 
 variable "blob_privatedns_zonename" {
@@ -109,6 +94,34 @@ variable "kustonr_instances" {
   type = number
 }
 
+variable "kusto_engine" {
+  type = string
+}
+
+variable "kusto_trusted_external_tenants" {
+  type = list(string)
+}
+
+variable "kusto_disk_encryption_enabled" {
+  type = bool
+}
+
+variable "kusto_streaming_ingestion_enabled" {
+  type = bool
+}
+
+variable "kusto_purge_enabled" {
+  type = bool
+}
+
+variable "kusto_double_encryption_enabled" {
+  type = bool
+}
+
+variable "kusto_public_network_access_enabled" {
+  type = bool
+}
+
 variable "storage_tier" {
   type = string
 }
@@ -117,7 +130,27 @@ variable "storage_replication_type" {
   type = string
 }
 
-variable "tenant_group_id" {
+variable "storage_public_network_access_enabled" {
+  type = bool
+}
+
+variable "storage_default_to_oauth_authentication" {
+  type = bool
+}
+
+variable "storage_min_tls_version" {
+  type = string
+}
+
+variable "storage_shared_access_key_enabled" {
+  type = bool
+}
+
+variable "storage_enable_https_traffic_only" {
+  type = bool
+}
+
+variable "storage_access_tier" {
   type = string
 }
 
@@ -139,10 +172,6 @@ variable "common_resource_group" {
   })
 }
 
-variable "public_ip_id" {
-  type = string
-}
-
 variable "vnet" {
   type = object({
     id   = string
@@ -160,6 +189,11 @@ variable "tags" {
   })
 }
 
+variable "subnet_name" {
+  description = "Name of the subnet"
+  type        = string
+}
+
 variable "deployment_type" {
   type = string
 }
@@ -168,10 +202,110 @@ variable "auto_stop_kusto" {
   type = bool
 }
 
-variable "common_platform_object_id" {
+variable "container_admin_enabled" {
+  type = bool
+}
+
+variable "container_quarantine_policy_enabled" {
+  type = bool
+}
+
+variable "container_data_endpoint_enabled" {
+  type = bool
+}
+
+variable "container_public_network_access_enabled" {
+  type = bool
+}
+
+variable "container_zone_redundancy_enabled" {
+  type = bool
+}
+
+variable "container_trust_policy" {
+  type = bool
+}
+
+variable "container_retention_policy" {
+  type = number
+}
+
+variable "kubernetes_tenant_namespace" {
   type = string
 }
 
-variable "public_network_access_enabled" {
+variable "cosmotech_api_reader_username" {
+  type = string
+}
+
+variable "cosmotech_api_writer_username" {
+  type = string
+}
+
+variable "cosmotech_api_admin_username" {
+  type = string
+}
+
+variable "postgresql_initdb_secret_name" {
+  type = string
+}
+
+variable "argo_postgresql_user" {
+  type = string
+}
+
+variable "postgresql_secret_name" {
+  type = string
+}
+
+variable "argo_database" {
+  type = string
+}
+
+variable "monitoring_namespace" {
+  type = string
+}
+
+variable "create_platform_config" {
+  type = bool
+}
+
+variable "allowed_namespace" {
+  type = string
+}
+
+variable "tenant_id" {
+  type = string
+}
+
+variable "vault_address" {
+  type = string
+}
+
+variable "vault_namespace" {
+  type = string
+}
+
+variable "vault_sops_namespace" {
+  type = string
+}
+
+variable "engine_secret" {
+  type = string
+}
+
+variable "services_secrets_create" {
+  type = bool
+}
+
+variable "storage_default_action" {
+  type = string
+}
+
+variable "storage_csm_ip" {
+  type = string
+}
+
+variable "first_tenant_in_cluster" {
   type = bool
 }

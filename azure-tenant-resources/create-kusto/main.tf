@@ -9,13 +9,12 @@ resource "azurerm_kusto_cluster" "kusto" {
   identity {
     type = "SystemAssigned"
   }
-  trusted_external_tenants      = ["*"]
-  disk_encryption_enabled       = false
-  streaming_ingestion_enabled   = true
-  purge_enabled                 = false
-  double_encryption_enabled     = false
-  engine                        = "V2"
-  public_network_access_enabled = true
+  trusted_external_tenants      = var.trusted_external_tenants
+  disk_encryption_enabled       = var.disk_encryption_enabled
+  streaming_ingestion_enabled   = var.streaming_ingestion_enabled
+  purge_enabled                 = var.purge_enabled
+  double_encryption_enabled     = var.double_encryption_enabled
+  public_network_access_enabled = var.public_network_access_enabled
   auto_stop_enabled             = var.auto_stop_kusto
   tags                          = var.tags
 }
@@ -37,4 +36,22 @@ resource "azurerm_private_endpoint" "kusto_private_endpoint" {
     name                 = "storage-dns-zone-group"
     private_dns_zone_ids = [var.private_dns_zone_id]
   }
+}
+
+
+resource "kubernetes_secret" "storage_account_password" {
+  metadata {
+    name      = "adx-admin-secret"
+    namespace = var.kubernetes_tenant_namespace
+  }
+
+  data = {
+    "name"         = azurerm_kusto_cluster.kusto.name
+    "uri"          = azurerm_kusto_cluster.kusto.data_ingestion_uri
+    "principal_id" = azurerm_kusto_cluster.kusto.identity.0.principal_id
+  }
+
+  type = "Opaque"
+
+  depends_on = [azurerm_kusto_cluster.kusto]
 }

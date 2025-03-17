@@ -25,22 +25,7 @@ variable "identifier_uri" {
 
 variable "project_stage" {
   description = "The Project stage"
-  type        = string
-  validation {
-    condition = contains([
-      "OnBoarding",
-      "Dev",
-      "QA",
-      "IA",
-      "EA",
-      "Doc",
-      "Support",
-      "Demo",
-      "Prod",
-      "PreProd"
-    ], var.project_stage)
-    error_message = "Stage must be either: OnBoarding, Dev, QA, IA, EA, Demo, Prod, PreProd, Doc, Support."
-  }
+  type = string
 }
 
 variable "project_name" {
@@ -63,11 +48,6 @@ variable "audience" {
     ], var.audience)
     error_message = "Only AzureADMyOrg and AzureADMultipleOrgs are supported for audience."
   }
-}
-
-variable "webapp_url" {
-  description = "The Web Application URL"
-  type        = string
 }
 
 variable "location" {
@@ -101,6 +81,11 @@ variable "dns_zone_rg" {
 
 variable "virtual_network_address_prefix" {
   description = "The Virtual Network IP range. Minimum /26 NetMaskLength"
+  type        = string
+}
+
+variable "subnet_name" {
+  description = "Name of the subnet"
   type        = string
 }
 
@@ -147,13 +132,8 @@ variable "create_babylon" {
   type        = bool
 }
 
-variable "create_webapp" {
-  description = "Create the Azure Active Directory Application for WebApp"
-  type        = bool
-}
-
-variable "create_secrets" {
-  description = "Create secret for application registrtations"
+variable "create_platform" {
+  description = "Create the Azure Active Directory Application for Platform"
   type        = bool
 }
 
@@ -162,5 +142,13 @@ variable "cost_center" {
 }
 
 variable "kubernetes_tenant_namespace" {
+  type = string
+}
+
+variable "cluster_name" {
+  type = string
+}
+
+variable "servlet_context_path" {
   type = string
 }

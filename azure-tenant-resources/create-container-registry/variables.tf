@@ -27,3 +27,35 @@ variable "tenant_sp_object_id" {
 variable "deployment_type" {
   type = string
 }
+
+variable "admin_enabled" {
+  type = bool
+}
+
+variable "quarantine_policy_enabled" {
+  type = bool
+}
+
+variable "data_endpoint_enabled" {
+  type = bool
+}
+
+variable "public_network_access_enabled" {
+  type = bool
+}
+
+variable "zone_redundancy_enabled" {
+  type = bool
+}
+
+variable "trust_policy" {
+  type = bool
+}
+
+variable "retention_policy_days" {
+  type = number
+}
+
+variable "kubernetes_tenant_namespace" {
+  type = string
+}

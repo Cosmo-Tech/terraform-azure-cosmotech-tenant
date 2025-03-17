@@ -1,21 +1,15 @@
 resource "azurerm_container_registry" "acr" {
-  name                      = var.container_name
-  resource_group_name       = var.resource_group
-  location                  = var.location
-  sku                       = "Standard"
-  admin_enabled             = true
-  quarantine_policy_enabled = false
-  trust_policy = [{
-    enabled = false
-  }]
-  retention_policy = [{
-    days    = 7
-    enabled = false
-  }]
-  data_endpoint_enabled         = false
-  public_network_access_enabled = true
+  name                          = var.container_name
+  resource_group_name           = var.resource_group
+  location                      = var.location
+  sku                           = "Standard"
+  admin_enabled                 = var.admin_enabled
+  quarantine_policy_enabled     = var.quarantine_policy_enabled
+  trust_policy_enabled          = var.trust_policy
+  data_endpoint_enabled         = var.data_endpoint_enabled
+  public_network_access_enabled = var.public_network_access_enabled
   network_rule_bypass_option    = "AzureServices"
-  zone_redundancy_enabled       = false
+  zone_redundancy_enabled       = var.zone_redundancy_enabled
   tags                          = var.tags
 }
 
@@ -24,4 +18,21 @@ resource "azurerm_role_assignment" "acr_contributor" {
   scope                = azurerm_container_registry.acr.id
   role_definition_name = "Contributor"
   principal_id         = var.tenant_sp_object_id
+}
+
+resource "kubernetes_secret" "acr_login_password" {
+  metadata {
+    name      = "acr-admin-secret"
+    namespace = var.kubernetes_tenant_namespace
+  }
+
+  data = {
+    "password" = azurerm_container_registry.acr.admin_password
+    "username" = azurerm_container_registry.acr.admin_username
+    "registry" = azurerm_container_registry.acr.login_server
+  }
+
+  type = "Opaque"
+
+  depends_on = [azurerm_container_registry.acr]
 }

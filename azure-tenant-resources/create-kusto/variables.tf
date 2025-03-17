@@ -1,3 +1,4 @@
+
 variable "tags" {
   type = object({
     vendor      = string
@@ -40,7 +41,30 @@ variable "auto_stop_kusto" {
   type = bool
 }
 
+variable "trusted_external_tenants" {
+  type = list(string)
+}
 
+variable "disk_encryption_enabled" {
+  type = bool
+}
 
+variable "streaming_ingestion_enabled" {
+  type = bool
+}
 
+variable "purge_enabled" {
+  type = bool
+}
 
+variable "double_encryption_enabled" {
+  type = bool
+}
+
+variable "public_network_access_enabled" {
+  type = bool
+}
+
+variable "kubernetes_tenant_namespace" {
+  type = string
+}
