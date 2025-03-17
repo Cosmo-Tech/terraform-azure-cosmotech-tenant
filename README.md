@@ -75,8 +75,6 @@
 | <a name="input_babylon_sp_client_id"></a> [babylon\_sp\_client\_id](#input\_babylon\_sp\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_babylon_sp_client_secret"></a> [babylon\_sp\_client\_secret](#input\_babylon\_sp\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_babylon_sp_object_id"></a> [babylon\_sp\_object\_id](#input\_babylon\_sp\_object\_id) | n/a | `string` | n/a | yes |
-| <a name="input_backup_create"></a> [backup\_create](#input\_backup\_create) | n/a | `bool` | n/a | yes |
-| <a name="input_backup_repeating_time_intervals"></a> [backup\_repeating\_time\_intervals](#input\_backup\_repeating\_time\_intervals) | n/a | `list(string)` | n/a | yes |
 | <a name="input_blob_private_dns_zonename"></a> [blob\_private\_dns\_zonename](#input\_blob\_private\_dns\_zonename) | n/a | `string` | n/a | yes |
 | <a name="input_client_id"></a> [client\_id](#input\_client\_id) | The client id | `any` | n/a | yes |
 | <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | The client secret | `any` | n/a | yes |
@@ -195,10 +193,6 @@
 | <a name="input_queue_private_dns_zonename"></a> [queue\_private\_dns\_zonename](#input\_queue\_private\_dns\_zonename) | n/a | `string` | n/a | yes |
 | <a name="input_rabbitmq_listener_username"></a> [rabbitmq\_listener\_username](#input\_rabbitmq\_listener\_username) | n/a | `string` | n/a | yes |
 | <a name="input_rabbitmq_sender_username"></a> [rabbitmq\_sender\_username](#input\_rabbitmq\_sender\_username) | n/a | `string` | n/a | yes |
-| <a name="input_redis_disk_size_gb"></a> [redis\_disk\_size\_gb](#input\_redis\_disk\_size\_gb) | n/a | `number` | n/a | yes |
-| <a name="input_redis_disk_sku"></a> [redis\_disk\_sku](#input\_redis\_disk\_sku) | n/a | `string` | n/a | yes |
-| <a name="input_redis_disk_tier"></a> [redis\_disk\_tier](#input\_redis\_disk\_tier) | n/a | `string` | n/a | yes |
-| <a name="input_redis_port"></a> [redis\_port](#input\_redis\_port) | n/a | `number` | n/a | yes |
 | <a name="input_restish_sp_client_id"></a> [restish\_sp\_client\_id](#input\_restish\_sp\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_restish_sp_client_secret"></a> [restish\_sp\_client\_secret](#input\_restish\_sp\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_seaweedfs_database"></a> [seaweedfs\_database](#input\_seaweedfs\_database) | n/a | `string` | n/a | yes |
@@ -239,7 +233,6 @@
 | <a name="input_vault_secrets_operator_namespace"></a> [vault\_secrets\_operator\_namespace](#input\_vault\_secrets\_operator\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_vault_secrets_operator_vault_address"></a> [vault\_secrets\_operator\_vault\_address](#input\_vault\_secrets\_operator\_vault\_address) | n/a | `string` | n/a | yes |
 | <a name="input_vault_token"></a> [vault\_token](#input\_vault\_token) | n/a | `string` | n/a | yes |
-| <a name="input_redis_managed_disk_name"></a> [redis\_managed\_disk\_name](#input\_redis\_managed\_disk\_name) | n/a | `string` | `""` | no |
 
 ## Outputs
 
