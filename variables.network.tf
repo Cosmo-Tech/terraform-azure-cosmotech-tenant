@@ -49,3 +49,7 @@ variable "network_dns_zone_name" {
 variable "storage_csm_ip" {
   type = string
 }
+
+variable "network_deploy" {
+  type = bool
+}
