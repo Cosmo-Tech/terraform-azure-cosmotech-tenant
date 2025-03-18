@@ -1,5 +1,5 @@
 resource "azurerm_managed_disk" "minio_master" {
-  count                = var.pv_minio_provider == "azure" && var.pv_minio_disk_deploy ? 1 : 0
+  count                = var.pv_minio_provider == "azure" && var.pv_minio_disk_source_existing ? 0 : 1
   name                 = var.pv_minio_disk_master_name
   location             = var.location
   resource_group_name  = var.kubernetes_mc_resource_group_name

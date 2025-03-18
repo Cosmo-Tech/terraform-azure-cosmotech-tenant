@@ -151,7 +151,6 @@ pv_seaweedfs_disk_volume_name            = ""
 
 # minio pv
 pv_minio_deploy               = false
-pv_minio_disk_deploy          = false
 pv_minio_disk_source_existing = false
 pv_minio_storage_gbi          = 32
 pv_minio_storage_account_type = "Premium_LRS"

@@ -8,9 +8,6 @@ variable "location" {
   type = string
 }
 
-variable "pv_minio_disk_deploy" {
-  type = bool
-}
 variable "pv_minio_disk_source_existing" {
   type = bool
 }
