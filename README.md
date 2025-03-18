@@ -152,7 +152,6 @@
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | n/a | `string` | n/a | yes |
 | <a name="input_project_stage"></a> [project\_stage](#input\_project\_stage) | n/a | `string` | n/a | yes |
 | <a name="input_pv_minio_deploy"></a> [pv\_minio\_deploy](#input\_pv\_minio\_deploy) | n/a | `bool` | n/a | yes |
-| <a name="input_pv_minio_disk_deploy"></a> [pv\_minio\_disk\_deploy](#input\_pv\_minio\_disk\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_pv_minio_disk_master_name"></a> [pv\_minio\_disk\_master\_name](#input\_pv\_minio\_disk\_master\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pv_minio_disk_source_existing"></a> [pv\_minio\_disk\_source\_existing](#input\_pv\_minio\_disk\_source\_existing) | n/a | `bool` | n/a | yes |
 | <a name="input_pv_minio_provider"></a> [pv\_minio\_provider](#input\_pv\_minio\_provider) | n/a | `string` | n/a | yes |
@@ -161,7 +160,6 @@
 | <a name="input_pv_minio_storage_class_name"></a> [pv\_minio\_storage\_class\_name](#input\_pv\_minio\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pv_minio_storage_gbi"></a> [pv\_minio\_storage\_gbi](#input\_pv\_minio\_storage\_gbi) | n/a | `number` | n/a | yes |
 | <a name="input_pv_postgres_deploy"></a> [pv\_postgres\_deploy](#input\_pv\_postgres\_deploy) | n/a | `bool` | n/a | yes |
-| <a name="input_pv_postgres_disk_deploy"></a> [pv\_postgres\_disk\_deploy](#input\_pv\_postgres\_disk\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_pv_postgres_disk_master_name"></a> [pv\_postgres\_disk\_master\_name](#input\_pv\_postgres\_disk\_master\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pv_postgres_disk_source_existing"></a> [pv\_postgres\_disk\_source\_existing](#input\_pv\_postgres\_disk\_source\_existing) | n/a | `bool` | n/a | yes |
 | <a name="input_pv_postgres_provider"></a> [pv\_postgres\_provider](#input\_pv\_postgres\_provider) | n/a | `string` | n/a | yes |
@@ -172,7 +170,6 @@
 | <a name="input_pv_redis_deploy"></a> [pv\_redis\_deploy](#input\_pv\_redis\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_pv_redis_disk_master_name"></a> [pv\_redis\_disk\_master\_name](#input\_pv\_redis\_disk\_master\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pv_redis_disk_replica_name"></a> [pv\_redis\_disk\_replica\_name](#input\_pv\_redis\_disk\_replica\_name) | n/a | `string` | n/a | yes |
-| <a name="input_pv_redis_master_disk_deploy"></a> [pv\_redis\_master\_disk\_deploy](#input\_pv\_redis\_master\_disk\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_pv_redis_master_disk_source_existing"></a> [pv\_redis\_master\_disk\_source\_existing](#input\_pv\_redis\_master\_disk\_source\_existing) | n/a | `bool` | n/a | yes |
 | <a name="input_pv_redis_provider"></a> [pv\_redis\_provider](#input\_pv\_redis\_provider) | n/a | `string` | n/a | yes |
 | <a name="input_pv_redis_storage_account_type"></a> [pv\_redis\_storage\_account\_type](#input\_pv\_redis\_storage\_account\_type) | n/a | `string` | n/a | yes |
@@ -181,14 +178,12 @@
 | <a name="input_pv_seaweedfs_deploy"></a> [pv\_seaweedfs\_deploy](#input\_pv\_seaweedfs\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_pv_seaweedfs_disk_master_name"></a> [pv\_seaweedfs\_disk\_master\_name](#input\_pv\_seaweedfs\_disk\_master\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pv_seaweedfs_disk_volume_name"></a> [pv\_seaweedfs\_disk\_volume\_name](#input\_pv\_seaweedfs\_disk\_volume\_name) | n/a | `string` | n/a | yes |
-| <a name="input_pv_seaweedfs_master_disk_deploy"></a> [pv\_seaweedfs\_master\_disk\_deploy](#input\_pv\_seaweedfs\_master\_disk\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_pv_seaweedfs_master_disk_source_existing"></a> [pv\_seaweedfs\_master\_disk\_source\_existing](#input\_pv\_seaweedfs\_master\_disk\_source\_existing) | n/a | `bool` | n/a | yes |
 | <a name="input_pv_seaweedfs_provider"></a> [pv\_seaweedfs\_provider](#input\_pv\_seaweedfs\_provider) | n/a | `string` | n/a | yes |
 | <a name="input_pv_seaweedfs_replicas"></a> [pv\_seaweedfs\_replicas](#input\_pv\_seaweedfs\_replicas) | n/a | `number` | n/a | yes |
 | <a name="input_pv_seaweedfs_storage_account_type"></a> [pv\_seaweedfs\_storage\_account\_type](#input\_pv\_seaweedfs\_storage\_account\_type) | n/a | `string` | n/a | yes |
 | <a name="input_pv_seaweedfs_storage_class_name"></a> [pv\_seaweedfs\_storage\_class\_name](#input\_pv\_seaweedfs\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pv_seaweedfs_storage_gbi"></a> [pv\_seaweedfs\_storage\_gbi](#input\_pv\_seaweedfs\_storage\_gbi) | n/a | `number` | n/a | yes |
-| <a name="input_pv_seaweedfs_volume_disk_deploy"></a> [pv\_seaweedfs\_volume\_disk\_deploy](#input\_pv\_seaweedfs\_volume\_disk\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_pv_seaweedfs_volume_disk_source_existing"></a> [pv\_seaweedfs\_volume\_disk\_source\_existing](#input\_pv\_seaweedfs\_volume\_disk\_source\_existing) | n/a | `bool` | n/a | yes |
 | <a name="input_queue_private_dns_zonename"></a> [queue\_private\_dns\_zonename](#input\_queue\_private\_dns\_zonename) | n/a | `string` | n/a | yes |
 | <a name="input_rabbitmq_listener_username"></a> [rabbitmq\_listener\_username](#input\_rabbitmq\_listener\_username) | n/a | `string` | n/a | yes |
