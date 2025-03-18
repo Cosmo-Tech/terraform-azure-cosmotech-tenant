@@ -126,7 +126,6 @@ pv_redis_disk_replica_name           = ""
 
 # postgres pv
 pv_postgres_deploy               = false
-pv_postgres_disk_deploy          = false
 pv_postgres_disk_source_existing = false
 pv_postgres_storage_gbi          = 32
 pv_postgres_storage_account_type = "Premium_LRS"

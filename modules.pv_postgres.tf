@@ -11,7 +11,6 @@ module "deploy-persistence-postgres" {
   pv_postgres_storage_class_name    = var.pv_postgres_storage_class_name
   pv_postgres_storage_gbi           = var.pv_postgres_storage_gbi
   pv_postgres_replicas              = var.pv_postgres_replicas
-  pv_postgres_disk_deploy           = var.pv_postgres_disk_deploy
   pv_postgres_disk_source_existing  = var.pv_postgres_disk_source_existing
   pv_postgres_disk_master_name      = var.pv_postgres_disk_master_name
 }

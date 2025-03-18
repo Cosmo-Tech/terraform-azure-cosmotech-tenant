@@ -16,9 +16,6 @@ variable "pv_postgres_storage_class_name" {
 variable "pv_postgres_provider" {
   type = string
 }
-variable "pv_postgres_disk_deploy" {
-  type = bool
-}
 variable "pv_postgres_disk_source_existing" {
   type = bool
 }
