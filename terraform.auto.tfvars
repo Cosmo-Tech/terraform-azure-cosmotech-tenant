@@ -115,7 +115,6 @@ vault_secrets_operator_vault_address = "http://vault.vault.svc.cluster.local:820
 
 # redis pvc
 pv_redis_deploy                      = false
-pv_redis_master_disk_deploy          = false
 pv_redis_master_disk_source_existing = false
 pv_redis_storage_gbi                 = 32
 pv_redis_storage_account_type        = "Premium_LRS"
