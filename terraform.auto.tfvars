@@ -135,9 +135,7 @@ pv_postgres_disk_master_name     = ""
 
 # seaweedfs pv
 pv_seaweedfs_deploy                      = false
-pv_seaweedfs_master_disk_deploy          = false
 pv_seaweedfs_master_disk_source_existing = false
-pv_seaweedfs_volume_disk_deploy          = false
 pv_seaweedfs_volume_disk_source_existing = false
 pv_seaweedfs_storage_gbi                 = 32
 pv_seaweedfs_storage_account_type        = "Premium_LRS"
