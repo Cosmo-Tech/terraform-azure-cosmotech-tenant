@@ -1,5 +1,5 @@
 resource "azurerm_managed_disk" "seaweedfs_master" {
-  count                = var.pv_seaweedfs_provider == "azure" && var.pv_seaweedfs_master_disk_deploy ? 1 : 0
+  count                = var.pv_seaweedfs_provider == "azure" && var.pv_seaweedfs_master_disk_source_existing ? 0 : 1
   name                 = var.pv_seaweedfs_disk_master_name
   location             = var.location
   resource_group_name  = var.kubernetes_mc_resource_group_name
@@ -16,7 +16,7 @@ data "azurerm_managed_disk" "disk_managed_seaweedfs_master" {
 }
 
 resource "azurerm_managed_disk" "seaweedfs_volume" {
-  count                = var.pv_seaweedfs_provider == "azure" && var.pv_seaweedfs_volume_disk_deploy ? 1 : 0
+  count                = var.pv_seaweedfs_provider == "azure" && var.pv_seaweedfs_volume_disk_source_existing ? 0 : 1
   name                 = var.pv_seaweedfs_disk_volume_name
   location             = var.location
   resource_group_name  = var.kubernetes_mc_resource_group_name
