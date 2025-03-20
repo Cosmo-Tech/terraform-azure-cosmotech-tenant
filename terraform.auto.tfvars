@@ -9,6 +9,11 @@ tenant_sp_object_id        = ""
 cloud_provider             = "azure"
 azure_prerequisites_deploy = false
 
+host                   = ""
+client_certificate     = ""
+client_key             = ""
+cluster_ca_certificate = ""
+
 # project
 customer_name = "cosmotech"
 customertag   = ""
