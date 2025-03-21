@@ -73,7 +73,9 @@ resource "kubernetes_secret" "postgresql_data" {
     writer   = random_password.postgresql_writer_password.result
     admin    = random_password.postgresql_admin_password.result
   }
-  type = "Opaque"
+  timeouts {
+    create = "5m"
+  }
 }
 
 resource "kubernetes_secret" "postgresql-initdb" {
@@ -84,13 +86,12 @@ resource "kubernetes_secret" "postgresql-initdb" {
       "app" = "postgres"
     }
   }
-
   data = {
     "initdb.sql" = templatefile("${path.module}/initdb.sql", local.initdb_data)
   }
-
-  type = "Opaque"
-
+  timeouts {
+    create = "5m"
+  }
 }
 
 resource "kubernetes_secret" "postgres-config" {
