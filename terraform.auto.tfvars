@@ -13,6 +13,8 @@ host                   = ""
 client_certificate     = ""
 client_key             = ""
 cluster_ca_certificate = ""
+config_path            = ""
+config_context         = ""
 
 # project
 customer_name = "cosmotech"
