@@ -84,6 +84,8 @@
 | <a name="input_cluster_ca_certificate"></a> [cluster\_ca\_certificate](#input\_cluster\_ca\_certificate) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_issuer_name"></a> [cluster\_issuer\_name](#input\_cluster\_issuer\_name) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | n/a | `string` | n/a | yes |
+| <a name="input_config_context"></a> [config\_context](#input\_config\_context) | n/a | `string` | n/a | yes |
+| <a name="input_config_path"></a> [config\_path](#input\_config\_path) | n/a | `string` | n/a | yes |
 | <a name="input_container_tag"></a> [container\_tag](#input\_container\_tag) | n/a | `string` | n/a | yes |
 | <a name="input_cost_center"></a> [cost\_center](#input\_cost\_center) | n/a | `string` | n/a | yes |
 | <a name="input_create_babylon"></a> [create\_babylon](#input\_create\_babylon) | n/a | `bool` | n/a | yes |
