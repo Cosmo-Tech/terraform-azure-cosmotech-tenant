@@ -34,3 +34,9 @@ variable "client_key" {
 variable "cluster_ca_certificate" {
   type = string
 }
+variable "config_path" {
+  type = string
+}
+variable "config_context" {
+  type = string
+}
