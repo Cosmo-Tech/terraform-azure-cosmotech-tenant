@@ -105,8 +105,6 @@
 | <a name="input_first_tenant_in_cluster"></a> [first\_tenant\_in\_cluster](#input\_first\_tenant\_in\_cluster) | n/a | `bool` | n/a | yes |
 | <a name="input_identifier_uri"></a> [identifier\_uri](#input\_identifier\_uri) | The platform identifier uri | `any` | n/a | yes |
 | <a name="input_image_path"></a> [image\_path](#input\_image\_path) | n/a | `string` | n/a | yes |
-| <a name="input_kube_config"></a> [kube\_config](#input\_kube\_config) | n/a | `string` | n/a | yes |
-| <a name="input_kube_context"></a> [kube\_context](#input\_kube\_context) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_cluster_admin_activate"></a> [kubernetes\_cluster\_admin\_activate](#input\_kubernetes\_cluster\_admin\_activate) | n/a | `bool` | n/a | yes |
 | <a name="input_kubernetes_mc_resource_group_name"></a> [kubernetes\_mc\_resource\_group\_name](#input\_kubernetes\_mc\_resource\_group\_name) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_resource_group"></a> [kubernetes\_resource\_group](#input\_kubernetes\_resource\_group) | n/a | `string` | n/a | yes |
