@@ -30,8 +30,6 @@ monitoring_namespace = "cosmotech-monitoring"
 monitoring_enabled   = true
 
 # kubernetes
-kube_config                       = ""
-kube_context                      = ""
 kubernetes_mc_resource_group_name = ""
 first_tenant_in_cluster           = false
 
