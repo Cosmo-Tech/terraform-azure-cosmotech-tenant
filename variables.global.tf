@@ -22,21 +22,6 @@ variable "services_secrets_create" {
 variable "cloud_provider" {
   type = string
 }
-variable "host" {
-  type = string
-}
-variable "client_certificate" {
-  type = string
-}
-variable "client_key" {
-  type = string
-}
-variable "cluster_ca_certificate" {
-  type = string
-}
 variable "config_path" {
-  type = string
-}
-variable "config_context" {
   type = string
 }
