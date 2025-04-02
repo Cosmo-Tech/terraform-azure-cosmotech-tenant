@@ -23,6 +23,8 @@ locals {
   s3_config_values = {
     "ARGO_WORKFLOWS_USERNAME" = var.argo_workflows_s3_username
     "ARGO_WORKFLOWS_PASSWORD" = random_password.seaweedfs_argo_workflows_password.result
+    "COSMOTECH_API_USERNAME"  = var.cosmotech_api_s3_username
+    "COSMOTECH_API_PASSWORD"  = random_password.seaweedfs_cosmotech_api_password.result
   }
 
   rabbitmq_load_values = {
@@ -210,6 +212,11 @@ resource "random_password" "seaweedfs_argo_workflows_password" {
   special = false
 }
 
+resource "random_password" "seaweedfs_cosmotech_api_password" {
+  length  = 30
+  special = false
+}
+
 resource "kubernetes_secret" "s3_credentials" {
   metadata {
     name      = "seaweedfs-${var.kubernetes_namespace}-s3-auth"
@@ -222,6 +229,8 @@ resource "kubernetes_secret" "s3_credentials" {
   data = {
     "argo-workflows-username" = var.argo_workflows_s3_username
     "argo-workflows-password" = random_password.seaweedfs_argo_workflows_password.result
+    "cosmotech-api-username"  = var.cosmotech_api_s3_username
+    "cosmotech-api-password"  = random_password.seaweedfs_cosmotech_api_password.result
   }
 }
 

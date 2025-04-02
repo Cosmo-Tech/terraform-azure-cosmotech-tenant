@@ -14,6 +14,7 @@ module "services-secrets" {
   kubernetes_namespace          = var.kubernetes_tenant_namespace
   first_tenant_in_cluster       = var.first_tenant_in_cluster
   argo_workflows_s3_username    = var.argo_workflows_s3_username
+  cosmotech_api_s3_username     = var.api_s3_username
   rabbitmq_listener_username    = var.rabbitmq_listener_username
   rabbitmq_sender_username      = var.rabbitmq_sender_username
   seaweedfs_database            = var.seaweedfs_database
@@ -33,7 +34,7 @@ module "services-secrets" {
   storage_account_name               = var.storage_account_deploy ? module.create-storage.0.out_storage_account_name : ""
   storage_account_primary_access_key = var.storage_account_deploy ? module.create-storage.0.out_storage_account_key : ""
 
-  # keycloak 
+  # keycloak
   keycloak_app_client_id = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_keycloak_sp_client_id : ""
   keycloak_app_password  = var.azure_prerequisites_deploy ? module.azure-tenant-prerequisites.0.out_keycloak_sp_client_secret : ""
 

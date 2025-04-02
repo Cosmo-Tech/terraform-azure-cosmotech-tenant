@@ -21,3 +21,6 @@ variable "api_servlet_context_path" {
   type        = string
   description = "ex: /cosmotech-api"
 }
+variable "api_s3_username" {
+  type = string
+}

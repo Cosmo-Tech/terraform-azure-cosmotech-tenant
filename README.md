@@ -65,6 +65,7 @@
 | <a name="input_allowed_namespace"></a> [allowed\_namespace](#input\_allowed\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_api_chart_package_version"></a> [api\_chart\_package\_version](#input\_api\_chart\_package\_version) | The version of the Cosmo Tech API chart to deploy | `string` | n/a | yes |
 | <a name="input_api_dns_name"></a> [api\_dns\_name](#input\_api\_dns\_name) | n/a | `string` | n/a | yes |
+| <a name="input_api_s3_username"></a> [api\_s3\_username](#input\_api\_s3\_username) | n/a | `string` | n/a | yes |
 | <a name="input_api_servlet_context_path"></a> [api\_servlet\_context\_path](#input\_api\_servlet\_context\_path) | ex: /cosmotech-api | `string` | n/a | yes |
 | <a name="input_api_version"></a> [api\_version](#input\_api\_version) | n/a | `string` | n/a | yes |
 | <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | The API version path | `string` | n/a | yes |

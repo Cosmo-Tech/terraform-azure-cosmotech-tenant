@@ -35,11 +35,11 @@ variable "monitoring_namespace" {
 }
 
 variable "rabbitmq_listener_username" {
-  type    = string
+  type = string
 }
 
 variable "rabbitmq_sender_username" {
-  type    = string
+  type = string
 }
 
 variable "first_tenant_in_cluster" {
@@ -47,6 +47,9 @@ variable "first_tenant_in_cluster" {
 }
 
 variable "argo_workflows_s3_username" {
+  type = string
+}
+variable "cosmotech_api_s3_username" {
   type = string
 }
 

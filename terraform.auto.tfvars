@@ -189,7 +189,7 @@ babylon_sp_client_id     = ""
 babylon_sp_object_id     = ""
 babylon_sp_client_secret = ""
 
-# keycloak 
+# keycloak
 create_keycloak = true
 
 # swagger
@@ -316,4 +316,5 @@ user_app_role = [{
   role_value   = "Platform.Admin"
   }
 ]
-image_path = "./cosmotech.png"
+image_path      = "./cosmotech.png"
+api_s3_username = "cosmotech_api"
