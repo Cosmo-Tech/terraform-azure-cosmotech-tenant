@@ -9,8 +9,6 @@ tenant_sp_object_id        = ""
 cloud_provider             = "azure"
 azure_prerequisites_deploy = false
 
-config_path = ""
-
 # project
 customer_name = "cosmotech"
 customertag   = ""
@@ -30,6 +28,8 @@ monitoring_namespace = "cosmotech-monitoring"
 monitoring_enabled   = true
 
 # kubernetes
+kubernetes_config_path            = ""
+kubernetes_config_context         = ""
 kubernetes_mc_resource_group_name = ""
 first_tenant_in_cluster           = false
 

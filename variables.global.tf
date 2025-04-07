@@ -22,6 +22,3 @@ variable "services_secrets_create" {
 variable "cloud_provider" {
   type = string
 }
-variable "config_path" {
-  type = string
-}

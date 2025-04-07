@@ -81,7 +81,6 @@
 | <a name="input_cloud_provider"></a> [cloud\_provider](#input\_cloud\_provider) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_issuer_name"></a> [cluster\_issuer\_name](#input\_cluster\_issuer\_name) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | n/a | `string` | n/a | yes |
-| <a name="input_config_path"></a> [config\_path](#input\_config\_path) | n/a | `string` | n/a | yes |
 | <a name="input_container_tag"></a> [container\_tag](#input\_container\_tag) | n/a | `string` | n/a | yes |
 | <a name="input_cost_center"></a> [cost\_center](#input\_cost\_center) | n/a | `string` | n/a | yes |
 | <a name="input_create_babylon"></a> [create\_babylon](#input\_create\_babylon) | n/a | `bool` | n/a | yes |
@@ -106,6 +105,8 @@
 | <a name="input_identifier_uri"></a> [identifier\_uri](#input\_identifier\_uri) | The platform identifier uri | `any` | n/a | yes |
 | <a name="input_image_path"></a> [image\_path](#input\_image\_path) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_cluster_admin_activate"></a> [kubernetes\_cluster\_admin\_activate](#input\_kubernetes\_cluster\_admin\_activate) | n/a | `bool` | n/a | yes |
+| <a name="input_kubernetes_config_context"></a> [kubernetes\_config\_context](#input\_kubernetes\_config\_context) | n/a | `string` | n/a | yes |
+| <a name="input_kubernetes_config_path"></a> [kubernetes\_config\_path](#input\_kubernetes\_config\_path) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_mc_resource_group_name"></a> [kubernetes\_mc\_resource\_group\_name](#input\_kubernetes\_mc\_resource\_group\_name) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_resource_group"></a> [kubernetes\_resource\_group](#input\_kubernetes\_resource\_group) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | n/a | `string` | n/a | yes |
