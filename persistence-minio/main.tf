@@ -6,6 +6,7 @@ resource "azurerm_managed_disk" "minio_master" {
   storage_account_type = var.pv_minio_storage_account_type
   create_option        = "Empty"
   disk_size_gb         = var.pv_minio_storage_gbi
+  tags                 = var.tags 
 }
 
 data "azurerm_managed_disk" "disk_managed_minio" {

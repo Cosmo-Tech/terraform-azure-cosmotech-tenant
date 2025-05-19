@@ -13,4 +13,5 @@ module "deploy-persistence-postgres" {
   pv_postgres_replicas              = var.pv_postgres_replicas
   pv_postgres_disk_source_existing  = var.pv_postgres_disk_source_existing
   pv_postgres_disk_master_name      = var.pv_postgres_disk_master_name
+  tags                              = var.tags
 }
