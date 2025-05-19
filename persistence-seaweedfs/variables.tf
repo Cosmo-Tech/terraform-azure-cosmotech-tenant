@@ -31,3 +31,7 @@ variable "pv_seaweedfs_disk_master_name" {
 variable "pv_seaweedfs_disk_volume_name" {
   type = string
 }
+variable "tags" {
+  description = "Standard tags to apply to all resources"
+  type        = map(string)
+}

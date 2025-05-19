@@ -13,4 +13,5 @@ module "deploy-persistence-minio" {
   pv_minio_replicas                 = var.pv_minio_replicas
   pv_minio_disk_source_existing     = var.pv_minio_disk_source_existing
   pv_minio_disk_master_name         = var.pv_minio_disk_master_name
+  tags                              = var.tags
 }
