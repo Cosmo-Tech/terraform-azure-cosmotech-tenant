@@ -4,7 +4,7 @@ output "out_acr_login_server" {
 }
 
 output "out_acr_login_server_url" {
-  value     = "https://${azurerm_container_registry.acr.login_server}"
+  value = "https://${azurerm_container_registry.acr.login_server}"
 }
 
 output "out_acr_login_username" {

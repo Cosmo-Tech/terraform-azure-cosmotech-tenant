@@ -1,13 +1,6 @@
 variable "tags" {
-  type = object({
-    vendor      = string
-    stage       = string
-    customer    = string
-    project     = string
-    cost_center = string
-  })
+  type = map(string)
 }
-
 variable "storage_name" {
   type = string
 }

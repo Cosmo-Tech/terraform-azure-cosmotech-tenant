@@ -11,10 +11,10 @@ resource "kubernetes_config_map" "vault_config_script" {
 
   data = {
     "configure-vault.sh" = templatefile("${path.module}/configure-vault.sh", {
-      allowed_namespace                = var.kubernetes_tenant_namespace
-      vault_namespace                  = var.vault_namespace
-      engine_secret                    = var.engine_secret
-      engine_version                   = var.engine_version
+      allowed_namespace = var.kubernetes_tenant_namespace
+      vault_namespace   = var.vault_namespace
+      engine_secret     = var.engine_secret
+      engine_version    = var.engine_version
     })
   }
 }

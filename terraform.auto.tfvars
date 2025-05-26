@@ -14,7 +14,13 @@ customer_name = "cosmotech"
 customertag   = ""
 project_stage = "Dev"
 cost_center   = "NA"
-tags          = {}
+tags = {
+  cost_center = "NA"
+  customer    = ""
+  project     = ""
+  stage       = "Dev"
+  vendor      = "cosmotech"
+}
 
 # backend remote
 tf_resource_group_name  = ""

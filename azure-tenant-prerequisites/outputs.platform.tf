@@ -15,7 +15,7 @@ output "out_platform_sp_object_id" {
 }
 
 output "out_platform_sp_client_secret" {
-  value = azuread_application_password.platform_password.value
+  value     = azuread_application_password.platform_password.value
   sensitive = true
 }
 

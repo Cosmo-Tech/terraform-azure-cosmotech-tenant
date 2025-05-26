@@ -35,4 +35,5 @@ module "azure-tenant-prerequisites" {
   cost_center                    = var.cost_center
   kubernetes_tenant_namespace    = var.kubernetes_tenant_namespace
   cluster_name                   = var.cluster_name
+  tags                           = var.tags
 }
