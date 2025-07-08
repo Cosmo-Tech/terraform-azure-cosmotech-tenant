@@ -6,6 +6,7 @@ resource "azurerm_managed_disk" "redis_master" {
   storage_account_type = var.pv_redis_storage_account_type
   create_option        = "Empty"
   disk_size_gb         = var.pv_redis_storage_gbi
+  tags                 = var.tags
 }
 
 data "azurerm_managed_disk" "disk_managed_redis_master" {
@@ -15,12 +16,13 @@ data "azurerm_managed_disk" "disk_managed_redis_master" {
 }
 
 resource "azurerm_managed_disk" "redis_replicas" {
-  name                 = "${var.pv_redis_disk_replica_name}"
+  name                 = var.pv_redis_disk_replica_name
   location             = var.location
   resource_group_name  = var.kubernetes_mc_resource_group_name
   storage_account_type = var.pv_redis_storage_account_type
   create_option        = "Empty"
   disk_size_gb         = var.pv_redis_storage_gbi
+  tags                 = var.tags
 
   depends_on = [azurerm_managed_disk.redis_master]
 }

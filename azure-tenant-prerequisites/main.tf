@@ -5,13 +5,8 @@ locals {
   identifier_uri = "https://${var.dns_record}.${var.dns_zone_name}/${var.kubernetes_tenant_namespace}"
   platform_url   = var.platform_url != "" ? var.platform_url : "https://${var.dns_record}.${var.dns_zone_name}${var.servlet_context_path}"
   vnet_iprange   = var.virtual_network_address_prefix
-  tags = {
-    vendor      = "cosmotech"
-    stage       = var.project_stage
-    customer    = var.customer_name
-    project     = var.project_name
-    cost_center = var.cost_center
-  }
+  tags           = var.tags
+
   app_tags = [
     "cosmotech",
     var.project_stage,

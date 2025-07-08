@@ -29,3 +29,6 @@ variable "pv_minio_provider" {
 variable "pv_minio_disk_master_name" {
   type = string
 }
+variable "tags" {
+  type = map(string)
+}

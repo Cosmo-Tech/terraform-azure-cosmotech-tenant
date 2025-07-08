@@ -28,3 +28,6 @@ variable "pv_redis_disk_master_name" {
 variable "pv_redis_disk_replica_name" {
   type = string
 }
+variable "tags" {
+  type = map(string)
+}

@@ -1,6 +1,5 @@
 variable "tags" {
-  description = "Tags to be applied to the resources"
-  type        = map(string)
+  type = map(string)
 }
 
 variable "subnet_name" {

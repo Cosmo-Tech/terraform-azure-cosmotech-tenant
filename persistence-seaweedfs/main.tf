@@ -7,6 +7,7 @@ resource "azurerm_managed_disk" "seaweedfs_master" {
   create_option        = "Empty"
   disk_size_gb         = var.pv_seaweedfs_storage_gbi
   os_type              = "Linux"
+  tags                 = var.tags
 }
 
 data "azurerm_managed_disk" "disk_managed_seaweedfs_master" {
@@ -24,6 +25,7 @@ resource "azurerm_managed_disk" "seaweedfs_volume" {
   create_option        = "Empty"
   disk_size_gb         = var.pv_seaweedfs_storage_gbi
   os_type              = "Linux"
+  tags                 = var.tags
 }
 
 data "azurerm_managed_disk" "disk_managed_seaweedfs_volume" {

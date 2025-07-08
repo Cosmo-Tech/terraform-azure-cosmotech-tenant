@@ -25,7 +25,7 @@ variable "identifier_uri" {
 
 variable "project_stage" {
   description = "The Project stage"
-  type = string
+  type        = string
 }
 
 variable "project_name" {
@@ -159,4 +159,7 @@ variable "create_keycloak" {
 
 variable "api_dns_name" {
   type = string
+}
+variable "tags" {
+  type = map(string)
 }
