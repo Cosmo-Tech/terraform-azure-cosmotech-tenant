@@ -10,6 +10,9 @@ variable "location" {
 variable "pv_redis_master_disk_source_existing" {
   type = bool
 }
+variable "pv_redis_replica_disk_source_existing" {
+  type = bool
+}
 variable "pv_redis_storage_gbi" {
   type = number
 }
