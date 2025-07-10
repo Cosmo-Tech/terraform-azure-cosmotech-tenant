@@ -173,6 +173,7 @@
 | <a name="input_pv_redis_disk_replica_name"></a> [pv\_redis\_disk\_replica\_name](#input\_pv\_redis\_disk\_replica\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pv_redis_master_disk_source_existing"></a> [pv\_redis\_master\_disk\_source\_existing](#input\_pv\_redis\_master\_disk\_source\_existing) | n/a | `bool` | n/a | yes |
 | <a name="input_pv_redis_provider"></a> [pv\_redis\_provider](#input\_pv\_redis\_provider) | n/a | `string` | n/a | yes |
+| <a name="input_pv_redis_replica_disk_source_existing"></a> [pv\_redis\_replica\_disk\_source\_existing](#input\_pv\_redis\_replica\_disk\_source\_existing) | n/a | `bool` | n/a | yes |
 | <a name="input_pv_redis_storage_account_type"></a> [pv\_redis\_storage\_account\_type](#input\_pv\_redis\_storage\_account\_type) | n/a | `string` | n/a | yes |
 | <a name="input_pv_redis_storage_class_name"></a> [pv\_redis\_storage\_class\_name](#input\_pv\_redis\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pv_redis_storage_gbi"></a> [pv\_redis\_storage\_gbi](#input\_pv\_redis\_storage\_gbi) | n/a | `number` | n/a | yes |
