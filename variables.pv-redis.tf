@@ -23,6 +23,9 @@ variable "pv_redis_provider" {
 variable "pv_redis_master_disk_source_existing" {
   type = bool
 }
+variable "pv_redis_replica_disk_source_existing" {
+  type = bool
+}
 variable "pv_redis_disk_master_name" {
   type = string
 }

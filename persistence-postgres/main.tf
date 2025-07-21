@@ -1,5 +1,5 @@
 resource "azurerm_managed_disk" "postgres_master" {
-  count                = var.pv_postgres_provider == "azure" && var.pv_postgres_disk_source_existing ? 0 : 1
+  count                = var.pv_postgres_provider == "azure" && !var.pv_postgres_disk_source_existing ? 1 : 0
   name                 = var.pv_postgres_disk_master_name
   location             = var.location
   resource_group_name  = var.kubernetes_mc_resource_group_name
@@ -41,8 +41,25 @@ resource "kubernetes_persistent_volume" "pv_postgres_master" {
     data.azurerm_managed_disk.disk_managed_postgres
   ]
 }
-
-
+resource "kubernetes_manifest" "postgres_longhorn_volume" {
+  count = var.pv_postgres_provider == "longhorn" ? 1 : 0
+  manifest = {
+    apiVersion = "longhorn.io/v1beta2"
+    kind       = "Volume"
+    metadata = {
+      name      = "${var.pv_postgres_disk_master_name}"
+      namespace = "longhorn-system"
+    }
+    spec = {
+      size             = tostring(floor(var.pv_postgres_storage_gbi * 1024 * 1024 * 1024))
+      numberOfReplicas = 1
+      fromBackup       = ""
+      frontend         = "blockdev"
+      dataLocality     = "disabled"
+      accessMode       = "rwo"
+    }
+  }
+}
 resource "kubernetes_persistent_volume" "pv_postgres_master_lognhorn" {
   count = var.pv_postgres_provider == "longhorn" ? 1 : 0
   metadata {
@@ -62,4 +79,5 @@ resource "kubernetes_persistent_volume" "pv_postgres_master_lognhorn" {
       }
     }
   }
+  depends_on = [kubernetes_manifest.postgres_longhorn_volume]
 }
