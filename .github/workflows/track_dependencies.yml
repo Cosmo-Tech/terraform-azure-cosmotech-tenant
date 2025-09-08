@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: hashicorp/setup-terraform@v3
-      - run: terraform init
+      - run: terraform init -backend=false
       - name: Install Syft
         run: |
           curl -sSfL https://get.anchore.io/syft | sudo sh -s -- -b /usr/local/bin
