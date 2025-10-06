@@ -12,6 +12,7 @@ locals {
     "COSMOTECH_API_WRITER_USERNAME" = var.cosmotech_api_writer_username
     "COSMOTECH_API_WRITER_PASSWORD" = random_password.postgresql_writer_password.result
     "COSMOTECH_API_ADMIN_USERNAME"  = var.cosmotech_api_admin_username
+    "COSMOTECH_API_DATABASE"        = var.cosmotech_api_postgres_database
     "COSMOTECH_API_ADMIN_PASSWORD"  = random_password.postgresql_admin_password.result
     "ARGO_POSTGRESQL_USER"          = var.argo_postgresql_user
     "ARGO_POSTGRESQL_PASSWORD"      = random_password.argo_postgresql_password.result
@@ -27,14 +28,6 @@ locals {
     "COSMOTECH_API_PASSWORD"  = random_password.seaweedfs_cosmotech_api_password.result
   }
 
-  rabbitmq_load_values = {
-    "PASSWORD_ADMIN"    = random_password.rabbitmq_admin_password.result
-    "USER_LISTENER"     = var.rabbitmq_listener_username
-    "PASSWORD_LISTENER" = random_password.rabbitmq_listener_password.result
-    "USER_SENDER"       = var.rabbitmq_sender_username
-    "PASSWORD_SENDER"   = random_password.rabbitmq_sender_password.result
-
-  }
 }
 
 # postgres
@@ -111,6 +104,7 @@ resource "kubernetes_secret" "postgres-config" {
     argo-password                 = random_password.argo_postgresql_password.result
     postgres-username             = "postgres"
     postgres-password             = random_password.postgres_postgresql_password.result
+    database-name                 = var.cosmotech_api_postgres_database
     cosmotech-api-admin-username  = var.cosmotech_api_admin_username
     cosmotech-api-admin-password  = random_password.postgresql_admin_password.result
     cosmotech-api-reader-username = var.cosmotech_api_reader_username
@@ -121,69 +115,6 @@ resource "kubernetes_secret" "postgres-config" {
 
   type = "Opaque"
 }
-
-
-# rabbitmq
-resource "random_password" "rabbitmq_admin_password" {
-  length  = 30
-  special = false
-}
-
-resource "random_password" "rabbitmq_listener_password" {
-  length  = 30
-  special = false
-}
-
-resource "random_password" "rabbitmq_sender_password" {
-  length  = 30
-  special = false
-}
-
-resource "kubernetes_secret" "rabbitmq_load_data" {
-  metadata {
-    name      = "rabbitmq-data-secret"
-    namespace = var.kubernetes_namespace
-  }
-
-  data = {
-    admin    = random_password.rabbitmq_admin_password.result
-    listener = random_password.rabbitmq_listener_password.result
-    sender   = random_password.rabbitmq_sender_password.result
-  }
-}
-
-resource "kubernetes_secret" "rabbitmq-secret" {
-  metadata {
-    name      = "rabbitmq-${var.kubernetes_namespace}-secret"
-    namespace = var.kubernetes_namespace
-    labels = {
-      "app" = "rabbitmq"
-    }
-  }
-
-  data = {
-    admin-username    = "admin"
-    admin-password    = random_password.rabbitmq_admin_password.result
-    listener-username = var.rabbitmq_listener_username
-    listener-password = random_password.rabbitmq_listener_password.result
-    sender-username   = var.rabbitmq_sender_username
-    sender-password   = random_password.rabbitmq_sender_password.result
-  }
-
-  type = "Opaque"
-}
-
-resource "kubernetes_secret" "rabbitmq_load_definition" {
-  metadata {
-    name      = "rabbitmq-${var.kubernetes_namespace}-load-definition"
-    namespace = var.kubernetes_namespace
-  }
-
-  data = {
-    "load_definition.json" = templatefile("${path.module}/rabbitmq_load.json", local.rabbitmq_load_values)
-  }
-}
-
 
 # redis
 resource "random_password" "redis_admin_password" {

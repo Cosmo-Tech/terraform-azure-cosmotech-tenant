@@ -10,6 +10,10 @@ variable "cosmotech_api_admin_username" {
   type = string
 }
 
+variable "cosmotech_api_postgres_database" {
+  type = string
+}
+
 variable "postgresql_initdb_secret_name" {
   type = string
 }

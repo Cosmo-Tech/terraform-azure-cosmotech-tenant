@@ -167,14 +167,10 @@ services_secrets_create = false
 postgresql_cosmotech_api_reader_username = "cosmotech_api_reader"
 postgresql_cosmotech_api_writer_username = "cosmotech_api_writer"
 postgresql_cosmotech_api_admin_username  = "cosmotech_api_admin"
+postgresql_cosmotech_api_database        = "cosmotech"
 postgresql_initdb_secret_name            = "postgres-initdb"
 postgresql_argo_user                     = "argo"
 postgresql_secret_name                   = "postgres-config"
-
-# rabbitmq
-create_rabbitmq            = false
-rabbitmq_listener_username = "cosmotech_api_listener"
-rabbitmq_sender_username   = "cosmotech_run_sender"
 
 # seaweedfs
 seaweedfs_database = "seaweedfs"
