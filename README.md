@@ -146,6 +146,7 @@
 | <a name="input_platform_url"></a> [platform\_url](#input\_platform\_url) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_argo_user"></a> [postgresql\_argo\_user](#input\_postgresql\_argo\_user) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_cosmotech_api_admin_username"></a> [postgresql\_cosmotech\_api\_admin\_username](#input\_postgresql\_cosmotech\_api\_admin\_username) | n/a | `string` | n/a | yes |
+| <a name="input_postgresql_cosmotech_api_database"></a> [postgresql\_cosmotech\_api\_database](#input\_postgresql\_cosmotech\_api\_database) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_cosmotech_api_reader_username"></a> [postgresql\_cosmotech\_api\_reader\_username](#input\_postgresql\_cosmotech\_api\_reader\_username) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_cosmotech_api_writer_username"></a> [postgresql\_cosmotech\_api\_writer\_username](#input\_postgresql\_cosmotech\_api\_writer\_username) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_initdb_secret_name"></a> [postgresql\_initdb\_secret\_name](#input\_postgresql\_initdb\_secret\_name) | n/a | `string` | n/a | yes |
