@@ -26,7 +26,7 @@ module "services-secrets" {
   acr_login_server   = var.acr_deploy ? module.create-container-registry.0.out_acr_login_server : ""
 
   # kusto
-  kusto_data_ingestion_uri = var.kusto_deploy ? module.create-kusto.0.out_adx_cluster_uri : ""
+  kusto_data_ingestion_uri = var.kusto_deploy ? module.create-kusto.0.out_adx_cluster_ingestion_uri : ""
   kusto_name               = var.kusto_deploy ? module.create-kusto.0.out_adx_cluster_name : ""
   kusto_principal_id       = var.kusto_deploy ? module.create-kusto.0.out_adx_cluster_principal_id : ""
 

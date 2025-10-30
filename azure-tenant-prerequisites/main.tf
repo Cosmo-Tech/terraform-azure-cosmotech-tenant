@@ -327,6 +327,7 @@ resource "azuread_application" "keycloak_app" {
 }
 
 resource "azuread_service_principal" "keycloak_sapp" {
+  count            = var.create_keycloak ? 1 : 0
   client_id = azuread_application.keycloak_app.0.client_id
   owners    = data.azuread_users.owners.object_ids
   tags      = local.app_tags
@@ -335,6 +336,7 @@ resource "azuread_service_principal" "keycloak_sapp" {
 }
 
 resource "azuread_application_password" "keycloak_sapp_password" {
+  count            = var.create_keycloak ? 1 : 0
   display_name   = "keycloak_secret"
   application_id = azuread_application.keycloak_app.0.id
 
