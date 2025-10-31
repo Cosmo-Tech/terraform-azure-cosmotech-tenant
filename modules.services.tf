@@ -7,6 +7,7 @@ module "services-secrets" {
   postgresql_initdb_secret_name = var.postgresql_initdb_secret_name
   postgresql_secret_name        = var.postgresql_secret_name
   argo_postgresql_user          = var.postgresql_argo_user
+  cosmotech-api-database-name   = var.cosmotech-api-database-name
   cosmotech_api_admin_username  = var.postgresql_cosmotech_api_admin_username
   cosmotech_api_reader_username = var.postgresql_cosmotech_api_reader_username
   cosmotech_api_writer_username = var.postgresql_cosmotech_api_writer_username
@@ -15,8 +16,6 @@ module "services-secrets" {
   first_tenant_in_cluster       = var.first_tenant_in_cluster
   argo_workflows_s3_username    = var.argo_workflows_s3_username
   cosmotech_api_s3_username     = var.api_s3_username
-  rabbitmq_listener_username    = var.rabbitmq_listener_username
-  rabbitmq_sender_username      = var.rabbitmq_sender_username
   seaweedfs_database            = var.seaweedfs_database
   seaweedfs_username            = var.seaweedfs_username
 

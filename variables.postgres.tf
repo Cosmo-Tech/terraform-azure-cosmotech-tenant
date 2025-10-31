@@ -16,3 +16,6 @@ variable "postgresql_argo_user" {
 variable "postgresql_secret_name" {
   type = string
 }
+variable "cosmotech-api-database-name" {
+  type = string
+}

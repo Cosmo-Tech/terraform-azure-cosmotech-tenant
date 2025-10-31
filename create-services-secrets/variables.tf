@@ -10,6 +10,10 @@ variable "cosmotech_api_admin_username" {
   type = string
 }
 
+variable "cosmotech-api-database-name" {
+  type = string
+}
+
 variable "postgresql_initdb_secret_name" {
   type = string
 }
@@ -31,14 +35,6 @@ variable "kubernetes_namespace" {
 }
 
 variable "monitoring_namespace" {
-  type = string
-}
-
-variable "rabbitmq_listener_username" {
-  type = string
-}
-
-variable "rabbitmq_sender_username" {
   type = string
 }
 

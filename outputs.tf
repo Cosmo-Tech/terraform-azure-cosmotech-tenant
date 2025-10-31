@@ -1,9 +1,11 @@
 output "out_acr_login_server" {
-  value = var.acr_deploy ? module.create-container-registry.0.out_acr_login_server : ""
+  value     = var.acr_deploy ? module.create-container-registry.0.out_acr_login_server : ""
+  sensitive = true
 }
 
 output "out_acr_login_username" {
-  value = var.acr_deploy ? module.create-container-registry.0.out_acr_login_username : ""
+  value     = var.acr_deploy ? module.create-container-registry.0.out_acr_login_username : ""
+  sensitive = true
 }
 
 output "out_acr_login_server_url" {
