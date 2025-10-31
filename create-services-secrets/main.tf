@@ -12,7 +12,7 @@ locals {
     "COSMOTECH_API_WRITER_USERNAME" = var.cosmotech_api_writer_username
     "COSMOTECH_API_WRITER_PASSWORD" = random_password.postgresql_writer_password.result
     "COSMOTECH_API_ADMIN_USERNAME"  = var.cosmotech_api_admin_username
-    "COSMOTECH_API_DATABASE"        = var.cosmotech_api_postgres_database
+    "COSMOTECH_API_DATABASE"        = var.cosmotech-api-database-name
     "COSMOTECH_API_ADMIN_PASSWORD"  = random_password.postgresql_admin_password.result
     "ARGO_POSTGRESQL_USER"          = var.argo_postgresql_user
     "ARGO_POSTGRESQL_PASSWORD"      = random_password.argo_postgresql_password.result
@@ -104,7 +104,7 @@ resource "kubernetes_secret" "postgres-config" {
     argo-password                 = random_password.argo_postgresql_password.result
     postgres-username             = "postgres"
     postgres-password             = random_password.postgres_postgresql_password.result
-    database-name                 = var.cosmotech_api_postgres_database
+    database-name                 = var.cosmotech-api-database-name
     cosmotech-api-admin-username  = var.cosmotech_api_admin_username
     cosmotech-api-admin-password  = random_password.postgresql_admin_password.result
     cosmotech-api-reader-username = var.cosmotech_api_reader_username
