@@ -83,13 +83,13 @@
 | <a name="input_cluster_issuer_name"></a> [cluster\_issuer\_name](#input\_cluster\_issuer\_name) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | n/a | `string` | n/a | yes |
 | <a name="input_container_tag"></a> [container\_tag](#input\_container\_tag) | n/a | `string` | n/a | yes |
+| <a name="input_cosmotech-api-database-name"></a> [cosmotech-api-database-name](#input\_cosmotech-api-database-name) | n/a | `string` | n/a | yes |
 | <a name="input_cost_center"></a> [cost\_center](#input\_cost\_center) | n/a | `string` | n/a | yes |
 | <a name="input_create_babylon"></a> [create\_babylon](#input\_create\_babylon) | n/a | `bool` | n/a | yes |
 | <a name="input_create_eventhub"></a> [create\_eventhub](#input\_create\_eventhub) | Whether to create Azure Event Hub resources | `bool` | n/a | yes |
 | <a name="input_create_keycloak"></a> [create\_keycloak](#input\_create\_keycloak) | n/a | `bool` | n/a | yes |
 | <a name="input_create_platform"></a> [create\_platform](#input\_create\_platform) | n/a | `string` | n/a | yes |
 | <a name="input_create_powerbi"></a> [create\_powerbi](#input\_create\_powerbi) | n/a | `bool` | n/a | yes |
-| <a name="input_create_rabbitmq"></a> [create\_rabbitmq](#input\_create\_rabbitmq) | n/a | `bool` | n/a | yes |
 | <a name="input_create_restish"></a> [create\_restish](#input\_create\_restish) | n/a | `bool` | n/a | yes |
 | <a name="input_create_secrets"></a> [create\_secrets](#input\_create\_secrets) | n/a | `bool` | n/a | yes |
 | <a name="input_create_webapp"></a> [create\_webapp](#input\_create\_webapp) | n/a | `bool` | n/a | yes |
@@ -146,7 +146,6 @@
 | <a name="input_platform_url"></a> [platform\_url](#input\_platform\_url) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_argo_user"></a> [postgresql\_argo\_user](#input\_postgresql\_argo\_user) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_cosmotech_api_admin_username"></a> [postgresql\_cosmotech\_api\_admin\_username](#input\_postgresql\_cosmotech\_api\_admin\_username) | n/a | `string` | n/a | yes |
-| <a name="input_postgresql_cosmotech_api_database"></a> [postgresql\_cosmotech\_api\_database](#input\_postgresql\_cosmotech\_api\_database) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_cosmotech_api_reader_username"></a> [postgresql\_cosmotech\_api\_reader\_username](#input\_postgresql\_cosmotech\_api\_reader\_username) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_cosmotech_api_writer_username"></a> [postgresql\_cosmotech\_api\_writer\_username](#input\_postgresql\_cosmotech\_api\_writer\_username) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_initdb_secret_name"></a> [postgresql\_initdb\_secret\_name](#input\_postgresql\_initdb\_secret\_name) | n/a | `string` | n/a | yes |
@@ -189,8 +188,6 @@
 | <a name="input_pv_seaweedfs_storage_gbi"></a> [pv\_seaweedfs\_storage\_gbi](#input\_pv\_seaweedfs\_storage\_gbi) | n/a | `number` | n/a | yes |
 | <a name="input_pv_seaweedfs_volume_disk_source_existing"></a> [pv\_seaweedfs\_volume\_disk\_source\_existing](#input\_pv\_seaweedfs\_volume\_disk\_source\_existing) | n/a | `bool` | n/a | yes |
 | <a name="input_queue_private_dns_zonename"></a> [queue\_private\_dns\_zonename](#input\_queue\_private\_dns\_zonename) | n/a | `string` | n/a | yes |
-| <a name="input_rabbitmq_listener_username"></a> [rabbitmq\_listener\_username](#input\_rabbitmq\_listener\_username) | n/a | `string` | n/a | yes |
-| <a name="input_rabbitmq_sender_username"></a> [rabbitmq\_sender\_username](#input\_rabbitmq\_sender\_username) | n/a | `string` | n/a | yes |
 | <a name="input_restish_sp_client_id"></a> [restish\_sp\_client\_id](#input\_restish\_sp\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_restish_sp_client_secret"></a> [restish\_sp\_client\_secret](#input\_restish\_sp\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_seaweedfs_database"></a> [seaweedfs\_database](#input\_seaweedfs\_database) | n/a | `string` | n/a | yes |
